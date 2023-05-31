@@ -1,0 +1,10 @@
+# # UsersDtoAllOf
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**total** | **int** | The total number of users. |
+**items** | [**\OpenAPI\Client\Model\UserDto[]**](UserDto.md) | The users. |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
