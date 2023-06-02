@@ -1,17 +1,23 @@
 <?php
 
+
+use OpenAPI\Client\SquidexClient;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$apiInstance = new OpenAPI\Client\Api\AppsApi(
-    new GuzzleHttp\Client(),
-    $config
+$apiInstance = new SquidexClient(
+    [
+        'clientId' => 'client-id',
+        'clientSecret' => 'client-secret',
+        'appName' => 'my-app',
+    ]
 );
-$app = 'app_example';
 
+$id = 10;
 try {
-    $result = $apiInstance->appAssetsGetAssetScripts($app);
+    $result = $apiInstance->rules()->rulesPutRuleRun($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AppsApi->appAssetsGetAssetScripts: ', $e->getMessage(), PHP_EOL;
+    echo $e->getMessage();
 }
 

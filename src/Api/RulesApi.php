@@ -54,6 +54,12 @@ class RulesApi
      */
     protected $client;
 
+
+    /**
+     * @var
+     */
+    protected $options;
+
     /**
      * @var Configuration
      */
@@ -130,22 +136,17 @@ class RulesApi
         ],
     ];
 
-/**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
+
+    /**
+     * RulesApi constructor.
+     * @param $options
      */
-    public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
-        $hostIndex = 0
-    ) {
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
-        $this->hostIndex = $hostIndex;
+    public function __construct($options) {
+        $this->options = $options;
+        $this->client =  new Client();
+        $this->config =   new Configuration();
+        $this->headerSelector =  new HeaderSelector();
+        $this->hostIndex = 0;
     }
 
     /**
@@ -4675,38 +4676,29 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesPutRuleRun
-     *
-     * Run a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to run. (required)
-     * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutRuleRun'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
+     * @param $id
+     * @param bool $from_snapshots
+     * @param string $contentType
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesPutRuleRun($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
+    public function rulesPutRuleRun($id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
     {
+        $app = $this->options['appName'];
         $this->rulesPutRuleRunWithHttpInfo($app, $id, $from_snapshots, $contentType);
     }
 
+
     /**
-     * Operation rulesPutRuleRunWithHttpInfo
-     *
-     * Run a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to run. (required)
-     * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutRuleRun'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param $app
+     * @param $id
+     * @param bool $from_snapshots
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function rulesPutRuleRunWithHttpInfo($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
     {
