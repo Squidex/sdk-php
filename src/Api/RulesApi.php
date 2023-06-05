@@ -177,18 +177,13 @@ class RulesApi
         return $this->config;
     }
 
+
     /**
-     * Operation rulesDeleteEvent
-     *
-     * Cancels an event.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The event to enqueue. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvent'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
+     * @param $app
+     * @param $id
+     * @param string $contentType
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function rulesDeleteEvent($app, $id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
     {
@@ -196,17 +191,12 @@ class RulesApi
     }
 
     /**
-     * Operation rulesDeleteEventWithHttpInfo
-     *
-     * Cancels an event.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The event to enqueue. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvent'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param $app
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function rulesDeleteEventWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
     {
@@ -4842,6 +4832,7 @@ class RulesApi
     public function rulesPutRuleRunRequest($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
     {
 
+
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -4861,7 +4852,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/run';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = ['Authorization' => 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlTZWo3eXJYdGo1TzNDVV9JeG5EU2ciLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiJhcmFyYXQxOTU0OmRlZmF1bHQiLCJvaV9wcnN0IjoiYXJhcmF0MTk1NDpkZWZhdWx0IiwiY2xpZW50X2lkIjoiYXJhcmF0MTk1NDpkZWZhdWx0Iiwib2lfdGtuX2lkIjoiMmRiNzhhYWYtN2I5Yi00MGEzLWE5MjMtM2QyMDU4ZWJhOThlIiwiYXVkIjoic2NwOnNxdWlkZXgtYXBpIiwic2NvcGUiOiJzcXVpZGV4LWFwaSIsImV4cCI6MTY4ODU1NjQyOCwiaXNzIjoiaHR0cHM6Ly9jbG91ZC5zcXVpZGV4LmlvL2lkZW50aXR5LXNlcnZlciIsImlhdCI6MTY4NTk2NDQyOH0.cos408Dsm2Mn6ECVAv72oBVqM7hopPJzay8jV30YrvQuNCSCbYpJNKlSsUZX36wA7bX1mpGmerj7bhE3mwoJx5abpQpwKWFy4NZKfWObOA9SmPN_6IE04xWY_8K-SOVhoNbiZIDG0FRS2PJLdkn1LujdO_6vVqPk8_G77pkZsEOOoIsi-A-KzGFdTYdI8LqOlE2B_vgZrk0bXoEitT8k3DotevWu4bQkwKpfKK0UTHUeuGhqKCYXXnpG3xoA27vIre2wH453wpKtETYFqTzs1EhQsbCmTSrSGBlIH9ncdmQ5nLV9NyYSSLEsiIV26VThYOFdMW_K9wkQxzexZ9XDsw'];
         $httpBody = '';
         $multipart = false;
 
@@ -4936,6 +4927,8 @@ class RulesApi
             $headerParams,
             $headers
         );
+
+
 
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
@@ -5809,7 +5802,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/trigger';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = ['Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlTZWo3eXJYdGo1TzNDVV9JeG5EU2ciLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiJhcmFyYXQxOTU0OmRlZmF1bHQiLCJvaV9wcnN0IjoiYXJhcmF0MTk1NDpkZWZhdWx0IiwiY2xpZW50X2lkIjoiYXJhcmF0MTk1NDpkZWZhdWx0Iiwib2lfdGtuX2lkIjoiMmRiNzhhYWYtN2I5Yi00MGEzLWE5MjMtM2QyMDU4ZWJhOThlIiwiYXVkIjoic2NwOnNxdWlkZXgtYXBpIiwic2NvcGUiOiJzcXVpZGV4LWFwaSIsImV4cCI6MTY4ODU1NjQyOCwiaXNzIjoiaHR0cHM6Ly9jbG91ZC5zcXVpZGV4LmlvL2lkZW50aXR5LXNlcnZlciIsImlhdCI6MTY4NTk2NDQyOH0.cos408Dsm2Mn6ECVAv72oBVqM7hopPJzay8jV30YrvQuNCSCbYpJNKlSsUZX36wA7bX1mpGmerj7bhE3mwoJx5abpQpwKWFy4NZKfWObOA9SmPN_6IE04xWY_8K-SOVhoNbiZIDG0FRS2PJLdkn1LujdO_6vVqPk8_G77pkZsEOOoIsi-A-KzGFdTYdI8LqOlE2B_vgZrk0bXoEitT8k3DotevWu4bQkwKpfKK0UTHUeuGhqKCYXXnpG3xoA27vIre2wH453wpKtETYFqTzs1EhQsbCmTSrSGBlIH9ncdmQ5nLV9NyYSSLEsiIV26VThYOFdMW_K9wkQxzexZ9XDsw'];
         $httpBody = '';
         $multipart = false;
 
@@ -5895,6 +5888,10 @@ class RulesApi
     protected function createHttpClientOption()
     {
         $options = [];
+
+
+        print_r($this->options);
+        die(555);
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
@@ -5903,5 +5900,11 @@ class RulesApi
         }
 
         return $options;
+    }
+
+
+    protected function getAuthorizationHeader()
+    {
+
     }
 }

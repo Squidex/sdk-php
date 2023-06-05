@@ -7,16 +7,15 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $apiInstance = new SquidexClient(
     [
-        'clientId' => 'client-id',
-        'clientSecret' => 'client-secret',
-        'appName' => 'my-app',
+        'clientId' => 'asdfasdasd:default',
+        'clientSecret' => 'fzzjcd4w5yrxilowxctwri1mavlxgtnm6yiky8ipufcx',
+        'appName' => 'ararat1954',
     ]
 );
 
-$id = 10;
+$id = 50;
 try {
     $result = $apiInstance->rules()->rulesPutRuleRun($id);
-    print_r($result);
 } catch (Exception $e) {
     echo $e->getMessage();
 }

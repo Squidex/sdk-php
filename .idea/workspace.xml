@@ -2,324 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cae8fa81-b847-430c-bbc0-dd4d9c7c2ba1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sdk-php.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sdk-php.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/run.php" beforeDir="false" afterPath="$PROJECT_DIR$/example/run.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/AppsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/AssetsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/BackupsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/CommentsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/ContentsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/DiagnosticsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/EventConsumersApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/HistoryApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/LanguagesApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/NewsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/NotificationsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/PingApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/PlansApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/RulesApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/SchemasApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/SearchApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/StatisticsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/TeamsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/TemplatesApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/TranslationsApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/UserManagementApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Api/UsersApi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ApiException.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Configuration.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HeaderSelector.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ActionTypeEnum.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AddFieldDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AddLanguageDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AddRoleDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AddWorkflowDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AlgoliaRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AlgoliaRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AllContentsByPostDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AnnotateAssetDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AppDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AppDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AppLanguageDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AppLanguageDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AppLanguagesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AppLanguagesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AppSettingsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AppSettingsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ArrayFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ArrayFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetChangedRuleTriggerDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetChangedRuleTriggerDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetFolderDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetFolderDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetFolderScope.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetFoldersDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetFoldersDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetMeta.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetPreviewMode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetScriptsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetScriptsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetsFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssetsFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AssignContributorDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AzureQueueRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/AzureQueueRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BackupJobDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BackupJobDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BackupJobsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BackupJobsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BooleanFieldEditor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BooleanFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BooleanFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BulkResultDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BulkUpdateAssetType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BulkUpdateAssetsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BulkUpdateAssetsJobDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BulkUpdateContentType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BulkUpdateContentsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/BulkUpdateContentsJobDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CallsUsageDtoDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CallsUsagePerDateDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ChangeCategoryDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ChangePlanDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ChangeStatusDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ClientDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ClientDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ClientsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ClientsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CommentDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CommentRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CommentRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CommentRuleTriggerDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CommentsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ComponentFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ComponentFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ComponentsFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ComponentsFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ConfigureFieldRulesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ConfigureUIFieldsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContentChangedRuleTriggerDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContentChangedRuleTriggerDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContentDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContentDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContentsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContentsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContributorDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContributorDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContributorsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContributorsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ContributorsMetadata.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateAppDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateAssetFolderDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateClientDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateContentRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateContentRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateRuleDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateSchemaDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateSchemaDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateTeamDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CreateUserDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/CurrentStorageDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/DateTimeCalculatedDefaultValue.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/DateTimeFieldEditor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/DateTimeFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/DateTimeFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/DiscourseRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/DiscourseRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/EditorDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ElasticSearchRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ElasticSearchRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/EmailRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/EmailRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ErrorDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/EventConsumerDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/EventConsumerDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/EventConsumersDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/EventConsumersDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/FastlyRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/FastlyRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/FeatureDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/FeaturesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/FieldDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/FieldDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/FieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/FieldRuleAction.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/FieldRuleDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/GeolocationFieldEditor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/GeolocationFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/GeolocationFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/HistoryEventDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ImageFormat.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ImportContentsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/JobStatus.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/JsonFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/JsonFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/LanguageDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/LogDownloadDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ManualRuleTriggerDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/MediumRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/MediumRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ModelInterface.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/MoveAssetDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/MoveAssetFolderDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/NestedFieldDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/NestedFieldDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/NotificationRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/NotificationRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/NumberFieldEditor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/NumberFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/NumberFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/OpenSearchRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/PatternDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/PlanChangedDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/PlanDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/PlansDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/PlansLockedReason.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/PrerenderRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/PrerenderRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/QueryDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/QueryJsonDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ReferencesFieldEditor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ReferencesFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ReferencesFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ReferralInfo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RenameAssetFolderDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RenameTagDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ReorderFieldsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ResizeMode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/Resource.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ResourceLink.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ResourcesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RestoreJobDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RestoreRequestDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RoleDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RoleDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RolesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RolesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleElementDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleElementPropertyDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleEventDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleEventDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleEventsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleEventsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleFieldEditor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleJobResult.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleResult.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RuleTriggerDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RulesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/RulesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ScheduleJobDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SchemaChangedRuleTriggerDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SchemaCondition.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SchemaDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SchemaDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SchemaPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SchemaScriptsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SchemaType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SchemasDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SchemasDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ScriptRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/ScriptRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SearchResultDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SearchResultDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SearchResultType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SignalRRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SignalRRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SimulatedRuleEventDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SimulatedRuleEventsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SimulatedRuleEventsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SkipReason.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SlackRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SlackRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SortNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SortOrder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/StatusInfoDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/StorageUsagePerDateDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/StringContentType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/StringFieldEditor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/StringFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/StringFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SynchronizeSchemaDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/SynchronizeSchemaDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TagsFieldEditor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TagsFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TagsFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TeamDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TeamDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TemplateDetailsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TemplateDetailsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TemplateDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TemplateDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TemplatesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TemplatesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TransferToTeamDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TranslateDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TranslationDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TranslationResultCode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TweetRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TweetRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TypesenseRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/TypesenseRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UIFieldEditor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UIFieldPropertiesDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UIFieldPropertiesDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UISettingsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateAppDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateAppSettingsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateAssetScriptsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateClientDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateFieldDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateLanguageDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateRoleDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateRuleDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateSchemaDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateSettingDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateTeamDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateUserDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpdateWorkflowDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpsertCommentDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpsertSchemaDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpsertSchemaFieldDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UpsertSchemaNestedFieldDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UsageRuleTriggerDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UsageRuleTriggerDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UserDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UserDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UserProperty.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UsersDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/UsersDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/WebhookMethod.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/WebhookRuleActionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/WebhookRuleActionDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/WorkflowDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/WorkflowDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/WorkflowStepDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/WorkflowTransitionDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/WorkflowsDto.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Model/WorkflowsDtoAllOf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ObjectSerializer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/RulesApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/RulesApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SquidexClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/SquidexClient.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -347,20 +34,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="run.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/run.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SquidexClient.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SquidexClient.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SquidexClient.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+            <state relative-caret-position="163">
+              <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+              <folding>
+                <element signature="e#35#57#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -368,29 +58,29 @@
       <file leaf-file-name="RulesApi.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Api/RulesApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="4695" column="17" lean-forward="true" selection-start-line="4695" selection-start-column="17" selection-end-line="4695" selection-end-column="17" />
+            <state relative-caret-position="343">
+              <caret line="5890" lean-forward="true" selection-start-line="5890" selection-end-line="5890" />
+              <folding>
+                <element signature="e#179346#181517#0#PHP" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Configuration.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Configuration.php">
+      <file leaf-file-name="Request.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/Request.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5178">
-              <caret line="38" column="19" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="19" />
+            <state relative-caret-position="334">
+              <caret line="47" column="26" lean-forward="true" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RulesApi.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/Api/RulesApi.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="357">
-                <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="RequestOptions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/RequestOptions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="93" column="17" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -399,10 +89,19 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="204">
-                <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+              <first_editor relative-caret-position="119">
+                <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Configuration.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Configuration.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5205">
+              <caret line="128" column="20" lean-forward="true" selection-start-line="128" selection-start-column="20" selection-end-line="128" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -414,7 +113,6 @@
       <find>url</find>
       <find>SquidexOptions</find>
       <find>client-secret</find>
-      <find>client_id</find>
       <find>client_secret</find>
       <find>X-Fern-Language</find>
       <find>Configuration</find>
@@ -423,6 +121,21 @@
       <find>opt</find>
       <find>Run</find>
       <find>-&gt;options</find>
+      <find>rulesPutRuleRun</find>
+      <find>apiKeys</find>
+      <find>setAccessToken</find>
+      <find>identity-server/connect</find>
+      <find>401 Unauthorized</find>
+      <find>client_id</find>
+      <find>debug</find>
+      <find>setDebug</find>
+      <find>c</find>
+      <find>createHttpClientOption</find>
+      <find>$headerParams</find>
+      <find>application</find>
+      <find>const</find>
+      <find>accessToken</find>
+      <find>$headerSelector</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -439,9 +152,10 @@
         <option value="$PROJECT_DIR$/composer.lock" />
         <option value="$PROJECT_DIR$/src/Interface/Options.php" />
         <option value="$PROJECT_DIR$/src/Environment.php" />
+        <option value="$PROJECT_DIR$/src/Configuration.php" />
+        <option value="$PROJECT_DIR$/src/Api/RulesApi.php" />
         <option value="$PROJECT_DIR$/src/SquidexClient.php" />
         <option value="$PROJECT_DIR$/example/run.php" />
-        <option value="$PROJECT_DIR$/src/Api/RulesApi.php" />
       </list>
     </option>
   </component>
@@ -519,9 +233,9 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-187" />
-    <option name="y" value="136" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1048" />
   </component>
@@ -554,6 +268,12 @@
               <item name="sdk-php" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="sdk-php" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sdk-php" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Api" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -562,7 +282,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mvp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../openApiNodeTS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -605,36 +325,37 @@
       <workItem from="1685618848139" duration="81000" />
       <workItem from="1685619178236" duration="2423000" />
       <workItem from="1685687397063" duration="1568000" />
-      <workItem from="1685693219107" duration="14876000" />
+      <workItem from="1685693219107" duration="15483000" />
+      <workItem from="1685950201990" duration="16469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24626000" />
+    <option name="totallyTimeSpent" value="41702000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1048" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1048" extended-state="7" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.042857144" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20415778" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Messages" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.16703297" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20628998" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,15 +365,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/module/.openapi-generator/VERSION" />
-    <entry file="file://$PROJECT_DIR$/module/.openapi-generator/FILES" />
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module/test/Api/DiagnosticsApiTest.php" />
-    <entry file="file://$PROJECT_DIR$/module/lib/Model/ActionTypeEnum.php" />
-    <entry file="file://$PROJECT_DIR$/module/lib/Configuration.php" />
-    <entry file="file://$PROJECT_DIR$/module/lib/ObjectSerializer.php" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/basic.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -678,16 +390,8 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ObjectSerializer.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Api/UsersApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="93" column="20" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ObjectSerializer.php" />
+    <entry file="file://$PROJECT_DIR$/lib/Api/UsersApi.php" />
     <entry file="file://$PROJECT_DIR$/vendor/friendsofphp/php-cs-fixer/src/Config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
@@ -715,58 +419,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Api/RulesApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="250" column="35" lean-forward="true" selection-start-line="250" selection-start-column="35" selection-end-line="250" selection-end-column="35" />
-          <folding>
-            <element signature="e#650#672#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Model/ActionTypeEnum.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Api/AssetsApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Configuration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1908">
-          <caret line="128" column="20" selection-start-line="128" selection-start-column="20" selection-end-line="128" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Api/AppsApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="238" column="20" selection-start-line="238" selection-start-column="20" selection-end-line="238" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ApiException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Interface/Options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Api/RulesApi.php" />
+    <entry file="file://$PROJECT_DIR$/lib/Model/ActionTypeEnum.php" />
+    <entry file="file://$PROJECT_DIR$/lib/Api/AssetsApi.php" />
+    <entry file="file://$PROJECT_DIR$/lib/Configuration.php" />
+    <entry file="file://$PROJECT_DIR$/lib/Api/AppsApi.php" />
+    <entry file="file://$PROJECT_DIR$/lib/ApiException.php" />
+    <entry file="file://$PROJECT_DIR$/lib/Interface/Options.php" />
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73015">
@@ -774,20 +433,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/Options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Environment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="35" lean-forward="true" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/Options.php" />
+    <entry file="file://$PROJECT_DIR$/src/Environment.php" />
     <entry file="file://$PROJECT_DIR$/src/ObjectSerializer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -829,48 +476,103 @@
     <entry file="file://$PROJECT_DIR$/docs/Api/RulesApi.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="357">
-            <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <first_editor relative-caret-position="459">
+            <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Api/UsersApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="107" column="6" lean-forward="true" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="204">
-            <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+          <first_editor relative-caret-position="119">
+            <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/RequestOptions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="93" column="17" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_9.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="1150" column="9" selection-start-line="1150" selection-start-column="9" selection-end-line="1150" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Api/AssetsApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="7346" column="56" lean-forward="true" selection-start-line="7346" selection-start-column="56" selection-end-line="7346" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/ClientInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/psr7/src/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="47" column="26" lean-forward="true" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="184" column="20" selection-start-line="184" selection-start-column="20" selection-end-line="184" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Configuration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5178">
-          <caret line="38" column="19" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Api/RulesApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="4695" column="17" lean-forward="true" selection-start-line="4695" selection-start-column="17" selection-end-line="4695" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/run.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="-5205">
+          <caret line="128" column="20" lean-forward="true" selection-start-line="128" selection-start-column="20" selection-end-line="128" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SquidexClient.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+        <state relative-caret-position="163">
+          <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+          <folding>
+            <element signature="e#35#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Api/RulesApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="5890" lean-forward="true" selection-start-line="5890" selection-end-line="5890" />
+          <folding>
+            <element signature="e#179346#181517#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/run.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>

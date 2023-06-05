@@ -124,11 +124,18 @@ class Configuration
     protected $tempFolderPath;
 
     /**
-     * Constructor
+     * @var array
      */
-    public function __construct()
+    public $options;
+
+    /**
+     * Constructor
+     * @param $options
+     */
+    public function __construct(array $options = null)
     {
         $this->tempFolderPath = sys_get_temp_dir();
+        $this->options = $options;
     }
 
     /**
