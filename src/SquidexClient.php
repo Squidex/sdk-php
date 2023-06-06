@@ -26,9 +26,7 @@ class SquidexClient
     public function __construct($options)
     {
         $this->options = $options;
-        $this->options[]= [
-            'access_token' => $this->getToken()
-        ];
+        $this->options['access_token'] = $this->getToken();
     }
 
     /**
@@ -53,7 +51,7 @@ class SquidexClient
                    'grant_type' => 'client_credentials',
                    'client_id' => $this->options['clientId'],
                    'client_secret' => $this->options['clientSecret'],
-                   'scope' => '',
+                   'scope' => 'squidex-api',
                ],
            ]);
            return $response = json_decode($r->getBody()->getContents())->access_token;

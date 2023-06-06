@@ -54,7 +54,6 @@ class RulesApi
      */
     protected $client;
 
-
     /**
      * @var
      */
@@ -179,28 +178,26 @@ class RulesApi
 
 
     /**
-     * @param $app
      * @param $id
      * @param string $contentType
      * @throws ApiException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesDeleteEvent($app, $id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
+    public function rulesDeleteEvent($id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
     {
-        $this->rulesDeleteEventWithHttpInfo($app, $id, $contentType);
+        $this->rulesDeleteEventWithHttpInfo($id, $contentType);
     }
 
     /**
-     * @param $app
      * @param $id
      * @param string $contentType
      * @return array
      * @throws ApiException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesDeleteEventWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
+    public function rulesDeleteEventWithHttpInfo($id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
     {
-        $request = $this->rulesDeleteEventRequest($app, $id, $contentType);
+        $request = $this->rulesDeleteEventRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -266,17 +263,15 @@ class RulesApi
      * Operation rulesDeleteEventAsync
      *
      * Cancels an event.
-     *
-     * @param  string $app The name of the app. (required)
      * @param  string $id The event to enqueue. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesDeleteEventAsync($app, $id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
+    public function rulesDeleteEventAsync($id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
     {
-        return $this->rulesDeleteEventAsyncWithHttpInfo($app, $id, $contentType)
+        return $this->rulesDeleteEventAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -284,22 +279,16 @@ class RulesApi
             );
     }
 
+
     /**
-     * Operation rulesDeleteEventAsyncWithHttpInfo
-     *
-     * Cancels an event.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The event to enqueue. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvent'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesDeleteEventAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
+    public function rulesDeleteEventAsyncWithHttpInfo($id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
     {
         $returnType = '';
-        $request = $this->rulesDeleteEventRequest($app, $id, $contentType);
+        $request = $this->rulesDeleteEventRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -326,18 +315,14 @@ class RulesApi
 
     /**
      * Create request for operation 'rulesDeleteEvent'
-     *
-     * @param  string $app The name of the app. (required)
      * @param  string $id The event to enqueue. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvent'] to see the possible values for this operation
-     *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function rulesDeleteEventRequest($app, $id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
+    public function rulesDeleteEventRequest($id, string $contentType = self::contentTypes['rulesDeleteEvent'][0])
     {
-
-        // verify the required parameter 'app' is set
+        $app = $this->options['appName'];
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling rulesDeleteEvent'
@@ -351,15 +336,12 @@ class RulesApi
             );
         }
 
-
         $resourcePath = '/api/apps/{app}/rules/events/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
-
-
 
         // path params
         if ($app !== null) {
@@ -432,38 +414,27 @@ class RulesApi
         );
     }
 
-    /**
-     * Operation rulesDeleteEvents
-     *
-     * Cancels all events.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvents'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function rulesDeleteEvents($app, string $contentType = self::contentTypes['rulesDeleteEvents'][0])
-    {
-        $this->rulesDeleteEventsWithHttpInfo($app, $contentType);
-    }
 
     /**
-     * Operation rulesDeleteEventsWithHttpInfo
-     *
-     * Cancels all events.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvents'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesDeleteEventsWithHttpInfo($app, string $contentType = self::contentTypes['rulesDeleteEvents'][0])
+    public function rulesDeleteEvents(string $contentType = self::contentTypes['rulesDeleteEvents'][0])
     {
-        $request = $this->rulesDeleteEventsRequest($app, $contentType);
+        $this->rulesDeleteEventsWithHttpInfo($contentType);
+    }
+
+
+    /**
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function rulesDeleteEventsWithHttpInfo(string $contentType = self::contentTypes['rulesDeleteEvents'][0])
+    {
+        $request = $this->rulesDeleteEventsRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -530,15 +501,14 @@ class RulesApi
      *
      * Cancels all events.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesDeleteEventsAsync($app, string $contentType = self::contentTypes['rulesDeleteEvents'][0])
+    public function rulesDeleteEventsAsync(string $contentType = self::contentTypes['rulesDeleteEvents'][0])
     {
-        return $this->rulesDeleteEventsAsyncWithHttpInfo($app, $contentType)
+        return $this->rulesDeleteEventsAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -551,16 +521,15 @@ class RulesApi
      *
      * Cancels all events.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesDeleteEventsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['rulesDeleteEvents'][0])
+    public function rulesDeleteEventsAsyncWithHttpInfo(string $contentType = self::contentTypes['rulesDeleteEvents'][0])
     {
         $returnType = '';
-        $request = $this->rulesDeleteEventsRequest($app, $contentType);
+        $request = $this->rulesDeleteEventsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -586,32 +555,24 @@ class RulesApi
     }
 
     /**
-     * Create request for operation 'rulesDeleteEvents'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteEvents'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param string $contentType
+     * @return Request
      */
-    public function rulesDeleteEventsRequest($app, string $contentType = self::contentTypes['rulesDeleteEvents'][0])
+    public function rulesDeleteEventsRequest(string $contentType = self::contentTypes['rulesDeleteEvents'][0])
     {
-
-        // verify the required parameter 'app' is set
+        $app = $this->options['appName'];
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling rulesDeleteEvents'
             );
         }
 
-
         $resourcePath = '/api/apps/{app}/rules/events';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
-
 
 
         // path params
@@ -679,38 +640,29 @@ class RulesApi
 
     /**
      * Operation rulesDeleteRule
-     *
      * Delete a rule.
-     *
-     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRule'] to see the possible values for this operation
-     *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function rulesDeleteRule($app, $id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
+    public function rulesDeleteRule($id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
     {
-        $this->rulesDeleteRuleWithHttpInfo($app, $id, $contentType);
+        $this->rulesDeleteRuleWithHttpInfo($id, $contentType);
     }
 
+
     /**
-     * Operation rulesDeleteRuleWithHttpInfo
-     *
-     * Delete a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesDeleteRuleWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
+    public function rulesDeleteRuleWithHttpInfo($id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
     {
-        $request = $this->rulesDeleteRuleRequest($app, $id, $contentType);
+        $request = $this->rulesDeleteRuleRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -772,21 +724,15 @@ class RulesApi
         }
     }
 
+
     /**
-     * Operation rulesDeleteRuleAsync
-     *
-     * Delete a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesDeleteRuleAsync($app, $id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
+    public function rulesDeleteRuleAsync($id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
     {
-        return $this->rulesDeleteRuleAsyncWithHttpInfo($app, $id, $contentType)
+        return $this->rulesDeleteRuleAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -794,22 +740,16 @@ class RulesApi
             );
     }
 
+
     /**
-     * Operation rulesDeleteRuleAsyncWithHttpInfo
-     *
-     * Delete a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesDeleteRuleAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
+    public function rulesDeleteRuleAsyncWithHttpInfo($id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
     {
         $returnType = '';
-        $request = $this->rulesDeleteRuleRequest($app, $id, $contentType);
+        $request = $this->rulesDeleteRuleRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -834,19 +774,16 @@ class RulesApi
             );
     }
 
+
     /**
-     * Create request for operation 'rulesDeleteRule'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $id
+     * @param string $contentType
+     * @return Request
      */
-    public function rulesDeleteRuleRequest($app, $id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
+    public function rulesDeleteRuleRequest($id, string $contentType = self::contentTypes['rulesDeleteRule'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -865,7 +802,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -942,40 +879,28 @@ class RulesApi
         );
     }
 
-    /**
-     * Operation rulesDeleteRuleEvents
-     *
-     * Cancels all rule events.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to cancel. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRuleEvents'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function rulesDeleteRuleEvents($app, $id, string $contentType = self::contentTypes['rulesDeleteRuleEvents'][0])
-    {
-        $this->rulesDeleteRuleEventsWithHttpInfo($app, $id, $contentType);
-    }
 
     /**
-     * Operation rulesDeleteRuleEventsWithHttpInfo
-     *
-     * Cancels all rule events.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to cancel. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRuleEvents'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @throws ApiException
      */
-    public function rulesDeleteRuleEventsWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesDeleteRuleEvents'][0])
+    public function rulesDeleteRuleEvents($id, string $contentType = self::contentTypes['rulesDeleteRuleEvents'][0])
     {
-        $request = $this->rulesDeleteRuleEventsRequest($app, $id, $contentType);
+        $this->rulesDeleteRuleEventsWithHttpInfo($id, $contentType);
+    }
+
+
+    /**
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function rulesDeleteRuleEventsWithHttpInfo($id, string $contentType = self::contentTypes['rulesDeleteRuleEvents'][0])
+    {
+        $request = $this->rulesDeleteRuleEventsRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1099,19 +1024,16 @@ class RulesApi
             );
     }
 
+
     /**
-     * Create request for operation 'rulesDeleteRuleEvents'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to cancel. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRuleEvents'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $id
+     * @param string $contentType
+     * @return Request
      */
-    public function rulesDeleteRuleEventsRequest($app, $id, string $contentType = self::contentTypes['rulesDeleteRuleEvents'][0])
+    public function rulesDeleteRuleEventsRequest($id, string $contentType = self::contentTypes['rulesDeleteRuleEvents'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -1130,7 +1052,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/events';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -1207,38 +1129,26 @@ class RulesApi
         );
     }
 
-    /**
-     * Operation rulesDeleteRuleRun
-     *
-     * Cancel the current run.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRuleRun'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function rulesDeleteRuleRun($app, string $contentType = self::contentTypes['rulesDeleteRuleRun'][0])
-    {
-        $this->rulesDeleteRuleRunWithHttpInfo($app, $contentType);
-    }
 
     /**
-     * Operation rulesDeleteRuleRunWithHttpInfo
-     *
-     * Cancel the current run.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRuleRun'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @throws ApiException
      */
-    public function rulesDeleteRuleRunWithHttpInfo($app, string $contentType = self::contentTypes['rulesDeleteRuleRun'][0])
+    public function rulesDeleteRuleRun(string $contentType = self::contentTypes['rulesDeleteRuleRun'][0])
     {
-        $request = $this->rulesDeleteRuleRunRequest($app, $contentType);
+        $this->rulesDeleteRuleRunWithHttpInfo($contentType);
+    }
+
+
+    /**
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function rulesDeleteRuleRunWithHttpInfo(string $contentType = self::contentTypes['rulesDeleteRuleRun'][0])
+    {
+        $request = $this->rulesDeleteRuleRunRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1360,18 +1270,14 @@ class RulesApi
             );
     }
 
-    /**
-     * Create request for operation 'rulesDeleteRuleRun'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDeleteRuleRun'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function rulesDeleteRuleRunRequest($app, string $contentType = self::contentTypes['rulesDeleteRuleRun'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function rulesDeleteRuleRunRequest(string $contentType = self::contentTypes['rulesDeleteRuleRun'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -1383,7 +1289,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/run';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -1452,41 +1358,31 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesDisableRule
-     *
-     * Disable a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to disable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDisableRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RuleDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $id
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesDisableRule($app, $id, string $contentType = self::contentTypes['rulesDisableRule'][0])
+    public function rulesDisableRule($id, string $contentType = self::contentTypes['rulesDisableRule'][0])
     {
-        list($response) = $this->rulesDisableRuleWithHttpInfo($app, $id, $contentType);
+        list($response) = $this->rulesDisableRuleWithHttpInfo($id, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation rulesDisableRuleWithHttpInfo
-     *
-     * Disable a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to disable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDisableRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RuleDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesDisableRuleWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesDisableRule'][0])
+    public function rulesDisableRuleWithHttpInfo($id, string $contentType = self::contentTypes['rulesDisableRule'][0])
     {
-        $request = $this->rulesDisableRuleRequest($app, $id, $contentType);
+        $request = $this->rulesDisableRuleRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1693,19 +1589,16 @@ class RulesApi
             );
     }
 
+
     /**
-     * Create request for operation 'rulesDisableRule'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to disable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesDisableRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $id
+     * @param string $contentType
+     * @return Request
      */
-    public function rulesDisableRuleRequest($app, $id, string $contentType = self::contentTypes['rulesDisableRule'][0])
+    public function rulesDisableRuleRequest($id, string $contentType = self::contentTypes['rulesDisableRule'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -1724,7 +1617,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/disable';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -1801,41 +1694,31 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesEnableRule
-     *
-     * Enable a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to enable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesEnableRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RuleDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $id
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesEnableRule($app, $id, string $contentType = self::contentTypes['rulesEnableRule'][0])
+    public function rulesEnableRule($id, string $contentType = self::contentTypes['rulesEnableRule'][0])
     {
-        list($response) = $this->rulesEnableRuleWithHttpInfo($app, $id, $contentType);
+        list($response) = $this->rulesEnableRuleWithHttpInfo($id, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation rulesEnableRuleWithHttpInfo
-     *
-     * Enable a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to enable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesEnableRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RuleDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesEnableRuleWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesEnableRule'][0])
+    public function rulesEnableRuleWithHttpInfo($id, string $contentType = self::contentTypes['rulesEnableRule'][0])
     {
-        $request = $this->rulesEnableRuleRequest($app, $id, $contentType);
+        $request = $this->rulesEnableRuleRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2042,19 +1925,15 @@ class RulesApi
             );
     }
 
-    /**
-     * Create request for operation 'rulesEnableRule'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to enable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesEnableRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function rulesEnableRuleRequest($app, $id, string $contentType = self::contentTypes['rulesEnableRule'][0])
-    {
 
+    /**
+     * @param $id
+     * @param string $contentType
+     * @return Request
+     */
+    public function rulesEnableRuleRequest($id, string $contentType = self::contentTypes['rulesEnableRule'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -2073,7 +1952,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/enable';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -2150,16 +2029,12 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesGetActions
-     *
-     * Get supported rule actions.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetActions'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array<string,\OpenAPI\Client\Model\RuleElementDto>|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function rulesGetActions(string $contentType = self::contentTypes['rulesGetActions'][0])
     {
@@ -2167,16 +2042,12 @@ class RulesApi
         return $response;
     }
 
+
     /**
-     * Operation rulesGetActionsWithHttpInfo
-     *
-     * Get supported rule actions.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetActions'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of array<string,\OpenAPI\Client\Model\RuleElementDto>|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function rulesGetActionsWithHttpInfo(string $contentType = self::contentTypes['rulesGetActions'][0])
     {
@@ -2289,14 +2160,9 @@ class RulesApi
         }
     }
 
+
     /**
-     * Operation rulesGetActionsAsync
-     *
-     * Get supported rule actions.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetActions'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function rulesGetActionsAsync(string $contentType = self::contentTypes['rulesGetActions'][0])
@@ -2310,13 +2176,7 @@ class RulesApi
     }
 
     /**
-     * Operation rulesGetActionsAsyncWithHttpInfo
-     *
-     * Get supported rule actions.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetActions'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function rulesGetActionsAsyncWithHttpInfo(string $contentType = self::contentTypes['rulesGetActions'][0])
@@ -2360,27 +2220,19 @@ class RulesApi
             );
     }
 
-    /**
-     * Create request for operation 'rulesGetActions'
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetActions'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+
+    /***
+     * @param string $contentType
+     * @return Request
      */
     public function rulesGetActionsRequest(string $contentType = self::contentTypes['rulesGetActions'][0])
     {
-
-
         $resourcePath = '/api/rules/actions';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
-
-
-
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2436,17 +2288,13 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesGetEventSchema
-     *
-     * Provide the json schema for the event with the specified name.
-     *
-     * @param  string $type The type name of the event. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetEventSchema'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return mixed|\OpenAPI\Client\Model\ErrorDto
+     * @param $type
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function rulesGetEventSchema($type, string $contentType = self::contentTypes['rulesGetEventSchema'][0])
     {
@@ -2454,17 +2302,13 @@ class RulesApi
         return $response;
     }
 
+
     /**
-     * Operation rulesGetEventSchemaWithHttpInfo
-     *
-     * Provide the json schema for the event with the specified name.
-     *
-     * @param  string $type The type name of the event. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetEventSchema'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of mixed|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $type
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function rulesGetEventSchemaWithHttpInfo($type, string $contentType = self::contentTypes['rulesGetEventSchema'][0])
     {
@@ -2673,7 +2517,7 @@ class RulesApi
         $resourcePath = '/api/rules/eventtypes/{type}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -2742,16 +2586,12 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesGetEventTypes
-     *
-     * Provide a list of all event types that are used in rules.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetEventTypes'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return string[]|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function rulesGetEventTypes(string $contentType = self::contentTypes['rulesGetEventTypes'][0])
     {
@@ -2759,16 +2599,12 @@ class RulesApi
         return $response;
     }
 
+
     /**
-     * Operation rulesGetEventTypesWithHttpInfo
-     *
-     * Provide a list of all event types that are used in rules.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetEventTypes'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of string[]|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function rulesGetEventTypesWithHttpInfo(string $contentType = self::contentTypes['rulesGetEventTypes'][0])
     {
@@ -2962,18 +2798,12 @@ class RulesApi
      */
     public function rulesGetEventTypesRequest(string $contentType = self::contentTypes['rulesGetEventTypes'][0])
     {
-
-
         $resourcePath = '/api/rules/eventtypes';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
-
-
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', ],
@@ -3028,45 +2858,35 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesGetEvents
-     *
-     * Get rule events.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $rule_id The optional rule id to filter to events. (optional)
-     * @param  int $skip The number of events to skip. (optional, default to 0)
-     * @param  int $take The number of events to take. (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetEvents'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RuleEventsDto|\OpenAPI\Client\Model\ErrorDto
+     * @param null $rule_id
+     * @param int $skip
+     * @param int $take
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesGetEvents($app, $rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['rulesGetEvents'][0])
+    public function rulesGetEvents($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['rulesGetEvents'][0])
     {
-        list($response) = $this->rulesGetEventsWithHttpInfo($app, $rule_id, $skip, $take, $contentType);
+        list($response) = $this->rulesGetEventsWithHttpInfo($rule_id, $skip, $take, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation rulesGetEventsWithHttpInfo
-     *
-     * Get rule events.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $rule_id The optional rule id to filter to events. (optional)
-     * @param  int $skip The number of events to skip. (optional, default to 0)
-     * @param  int $take The number of events to take. (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetEvents'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RuleEventsDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param null $rule_id
+     * @param int $skip
+     * @param int $take
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesGetEventsWithHttpInfo($app, $rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['rulesGetEvents'][0])
+    public function rulesGetEventsWithHttpInfo($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['rulesGetEvents'][0])
     {
-        $request = $this->rulesGetEventsRequest($app, $rule_id, $skip, $take, $contentType);
+        $request = $this->rulesGetEventsRequest($rule_id, $skip, $take, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3254,21 +3074,18 @@ class RulesApi
             );
     }
 
+
     /**
-     * Create request for operation 'rulesGetEvents'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $rule_id The optional rule id to filter to events. (optional)
-     * @param  int $skip The number of events to skip. (optional, default to 0)
-     * @param  int $take The number of events to take. (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetEvents'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param null $rule_id
+     * @param int $skip
+     * @param int $take
+     * @param string $contentType
+     * @return Request
      */
-    public function rulesGetEventsRequest($app, $rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['rulesGetEvents'][0])
+    public function rulesGetEventsRequest($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['rulesGetEvents'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -3277,13 +3094,10 @@ class RulesApi
         }
 
 
-
-
-
         $resourcePath = '/api/apps/{app}/rules/events';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -3379,39 +3193,29 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesGetRules
-     *
-     * Get rules.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetRules'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RulesDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesGetRules($app, string $contentType = self::contentTypes['rulesGetRules'][0])
+    public function rulesGetRules(string $contentType = self::contentTypes['rulesGetRules'][0])
     {
-        list($response) = $this->rulesGetRulesWithHttpInfo($app, $contentType);
+        list($response) = $this->rulesGetRulesWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation rulesGetRulesWithHttpInfo
-     *
-     * Get rules.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetRules'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RulesDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesGetRulesWithHttpInfo($app, string $contentType = self::contentTypes['rulesGetRules'][0])
+    public function rulesGetRulesWithHttpInfo(string $contentType = self::contentTypes['rulesGetRules'][0])
     {
-        $request = $this->rulesGetRulesRequest($app, $contentType);
+        $request = $this->rulesGetRulesRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3593,18 +3397,15 @@ class RulesApi
             );
     }
 
+
     /**
-     * Create request for operation 'rulesGetRules'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesGetRules'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param string $contentType
+     * @return Request
      */
-    public function rulesGetRulesRequest($app, string $contentType = self::contentTypes['rulesGetRules'][0])
+    public function rulesGetRulesRequest(string $contentType = self::contentTypes['rulesGetRules'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -3616,7 +3417,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -3685,41 +3486,31 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesPostRule
-     *
-     * Create a new rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPostRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RuleDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $create_rule_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesPostRule($app, $create_rule_dto, string $contentType = self::contentTypes['rulesPostRule'][0])
+    public function rulesPostRule($create_rule_dto, string $contentType = self::contentTypes['rulesPostRule'][0])
     {
-        list($response) = $this->rulesPostRuleWithHttpInfo($app, $create_rule_dto, $contentType);
+        list($response) = $this->rulesPostRuleWithHttpInfo($create_rule_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation rulesPostRuleWithHttpInfo
-     *
-     * Create a new rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPostRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RuleDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $create_rule_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesPostRuleWithHttpInfo($app, $create_rule_dto, string $contentType = self::contentTypes['rulesPostRule'][0])
+    public function rulesPostRuleWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['rulesPostRule'][0])
     {
-        $request = $this->rulesPostRuleRequest($app, $create_rule_dto, $contentType);
+        $request = $this->rulesPostRuleRequest($create_rule_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3926,19 +3717,15 @@ class RulesApi
             );
     }
 
-    /**
-     * Create request for operation 'rulesPostRule'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPostRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function rulesPostRuleRequest($app, $create_rule_dto, string $contentType = self::contentTypes['rulesPostRule'][0])
-    {
 
+    /**
+     * @param $create_rule_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function rulesPostRuleRequest($create_rule_dto, string $contentType = self::contentTypes['rulesPostRule'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -3957,7 +3744,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -4033,40 +3820,29 @@ class RulesApi
         );
     }
 
-    /**
-     * Operation rulesPutEvent
-     *
-     * Retry the event immediately.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The event to enqueue. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutEvent'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function rulesPutEvent($app, $id, string $contentType = self::contentTypes['rulesPutEvent'][0])
-    {
-        $this->rulesPutEventWithHttpInfo($app, $id, $contentType);
-    }
 
     /**
-     * Operation rulesPutEventWithHttpInfo
-     *
-     * Retry the event immediately.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The event to enqueue. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutEvent'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesPutEventWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesPutEvent'][0])
+    public function rulesPutEvent($id, string $contentType = self::contentTypes['rulesPutEvent'][0])
     {
-        $request = $this->rulesPutEventRequest($app, $id, $contentType);
+        $this->rulesPutEventWithHttpInfo($id, $contentType);
+    }
+
+
+    /**
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function rulesPutEventWithHttpInfo($id, string $contentType = self::contentTypes['rulesPutEvent'][0])
+    {
+        $request = $this->rulesPutEventRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4191,18 +3967,13 @@ class RulesApi
     }
 
     /**
-     * Create request for operation 'rulesPutEvent'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The event to enqueue. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutEvent'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $id
+     * @param string $contentType
+     * @return Request
      */
-    public function rulesPutEventRequest($app, $id, string $contentType = self::contentTypes['rulesPutEvent'][0])
+    public function rulesPutEventRequest($id, string $contentType = self::contentTypes['rulesPutEvent'][0])
     {
-
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -4217,14 +3988,12 @@ class RulesApi
             );
         }
 
-
         $resourcePath = '/api/apps/{app}/rules/events/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
-
 
 
         // path params
@@ -4298,43 +4067,33 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesPutRule
-     *
-     * Update a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RuleDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $id
+     * @param $update_rule_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesPutRule($app, $id, $update_rule_dto, string $contentType = self::contentTypes['rulesPutRule'][0])
+    public function rulesPutRule($id, $update_rule_dto, string $contentType = self::contentTypes['rulesPutRule'][0])
     {
-        list($response) = $this->rulesPutRuleWithHttpInfo($app, $id, $update_rule_dto, $contentType);
+        list($response) = $this->rulesPutRuleWithHttpInfo($id, $update_rule_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation rulesPutRuleWithHttpInfo
-     *
-     * Update a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RuleDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param $update_rule_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesPutRuleWithHttpInfo($app, $id, $update_rule_dto, string $contentType = self::contentTypes['rulesPutRule'][0])
+    public function rulesPutRuleWithHttpInfo($id, $update_rule_dto, string $contentType = self::contentTypes['rulesPutRule'][0])
     {
-        $request = $this->rulesPutRuleRequest($app, $id, $update_rule_dto, $contentType);
+        $request = $this->rulesPutRuleRequest($id, $update_rule_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4543,20 +4302,17 @@ class RulesApi
             );
     }
 
+
     /**
-     * Create request for operation 'rulesPutRule'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $id
+     * @param $update_rule_dto
+     * @param string $contentType
+     * @return Request
      */
-    public function rulesPutRuleRequest($app, $id, $update_rule_dto, string $contentType = self::contentTypes['rulesPutRule'][0])
+    public function rulesPutRuleRequest($id, $update_rule_dto, string $contentType = self::contentTypes['rulesPutRule'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -4582,7 +4338,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -4676,13 +4432,11 @@ class RulesApi
      */
     public function rulesPutRuleRun($id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
     {
-        $app = $this->options['appName'];
-        $this->rulesPutRuleRunWithHttpInfo($app, $id, $from_snapshots, $contentType);
+        $this->rulesPutRuleRunWithHttpInfo($id, $from_snapshots, $contentType);
     }
 
 
     /**
-     * @param $app
      * @param $id
      * @param bool $from_snapshots
      * @param string $contentType
@@ -4690,9 +4444,9 @@ class RulesApi
      * @throws ApiException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesPutRuleRunWithHttpInfo($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
+    public function rulesPutRuleRunWithHttpInfo($id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
     {
-        $request = $this->rulesPutRuleRunRequest($app, $id, $from_snapshots, $contentType);
+        $request = $this->rulesPutRuleRunRequest($id, $from_snapshots, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4715,7 +4469,6 @@ class RulesApi
             }
 
             $statusCode = $response->getStatusCode();
-
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
@@ -4754,22 +4507,16 @@ class RulesApi
         }
     }
 
+
     /**
-     * Operation rulesPutRuleRunAsync
-     *
-     * Run a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to run. (required)
-     * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutRuleRun'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param bool $from_snapshots
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesPutRuleRunAsync($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
+    public function rulesPutRuleRunAsync($id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
     {
-        return $this->rulesPutRuleRunAsyncWithHttpInfo($app, $id, $from_snapshots, $contentType)
+        return $this->rulesPutRuleRunAsyncWithHttpInfo($id, $from_snapshots, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4777,23 +4524,17 @@ class RulesApi
             );
     }
 
+
     /**
-     * Operation rulesPutRuleRunAsyncWithHttpInfo
-     *
-     * Run a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to run. (required)
-     * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutRuleRun'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param bool $from_snapshots
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesPutRuleRunAsyncWithHttpInfo($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
+    public function rulesPutRuleRunAsyncWithHttpInfo($id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
     {
         $returnType = '';
-        $request = $this->rulesPutRuleRunRequest($app, $id, $from_snapshots, $contentType);
+        $request = $this->rulesPutRuleRunRequest($id, $from_snapshots, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4818,21 +4559,17 @@ class RulesApi
             );
     }
 
+
     /**
-     * Create request for operation 'rulesPutRuleRun'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to run. (required)
-     * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesPutRuleRun'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $id
+     * @param bool $from_snapshots
+     * @param string $contentType
+     * @return Request
      */
-    public function rulesPutRuleRunRequest($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
+    public function rulesPutRuleRunRequest($id, $from_snapshots = false, string $contentType = self::contentTypes['rulesPutRuleRun'][0])
     {
 
-
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -4848,11 +4585,10 @@ class RulesApi
         }
 
 
-
         $resourcePath = '/api/apps/{app}/rules/{id}/run';
         $formParams = [];
         $queryParams = [];
-        $headerParams = ['Authorization' => 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlTZWo3eXJYdGo1TzNDVV9JeG5EU2ciLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiJhcmFyYXQxOTU0OmRlZmF1bHQiLCJvaV9wcnN0IjoiYXJhcmF0MTk1NDpkZWZhdWx0IiwiY2xpZW50X2lkIjoiYXJhcmF0MTk1NDpkZWZhdWx0Iiwib2lfdGtuX2lkIjoiMmRiNzhhYWYtN2I5Yi00MGEzLWE5MjMtM2QyMDU4ZWJhOThlIiwiYXVkIjoic2NwOnNxdWlkZXgtYXBpIiwic2NvcGUiOiJzcXVpZGV4LWFwaSIsImV4cCI6MTY4ODU1NjQyOCwiaXNzIjoiaHR0cHM6Ly9jbG91ZC5zcXVpZGV4LmlvL2lkZW50aXR5LXNlcnZlciIsImlhdCI6MTY4NTk2NDQyOH0.cos408Dsm2Mn6ECVAv72oBVqM7hopPJzay8jV30YrvQuNCSCbYpJNKlSsUZX36wA7bX1mpGmerj7bhE3mwoJx5abpQpwKWFy4NZKfWObOA9SmPN_6IE04xWY_8K-SOVhoNbiZIDG0FRS2PJLdkn1LujdO_6vVqPk8_G77pkZsEOOoIsi-A-KzGFdTYdI8LqOlE2B_vgZrk0bXoEitT8k3DotevWu4bQkwKpfKK0UTHUeuGhqKCYXXnpG3xoA27vIre2wH453wpKtETYFqTzs1EhQsbCmTSrSGBlIH9ncdmQ5nLV9NyYSSLEsiIV26VThYOFdMW_K9wkQxzexZ9XDsw'];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -4940,41 +4676,31 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesSimulateGET
-     *
-     * Simulate a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulateGET'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SimulatedRuleEventsDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $id
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesSimulateGET($app, $id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
+    public function rulesSimulateGET($id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
     {
-        list($response) = $this->rulesSimulateGETWithHttpInfo($app, $id, $contentType);
+        list($response) = $this->rulesSimulateGETWithHttpInfo($id, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation rulesSimulateGETWithHttpInfo
-     *
-     * Simulate a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulateGET'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SimulatedRuleEventsDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesSimulateGETWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
+    public function rulesSimulateGETWithHttpInfo($id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
     {
-        $request = $this->rulesSimulateGETRequest($app, $id, $contentType);
+        $request = $this->rulesSimulateGETRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5083,21 +4809,15 @@ class RulesApi
         }
     }
 
+
     /**
-     * Operation rulesSimulateGETAsync
-     *
-     * Simulate a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulateGET'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesSimulateGETAsync($app, $id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
+    public function rulesSimulateGETAsync($id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
     {
-        return $this->rulesSimulateGETAsyncWithHttpInfo($app, $id, $contentType)
+        return $this->rulesSimulateGETAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5105,22 +4825,16 @@ class RulesApi
             );
     }
 
+
     /**
-     * Operation rulesSimulateGETAsyncWithHttpInfo
-     *
-     * Simulate a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulateGET'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesSimulateGETAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
+    public function rulesSimulateGETAsyncWithHttpInfo($id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
     {
         $returnType = '\OpenAPI\Client\Model\SimulatedRuleEventsDto';
-        $request = $this->rulesSimulateGETRequest($app, $id, $contentType);
+        $request = $this->rulesSimulateGETRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5158,19 +4872,15 @@ class RulesApi
             );
     }
 
-    /**
-     * Create request for operation 'rulesSimulateGET'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulateGET'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function rulesSimulateGETRequest($app, $id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
-    {
 
+    /**
+     * @param $id
+     * @param string $contentType
+     * @return Request
+     */
+    public function rulesSimulateGETRequest($id, string $contentType = self::contentTypes['rulesSimulateGET'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -5189,7 +4899,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/simulate';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -5266,41 +4976,31 @@ class RulesApi
         );
     }
 
+
     /**
-     * Operation rulesSimulatePOST
-     *
-     * Simulate a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulatePOST'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SimulatedRuleEventsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $create_rule_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesSimulatePOST($app, $create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
+    public function rulesSimulatePOST($create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
     {
-        list($response) = $this->rulesSimulatePOSTWithHttpInfo($app, $create_rule_dto, $contentType);
+        list($response) = $this->rulesSimulatePOSTWithHttpInfo($create_rule_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation rulesSimulatePOSTWithHttpInfo
-     *
-     * Simulate a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulatePOST'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SimulatedRuleEventsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $create_rule_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesSimulatePOSTWithHttpInfo($app, $create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
+    public function rulesSimulatePOSTWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
     {
-        $request = $this->rulesSimulatePOSTRequest($app, $create_rule_dto, $contentType);
+        $request = $this->rulesSimulatePOSTRequest($create_rule_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5432,21 +5132,15 @@ class RulesApi
         }
     }
 
+
     /**
-     * Operation rulesSimulatePOSTAsync
-     *
-     * Simulate a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulatePOST'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $create_rule_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesSimulatePOSTAsync($app, $create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
+    public function rulesSimulatePOSTAsync($create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
     {
-        return $this->rulesSimulatePOSTAsyncWithHttpInfo($app, $create_rule_dto, $contentType)
+        return $this->rulesSimulatePOSTAsyncWithHttpInfo($create_rule_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5454,22 +5148,16 @@ class RulesApi
             );
     }
 
+
     /**
-     * Operation rulesSimulatePOSTAsyncWithHttpInfo
-     *
-     * Simulate a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulatePOST'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $create_rule_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesSimulatePOSTAsyncWithHttpInfo($app, $create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
+    public function rulesSimulatePOSTAsyncWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
     {
         $returnType = '\OpenAPI\Client\Model\SimulatedRuleEventsDto';
-        $request = $this->rulesSimulatePOSTRequest($app, $create_rule_dto, $contentType);
+        $request = $this->rulesSimulatePOSTRequest($create_rule_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5507,19 +5195,15 @@ class RulesApi
             );
     }
 
-    /**
-     * Create request for operation 'rulesSimulatePOST'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesSimulatePOST'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function rulesSimulatePOSTRequest($app, $create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
-    {
 
+    /**
+     * @param $create_rule_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function rulesSimulatePOSTRequest($create_rule_dto, string $contentType = self::contentTypes['rulesSimulatePOST'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -5538,7 +5222,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/simulate';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -5614,40 +5298,29 @@ class RulesApi
         );
     }
 
-    /**
-     * Operation rulesTriggerRule
-     *
-     * Trigger a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to disable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesTriggerRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function rulesTriggerRule($app, $id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
-    {
-        $this->rulesTriggerRuleWithHttpInfo($app, $id, $contentType);
-    }
 
     /**
-     * Operation rulesTriggerRuleWithHttpInfo
-     *
-     * Trigger a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to disable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesTriggerRule'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function rulesTriggerRuleWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
+    public function rulesTriggerRule($id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
     {
-        $request = $this->rulesTriggerRuleRequest($app, $id, $contentType);
+        $this->rulesTriggerRuleWithHttpInfo($id, $contentType);
+    }
+
+
+    /**
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function rulesTriggerRuleWithHttpInfo($id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
+    {
+        $request = $this->rulesTriggerRuleRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5709,21 +5382,15 @@ class RulesApi
         }
     }
 
+
     /**
-     * Operation rulesTriggerRuleAsync
-     *
-     * Trigger a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to disable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesTriggerRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesTriggerRuleAsync($app, $id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
+    public function rulesTriggerRuleAsync($id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
     {
-        return $this->rulesTriggerRuleAsyncWithHttpInfo($app, $id, $contentType)
+        return $this->rulesTriggerRuleAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5731,22 +5398,16 @@ class RulesApi
             );
     }
 
+
     /**
-     * Operation rulesTriggerRuleAsyncWithHttpInfo
-     *
-     * Trigger a rule.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to disable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesTriggerRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rulesTriggerRuleAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
+    public function rulesTriggerRuleAsyncWithHttpInfo($id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
     {
         $returnType = '';
-        $request = $this->rulesTriggerRuleRequest($app, $id, $contentType);
+        $request = $this->rulesTriggerRuleRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5771,19 +5432,15 @@ class RulesApi
             );
     }
 
-    /**
-     * Create request for operation 'rulesTriggerRule'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the rule to disable. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rulesTriggerRule'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function rulesTriggerRuleRequest($app, $id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
-    {
 
+    /**
+     * @param $id
+     * @param string $contentType
+     * @return Request
+     */
+    public function rulesTriggerRuleRequest( $id, string $contentType = self::contentTypes['rulesTriggerRule'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -5802,7 +5459,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/trigger';
         $formParams = [];
         $queryParams = [];
-        $headerParams = ['Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjlTZWo3eXJYdGo1TzNDVV9JeG5EU2ciLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiJhcmFyYXQxOTU0OmRlZmF1bHQiLCJvaV9wcnN0IjoiYXJhcmF0MTk1NDpkZWZhdWx0IiwiY2xpZW50X2lkIjoiYXJhcmF0MTk1NDpkZWZhdWx0Iiwib2lfdGtuX2lkIjoiMmRiNzhhYWYtN2I5Yi00MGEzLWE5MjMtM2QyMDU4ZWJhOThlIiwiYXVkIjoic2NwOnNxdWlkZXgtYXBpIiwic2NvcGUiOiJzcXVpZGV4LWFwaSIsImV4cCI6MTY4ODU1NjQyOCwiaXNzIjoiaHR0cHM6Ly9jbG91ZC5zcXVpZGV4LmlvL2lkZW50aXR5LXNlcnZlciIsImlhdCI6MTY4NTk2NDQyOH0.cos408Dsm2Mn6ECVAv72oBVqM7hopPJzay8jV30YrvQuNCSCbYpJNKlSsUZX36wA7bX1mpGmerj7bhE3mwoJx5abpQpwKWFy4NZKfWObOA9SmPN_6IE04xWY_8K-SOVhoNbiZIDG0FRS2PJLdkn1LujdO_6vVqPk8_G77pkZsEOOoIsi-A-KzGFdTYdI8LqOlE2B_vgZrk0bXoEitT8k3DotevWu4bQkwKpfKK0UTHUeuGhqKCYXXnpG3xoA27vIre2wH453wpKtETYFqTzs1EhQsbCmTSrSGBlIH9ncdmQ5nLV9NyYSSLEsiIV26VThYOFdMW_K9wkQxzexZ9XDsw'];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -5888,23 +5545,21 @@ class RulesApi
     protected function createHttpClientOption()
     {
         $options = [];
-
-
-        print_r($this->options);
-        die(555);
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
-
         return $options;
     }
 
 
+    /**
+     * @return array
+     */
     protected function getAuthorizationHeader()
     {
-
+        return ['Authorization' => 'Bearer '.$this->options['access_token']];
     }
 }
