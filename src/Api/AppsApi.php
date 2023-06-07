@@ -55,6 +55,11 @@ class AppsApi
     protected $client;
 
     /**
+     * @var
+     */
+    protected $options;
+
+    /**
      * @var Configuration
      */
     protected $config;
@@ -178,22 +183,17 @@ class AppsApi
         ],
     ];
 
-/**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
+
+    /**
+     * RulesApi constructor.
+     * @param $options
      */
-    public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
-        $hostIndex = 0
-    ) {
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
-        $this->hostIndex = $hostIndex;
+    public function __construct($options) {
+        $this->options = $options;
+        $this->client =  new Client();
+        $this->config =   new Configuration();
+        $this->headerSelector =  new HeaderSelector();
+        $this->hostIndex = 0;
     }
 
     /**
@@ -224,39 +224,29 @@ class AppsApi
         return $this->config;
     }
 
+
     /**
-     * Operation appAssetsGetAssetScripts
-     *
-     * Get the app asset scripts.
-     *
-     * @param  string $app The name of the app to get the asset scripts for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsGetAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AssetScriptsDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appAssetsGetAssetScripts($app, string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
+    public function appAssetsGetAssetScripts(string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
     {
-        list($response) = $this->appAssetsGetAssetScriptsWithHttpInfo($app, $contentType);
+        list($response) = $this->appAssetsGetAssetScriptsWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appAssetsGetAssetScriptsWithHttpInfo
-     *
-     * Get the app asset scripts.
-     *
-     * @param  string $app The name of the app to get the asset scripts for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsGetAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AssetScriptsDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appAssetsGetAssetScriptsWithHttpInfo($app, string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
+    public function appAssetsGetAssetScriptsWithHttpInfo(string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
     {
-        $request = $this->appAssetsGetAssetScriptsRequest($app, $contentType);
+        $request = $this->appAssetsGetAssetScriptsRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -365,20 +355,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appAssetsGetAssetScriptsAsync
-     *
-     * Get the app asset scripts.
-     *
-     * @param  string $app The name of the app to get the asset scripts for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsGetAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appAssetsGetAssetScriptsAsync($app, string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
+    public function appAssetsGetAssetScriptsAsync(string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
     {
-        return $this->appAssetsGetAssetScriptsAsyncWithHttpInfo($app, $contentType)
+        return $this->appAssetsGetAssetScriptsAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -386,21 +370,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appAssetsGetAssetScriptsAsyncWithHttpInfo
-     *
-     * Get the app asset scripts.
-     *
-     * @param  string $app The name of the app to get the asset scripts for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsGetAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appAssetsGetAssetScriptsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
+    public function appAssetsGetAssetScriptsAsyncWithHttpInfo(string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AssetScriptsDto';
-        $request = $this->appAssetsGetAssetScriptsRequest($app, $contentType);
+        $request = $this->appAssetsGetAssetScriptsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -438,18 +416,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Create request for operation 'appAssetsGetAssetScripts'
-     *
-     * @param  string $app The name of the app to get the asset scripts for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsGetAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param string $contentType
+     * @return Request
      */
-    public function appAssetsGetAssetScriptsRequest($app, string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
+    public function appAssetsGetAssetScriptsRequest(string $contentType = self::contentTypes['appAssetsGetAssetScripts'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -461,7 +436,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/assets/scripts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -530,41 +505,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appAssetsPutAssetScripts
-     *
-     * Update the app asset scripts.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsPutAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AssetScriptsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $update_asset_scripts_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appAssetsPutAssetScripts($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
+    public function appAssetsPutAssetScripts($update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
     {
-        list($response) = $this->appAssetsPutAssetScriptsWithHttpInfo($app, $update_asset_scripts_dto, $contentType);
+        list($response) = $this->appAssetsPutAssetScriptsWithHttpInfo($update_asset_scripts_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appAssetsPutAssetScriptsWithHttpInfo
-     *
-     * Update the app asset scripts.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsPutAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AssetScriptsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $update_asset_scripts_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appAssetsPutAssetScriptsWithHttpInfo($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
+    public function appAssetsPutAssetScriptsWithHttpInfo($update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
     {
-        $request = $this->appAssetsPutAssetScriptsRequest($app, $update_asset_scripts_dto, $contentType);
+        $request = $this->appAssetsPutAssetScriptsRequest($update_asset_scripts_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -696,21 +661,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appAssetsPutAssetScriptsAsync
-     *
-     * Update the app asset scripts.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsPutAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $update_asset_scripts_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appAssetsPutAssetScriptsAsync($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
+    public function appAssetsPutAssetScriptsAsync($update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
     {
-        return $this->appAssetsPutAssetScriptsAsyncWithHttpInfo($app, $update_asset_scripts_dto, $contentType)
+        return $this->appAssetsPutAssetScriptsAsyncWithHttpInfo($update_asset_scripts_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -718,22 +677,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appAssetsPutAssetScriptsAsyncWithHttpInfo
-     *
-     * Update the app asset scripts.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsPutAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $update_asset_scripts_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appAssetsPutAssetScriptsAsyncWithHttpInfo($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
+    public function appAssetsPutAssetScriptsAsyncWithHttpInfo($update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AssetScriptsDto';
-        $request = $this->appAssetsPutAssetScriptsRequest($app, $update_asset_scripts_dto, $contentType);
+        $request = $this->appAssetsPutAssetScriptsRequest($update_asset_scripts_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -771,19 +724,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Create request for operation 'appAssetsPutAssetScripts'
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appAssetsPutAssetScripts'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $update_asset_scripts_dto
+     * @param string $contentType
+     * @return Request
      */
-    public function appAssetsPutAssetScriptsRequest($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
+    public function appAssetsPutAssetScriptsRequest($update_asset_scripts_dto, string $contentType = self::contentTypes['appAssetsPutAssetScripts'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -802,7 +752,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/assets/scripts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -878,41 +828,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appClientsDeleteClient
-     *
-     * Revoke an app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsDeleteClient'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ClientsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $id
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appClientsDeleteClient($app, $id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
+    public function appClientsDeleteClient($id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
     {
-        list($response) = $this->appClientsDeleteClientWithHttpInfo($app, $id, $contentType);
+        list($response) = $this->appClientsDeleteClientWithHttpInfo($id, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appClientsDeleteClientWithHttpInfo
-     *
-     * Revoke an app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsDeleteClient'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ClientsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appClientsDeleteClientWithHttpInfo($app, $id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
+    public function appClientsDeleteClientWithHttpInfo($id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
     {
-        $request = $this->appClientsDeleteClientRequest($app, $id, $contentType);
+        $request = $this->appClientsDeleteClientRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1044,21 +984,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appClientsDeleteClientAsync
-     *
-     * Revoke an app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsDeleteClient'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appClientsDeleteClientAsync($app, $id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
+    public function appClientsDeleteClientAsync($id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
     {
-        return $this->appClientsDeleteClientAsyncWithHttpInfo($app, $id, $contentType)
+        return $this->appClientsDeleteClientAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1066,22 +1000,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appClientsDeleteClientAsyncWithHttpInfo
-     *
-     * Revoke an app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsDeleteClient'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appClientsDeleteClientAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
+    public function appClientsDeleteClientAsyncWithHttpInfo($id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ClientsDto';
-        $request = $this->appClientsDeleteClientRequest($app, $id, $contentType);
+        $request = $this->appClientsDeleteClientRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1119,19 +1047,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appClientsDeleteClient'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsDeleteClient'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appClientsDeleteClientRequest($app, $id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
-    {
 
+    /**
+     * @param $id
+     * @param string $contentType
+     * @return Request
+     */
+    public function appClientsDeleteClientRequest($id, string $contentType = self::contentTypes['appClientsDeleteClient'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -1146,11 +1070,10 @@ class AppsApi
             );
         }
 
-
         $resourcePath = '/api/apps/{app}/clients/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -1227,39 +1150,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appClientsGetClients
-     *
-     * Get app clients.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsGetClients'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ClientsDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appClientsGetClients($app, string $contentType = self::contentTypes['appClientsGetClients'][0])
+    public function appClientsGetClients(string $contentType = self::contentTypes['appClientsGetClients'][0])
     {
-        list($response) = $this->appClientsGetClientsWithHttpInfo($app, $contentType);
+        list($response) = $this->appClientsGetClientsWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appClientsGetClientsWithHttpInfo
-     *
-     * Get app clients.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsGetClients'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ClientsDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appClientsGetClientsWithHttpInfo($app, string $contentType = self::contentTypes['appClientsGetClients'][0])
+    public function appClientsGetClientsWithHttpInfo( string $contentType = self::contentTypes['appClientsGetClients'][0])
     {
-        $request = $this->appClientsGetClientsRequest($app, $contentType);
+        $request = $this->appClientsGetClientsRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1368,20 +1281,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appClientsGetClientsAsync
-     *
-     * Get app clients.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsGetClients'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appClientsGetClientsAsync($app, string $contentType = self::contentTypes['appClientsGetClients'][0])
+    public function appClientsGetClientsAsync(string $contentType = self::contentTypes['appClientsGetClients'][0])
     {
-        return $this->appClientsGetClientsAsyncWithHttpInfo($app, $contentType)
+        return $this->appClientsGetClientsAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1389,21 +1296,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appClientsGetClientsAsyncWithHttpInfo
-     *
-     * Get app clients.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsGetClients'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appClientsGetClientsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appClientsGetClients'][0])
+    public function appClientsGetClientsAsyncWithHttpInfo(string $contentType = self::contentTypes['appClientsGetClients'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ClientsDto';
-        $request = $this->appClientsGetClientsRequest($app, $contentType);
+        $request = $this->appClientsGetClientsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1442,17 +1343,12 @@ class AppsApi
     }
 
     /**
-     * Create request for operation 'appClientsGetClients'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsGetClients'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param string $contentType
+     * @return Request
      */
-    public function appClientsGetClientsRequest($app, string $contentType = self::contentTypes['appClientsGetClients'][0])
+    public function appClientsGetClientsRequest(string $contentType = self::contentTypes['appClientsGetClients'][0])
     {
-
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -1460,11 +1356,10 @@ class AppsApi
             );
         }
 
-
         $resourcePath = '/api/apps/{app}/clients';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -1533,41 +1428,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appClientsPostClient
-     *
-     * Create a new app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateClientDto $create_client_dto Client object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsPostClient'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ClientsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $create_client_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appClientsPostClient($app, $create_client_dto, string $contentType = self::contentTypes['appClientsPostClient'][0])
+    public function appClientsPostClient($create_client_dto, string $contentType = self::contentTypes['appClientsPostClient'][0])
     {
-        list($response) = $this->appClientsPostClientWithHttpInfo($app, $create_client_dto, $contentType);
+        list($response) = $this->appClientsPostClientWithHttpInfo($create_client_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appClientsPostClientWithHttpInfo
-     *
-     * Create a new app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateClientDto $create_client_dto Client object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsPostClient'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ClientsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $create_client_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appClientsPostClientWithHttpInfo($app, $create_client_dto, string $contentType = self::contentTypes['appClientsPostClient'][0])
+    public function appClientsPostClientWithHttpInfo($create_client_dto, string $contentType = self::contentTypes['appClientsPostClient'][0])
     {
-        $request = $this->appClientsPostClientRequest($app, $create_client_dto, $contentType);
+        $request = $this->appClientsPostClientRequest($create_client_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1774,19 +1659,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Create request for operation 'appClientsPostClient'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\CreateClientDto $create_client_dto Client object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsPostClient'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $create_client_dto
+     * @param string $contentType
+     * @return Request
      */
-    public function appClientsPostClientRequest($app, $create_client_dto, string $contentType = self::contentTypes['appClientsPostClient'][0])
+    public function appClientsPostClientRequest($create_client_dto, string $contentType = self::contentTypes['appClientsPostClient'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -1805,7 +1687,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/clients';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -1881,43 +1763,32 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appClientsPutClient
-     *
-     * Updates an app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsPutClient'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ClientsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $id
+     * @param $update_client_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appClientsPutClient($app, $id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
+    public function appClientsPutClient($id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
     {
-        list($response) = $this->appClientsPutClientWithHttpInfo($app, $id, $update_client_dto, $contentType);
+        list($response) = $this->appClientsPutClientWithHttpInfo($id, $update_client_dto, $contentType);
         return $response;
     }
 
     /**
-     * Operation appClientsPutClientWithHttpInfo
-     *
-     * Updates an app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsPutClient'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ClientsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param $update_client_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appClientsPutClientWithHttpInfo($app, $id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
+    public function appClientsPutClientWithHttpInfo($id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
     {
-        $request = $this->appClientsPutClientRequest($app, $id, $update_client_dto, $contentType);
+        $request = $this->appClientsPutClientRequest($id, $update_client_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2049,22 +1920,16 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appClientsPutClientAsync
-     *
-     * Updates an app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsPutClient'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param $update_client_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appClientsPutClientAsync($app, $id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
+    public function appClientsPutClientAsync($id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
     {
-        return $this->appClientsPutClientAsyncWithHttpInfo($app, $id, $update_client_dto, $contentType)
+        return $this->appClientsPutClientAsyncWithHttpInfo($id, $update_client_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2072,23 +1937,17 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appClientsPutClientAsyncWithHttpInfo
-     *
-     * Updates an app client.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsPutClient'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param $update_client_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appClientsPutClientAsyncWithHttpInfo($app, $id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
+    public function appClientsPutClientAsyncWithHttpInfo($id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ClientsDto';
-        $request = $this->appClientsPutClientRequest($app, $id, $update_client_dto, $contentType);
+        $request = $this->appClientsPutClientRequest($id, $update_client_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2126,20 +1985,17 @@ class AppsApi
             );
     }
 
+
     /**
-     * Create request for operation 'appClientsPutClient'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the client that must be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appClientsPutClient'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $id
+     * @param $update_client_dto
+     * @param string $contentType
+     * @return Request
      */
-    public function appClientsPutClientRequest($app, $id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
+    public function appClientsPutClientRequest($id, $update_client_dto, string $contentType = self::contentTypes['appClientsPutClient'][0])
     {
 
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -2165,7 +2021,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/clients/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -2249,41 +2105,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appContributorsDeleteContributor
-     *
-     * Remove contributor.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the contributor. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteContributor'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ContributorsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $id
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appContributorsDeleteContributor($app, $id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
+    public function appContributorsDeleteContributor($id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
     {
-        list($response) = $this->appContributorsDeleteContributorWithHttpInfo($app, $id, $contentType);
+        list($response) = $this->appContributorsDeleteContributorWithHttpInfo($id, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appContributorsDeleteContributorWithHttpInfo
-     *
-     * Remove contributor.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the contributor. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteContributor'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ContributorsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appContributorsDeleteContributorWithHttpInfo($app, $id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
+    public function appContributorsDeleteContributorWithHttpInfo($id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
     {
-        $request = $this->appContributorsDeleteContributorRequest($app, $id, $contentType);
+        $request = $this->appContributorsDeleteContributorRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2415,21 +2261,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appContributorsDeleteContributorAsync
-     *
-     * Remove contributor.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the contributor. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteContributor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appContributorsDeleteContributorAsync($app, $id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
+    public function appContributorsDeleteContributorAsync($id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
     {
-        return $this->appContributorsDeleteContributorAsyncWithHttpInfo($app, $id, $contentType)
+        return $this->appContributorsDeleteContributorAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2437,22 +2277,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appContributorsDeleteContributorAsyncWithHttpInfo
-     *
-     * Remove contributor.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the contributor. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteContributor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appContributorsDeleteContributorAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
+    public function appContributorsDeleteContributorAsyncWithHttpInfo($id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ContributorsDto';
-        $request = $this->appContributorsDeleteContributorRequest($app, $id, $contentType);
+        $request = $this->appContributorsDeleteContributorRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2490,19 +2324,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appContributorsDeleteContributor'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the contributor. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteContributor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appContributorsDeleteContributorRequest($app, $id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
-    {
 
+    /**
+     * @param $id
+     * @param string $contentType
+     * @return Request
+     */
+    public function appContributorsDeleteContributorRequest($id, string $contentType = self::contentTypes['appContributorsDeleteContributor'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -2521,7 +2351,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/contributors/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -2598,39 +2428,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appContributorsDeleteMyself
-     *
-     * Remove yourself.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteMyself'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ContributorsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appContributorsDeleteMyself($app, string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
+    public function appContributorsDeleteMyself(string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
     {
-        list($response) = $this->appContributorsDeleteMyselfWithHttpInfo($app, $contentType);
+        list($response) = $this->appContributorsDeleteMyselfWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appContributorsDeleteMyselfWithHttpInfo
-     *
-     * Remove yourself.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteMyself'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ContributorsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appContributorsDeleteMyselfWithHttpInfo($app, string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
+    public function appContributorsDeleteMyselfWithHttpInfo(string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
     {
-        $request = $this->appContributorsDeleteMyselfRequest($app, $contentType);
+        $request = $this->appContributorsDeleteMyselfRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2762,20 +2582,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appContributorsDeleteMyselfAsync
-     *
-     * Remove yourself.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteMyself'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appContributorsDeleteMyselfAsync($app, string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
+    public function appContributorsDeleteMyselfAsync(string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
     {
-        return $this->appContributorsDeleteMyselfAsyncWithHttpInfo($app, $contentType)
+        return $this->appContributorsDeleteMyselfAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2783,21 +2597,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appContributorsDeleteMyselfAsyncWithHttpInfo
-     *
-     * Remove yourself.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteMyself'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appContributorsDeleteMyselfAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
+    public function appContributorsDeleteMyselfAsyncWithHttpInfo(string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ContributorsDto';
-        $request = $this->appContributorsDeleteMyselfRequest($app, $contentType);
+        $request = $this->appContributorsDeleteMyselfRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2835,18 +2643,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appContributorsDeleteMyself'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsDeleteMyself'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appContributorsDeleteMyselfRequest($app, string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appContributorsDeleteMyselfRequest(string $contentType = self::contentTypes['appContributorsDeleteMyself'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -2858,7 +2662,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/contributors/me';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -2927,39 +2731,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appContributorsGetContributors
-     *
-     * Get app contributors.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsGetContributors'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ContributorsDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appContributorsGetContributors($app, string $contentType = self::contentTypes['appContributorsGetContributors'][0])
+    public function appContributorsGetContributors(string $contentType = self::contentTypes['appContributorsGetContributors'][0])
     {
-        list($response) = $this->appContributorsGetContributorsWithHttpInfo($app, $contentType);
+        list($response) = $this->appContributorsGetContributorsWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appContributorsGetContributorsWithHttpInfo
-     *
-     * Get app contributors.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsGetContributors'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ContributorsDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appContributorsGetContributorsWithHttpInfo($app, string $contentType = self::contentTypes['appContributorsGetContributors'][0])
+    public function appContributorsGetContributorsWithHttpInfo(string $contentType = self::contentTypes['appContributorsGetContributors'][0])
     {
-        $request = $this->appContributorsGetContributorsRequest($app, $contentType);
+        $request = $this->appContributorsGetContributorsRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3068,20 +2862,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appContributorsGetContributorsAsync
-     *
-     * Get app contributors.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsGetContributors'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appContributorsGetContributorsAsync($app, string $contentType = self::contentTypes['appContributorsGetContributors'][0])
+    public function appContributorsGetContributorsAsync(string $contentType = self::contentTypes['appContributorsGetContributors'][0])
     {
-        return $this->appContributorsGetContributorsAsyncWithHttpInfo($app, $contentType)
+        return $this->appContributorsGetContributorsAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3089,21 +2877,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appContributorsGetContributorsAsyncWithHttpInfo
-     *
-     * Get app contributors.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsGetContributors'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appContributorsGetContributorsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appContributorsGetContributors'][0])
+    public function appContributorsGetContributorsAsyncWithHttpInfo(string $contentType = self::contentTypes['appContributorsGetContributors'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ContributorsDto';
-        $request = $this->appContributorsGetContributorsRequest($app, $contentType);
+        $request = $this->appContributorsGetContributorsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3141,18 +2923,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appContributorsGetContributors'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsGetContributors'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appContributorsGetContributorsRequest($app, string $contentType = self::contentTypes['appContributorsGetContributors'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appContributorsGetContributorsRequest(string $contentType = self::contentTypes['appContributorsGetContributors'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -3164,7 +2942,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/contributors';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -3233,41 +3011,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appContributorsPostContributor
-     *
-     * Assign contributor to app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsPostContributor'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ContributorsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $assign_contributor_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appContributorsPostContributor($app, $assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
+    public function appContributorsPostContributor($assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
     {
-        list($response) = $this->appContributorsPostContributorWithHttpInfo($app, $assign_contributor_dto, $contentType);
+        list($response) = $this->appContributorsPostContributorWithHttpInfo($assign_contributor_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appContributorsPostContributorWithHttpInfo
-     *
-     * Assign contributor to app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsPostContributor'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ContributorsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $assign_contributor_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appContributorsPostContributorWithHttpInfo($app, $assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
+    public function appContributorsPostContributorWithHttpInfo($assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
     {
-        $request = $this->appContributorsPostContributorRequest($app, $assign_contributor_dto, $contentType);
+        $request = $this->appContributorsPostContributorRequest($assign_contributor_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3399,21 +3167,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appContributorsPostContributorAsync
-     *
-     * Assign contributor to app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsPostContributor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $assign_contributor_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appContributorsPostContributorAsync($app, $assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
+    public function appContributorsPostContributorAsync($assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
     {
-        return $this->appContributorsPostContributorAsyncWithHttpInfo($app, $assign_contributor_dto, $contentType)
+        return $this->appContributorsPostContributorAsyncWithHttpInfo($assign_contributor_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3421,22 +3183,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appContributorsPostContributorAsyncWithHttpInfo
-     *
-     * Assign contributor to app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsPostContributor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $assign_contributor_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appContributorsPostContributorAsyncWithHttpInfo($app, $assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
+    public function appContributorsPostContributorAsyncWithHttpInfo($assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ContributorsDto';
-        $request = $this->appContributorsPostContributorRequest($app, $assign_contributor_dto, $contentType);
+        $request = $this->appContributorsPostContributorRequest($assign_contributor_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3474,19 +3230,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appContributorsPostContributor'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appContributorsPostContributor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appContributorsPostContributorRequest($app, $assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
-    {
 
+    /**
+     * @param $assign_contributor_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appContributorsPostContributorRequest($assign_contributor_dto, string $contentType = self::contentTypes['appContributorsPostContributor'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -3505,7 +3257,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/contributors';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -3581,39 +3333,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appImageGetImage
-     *
-     * Get the app image.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appImageGetImage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \SplFileObject|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appImageGetImage($app, string $contentType = self::contentTypes['appImageGetImage'][0])
+    public function appImageGetImage(string $contentType = self::contentTypes['appImageGetImage'][0])
     {
-        list($response) = $this->appImageGetImageWithHttpInfo($app, $contentType);
+        list($response) = $this->appImageGetImageWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appImageGetImageWithHttpInfo
-     *
-     * Get the app image.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appImageGetImage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appImageGetImageWithHttpInfo($app, string $contentType = self::contentTypes['appImageGetImage'][0])
+    public function appImageGetImageWithHttpInfo(string $contentType = self::contentTypes['appImageGetImage'][0])
     {
-        $request = $this->appImageGetImageRequest($app, $contentType);
+        $request = $this->appImageGetImageRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3722,20 +3464,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appImageGetImageAsync
-     *
-     * Get the app image.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appImageGetImage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appImageGetImageAsync($app, string $contentType = self::contentTypes['appImageGetImage'][0])
+    public function appImageGetImageAsync(string $contentType = self::contentTypes['appImageGetImage'][0])
     {
-        return $this->appImageGetImageAsyncWithHttpInfo($app, $contentType)
+        return $this->appImageGetImageAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3744,20 +3480,13 @@ class AppsApi
     }
 
     /**
-     * Operation appImageGetImageAsyncWithHttpInfo
-     *
-     * Get the app image.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appImageGetImage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appImageGetImageAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appImageGetImage'][0])
+    public function appImageGetImageAsyncWithHttpInfo(string $contentType = self::contentTypes['appImageGetImage'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->appImageGetImageRequest($app, $contentType);
+        $request = $this->appImageGetImageRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3795,18 +3524,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appImageGetImage'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appImageGetImage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appImageGetImageRequest($app, string $contentType = self::contentTypes['appImageGetImage'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appImageGetImageRequest(string $contentType = self::contentTypes['appImageGetImage'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -3814,14 +3539,12 @@ class AppsApi
             );
         }
 
-
         $resourcePath = '/api/apps/{app}/image';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
-
 
 
         // path params
@@ -3832,7 +3555,6 @@ class AppsApi
                 $resourcePath
             );
         }
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/octet-stream', 'application/json', ],
@@ -3887,41 +3609,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appLanguagesDeleteLanguage
-     *
-     * Deletes an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to delete from the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesDeleteLanguage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppLanguagesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $language
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appLanguagesDeleteLanguage($app, $language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
+    public function appLanguagesDeleteLanguage($language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
     {
-        list($response) = $this->appLanguagesDeleteLanguageWithHttpInfo($app, $language, $contentType);
+        list($response) = $this->appLanguagesDeleteLanguageWithHttpInfo($language, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appLanguagesDeleteLanguageWithHttpInfo
-     *
-     * Deletes an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to delete from the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesDeleteLanguage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppLanguagesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $language
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appLanguagesDeleteLanguageWithHttpInfo($app, $language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
+    public function appLanguagesDeleteLanguageWithHttpInfo($language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
     {
-        $request = $this->appLanguagesDeleteLanguageRequest($app, $language, $contentType);
+        $request = $this->appLanguagesDeleteLanguageRequest($language, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4053,21 +3765,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appLanguagesDeleteLanguageAsync
-     *
-     * Deletes an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to delete from the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesDeleteLanguage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $language
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appLanguagesDeleteLanguageAsync($app, $language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
+    public function appLanguagesDeleteLanguageAsync($language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
     {
-        return $this->appLanguagesDeleteLanguageAsyncWithHttpInfo($app, $language, $contentType)
+        return $this->appLanguagesDeleteLanguageAsyncWithHttpInfo($language, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4075,22 +3781,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appLanguagesDeleteLanguageAsyncWithHttpInfo
-     *
-     * Deletes an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to delete from the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesDeleteLanguage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $language
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appLanguagesDeleteLanguageAsyncWithHttpInfo($app, $language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
+    public function appLanguagesDeleteLanguageAsyncWithHttpInfo($language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppLanguagesDto';
-        $request = $this->appLanguagesDeleteLanguageRequest($app, $language, $contentType);
+        $request = $this->appLanguagesDeleteLanguageRequest($language, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4128,19 +3828,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appLanguagesDeleteLanguage'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to delete from the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesDeleteLanguage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appLanguagesDeleteLanguageRequest($app, $language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
-    {
 
+    /**
+     * @param $language
+     * @param string $contentType
+     * @return Request
+     */
+    public function appLanguagesDeleteLanguageRequest($language, string $contentType = self::contentTypes['appLanguagesDeleteLanguage'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -4159,7 +3855,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/languages/{language}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -4236,39 +3932,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appLanguagesGetLanguages
-     *
-     * Get app languages.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesGetLanguages'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppLanguagesDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appLanguagesGetLanguages($app, string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
+    public function appLanguagesGetLanguages(string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
     {
         list($response) = $this->appLanguagesGetLanguagesWithHttpInfo($app, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appLanguagesGetLanguagesWithHttpInfo
-     *
-     * Get app languages.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesGetLanguages'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppLanguagesDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appLanguagesGetLanguagesWithHttpInfo($app, string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
+    public function appLanguagesGetLanguagesWithHttpInfo(string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
     {
-        $request = $this->appLanguagesGetLanguagesRequest($app, $contentType);
+        $request = $this->appLanguagesGetLanguagesRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4377,20 +4063,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appLanguagesGetLanguagesAsync
-     *
-     * Get app languages.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesGetLanguages'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appLanguagesGetLanguagesAsync($app, string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
+    public function appLanguagesGetLanguagesAsync(string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
     {
-        return $this->appLanguagesGetLanguagesAsyncWithHttpInfo($app, $contentType)
+        return $this->appLanguagesGetLanguagesAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4398,21 +4078,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appLanguagesGetLanguagesAsyncWithHttpInfo
-     *
-     * Get app languages.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesGetLanguages'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appLanguagesGetLanguagesAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
+    public function appLanguagesGetLanguagesAsyncWithHttpInfo(string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppLanguagesDto';
-        $request = $this->appLanguagesGetLanguagesRequest($app, $contentType);
+        $request = $this->appLanguagesGetLanguagesRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4450,18 +4124,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appLanguagesGetLanguages'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesGetLanguages'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appLanguagesGetLanguagesRequest($app, string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appLanguagesGetLanguagesRequest(string $contentType = self::contentTypes['appLanguagesGetLanguages'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -4469,11 +4139,10 @@ class AppsApi
             );
         }
 
-
         $resourcePath = '/api/apps/{app}/languages';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -4542,41 +4211,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appLanguagesPostLanguage
-     *
-     * Attaches an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPostLanguage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppLanguagesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $add_language_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appLanguagesPostLanguage($app, $add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
+    public function appLanguagesPostLanguage($add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
     {
-        list($response) = $this->appLanguagesPostLanguageWithHttpInfo($app, $add_language_dto, $contentType);
+        list($response) = $this->appLanguagesPostLanguageWithHttpInfo($add_language_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appLanguagesPostLanguageWithHttpInfo
-     *
-     * Attaches an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPostLanguage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppLanguagesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $add_language_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appLanguagesPostLanguageWithHttpInfo($app, $add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
+    public function appLanguagesPostLanguageWithHttpInfo($add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
     {
-        $request = $this->appLanguagesPostLanguageRequest($app, $add_language_dto, $contentType);
+        $request = $this->appLanguagesPostLanguageRequest($add_language_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4708,21 +4367,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appLanguagesPostLanguageAsync
-     *
-     * Attaches an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPostLanguage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $add_language_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appLanguagesPostLanguageAsync($app, $add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
+    public function appLanguagesPostLanguageAsync($add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
     {
-        return $this->appLanguagesPostLanguageAsyncWithHttpInfo($app, $add_language_dto, $contentType)
+        return $this->appLanguagesPostLanguageAsyncWithHttpInfo($add_language_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4730,22 +4383,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appLanguagesPostLanguageAsyncWithHttpInfo
-     *
-     * Attaches an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPostLanguage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $add_language_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appLanguagesPostLanguageAsyncWithHttpInfo($app, $add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
+    public function appLanguagesPostLanguageAsyncWithHttpInfo($add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppLanguagesDto';
-        $request = $this->appLanguagesPostLanguageRequest($app, $add_language_dto, $contentType);
+        $request = $this->appLanguagesPostLanguageRequest($add_language_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4783,19 +4430,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appLanguagesPostLanguage'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPostLanguage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appLanguagesPostLanguageRequest($app, $add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
-    {
 
+    /**
+     * @param $add_language_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appLanguagesPostLanguageRequest($add_language_dto, string $contentType = self::contentTypes['appLanguagesPostLanguage'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -4810,14 +4453,12 @@ class AppsApi
             );
         }
 
-
         $resourcePath = '/api/apps/{app}/languages';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
-
 
 
         // path params
@@ -4890,43 +4531,33 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appLanguagesPutLanguage
-     *
-     * Updates an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPutLanguage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppLanguagesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $language
+     * @param $update_language_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appLanguagesPutLanguage($app, $language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
+    public function appLanguagesPutLanguage($language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
     {
-        list($response) = $this->appLanguagesPutLanguageWithHttpInfo($app, $language, $update_language_dto, $contentType);
+        list($response) = $this->appLanguagesPutLanguageWithHttpInfo($language, $update_language_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appLanguagesPutLanguageWithHttpInfo
-     *
-     * Updates an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPutLanguage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppLanguagesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $language
+     * @param $update_language_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appLanguagesPutLanguageWithHttpInfo($app, $language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
+    public function appLanguagesPutLanguageWithHttpInfo($language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
     {
-        $request = $this->appLanguagesPutLanguageRequest($app, $language, $update_language_dto, $contentType);
+        $request = $this->appLanguagesPutLanguageRequest($language, $update_language_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5058,22 +4689,16 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appLanguagesPutLanguageAsync
-     *
-     * Updates an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPutLanguage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $language
+     * @param $update_language_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appLanguagesPutLanguageAsync($app, $language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
+    public function appLanguagesPutLanguageAsync($language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
     {
-        return $this->appLanguagesPutLanguageAsyncWithHttpInfo($app, $language, $update_language_dto, $contentType)
+        return $this->appLanguagesPutLanguageAsyncWithHttpInfo($language, $update_language_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5081,23 +4706,17 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appLanguagesPutLanguageAsyncWithHttpInfo
-     *
-     * Updates an app language.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPutLanguage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $language
+     * @param $update_language_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appLanguagesPutLanguageAsyncWithHttpInfo($app, $language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
+    public function appLanguagesPutLanguageAsyncWithHttpInfo($language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppLanguagesDto';
-        $request = $this->appLanguagesPutLanguageRequest($app, $language, $update_language_dto, $contentType);
+        $request = $this->appLanguagesPutLanguageRequest($language, $update_language_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5135,20 +4754,16 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appLanguagesPutLanguage'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $language The language to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appLanguagesPutLanguage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appLanguagesPutLanguageRequest($app, $language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
-    {
 
+    /**
+     * @param $language
+     * @param $update_language_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appLanguagesPutLanguageRequest($language, $update_language_dto, string $contentType = self::contentTypes['appLanguagesPutLanguage'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -5174,7 +4789,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/languages/{language}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -5258,41 +4873,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appRolesDeleteRole
-     *
-     * Remove role from app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesDeleteRole'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RolesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $role_name
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesDeleteRole($app, $role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
+    public function appRolesDeleteRole($role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
     {
-        list($response) = $this->appRolesDeleteRoleWithHttpInfo($app, $role_name, $contentType);
+        list($response) = $this->appRolesDeleteRoleWithHttpInfo($role_name, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appRolesDeleteRoleWithHttpInfo
-     *
-     * Remove role from app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesDeleteRole'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RolesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $role_name
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesDeleteRoleWithHttpInfo($app, $role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
+    public function appRolesDeleteRoleWithHttpInfo($role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
     {
-        $request = $this->appRolesDeleteRoleRequest($app, $role_name, $contentType);
+        $request = $this->appRolesDeleteRoleRequest($role_name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5424,21 +5029,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appRolesDeleteRoleAsync
-     *
-     * Remove role from app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesDeleteRole'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $role_name
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesDeleteRoleAsync($app, $role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
+    public function appRolesDeleteRoleAsync($role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
     {
-        return $this->appRolesDeleteRoleAsyncWithHttpInfo($app, $role_name, $contentType)
+        return $this->appRolesDeleteRoleAsyncWithHttpInfo($role_name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5446,22 +5045,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appRolesDeleteRoleAsyncWithHttpInfo
-     *
-     * Remove role from app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesDeleteRole'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $role_name
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesDeleteRoleAsyncWithHttpInfo($app, $role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
+    public function appRolesDeleteRoleAsyncWithHttpInfo($role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
     {
         $returnType = '\OpenAPI\Client\Model\RolesDto';
-        $request = $this->appRolesDeleteRoleRequest($app, $role_name, $contentType);
+        $request = $this->appRolesDeleteRoleRequest($role_name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5499,19 +5092,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appRolesDeleteRole'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesDeleteRole'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appRolesDeleteRoleRequest($app, $role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
-    {
 
+    /**
+     * @param $role_name
+     * @param string $contentType
+     * @return Request
+     */
+    public function appRolesDeleteRoleRequest($role_name, string $contentType = self::contentTypes['appRolesDeleteRole'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -5530,7 +5119,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/roles/{roleName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -5608,38 +5197,27 @@ class AppsApi
     }
 
     /**
-     * Operation appRolesGetPermissions
-     *
-     * Get app permissions.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetPermissions'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return string[]|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesGetPermissions($app, string $contentType = self::contentTypes['appRolesGetPermissions'][0])
+    public function appRolesGetPermissions(string $contentType = self::contentTypes['appRolesGetPermissions'][0])
     {
-        list($response) = $this->appRolesGetPermissionsWithHttpInfo($app, $contentType);
+        list($response) = $this->appRolesGetPermissionsWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appRolesGetPermissionsWithHttpInfo
-     *
-     * Get app permissions.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetPermissions'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of string[]|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesGetPermissionsWithHttpInfo($app, string $contentType = self::contentTypes['appRolesGetPermissions'][0])
+    public function appRolesGetPermissionsWithHttpInfo(string $contentType = self::contentTypes['appRolesGetPermissions'][0])
     {
-        $request = $this->appRolesGetPermissionsRequest($app, $contentType);
+        $request = $this->appRolesGetPermissionsRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5748,20 +5326,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appRolesGetPermissionsAsync
-     *
-     * Get app permissions.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetPermissions'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesGetPermissionsAsync($app, string $contentType = self::contentTypes['appRolesGetPermissions'][0])
+    public function appRolesGetPermissionsAsync(string $contentType = self::contentTypes['appRolesGetPermissions'][0])
     {
-        return $this->appRolesGetPermissionsAsyncWithHttpInfo($app, $contentType)
+        return $this->appRolesGetPermissionsAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5769,21 +5341,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appRolesGetPermissionsAsyncWithHttpInfo
-     *
-     * Get app permissions.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetPermissions'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesGetPermissionsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appRolesGetPermissions'][0])
+    public function appRolesGetPermissionsAsyncWithHttpInfo(string $contentType = self::contentTypes['appRolesGetPermissions'][0])
     {
         $returnType = 'string[]';
-        $request = $this->appRolesGetPermissionsRequest($app, $contentType);
+        $request = $this->appRolesGetPermissionsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5821,18 +5387,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appRolesGetPermissions'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetPermissions'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appRolesGetPermissionsRequest($app, string $contentType = self::contentTypes['appRolesGetPermissions'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appRolesGetPermissionsRequest(string $contentType = self::contentTypes['appRolesGetPermissions'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -5844,7 +5406,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/roles/permissions';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -5913,39 +5475,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appRolesGetRoles
-     *
-     * Get app roles.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetRoles'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RolesDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesGetRoles($app, string $contentType = self::contentTypes['appRolesGetRoles'][0])
+    public function appRolesGetRoles(string $contentType = self::contentTypes['appRolesGetRoles'][0])
     {
-        list($response) = $this->appRolesGetRolesWithHttpInfo($app, $contentType);
+        list($response) = $this->appRolesGetRolesWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appRolesGetRolesWithHttpInfo
-     *
-     * Get app roles.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetRoles'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RolesDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesGetRolesWithHttpInfo($app, string $contentType = self::contentTypes['appRolesGetRoles'][0])
+    public function appRolesGetRolesWithHttpInfo(string $contentType = self::contentTypes['appRolesGetRoles'][0])
     {
-        $request = $this->appRolesGetRolesRequest($app, $contentType);
+        $request = $this->appRolesGetRolesRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6054,20 +5606,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appRolesGetRolesAsync
-     *
-     * Get app roles.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetRoles'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesGetRolesAsync($app, string $contentType = self::contentTypes['appRolesGetRoles'][0])
+    public function appRolesGetRolesAsync(string $contentType = self::contentTypes['appRolesGetRoles'][0])
     {
-        return $this->appRolesGetRolesAsyncWithHttpInfo($app, $contentType)
+        return $this->appRolesGetRolesAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6075,21 +5621,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appRolesGetRolesAsyncWithHttpInfo
-     *
-     * Get app roles.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetRoles'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesGetRolesAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appRolesGetRoles'][0])
+    public function appRolesGetRolesAsyncWithHttpInfo(string $contentType = self::contentTypes['appRolesGetRoles'][0])
     {
         $returnType = '\OpenAPI\Client\Model\RolesDto';
-        $request = $this->appRolesGetRolesRequest($app, $contentType);
+        $request = $this->appRolesGetRolesRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6127,18 +5667,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appRolesGetRoles'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesGetRoles'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appRolesGetRolesRequest($app, string $contentType = self::contentTypes['appRolesGetRoles'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appRolesGetRolesRequest(string $contentType = self::contentTypes['appRolesGetRoles'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -6150,7 +5686,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/roles';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -6219,41 +5755,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appRolesPostRole
-     *
-     * Add role to app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPostRole'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RolesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $add_role_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesPostRole($app, $add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
+    public function appRolesPostRole($add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
     {
-        list($response) = $this->appRolesPostRoleWithHttpInfo($app, $add_role_dto, $contentType);
+        list($response) = $this->appRolesPostRoleWithHttpInfo($add_role_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appRolesPostRoleWithHttpInfo
-     *
-     * Add role to app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPostRole'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RolesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $add_role_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesPostRoleWithHttpInfo($app, $add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
+    public function appRolesPostRoleWithHttpInfo($add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
     {
-        $request = $this->appRolesPostRoleRequest($app, $add_role_dto, $contentType);
+        $request = $this->appRolesPostRoleRequest($add_role_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6385,21 +5911,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appRolesPostRoleAsync
-     *
-     * Add role to app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPostRole'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $add_role_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesPostRoleAsync($app, $add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
+    public function appRolesPostRoleAsync($add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
     {
-        return $this->appRolesPostRoleAsyncWithHttpInfo($app, $add_role_dto, $contentType)
+        return $this->appRolesPostRoleAsyncWithHttpInfo($add_role_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6407,22 +5927,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appRolesPostRoleAsyncWithHttpInfo
-     *
-     * Add role to app.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPostRole'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $add_role_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesPostRoleAsyncWithHttpInfo($app, $add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
+    public function appRolesPostRoleAsyncWithHttpInfo($add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
     {
         $returnType = '\OpenAPI\Client\Model\RolesDto';
-        $request = $this->appRolesPostRoleRequest($app, $add_role_dto, $contentType);
+        $request = $this->appRolesPostRoleRequest($add_role_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6460,19 +5974,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appRolesPostRole'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPostRole'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appRolesPostRoleRequest($app, $add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
-    {
 
+    /**
+     * @param $add_role_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appRolesPostRoleRequest($add_role_dto, string $contentType = self::contentTypes['appRolesPostRole'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -6491,7 +6001,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/roles';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -6567,43 +6077,33 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appRolesPutRole
-     *
-     * Update an app role.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role to be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPutRole'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RolesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $role_name
+     * @param $update_role_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesPutRole($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
+    public function appRolesPutRole($role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
     {
-        list($response) = $this->appRolesPutRoleWithHttpInfo($app, $role_name, $update_role_dto, $contentType);
+        list($response) = $this->appRolesPutRoleWithHttpInfo($role_name, $update_role_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appRolesPutRoleWithHttpInfo
-     *
-     * Update an app role.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role to be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPutRole'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RolesDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $role_name
+     * @param $update_role_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appRolesPutRoleWithHttpInfo($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
+    public function appRolesPutRoleWithHttpInfo($role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
     {
-        $request = $this->appRolesPutRoleRequest($app, $role_name, $update_role_dto, $contentType);
+        $request = $this->appRolesPutRoleRequest($role_name, $update_role_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6735,22 +6235,16 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appRolesPutRoleAsync
-     *
-     * Update an app role.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role to be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPutRole'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $role_name
+     * @param $update_role_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesPutRoleAsync($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
+    public function appRolesPutRoleAsync($role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
     {
-        return $this->appRolesPutRoleAsyncWithHttpInfo($app, $role_name, $update_role_dto, $contentType)
+        return $this->appRolesPutRoleAsyncWithHttpInfo($role_name, $update_role_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6758,23 +6252,17 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appRolesPutRoleAsyncWithHttpInfo
-     *
-     * Update an app role.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role to be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPutRole'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $role_name
+     * @param $update_role_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appRolesPutRoleAsyncWithHttpInfo($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
+    public function appRolesPutRoleAsyncWithHttpInfo($role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
     {
         $returnType = '\OpenAPI\Client\Model\RolesDto';
-        $request = $this->appRolesPutRoleRequest($app, $role_name, $update_role_dto, $contentType);
+        $request = $this->appRolesPutRoleRequest($role_name, $update_role_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6812,20 +6300,16 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appRolesPutRole'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $role_name The name of the role to be updated. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appRolesPutRole'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appRolesPutRoleRequest($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
-    {
 
+    /**
+     * @param $role_name
+     * @param $update_role_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appRolesPutRoleRequest($role_name, $update_role_dto, string $contentType = self::contentTypes['appRolesPutRole'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -6851,7 +6335,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/roles/{roleName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -6935,39 +6419,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appSettingsGetSettings
-     *
-     * Get the app settings.
-     *
-     * @param  string $app The name of the app to get the settings for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsGetSettings'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppSettingsDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appSettingsGetSettings($app, string $contentType = self::contentTypes['appSettingsGetSettings'][0])
+    public function appSettingsGetSettings(string $contentType = self::contentTypes['appSettingsGetSettings'][0])
     {
-        list($response) = $this->appSettingsGetSettingsWithHttpInfo($app, $contentType);
+        list($response) = $this->appSettingsGetSettingsWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appSettingsGetSettingsWithHttpInfo
-     *
-     * Get the app settings.
-     *
-     * @param  string $app The name of the app to get the settings for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsGetSettings'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppSettingsDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appSettingsGetSettingsWithHttpInfo($app, string $contentType = self::contentTypes['appSettingsGetSettings'][0])
+    public function appSettingsGetSettingsWithHttpInfo(string $contentType = self::contentTypes['appSettingsGetSettings'][0])
     {
-        $request = $this->appSettingsGetSettingsRequest($app, $contentType);
+        $request = $this->appSettingsGetSettingsRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7076,20 +6550,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appSettingsGetSettingsAsync
-     *
-     * Get the app settings.
-     *
-     * @param  string $app The name of the app to get the settings for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsGetSettings'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appSettingsGetSettingsAsync($app, string $contentType = self::contentTypes['appSettingsGetSettings'][0])
+    public function appSettingsGetSettingsAsync(string $contentType = self::contentTypes['appSettingsGetSettings'][0])
     {
-        return $this->appSettingsGetSettingsAsyncWithHttpInfo($app, $contentType)
+        return $this->appSettingsGetSettingsAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7097,21 +6565,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appSettingsGetSettingsAsyncWithHttpInfo
-     *
-     * Get the app settings.
-     *
-     * @param  string $app The name of the app to get the settings for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsGetSettings'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appSettingsGetSettingsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appSettingsGetSettings'][0])
+    public function appSettingsGetSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['appSettingsGetSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppSettingsDto';
-        $request = $this->appSettingsGetSettingsRequest($app, $contentType);
+        $request = $this->appSettingsGetSettingsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7149,18 +6611,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appSettingsGetSettings'
-     *
-     * @param  string $app The name of the app to get the settings for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsGetSettings'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appSettingsGetSettingsRequest($app, string $contentType = self::contentTypes['appSettingsGetSettings'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appSettingsGetSettingsRequest(string $contentType = self::contentTypes['appSettingsGetSettings'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -7172,7 +6630,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/settings';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -7241,41 +6699,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appSettingsPutSettings
-     *
-     * Update the app settings.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsPutSettings'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppSettingsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $update_app_settings_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appSettingsPutSettings($app, $update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
+    public function appSettingsPutSettings($update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
     {
-        list($response) = $this->appSettingsPutSettingsWithHttpInfo($app, $update_app_settings_dto, $contentType);
+        list($response) = $this->appSettingsPutSettingsWithHttpInfo($update_app_settings_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appSettingsPutSettingsWithHttpInfo
-     *
-     * Update the app settings.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsPutSettings'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppSettingsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $update_app_settings_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appSettingsPutSettingsWithHttpInfo($app, $update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
+    public function appSettingsPutSettingsWithHttpInfo($update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
     {
-        $request = $this->appSettingsPutSettingsRequest($app, $update_app_settings_dto, $contentType);
+        $request = $this->appSettingsPutSettingsRequest($update_app_settings_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7408,20 +6856,13 @@ class AppsApi
     }
 
     /**
-     * Operation appSettingsPutSettingsAsync
-     *
-     * Update the app settings.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsPutSettings'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $update_app_settings_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appSettingsPutSettingsAsync($app, $update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
+    public function appSettingsPutSettingsAsync($update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
     {
-        return $this->appSettingsPutSettingsAsyncWithHttpInfo($app, $update_app_settings_dto, $contentType)
+        return $this->appSettingsPutSettingsAsyncWithHttpInfo($update_app_settings_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7429,22 +6870,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appSettingsPutSettingsAsyncWithHttpInfo
-     *
-     * Update the app settings.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsPutSettings'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $update_app_settings_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appSettingsPutSettingsAsyncWithHttpInfo($app, $update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
+    public function appSettingsPutSettingsAsyncWithHttpInfo($update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppSettingsDto';
-        $request = $this->appSettingsPutSettingsRequest($app, $update_app_settings_dto, $contentType);
+        $request = $this->appSettingsPutSettingsRequest($update_app_settings_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7482,19 +6917,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appSettingsPutSettings'
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appSettingsPutSettings'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appSettingsPutSettingsRequest($app, $update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
-    {
 
+    /**
+     * @param $update_app_settings_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appSettingsPutSettingsRequest($update_app_settings_dto, string $contentType = self::contentTypes['appSettingsPutSettings'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -7513,7 +6944,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/settings';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -7589,41 +7020,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appWorkflowsDeleteWorkflow
-     *
-     * Delete a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsDeleteWorkflow'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WorkflowsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $id
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appWorkflowsDeleteWorkflow($app, $id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
+    public function appWorkflowsDeleteWorkflow($id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
     {
-        list($response) = $this->appWorkflowsDeleteWorkflowWithHttpInfo($app, $id, $contentType);
+        list($response) = $this->appWorkflowsDeleteWorkflowWithHttpInfo($id, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appWorkflowsDeleteWorkflowWithHttpInfo
-     *
-     * Delete a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsDeleteWorkflow'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WorkflowsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appWorkflowsDeleteWorkflowWithHttpInfo($app, $id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
+    public function appWorkflowsDeleteWorkflowWithHttpInfo($id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
     {
-        $request = $this->appWorkflowsDeleteWorkflowRequest($app, $id, $contentType);
+        $request = $this->appWorkflowsDeleteWorkflowRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7755,21 +7176,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appWorkflowsDeleteWorkflowAsync
-     *
-     * Delete a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsDeleteWorkflow'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appWorkflowsDeleteWorkflowAsync($app, $id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
+    public function appWorkflowsDeleteWorkflowAsync($id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
     {
-        return $this->appWorkflowsDeleteWorkflowAsyncWithHttpInfo($app, $id, $contentType)
+        return $this->appWorkflowsDeleteWorkflowAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7777,22 +7192,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appWorkflowsDeleteWorkflowAsyncWithHttpInfo
-     *
-     * Delete a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsDeleteWorkflow'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appWorkflowsDeleteWorkflowAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
+    public function appWorkflowsDeleteWorkflowAsyncWithHttpInfo($id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WorkflowsDto';
-        $request = $this->appWorkflowsDeleteWorkflowRequest($app, $id, $contentType);
+        $request = $this->appWorkflowsDeleteWorkflowRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7830,19 +7239,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appWorkflowsDeleteWorkflow'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsDeleteWorkflow'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appWorkflowsDeleteWorkflowRequest($app, $id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
-    {
 
+    /**
+     * @param $id
+     * @param string $contentType
+     * @return Request
+     */
+    public function appWorkflowsDeleteWorkflowRequest($id, string $contentType = self::contentTypes['appWorkflowsDeleteWorkflow'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -7861,7 +7266,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/workflows/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -7938,39 +7343,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appWorkflowsGetWorkflows
-     *
-     * Get app workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsGetWorkflows'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WorkflowsDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appWorkflowsGetWorkflows($app, string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
+    public function appWorkflowsGetWorkflows(string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
     {
-        list($response) = $this->appWorkflowsGetWorkflowsWithHttpInfo($app, $contentType);
+        list($response) = $this->appWorkflowsGetWorkflowsWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appWorkflowsGetWorkflowsWithHttpInfo
-     *
-     * Get app workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsGetWorkflows'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WorkflowsDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appWorkflowsGetWorkflowsWithHttpInfo($app, string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
+    public function appWorkflowsGetWorkflowsWithHttpInfo(string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
     {
-        $request = $this->appWorkflowsGetWorkflowsRequest($app, $contentType);
+        $request = $this->appWorkflowsGetWorkflowsRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8079,20 +7474,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appWorkflowsGetWorkflowsAsync
-     *
-     * Get app workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsGetWorkflows'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appWorkflowsGetWorkflowsAsync($app, string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
+    public function appWorkflowsGetWorkflowsAsync(string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
     {
-        return $this->appWorkflowsGetWorkflowsAsyncWithHttpInfo($app, $contentType)
+        return $this->appWorkflowsGetWorkflowsAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8100,21 +7489,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appWorkflowsGetWorkflowsAsyncWithHttpInfo
-     *
-     * Get app workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsGetWorkflows'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appWorkflowsGetWorkflowsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
+    public function appWorkflowsGetWorkflowsAsyncWithHttpInfo(string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WorkflowsDto';
-        $request = $this->appWorkflowsGetWorkflowsRequest($app, $contentType);
+        $request = $this->appWorkflowsGetWorkflowsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8152,18 +7535,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appWorkflowsGetWorkflows'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsGetWorkflows'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appWorkflowsGetWorkflowsRequest($app, string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appWorkflowsGetWorkflowsRequest(string $contentType = self::contentTypes['appWorkflowsGetWorkflows'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -8175,7 +7554,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/workflows';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -8244,41 +7623,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appWorkflowsPostWorkflow
-     *
-     * Create a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPostWorkflow'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WorkflowsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $add_workflow_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appWorkflowsPostWorkflow($app, $add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
+    public function appWorkflowsPostWorkflow($add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
     {
-        list($response) = $this->appWorkflowsPostWorkflowWithHttpInfo($app, $add_workflow_dto, $contentType);
+        list($response) = $this->appWorkflowsPostWorkflowWithHttpInfo($add_workflow_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appWorkflowsPostWorkflowWithHttpInfo
-     *
-     * Create a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPostWorkflow'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WorkflowsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $add_workflow_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appWorkflowsPostWorkflowWithHttpInfo($app, $add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
+    public function appWorkflowsPostWorkflowWithHttpInfo($add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
     {
-        $request = $this->appWorkflowsPostWorkflowRequest($app, $add_workflow_dto, $contentType);
+        $request = $this->appWorkflowsPostWorkflowRequest($add_workflow_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8410,21 +7779,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appWorkflowsPostWorkflowAsync
-     *
-     * Create a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPostWorkflow'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $add_workflow_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appWorkflowsPostWorkflowAsync($app, $add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
+    public function appWorkflowsPostWorkflowAsync($add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
     {
-        return $this->appWorkflowsPostWorkflowAsyncWithHttpInfo($app, $add_workflow_dto, $contentType)
+        return $this->appWorkflowsPostWorkflowAsyncWithHttpInfo($add_workflow_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8432,22 +7795,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appWorkflowsPostWorkflowAsyncWithHttpInfo
-     *
-     * Create a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPostWorkflow'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $add_workflow_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appWorkflowsPostWorkflowAsyncWithHttpInfo($app, $add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
+    public function appWorkflowsPostWorkflowAsyncWithHttpInfo($add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WorkflowsDto';
-        $request = $this->appWorkflowsPostWorkflowRequest($app, $add_workflow_dto, $contentType);
+        $request = $this->appWorkflowsPostWorkflowRequest($add_workflow_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8485,19 +7842,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appWorkflowsPostWorkflow'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  \OpenAPI\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPostWorkflow'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appWorkflowsPostWorkflowRequest($app, $add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
-    {
 
+    /**
+     * @param $add_workflow_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appWorkflowsPostWorkflowRequest($add_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPostWorkflow'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -8516,7 +7869,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/workflows';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -8592,43 +7945,33 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appWorkflowsPutWorkflow
-     *
-     * Update a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPutWorkflow'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WorkflowsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $id
+     * @param $update_workflow_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appWorkflowsPutWorkflow($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
+    public function appWorkflowsPutWorkflow($id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
     {
-        list($response) = $this->appWorkflowsPutWorkflowWithHttpInfo($app, $id, $update_workflow_dto, $contentType);
+        list($response) = $this->appWorkflowsPutWorkflowWithHttpInfo($id, $update_workflow_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appWorkflowsPutWorkflowWithHttpInfo
-     *
-     * Update a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPutWorkflow'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WorkflowsDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $id
+     * @param $update_workflow_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appWorkflowsPutWorkflowWithHttpInfo($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
+    public function appWorkflowsPutWorkflowWithHttpInfo($id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
     {
-        $request = $this->appWorkflowsPutWorkflowRequest($app, $id, $update_workflow_dto, $contentType);
+        $request = $this->appWorkflowsPutWorkflowRequest($id, $update_workflow_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8760,22 +8103,16 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appWorkflowsPutWorkflowAsync
-     *
-     * Update a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPutWorkflow'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param $update_workflow_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appWorkflowsPutWorkflowAsync($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
+    public function appWorkflowsPutWorkflowAsync($id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
     {
-        return $this->appWorkflowsPutWorkflowAsyncWithHttpInfo($app, $id, $update_workflow_dto, $contentType)
+        return $this->appWorkflowsPutWorkflowAsyncWithHttpInfo($id, $update_workflow_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8783,23 +8120,17 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appWorkflowsPutWorkflowAsyncWithHttpInfo
-     *
-     * Update a workflow.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPutWorkflow'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $id
+     * @param $update_workflow_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appWorkflowsPutWorkflowAsyncWithHttpInfo($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
+    public function appWorkflowsPutWorkflowAsyncWithHttpInfo($id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WorkflowsDto';
-        $request = $this->appWorkflowsPutWorkflowRequest($app, $id, $update_workflow_dto, $contentType);
+        $request = $this->appWorkflowsPutWorkflowRequest($id, $update_workflow_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8837,20 +8168,16 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appWorkflowsPutWorkflow'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $id The ID of the workflow to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appWorkflowsPutWorkflow'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appWorkflowsPutWorkflowRequest($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
-    {
 
+    /**
+     * @param $id
+     * @param $update_workflow_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appWorkflowsPutWorkflowRequest($id, $update_workflow_dto, string $contentType = self::contentTypes['appWorkflowsPutWorkflow'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -8876,7 +8203,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/workflows/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -8960,38 +8287,27 @@ class AppsApi
         );
     }
 
-    /**
-     * Operation appsDeleteApp
-     *
-     * Delete the app.
-     *
-     * @param  string $app The name of the app to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteApp'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function appsDeleteApp($app, string $contentType = self::contentTypes['appsDeleteApp'][0])
-    {
-        $this->appsDeleteAppWithHttpInfo($app, $contentType);
-    }
 
     /**
-     * Operation appsDeleteAppWithHttpInfo
-     *
-     * Delete the app.
-     *
-     * @param  string $app The name of the app to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteApp'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsDeleteAppWithHttpInfo($app, string $contentType = self::contentTypes['appsDeleteApp'][0])
+    public function appsDeleteApp(string $contentType = self::contentTypes['appsDeleteApp'][0])
     {
-        $request = $this->appsDeleteAppRequest($app, $contentType);
+        $this->appsDeleteAppWithHttpInfo($contentType);
+    }
+
+
+    /**
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function appsDeleteAppWithHttpInfo(string $contentType = self::contentTypes['appsDeleteApp'][0])
+    {
+        $request = $this->appsDeleteAppRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9053,20 +8369,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appsDeleteAppAsync
-     *
-     * Delete the app.
-     *
-     * @param  string $app The name of the app to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteApp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsDeleteAppAsync($app, string $contentType = self::contentTypes['appsDeleteApp'][0])
+    public function appsDeleteAppAsync(string $contentType = self::contentTypes['appsDeleteApp'][0])
     {
-        return $this->appsDeleteAppAsyncWithHttpInfo($app, $contentType)
+        return $this->appsDeleteAppAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9074,21 +8384,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appsDeleteAppAsyncWithHttpInfo
-     *
-     * Delete the app.
-     *
-     * @param  string $app The name of the app to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteApp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsDeleteAppAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appsDeleteApp'][0])
+    public function appsDeleteAppAsyncWithHttpInfo(string $contentType = self::contentTypes['appsDeleteApp'][0])
     {
         $returnType = '';
-        $request = $this->appsDeleteAppRequest($app, $contentType);
+        $request = $this->appsDeleteAppRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9113,18 +8417,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appsDeleteApp'
-     *
-     * @param  string $app The name of the app to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteApp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appsDeleteAppRequest($app, string $contentType = self::contentTypes['appsDeleteApp'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appsDeleteAppRequest(string $contentType = self::contentTypes['appsDeleteApp'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -9136,7 +8436,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -9205,39 +8505,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appsDeleteImage
-     *
-     * Remove the app image.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteImage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsDeleteImage($app, string $contentType = self::contentTypes['appsDeleteImage'][0])
+    public function appsDeleteImage(string $contentType = self::contentTypes['appsDeleteImage'][0])
     {
-        list($response) = $this->appsDeleteImageWithHttpInfo($app, $contentType);
+        list($response) = $this->appsDeleteImageWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appsDeleteImageWithHttpInfo
-     *
-     * Remove the app image.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteImage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsDeleteImageWithHttpInfo($app, string $contentType = self::contentTypes['appsDeleteImage'][0])
+    public function appsDeleteImageWithHttpInfo(string $contentType = self::contentTypes['appsDeleteImage'][0])
     {
-        $request = $this->appsDeleteImageRequest($app, $contentType);
+        $request = $this->appsDeleteImageRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9369,20 +8659,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appsDeleteImageAsync
-     *
-     * Remove the app image.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteImage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsDeleteImageAsync($app, string $contentType = self::contentTypes['appsDeleteImage'][0])
+    public function appsDeleteImageAsync(string $contentType = self::contentTypes['appsDeleteImage'][0])
     {
-        return $this->appsDeleteImageAsyncWithHttpInfo($app, $contentType)
+        return $this->appsDeleteImageAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9390,21 +8674,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appsDeleteImageAsyncWithHttpInfo
-     *
-     * Remove the app image.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteImage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsDeleteImageAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appsDeleteImage'][0])
+    public function appsDeleteImageAsyncWithHttpInfo(string $contentType = self::contentTypes['appsDeleteImage'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppDto';
-        $request = $this->appsDeleteImageRequest($app, $contentType);
+        $request = $this->appsDeleteImageRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9442,18 +8720,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appsDeleteImage'
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsDeleteImage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appsDeleteImageRequest($app, string $contentType = self::contentTypes['appsDeleteImage'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appsDeleteImageRequest(string $contentType = self::contentTypes['appsDeleteImage'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -9465,7 +8739,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/image';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -9534,39 +8808,29 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appsGetApp
-     *
-     * Get an app by name.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApp'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsGetApp($app, string $contentType = self::contentTypes['appsGetApp'][0])
+    public function appsGetApp(string $contentType = self::contentTypes['appsGetApp'][0])
     {
-        list($response) = $this->appsGetAppWithHttpInfo($app, $contentType);
+        list($response) = $this->appsGetAppWithHttpInfo($contentType);
         return $response;
     }
 
+
     /**
-     * Operation appsGetAppWithHttpInfo
-     *
-     * Get an app by name.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApp'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsGetAppWithHttpInfo($app, string $contentType = self::contentTypes['appsGetApp'][0])
+    public function appsGetAppWithHttpInfo(string $contentType = self::contentTypes['appsGetApp'][0])
     {
-        $request = $this->appsGetAppRequest($app, $contentType);
+        $request = $this->appsGetAppRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9675,20 +8939,14 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appsGetAppAsync
-     *
-     * Get an app by name.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsGetAppAsync($app, string $contentType = self::contentTypes['appsGetApp'][0])
+    public function appsGetAppAsync(string $contentType = self::contentTypes['appsGetApp'][0])
     {
-        return $this->appsGetAppAsyncWithHttpInfo($app, $contentType)
+        return $this->appsGetAppAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9696,21 +8954,15 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appsGetAppAsyncWithHttpInfo
-     *
-     * Get an app by name.
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsGetAppAsyncWithHttpInfo($app, string $contentType = self::contentTypes['appsGetApp'][0])
+    public function appsGetAppAsyncWithHttpInfo(string $contentType = self::contentTypes['appsGetApp'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppDto';
-        $request = $this->appsGetAppRequest($app, $contentType);
+        $request = $this->appsGetAppRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9748,18 +9000,14 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appsGetApp'
-     *
-     * @param  string $app The name of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appsGetAppRequest($app, string $contentType = self::contentTypes['appsGetApp'][0])
-    {
 
+    /**
+     * @param string $contentType
+     * @return Request
+     */
+    public function appsGetAppRequest(string $contentType = self::contentTypes['appsGetApp'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -9771,7 +9019,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -9841,15 +9089,10 @@ class AppsApi
     }
 
     /**
-     * Operation appsGetApps
-     *
-     * Get your apps.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApps'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppDto[]|\OpenAPI\Client\Model\ErrorDto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function appsGetApps(string $contentType = self::contentTypes['appsGetApps'][0])
     {
@@ -9857,16 +9100,12 @@ class AppsApi
         return $response;
     }
 
+
     /**
-     * Operation appsGetAppsWithHttpInfo
-     *
-     * Get your apps.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApps'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppDto[]|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function appsGetAppsWithHttpInfo(string $contentType = self::contentTypes['appsGetApps'][0])
     {
@@ -9979,14 +9218,9 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appsGetAppsAsync
-     *
-     * Get your apps.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApps'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function appsGetAppsAsync(string $contentType = self::contentTypes['appsGetApps'][0])
@@ -9999,14 +9233,9 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appsGetAppsAsyncWithHttpInfo
-     *
-     * Get your apps.
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApps'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function appsGetAppsAsyncWithHttpInfo(string $contentType = self::contentTypes['appsGetApps'][0])
@@ -10050,27 +9279,19 @@ class AppsApi
             );
     }
 
+
     /**
-     * Create request for operation 'appsGetApps'
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetApps'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param string $contentType
+     * @return Request
      */
     public function appsGetAppsRequest(string $contentType = self::contentTypes['appsGetApps'][0])
     {
-
-
         $resourcePath = '/api/apps';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
-
-
-
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -10126,17 +9347,13 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appsGetTeamApps
-     *
-     * Get team apps.
-     *
-     * @param  string $team The ID of the team. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetTeamApps'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppDto[]|\OpenAPI\Client\Model\ErrorDto
+     * @param $team
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function appsGetTeamApps($team, string $contentType = self::contentTypes['appsGetTeamApps'][0])
     {
@@ -10144,17 +9361,13 @@ class AppsApi
         return $response;
     }
 
+
     /**
-     * Operation appsGetTeamAppsWithHttpInfo
-     *
-     * Get team apps.
-     *
-     * @param  string $team The ID of the team. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetTeamApps'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppDto[]|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $team
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function appsGetTeamAppsWithHttpInfo($team, string $contentType = self::contentTypes['appsGetTeamApps'][0])
     {
@@ -10267,15 +9480,10 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appsGetTeamAppsAsync
-     *
-     * Get team apps.
-     *
-     * @param  string $team The ID of the team. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetTeamApps'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $team
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function appsGetTeamAppsAsync($team, string $contentType = self::contentTypes['appsGetTeamApps'][0])
@@ -10288,15 +9496,10 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appsGetTeamAppsAsyncWithHttpInfo
-     *
-     * Get team apps.
-     *
-     * @param  string $team The ID of the team. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetTeamApps'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $team
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function appsGetTeamAppsAsyncWithHttpInfo($team, string $contentType = self::contentTypes['appsGetTeamApps'][0])
@@ -10340,14 +9543,11 @@ class AppsApi
             );
     }
 
+
     /**
-     * Create request for operation 'appsGetTeamApps'
-     *
-     * @param  string $team The ID of the team. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsGetTeamApps'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
+     * @param $team
+     * @param string $contentType
+     * @return Request
      */
     public function appsGetTeamAppsRequest($team, string $contentType = self::contentTypes['appsGetTeamApps'][0])
     {
@@ -10363,7 +9563,7 @@ class AppsApi
         $resourcePath = '/api/teams/{team}/apps';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -10715,12 +9915,9 @@ class AppsApi
         $resourcePath = '/api/apps';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
-
-
-
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -10783,41 +9980,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appsPutApp
-     *
-     * Update the app.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutApp'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $update_app_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsPutApp($app, $update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
+    public function appsPutApp($update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
     {
-        list($response) = $this->appsPutAppWithHttpInfo($app, $update_app_dto, $contentType);
+        list($response) = $this->appsPutAppWithHttpInfo($update_app_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appsPutAppWithHttpInfo
-     *
-     * Update the app.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutApp'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $update_app_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsPutAppWithHttpInfo($app, $update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
+    public function appsPutAppWithHttpInfo($update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
     {
-        $request = $this->appsPutAppRequest($app, $update_app_dto, $contentType);
+        $request = $this->appsPutAppRequest($update_app_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10949,21 +10136,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appsPutAppAsync
-     *
-     * Update the app.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutApp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $update_app_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsPutAppAsync($app, $update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
+    public function appsPutAppAsync($update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
     {
-        return $this->appsPutAppAsyncWithHttpInfo($app, $update_app_dto, $contentType)
+        return $this->appsPutAppAsyncWithHttpInfo($update_app_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10971,22 +10152,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appsPutAppAsyncWithHttpInfo
-     *
-     * Update the app.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutApp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $update_app_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsPutAppAsyncWithHttpInfo($app, $update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
+    public function appsPutAppAsyncWithHttpInfo($update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppDto';
-        $request = $this->appsPutAppRequest($app, $update_app_dto, $contentType);
+        $request = $this->appsPutAppRequest($update_app_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11024,19 +10199,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appsPutApp'
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutApp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appsPutAppRequest($app, $update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
-    {
 
+    /**
+     * @param $update_app_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appsPutAppRequest($update_app_dto, string $contentType = self::contentTypes['appsPutApp'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -11055,7 +10226,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -11131,41 +10302,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appsPutAppTeam
-     *
-     * Transfer the app.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutAppTeam'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param $transfer_to_team_dto
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsPutAppTeam($app, $transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
+    public function appsPutAppTeam($transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
     {
-        list($response) = $this->appsPutAppTeamWithHttpInfo($app, $transfer_to_team_dto, $contentType);
+        list($response) = $this->appsPutAppTeamWithHttpInfo($transfer_to_team_dto, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appsPutAppTeamWithHttpInfo
-     *
-     * Transfer the app.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutAppTeam'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param $transfer_to_team_dto
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsPutAppTeamWithHttpInfo($app, $transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
+    public function appsPutAppTeamWithHttpInfo($transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
     {
-        $request = $this->appsPutAppTeamRequest($app, $transfer_to_team_dto, $contentType);
+        $request = $this->appsPutAppTeamRequest($transfer_to_team_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11297,21 +10458,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appsPutAppTeamAsync
-     *
-     * Transfer the app.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutAppTeam'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $transfer_to_team_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsPutAppTeamAsync($app, $transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
+    public function appsPutAppTeamAsync($transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
     {
-        return $this->appsPutAppTeamAsyncWithHttpInfo($app, $transfer_to_team_dto, $contentType)
+        return $this->appsPutAppTeamAsyncWithHttpInfo($transfer_to_team_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11319,22 +10474,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appsPutAppTeamAsyncWithHttpInfo
-     *
-     * Transfer the app.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutAppTeam'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param $transfer_to_team_dto
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsPutAppTeamAsyncWithHttpInfo($app, $transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
+    public function appsPutAppTeamAsyncWithHttpInfo($transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppDto';
-        $request = $this->appsPutAppTeamRequest($app, $transfer_to_team_dto, $contentType);
+        $request = $this->appsPutAppTeamRequest($transfer_to_team_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11372,19 +10521,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appsPutAppTeam'
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \OpenAPI\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsPutAppTeam'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appsPutAppTeamRequest($app, $transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
-    {
 
+    /**
+     * @param $transfer_to_team_dto
+     * @param string $contentType
+     * @return Request
+     */
+    public function appsPutAppTeamRequest($transfer_to_team_dto, string $contentType = self::contentTypes['appsPutAppTeam'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -11403,7 +10548,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/team';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -11479,41 +10624,31 @@ class AppsApi
         );
     }
 
+
     /**
-     * Operation appsUploadImage
-     *
-     * Upload the app image.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \SplFileObject $file file (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsUploadImage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto
+     * @param null $file
+     * @param string $contentType
+     * @return mixed
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsUploadImage($app, $file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
+    public function appsUploadImage($file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
     {
-        list($response) = $this->appsUploadImageWithHttpInfo($app, $file, $contentType);
+        list($response) = $this->appsUploadImageWithHttpInfo($file, $contentType);
         return $response;
     }
 
+
     /**
-     * Operation appsUploadImageWithHttpInfo
-     *
-     * Upload the app image.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \SplFileObject $file (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsUploadImage'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppDto|\OpenAPI\Client\Model\ErrorDto|\OpenAPI\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @param null $file
+     * @param string $contentType
+     * @return array
+     * @throws ApiException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function appsUploadImageWithHttpInfo($app, $file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
+    public function appsUploadImageWithHttpInfo($file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
     {
-        $request = $this->appsUploadImageRequest($app, $file, $contentType);
+        $request = $this->appsUploadImageRequest($file, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11645,21 +10780,15 @@ class AppsApi
         }
     }
 
+
     /**
-     * Operation appsUploadImageAsync
-     *
-     * Upload the app image.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \SplFileObject $file (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsUploadImage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param null $file
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsUploadImageAsync($app, $file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
+    public function appsUploadImageAsync($file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
     {
-        return $this->appsUploadImageAsyncWithHttpInfo($app, $file, $contentType)
+        return $this->appsUploadImageAsyncWithHttpInfo($file, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11667,22 +10796,16 @@ class AppsApi
             );
     }
 
+
     /**
-     * Operation appsUploadImageAsyncWithHttpInfo
-     *
-     * Upload the app image.
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \SplFileObject $file (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsUploadImage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
+     * @param null $file
+     * @param string $contentType
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function appsUploadImageAsyncWithHttpInfo($app, $file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
+    public function appsUploadImageAsyncWithHttpInfo($file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppDto';
-        $request = $this->appsUploadImageRequest($app, $file, $contentType);
+        $request = $this->appsUploadImageRequest($file, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11720,19 +10843,15 @@ class AppsApi
             );
     }
 
-    /**
-     * Create request for operation 'appsUploadImage'
-     *
-     * @param  string $app The name of the app to update. (required)
-     * @param  \SplFileObject $file (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appsUploadImage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function appsUploadImageRequest($app, $file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
-    {
 
+    /**
+     * @param null $file
+     * @param string $contentType
+     * @return Request
+     */
+    public function appsUploadImageRequest($file = null, string $contentType = self::contentTypes['appsUploadImage'][0])
+    {
+        $app = $this->options['appName'];
         // verify the required parameter 'app' is set
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
@@ -11745,7 +10864,7 @@ class AppsApi
         $resourcePath = '/api/apps/{app}/image';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = $this->getAuthorizationHeader();
         $httpBody = '';
         $multipart = false;
 
@@ -11843,5 +10962,13 @@ class AppsApi
         }
 
         return $options;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getAuthorizationHeader()
+    {
+        return ['Authorization' => 'Bearer '.$this->options['access_token']];
     }
 }

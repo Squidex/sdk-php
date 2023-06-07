@@ -15,8 +15,9 @@ $apiInstance = new SquidexClient([
 $id = 1;
 
 try {
-    $result = $apiInstance->rules()->rulesPutRuleRun($id);
-    print_r($result);
+//    $result = $apiInstance->rules()->rulesPutRuleRun($id);
+    $result = $apiInstance->apps()->appClientsGetClients();
+    print($result);
 } catch (Exception $e) {
     echo $e->getMessage();
 }

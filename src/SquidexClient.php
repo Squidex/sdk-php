@@ -6,6 +6,7 @@ namespace OpenAPI\Client;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use OpenAPI\Client\Api\AppsApi;
 use OpenAPI\Client\Api\RulesApi;
 
 class SquidexClient
@@ -36,6 +37,16 @@ class SquidexClient
     {
         return new RulesApi($this->options);
     }
+
+
+    /**
+     * @return AppsApi
+     */
+    public function apps()
+    {
+        return new AppsApi($this->options);
+    }
+
 
 
     /**
