@@ -30,12 +30,14 @@ class SquidexClient
         $this->options['access_token'] = $this->getToken();
     }
 
+
     /**
-     * @return RulesApi
+     * @return RulesApiClient
      */
     public function rules()
     {
-        return new RulesApi($this->options);
+        return new RulesApiClient($this->options);
+//        return new RulesApi($this->options);
     }
 
 

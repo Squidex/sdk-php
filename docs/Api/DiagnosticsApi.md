@@ -24,7 +24,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-
 $apiInstance = new OpenAPI\Client\Api\DiagnosticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -49,7 +48,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -73,7 +72,6 @@ Creates a gc dump and writes it into storage.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -101,7 +99,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 

@@ -41,7 +41,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-
 $apiInstance = new OpenAPI\Client\Api\RulesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -49,7 +48,7 @@ $apiInstance = new OpenAPI\Client\Api\RulesApi(
     $config
 );
 $app = 'app_example'; // string | The name of the app.
-$id = 'id_example'; // string | The event to enqueue.
+$id = 'id_example'; // string | The event to cancel.
 
 try {
     $apiInstance->rulesDeleteEvent($app, $id);
@@ -63,7 +62,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **app** | **string**| The name of the app. | |
-| **id** | **string**| The event to enqueue. | |
+| **id** | **string**| The event to cancel. | |
 
 ### Return type
 
@@ -71,7 +70,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -95,7 +94,6 @@ Cancels all events.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -126,7 +124,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -150,7 +148,6 @@ Delete a rule.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -183,7 +180,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -207,7 +204,6 @@ Cancels all rule events.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -240,7 +236,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -264,7 +260,6 @@ Cancel the current run.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -295,7 +290,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -319,7 +314,6 @@ Disable a rule.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -353,7 +347,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -377,7 +371,6 @@ Enable a rule.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -411,7 +404,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -435,7 +428,6 @@ Get supported rule actions.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -464,7 +456,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -488,7 +480,6 @@ Provide the json schema for the event with the specified name.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -520,7 +511,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -544,7 +535,6 @@ Provide a list of all event types that are used in rules.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -573,7 +563,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -597,7 +587,6 @@ Get rule events.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -635,7 +624,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -659,7 +648,6 @@ Get rules.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -691,7 +679,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -715,7 +703,6 @@ Create a new rule.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -749,7 +736,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -773,7 +760,6 @@ Retry the event immediately.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -806,7 +792,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -830,7 +816,6 @@ Update a rule.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -866,7 +851,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -890,7 +875,6 @@ Run a rule.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -925,7 +909,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -949,7 +933,6 @@ Simulate a rule.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -983,7 +966,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1007,7 +990,6 @@ Simulate a rule.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1041,7 +1023,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1065,7 +1047,6 @@ Trigger a rule.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1098,7 +1079,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 

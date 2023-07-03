@@ -26,7 +26,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-
 $apiInstance = new OpenAPI\Client\Api\UsersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -55,7 +54,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -79,7 +78,6 @@ Get user picture by id.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -111,7 +109,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -135,7 +133,6 @@ Get the user resources.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -164,7 +161,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -190,7 +187,6 @@ Search the user by query that contains the email address or the part of the emai
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -222,7 +218,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 

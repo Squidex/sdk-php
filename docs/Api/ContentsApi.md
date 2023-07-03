@@ -42,7 +42,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-
 $apiInstance = new OpenAPI\Client\Api\ContentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -75,7 +74,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -101,7 +100,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -141,7 +139,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -167,7 +165,6 @@ You can create an generated documentation for your app at /api/content/{appName}
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -206,7 +203,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -232,7 +229,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -272,7 +268,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -298,7 +294,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -338,7 +333,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -364,7 +359,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -408,7 +402,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -434,7 +428,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -469,7 +462,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -495,7 +488,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -537,7 +529,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -563,7 +555,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -621,7 +612,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -647,7 +638,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -693,7 +683,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -719,7 +709,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -767,7 +756,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -793,7 +782,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -841,7 +829,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -867,7 +855,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -909,7 +896,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -935,7 +922,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -981,7 +967,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1007,7 +993,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1043,7 +1028,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1069,7 +1054,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1117,7 +1101,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1143,7 +1127,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1185,7 +1168,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1211,7 +1194,6 @@ You can read the generated documentation for your app at /api/content/{appName}/
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1253,7 +1235,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 

@@ -4,7 +4,7 @@
     <list default="true" id="cae8fa81-b847-430c-bbc0-dd4d9c7c2ba1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/run.php" beforeDir="false" afterPath="$PROJECT_DIR$/example/run.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Api/AppsApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/AppsApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/RulesApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/RulesApi.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SquidexClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/SquidexClient.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,17 +36,17 @@
       <file leaf-file-name="run.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/run.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="46" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+            <state relative-caret-position="136">
+              <caret line="8" column="32" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SquidexClient.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SquidexClient.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SquidexClient.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="475">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="e#35#57#0#PHP" expanded="true" />
               </folding>
@@ -54,14 +54,57 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppsApi.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Api/AppsApi.php">
+      <file leaf-file-name="RulesApiClient.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RulesApiClient.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-425">
-              <caret line="43" column="2" lean-forward="true" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
-              <folding>
-                <element signature="e#649#671#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlansApi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Api/PlansApi.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="RulesApi.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Api/RulesApi.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="459">
+                <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PingApi.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Api/PingApi.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TranslationsApi.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Api/TranslationsApi.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TranslationsApi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Api/TranslationsApi.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -69,8 +112,8 @@
       <file leaf-file-name="RulesApi.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Api/RulesApi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="324" column="8" lean-forward="true" selection-start-line="324" selection-start-column="8" selection-end-line="324" selection-end-column="41" />
+            <state relative-caret-position="63376">
+              <caret line="3746" column="7" selection-start-line="3746" selection-start-column="7" selection-end-line="3746" selection-end-column="21" />
               <folding>
                 <element signature="e#650#672#0#PHP" expanded="true" />
               </folding>
@@ -82,16 +125,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>client-secret</find>
-      <find>client_secret</find>
-      <find>X-Fern-Language</find>
-      <find>Configuration</find>
-      <find>nam</find>
-      <find>clientSecret</find>
-      <find>opt</find>
-      <find>Run</find>
       <find>-&gt;options</find>
-      <find>rulesPutRuleRun</find>
       <find>apiKeys</find>
       <find>setAccessToken</find>
       <find>identity-server/connect</find>
@@ -111,6 +145,15 @@
       <find>rulesDeleteEventAsyncWithHttpInfo</find>
       <find>rulesDeleteEvents</find>
       <find>$headerParams</find>
+      <find>ulesPutRuleRun</find>
+      <find>rulesPutRuleRunRequest</find>
+      <find>rulesPutRuleRun</find>
+      <find>options</find>
+      <find>object</find>
+      <find>_co</find>
+      <find>getAuthorizationHeader</find>
+      <find>rulesGetEventsWithHttpInfo</find>
+      <find>app</find>
       <find>getAuthorizationHeader()</find>
     </findStrings>
   </component>
@@ -129,10 +172,11 @@
         <option value="$PROJECT_DIR$/src/Interface/Options.php" />
         <option value="$PROJECT_DIR$/src/Environment.php" />
         <option value="$PROJECT_DIR$/src/Configuration.php" />
-        <option value="$PROJECT_DIR$/src/Api/RulesApi.php" />
+        <option value="$PROJECT_DIR$/src/Api/AppsApi.php" />
         <option value="$PROJECT_DIR$/src/SquidexClient.php" />
         <option value="$PROJECT_DIR$/example/run.php" />
-        <option value="$PROJECT_DIR$/src/Api/AppsApi.php" />
+        <option value="$PROJECT_DIR$/src/RulesApiClient.php" />
+        <option value="$PROJECT_DIR$/src/Api/RulesApi.php" />
       </list>
     </option>
   </component>
@@ -210,7 +254,7 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -221,7 +265,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,6 +286,11 @@
             <path>
               <item name="sdk-php" type="b2602c69:ProjectViewProjectNode" />
               <item name="sdk-php" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sdk-php" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sdk-php" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -255,11 +303,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sdk-node-main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -305,27 +354,40 @@
       <workItem from="1685693219107" duration="15483000" />
       <workItem from="1685950201990" duration="16854000" />
       <workItem from="1686034037534" duration="8224000" />
-      <workItem from="1686125280952" duration="8057000" />
+      <workItem from="1686125280952" duration="9009000" />
+      <workItem from="1686225850208" duration="681000" />
+      <workItem from="1686229589875" duration="2600000" />
+      <workItem from="1686577985689" duration="710000" />
+      <workItem from="1686632722994" duration="595000" />
+      <workItem from="1686663673903" duration="652000" />
+      <workItem from="1686719840454" duration="610000" />
+      <workItem from="1687772637025" duration="3921000" />
+      <workItem from="1687780349299" duration="599000" />
+      <workItem from="1687871482175" duration="1044000" />
+      <workItem from="1687930470636" duration="599000" />
+      <workItem from="1688046088311" duration="1195000" />
+      <workItem from="1688101394593" duration="41000" />
+      <workItem from="1688109753021" duration="703000" />
+      <workItem from="1688110482055" duration="31000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58368000" />
+    <option name="totallyTimeSpent" value="73301000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1048" extended-state="6" />
-    <editor active="true" />
+    <frame x="1912" y="-8" width="1936" height="1048" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21002132" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23987207" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="11" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.0" />
       <window_info anchor="bottom" id="Run" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.008791209" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.08681319" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -350,21 +412,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/basic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="144" column="9" selection-start-line="144" selection-start-column="9" selection-end-line="144" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/module/docs/Api/AppsApi.md" />
-    <entry file="file://$PROJECT_DIR$/module/lib/Api/BackupsApi.php" />
-    <entry file="file://$PROJECT_DIR$/module/lib/Api/AssetsApi.php" />
-    <entry file="file://$PROJECT_DIR$/module/test/Api/AssetsApiTest.php" />
-    <entry file="file://$PROJECT_DIR$/module/lib/Api/AppsApi.php" />
-    <entry file="file://$PROJECT_DIR$/module/lib/Model/ClientDto.php" />
-    <entry file="file://$PROJECT_DIR$/module/docs/Api/UsersApi.md" />
-    <entry file="file://$PROJECT_DIR$/module/test/Api/AppsApiTest.php" />
     <entry file="file://$PROJECT_DIR$/module/.php-cs-fixer.dist.php" />
     <entry file="file://$PROJECT_DIR$/module/docs/Api/UserManagementApi.md" />
     <entry file="file://$PROJECT_DIR$/module/lib/Api/UsersApi.php" />
@@ -428,23 +475,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Api/RulesApi.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="459">
-            <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Api/UsersApi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="107" column="6" lean-forward="true" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -517,23 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/run.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="46" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SquidexClient.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#35#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Api/AssetsApi.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -541,22 +554,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa11312.2573/openApiPHP_2/tmp/lib/Api/RulesApi.php" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa4624.42635/openApiPHP_2/tmp/lib/Api/AppsApi.php" />
+    <entry file="file://$PROJECT_DIR$/src/Api/UsersApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="107" column="6" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa4624.33833/openApiPHP_2/tmp/lib/Api/RulesApi.php" />
+    <entry file="file://$PROJECT_DIR$/docs/Api/TranslationsApi.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Api/TranslationsApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Api/PingApi.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/run.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Api/PlansApi.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Api/RulesApi.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="459">
+            <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Api/RulesApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="324" column="8" lean-forward="true" selection-start-line="324" selection-start-column="8" selection-end-line="324" selection-end-column="41" />
+        <state relative-caret-position="63376">
+          <caret line="3746" column="7" selection-start-line="3746" selection-start-column="7" selection-end-line="3746" selection-end-column="21" />
           <folding>
             <element signature="e#650#672#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/RulesApiClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Api/AppsApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="43" column="2" lean-forward="true" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
+        <state relative-caret-position="568">
+          <caret line="190" column="20" selection-start-line="190" selection-start-column="20" selection-end-line="190" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SquidexClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
           <folding>
-            <element signature="e#649#671#0#PHP" expanded="true" />
+            <element signature="e#35#57#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

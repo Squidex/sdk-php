@@ -27,7 +27,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-
 $apiInstance = new OpenAPI\Client\Api\PingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -55,7 +54,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -79,7 +78,6 @@ Get API information.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -108,7 +106,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -137,7 +135,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-
 $apiInstance = new OpenAPI\Client\Api\PingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -162,7 +159,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 

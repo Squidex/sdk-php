@@ -41,7 +41,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AssetsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -55,14 +54,14 @@ $download = 56; // int | Set it to 0 to prevent download.
 $width = 56; // int | The target width of the asset, if it is an image.
 $height = 56; // int | The target height of the asset, if it is an image.
 $quality = 56; // int | Optional image quality, it is is an jpeg image.
-$mode = new \OpenAPI\Client\Model\ResizeMode(); // ResizeMode | The resize mode when the width and height is defined.
+$mode = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ResizeMode(); // \OpenAPI\Client\Model\ResizeMode | The resize mode when the width and height is defined.
 $bg = 'bg_example'; // string | Optional background color.
 $focus_x = 3.4; // float | Override the y focus point.
 $focus_y = 3.4; // float | Override the x focus point.
 $nofocus = True; // bool | True to ignore the asset focus point if any.
 $auto = True; // bool | True to use auto format.
 $force = True; // bool | True to force a new resize even if it already stored.
-$format = new \OpenAPI\Client\Model\ImageFormat(); // ImageFormat | True to force a new resize even if it already stored.
+$format = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ImageFormat(); // \OpenAPI\Client\Model\ImageFormat | True to force a new resize even if it already stored.
 
 try {
     $result = $apiInstance->assetContentGetAssetContent($id, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format);
@@ -83,14 +82,14 @@ try {
 | **width** | **int**| The target width of the asset, if it is an image. | [optional] |
 | **height** | **int**| The target height of the asset, if it is an image. | [optional] |
 | **quality** | **int**| Optional image quality, it is is an jpeg image. | [optional] |
-| **mode** | [**ResizeMode**](../Model/.md)| The resize mode when the width and height is defined. | [optional] |
+| **mode** | [**\OpenAPI\Client\Model\ResizeMode**](../Model/.md)| The resize mode when the width and height is defined. | [optional] |
 | **bg** | **string**| Optional background color. | [optional] |
 | **focus_x** | **float**| Override the y focus point. | [optional] |
 | **focus_y** | **float**| Override the x focus point. | [optional] |
 | **nofocus** | **bool**| True to ignore the asset focus point if any. | [optional] |
 | **auto** | **bool**| True to use auto format. | [optional] |
 | **force** | **bool**| True to force a new resize even if it already stored. | [optional] |
-| **format** | [**ImageFormat**](../Model/.md)| True to force a new resize even if it already stored. | [optional] |
+| **format** | [**\OpenAPI\Client\Model\ImageFormat**](../Model/.md)| True to force a new resize even if it already stored. | [optional] |
 
 ### Return type
 
@@ -98,7 +97,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -125,7 +124,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AssetsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -141,14 +139,14 @@ $download = 56; // int | Set it to 0 to prevent download.
 $width = 56; // int | The target width of the asset, if it is an image.
 $height = 56; // int | The target height of the asset, if it is an image.
 $quality = 56; // int | Optional image quality, it is is an jpeg image.
-$mode = new \OpenAPI\Client\Model\ResizeMode(); // ResizeMode | The resize mode when the width and height is defined.
+$mode = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ResizeMode(); // \OpenAPI\Client\Model\ResizeMode | The resize mode when the width and height is defined.
 $bg = 'bg_example'; // string | Optional background color.
 $focus_x = 3.4; // float | Override the y focus point.
 $focus_y = 3.4; // float | Override the x focus point.
 $nofocus = True; // bool | True to ignore the asset focus point if any.
 $auto = True; // bool | True to use auto format.
 $force = True; // bool | True to force a new resize even if it already stored.
-$format = new \OpenAPI\Client\Model\ImageFormat(); // ImageFormat | True to force a new resize even if it already stored.
+$format = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ImageFormat(); // \OpenAPI\Client\Model\ImageFormat | True to force a new resize even if it already stored.
 
 try {
     $result = $apiInstance->assetContentGetAssetContentBySlug($app, $id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format);
@@ -171,14 +169,14 @@ try {
 | **width** | **int**| The target width of the asset, if it is an image. | [optional] |
 | **height** | **int**| The target height of the asset, if it is an image. | [optional] |
 | **quality** | **int**| Optional image quality, it is is an jpeg image. | [optional] |
-| **mode** | [**ResizeMode**](../Model/.md)| The resize mode when the width and height is defined. | [optional] |
+| **mode** | [**\OpenAPI\Client\Model\ResizeMode**](../Model/.md)| The resize mode when the width and height is defined. | [optional] |
 | **bg** | **string**| Optional background color. | [optional] |
 | **focus_x** | **float**| Override the y focus point. | [optional] |
 | **focus_y** | **float**| Override the x focus point. | [optional] |
 | **nofocus** | **bool**| True to ignore the asset focus point if any. | [optional] |
 | **auto** | **bool**| True to use auto format. | [optional] |
 | **force** | **bool**| True to force a new resize even if it already stored. | [optional] |
-| **format** | [**ImageFormat**](../Model/.md)| True to force a new resize even if it already stored. | [optional] |
+| **format** | [**\OpenAPI\Client\Model\ImageFormat**](../Model/.md)| True to force a new resize even if it already stored. | [optional] |
 
 ### Return type
 
@@ -186,7 +184,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -210,7 +208,6 @@ Delete an asset folder.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -243,7 +240,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -272,7 +269,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AssetsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -281,7 +277,7 @@ $apiInstance = new OpenAPI\Client\Api\AssetsApi(
 );
 $app = 'app_example'; // string | The name of the app.
 $parent_id = 'parent_id_example'; // string | The optional parent folder id.
-$scope = new \OpenAPI\Client\Model\AssetFolderScope(); // AssetFolderScope | The scope of the query.
+$scope = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AssetFolderScope(); // \OpenAPI\Client\Model\AssetFolderScope | The scope of the query.
 
 try {
     $result = $apiInstance->assetFoldersGetAssetFolders($app, $parent_id, $scope);
@@ -297,7 +293,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **app** | **string**| The name of the app. | |
 | **parent_id** | **string**| The optional parent folder id. | [optional] |
-| **scope** | [**AssetFolderScope**](../Model/.md)| The scope of the query. | [optional] |
+| **scope** | [**\OpenAPI\Client\Model\AssetFolderScope**](../Model/.md)| The scope of the query. | [optional] |
 
 ### Return type
 
@@ -305,7 +301,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -329,7 +325,6 @@ Create an asset folder.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -363,7 +358,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -387,7 +382,6 @@ Update an asset folder.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -423,7 +417,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -447,7 +441,6 @@ Move an asset folder.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -483,7 +476,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -507,7 +500,6 @@ Bulk update assets.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -541,7 +533,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -565,7 +557,6 @@ Delete an asset.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -602,7 +593,7 @@ void (empty response body)
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -626,7 +617,6 @@ Get an asset by id.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -660,7 +650,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -686,7 +676,6 @@ Get all assets for the app.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -736,7 +725,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -762,7 +751,6 @@ Get all assets for the app.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -800,7 +788,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -826,7 +814,6 @@ Get all tags for assets.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -858,7 +845,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -884,7 +871,6 @@ You can only upload one file at a time. The mime type of the file is not calcula
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -924,7 +910,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -950,7 +936,6 @@ You can only upload one file at a time. The mime type of the file is not calcula
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -990,7 +975,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1014,7 +999,6 @@ Update an asset.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1050,7 +1034,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1076,7 +1060,6 @@ Use multipart request to upload an asset.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1112,7 +1095,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1136,7 +1119,6 @@ Moves the asset.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1172,7 +1154,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1196,7 +1178,6 @@ Rename an asset tag.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 
@@ -1232,7 +1213,7 @@ try {
 
 ### Authorization
 
-[squidex-oauth-auth](../../README.md#squidex-oauth-auth)
+No authorization required
 
 ### HTTP request headers
 

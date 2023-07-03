@@ -1,6 +1,6 @@
 .gitignore
 .openapi-generator-ignore
-.php-cs-fixer.dist.php
+.php_cs
 .travis.yml
 README.md
 composer.json
@@ -302,6 +302,7 @@ docs/Model/WorkflowTransitionDto.md
 docs/Model/WorkflowsDto.md
 docs/Model/WorkflowsDtoAllOf.md
 git_push.sh
+lib/ApiException.php
 lib/Api/AppsApi.php
 lib/Api/AssetsApi.php
 lib/Api/BackupsApi.php
@@ -324,7 +325,6 @@ lib/Api/TemplatesApi.php
 lib/Api/TranslationsApi.php
 lib/Api/UserManagementApi.php
 lib/Api/UsersApi.php
-lib/ApiException.php
 lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/ActionTypeEnum.php
