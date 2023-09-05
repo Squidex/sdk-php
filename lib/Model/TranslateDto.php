@@ -340,9 +340,6 @@ class TranslateDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
 
-        if ((mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling TranslateDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['text'] = $text;
 
@@ -372,9 +369,6 @@ class TranslateDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable target_language cannot be null');
         }
 
-        if ((mb_strlen($target_language) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $target_language when calling TranslateDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['target_language'] = $target_language;
 

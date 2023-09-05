@@ -357,9 +357,6 @@ class ErrorDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
 
-        if ((mb_strlen($message) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $message when calling ErrorDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['message'] = $message;
 

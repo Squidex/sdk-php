@@ -351,9 +351,6 @@ class WebhookRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
 
-        if ((mb_strlen($url) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $url when calling WebhookRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['url'] = $url;
 

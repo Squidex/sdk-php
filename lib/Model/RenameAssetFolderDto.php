@@ -319,9 +319,6 @@ class RenameAssetFolderDto implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable folder_name cannot be null');
         }
 
-        if ((mb_strlen($folder_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $folder_name when calling RenameAssetFolderDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['folder_name'] = $folder_name;
 

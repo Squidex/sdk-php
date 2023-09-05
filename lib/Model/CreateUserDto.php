@@ -357,9 +357,6 @@ class CreateUserDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable email cannot be null');
         }
 
-        if ((mb_strlen($email) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling CreateUserDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['email'] = $email;
 
@@ -389,9 +386,6 @@ class CreateUserDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
 
-        if ((mb_strlen($display_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $display_name when calling CreateUserDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['display_name'] = $display_name;
 
@@ -421,9 +415,6 @@ class CreateUserDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable password cannot be null');
         }
 
-        if ((mb_strlen($password) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $password when calling CreateUserDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['password'] = $password;
 

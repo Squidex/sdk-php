@@ -369,9 +369,6 @@ class RestoreRequestDto implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
 
-        if ((mb_strlen($url) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $url when calling RestoreRequestDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['url'] = $url;
 

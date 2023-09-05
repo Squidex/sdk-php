@@ -327,9 +327,6 @@ class FastlyRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable api_key cannot be null');
         }
 
-        if ((mb_strlen($api_key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $api_key when calling FastlyRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['api_key'] = $api_key;
 
@@ -359,9 +356,6 @@ class FastlyRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable service_id cannot be null');
         }
 
-        if ((mb_strlen($service_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $service_id when calling FastlyRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['service_id'] = $service_id;
 

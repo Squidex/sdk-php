@@ -323,9 +323,6 @@ class CreateClientDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
 
-        if ((mb_strlen($id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling CreateClientDto., must be bigger than or equal to 1.');
-        }
         if ((!preg_match("/^[a-z0-9]+(\\-[a-z0-9]+)*$/", $id))) {
             throw new \InvalidArgumentException("invalid value for \$id when calling CreateClientDto., must conform to the pattern /^[a-z0-9]+(\\-[a-z0-9]+)*$/.");
         }

@@ -319,9 +319,6 @@ class RenameTagDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable tag_name cannot be null');
         }
 
-        if ((mb_strlen($tag_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $tag_name when calling RenameTagDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['tag_name'] = $tag_name;
 

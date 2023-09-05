@@ -372,9 +372,6 @@ class MediumRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable access_token cannot be null');
         }
 
-        if ((mb_strlen($access_token) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $access_token when calling MediumRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['access_token'] = $access_token;
 
@@ -404,9 +401,6 @@ class MediumRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
 
-        if ((mb_strlen($title) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling MediumRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['title'] = $title;
 
@@ -436,9 +430,6 @@ class MediumRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable content cannot be null');
         }
 
-        if ((mb_strlen($content) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $content when calling MediumRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['content'] = $content;
 

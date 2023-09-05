@@ -103,6 +103,13 @@ class Configuration
     protected $userAgent = 'OpenAPI-Generator/1.0.0/PHP';
 
     /**
+     * Ignore the validation of certificates.
+     *
+     * @var boolean
+     */
+    protected $ignoreCertificates = false;
+
+    /**
      * Debug switch (default set to false)
      *
      * @var bool
@@ -175,6 +182,27 @@ class Configuration
     public function getClientSecret()
     {
         return $this->clientSecret;
+    }
+
+    /**
+     * Set the flag to the validation of certificates.
+     *
+     * @param boolean $ignoreCertificates Certificate flag.
+     *
+     * @return $this
+     */
+    public function setIgnoreCertificates($ignoreCertificates) {
+        $this->ignoreCertificates = $ignoreCertificates;
+        return $this;
+    }
+
+    /**
+     * Get the flag to the validation of certificates.
+     *
+     * @return boolean Certificate flag.
+     */
+    public function getIgnoreCertificates() {
+        return $this->ignoreCertificates;
     }
 
     /**

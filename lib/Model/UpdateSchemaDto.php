@@ -379,9 +379,6 @@ class UpdateSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
         if (!is_null($label) && (mb_strlen($label) > 100)) {
             throw new \InvalidArgumentException('invalid length for $label when calling UpdateSchemaDto., must be smaller than or equal to 100.');
         }
-        if (!is_null($label) && (mb_strlen($label) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $label when calling UpdateSchemaDto., must be bigger than or equal to 0.');
-        }
 
         $this->container['label'] = $label;
 
@@ -419,9 +416,6 @@ class UpdateSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if (!is_null($hints) && (mb_strlen($hints) > 1000)) {
             throw new \InvalidArgumentException('invalid length for $hints when calling UpdateSchemaDto., must be smaller than or equal to 1000.');
-        }
-        if (!is_null($hints) && (mb_strlen($hints) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $hints when calling UpdateSchemaDto., must be bigger than or equal to 0.');
         }
 
         $this->container['hints'] = $hints;

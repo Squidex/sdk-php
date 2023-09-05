@@ -685,9 +685,6 @@ class CreateSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
 
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateSchemaDto., must be bigger than or equal to 1.');
-        }
         if ((!preg_match("/^[a-z0-9]+(\\-[a-z0-9]+)*$/", $name))) {
             throw new \InvalidArgumentException("invalid value for \$name when calling CreateSchemaDto., must conform to the pattern /^[a-z0-9]+(\\-[a-z0-9]+)*$/.");
         }

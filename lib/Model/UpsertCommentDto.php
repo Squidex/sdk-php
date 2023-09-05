@@ -326,9 +326,6 @@ class UpsertCommentDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
 
-        if ((mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling UpsertCommentDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['text'] = $text;
 

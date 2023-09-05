@@ -368,9 +368,6 @@ class UpsertSchemaFieldDto implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
 
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpsertSchemaFieldDto., must be bigger than or equal to 1.');
-        }
         if ((!preg_match("/^[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)*$/", $name))) {
             throw new \InvalidArgumentException("invalid value for \$name when calling UpsertSchemaFieldDto., must conform to the pattern /^[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)*$/.");
         }

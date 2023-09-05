@@ -334,9 +334,6 @@ class AzureQueueRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable connection_string cannot be null');
         }
 
-        if ((mb_strlen($connection_string) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $connection_string when calling AzureQueueRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['connection_string'] = $connection_string;
 
@@ -366,9 +363,6 @@ class AzureQueueRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable queue cannot be null');
         }
 
-        if ((mb_strlen($queue) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $queue when calling AzureQueueRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['queue'] = $queue;
 

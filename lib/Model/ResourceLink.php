@@ -340,9 +340,6 @@ class ResourceLink implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable href cannot be null');
         }
 
-        if ((mb_strlen($href) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $href when calling ResourceLink., must be bigger than or equal to 1.');
-        }
 
         $this->container['href'] = $href;
 
@@ -372,9 +369,6 @@ class ResourceLink implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable method cannot be null');
         }
 
-        if ((mb_strlen($method) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $method when calling ResourceLink., must be bigger than or equal to 1.');
-        }
 
         $this->container['method'] = $method;
 

@@ -350,9 +350,6 @@ class UpdateUserDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable email cannot be null');
         }
 
-        if ((mb_strlen($email) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling UpdateUserDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['email'] = $email;
 
@@ -382,9 +379,6 @@ class UpdateUserDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
 
-        if ((mb_strlen($display_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $display_name when calling UpdateUserDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['display_name'] = $display_name;
 

@@ -355,9 +355,6 @@ class AlgoliaRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable app_id cannot be null');
         }
 
-        if ((mb_strlen($app_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $app_id when calling AlgoliaRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['app_id'] = $app_id;
 
@@ -387,9 +384,6 @@ class AlgoliaRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable api_key cannot be null');
         }
 
-        if ((mb_strlen($api_key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $api_key when calling AlgoliaRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['api_key'] = $api_key;
 
@@ -419,9 +413,6 @@ class AlgoliaRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable index_name cannot be null');
         }
 
-        if ((mb_strlen($index_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $index_name when calling AlgoliaRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['index_name'] = $index_name;
 

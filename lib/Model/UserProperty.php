@@ -333,9 +333,6 @@ class UserProperty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
 
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UserProperty., must be bigger than or equal to 1.');
-        }
 
         $this->container['name'] = $name;
 
@@ -365,9 +362,6 @@ class UserProperty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
 
-        if ((mb_strlen($value) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $value when calling UserProperty., must be bigger than or equal to 1.');
-        }
 
         $this->container['value'] = $value;
 

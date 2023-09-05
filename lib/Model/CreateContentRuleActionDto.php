@@ -347,9 +347,6 @@ class CreateContentRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
 
-        if ((mb_strlen($data) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $data when calling CreateContentRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['data'] = $data;
 
@@ -379,9 +376,6 @@ class CreateContentRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable schema cannot be null');
         }
 
-        if ((mb_strlen($schema) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $schema when calling CreateContentRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['schema'] = $schema;
 

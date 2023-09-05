@@ -341,9 +341,6 @@ class TweetRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable access_token cannot be null');
         }
 
-        if ((mb_strlen($access_token) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $access_token when calling TweetRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['access_token'] = $access_token;
 
@@ -373,9 +370,6 @@ class TweetRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable access_secret cannot be null');
         }
 
-        if ((mb_strlen($access_secret) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $access_secret when calling TweetRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['access_secret'] = $access_secret;
 
@@ -405,9 +399,6 @@ class TweetRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
 
-        if ((mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling TweetRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['text'] = $text;
 

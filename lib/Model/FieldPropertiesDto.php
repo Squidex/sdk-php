@@ -407,9 +407,6 @@ class FieldPropertiesDto implements ModelInterface, ArrayAccess, \JsonSerializab
         if (!is_null($label) && (mb_strlen($label) > 100)) {
             throw new \InvalidArgumentException('invalid length for $label when calling FieldPropertiesDto., must be smaller than or equal to 100.');
         }
-        if (!is_null($label) && (mb_strlen($label) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $label when calling FieldPropertiesDto., must be bigger than or equal to 0.');
-        }
 
         $this->container['label'] = $label;
 
@@ -448,9 +445,6 @@ class FieldPropertiesDto implements ModelInterface, ArrayAccess, \JsonSerializab
         if (!is_null($hints) && (mb_strlen($hints) > 1000)) {
             throw new \InvalidArgumentException('invalid length for $hints when calling FieldPropertiesDto., must be smaller than or equal to 1000.');
         }
-        if (!is_null($hints) && (mb_strlen($hints) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $hints when calling FieldPropertiesDto., must be bigger than or equal to 0.');
-        }
 
         $this->container['hints'] = $hints;
 
@@ -488,9 +482,6 @@ class FieldPropertiesDto implements ModelInterface, ArrayAccess, \JsonSerializab
         }
         if (!is_null($placeholder) && (mb_strlen($placeholder) > 100)) {
             throw new \InvalidArgumentException('invalid length for $placeholder when calling FieldPropertiesDto., must be smaller than or equal to 100.');
-        }
-        if (!is_null($placeholder) && (mb_strlen($placeholder) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $placeholder when calling FieldPropertiesDto., must be bigger than or equal to 0.');
         }
 
         $this->container['placeholder'] = $placeholder;

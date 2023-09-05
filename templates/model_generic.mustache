@@ -433,11 +433,6 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
         if ({{#isNullable}}!is_null(${{name}}) && {{/isNullable}}(mb_strlen(${{name}}) > {{maxLength}})) {
             throw new \InvalidArgumentException('invalid length for ${{name}} when calling {{classname}}.{{operationId}}, must be smaller than or equal to {{maxLength}}.');
         }{{/maxLength}}
-        {{#minLength}}
-        if ({{#isNullable}}!is_null(${{name}}) && {{/isNullable}}(mb_strlen(${{name}}) < {{minLength}})) {
-            throw new \InvalidArgumentException('invalid length for ${{name}} when calling {{classname}}.{{operationId}}, must be bigger than or equal to {{minLength}}.');
-        }
-        {{/minLength}}
         {{#maximum}}
         if ({{#isNullable}}!is_null(${{name}}) && {{/isNullable}}(${{name}} >{{#exclusiveMaximum}}={{/exclusiveMaximum}} {{maximum}})) {
             throw new \InvalidArgumentException('invalid value for ${{name}} when calling {{classname}}.{{operationId}}, must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{maximum}}.');

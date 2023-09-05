@@ -313,9 +313,6 @@ class ScriptRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable script cannot be null');
         }
 
-        if ((mb_strlen($script) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $script when calling ScriptRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['script'] = $script;
 

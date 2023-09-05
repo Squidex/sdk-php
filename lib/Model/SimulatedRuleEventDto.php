@@ -395,9 +395,6 @@ class SimulatedRuleEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable event_id cannot be null');
         }
 
-        if ((mb_strlen($event_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $event_id when calling SimulatedRuleEventDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['event_id'] = $event_id;
 
@@ -427,9 +424,6 @@ class SimulatedRuleEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable unique_id cannot be null');
         }
 
-        if ((mb_strlen($unique_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $unique_id when calling SimulatedRuleEventDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['unique_id'] = $unique_id;
 
@@ -459,9 +453,6 @@ class SimulatedRuleEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable event_name cannot be null');
         }
 
-        if ((mb_strlen($event_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $event_name when calling SimulatedRuleEventDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['event_name'] = $event_name;
 

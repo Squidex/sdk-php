@@ -327,9 +327,6 @@ class SlackRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable webhook_url cannot be null');
         }
 
-        if ((mb_strlen($webhook_url) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $webhook_url when calling SlackRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['webhook_url'] = $webhook_url;
 
@@ -359,9 +356,6 @@ class SlackRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
 
-        if ((mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling SlackRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['text'] = $text;
 

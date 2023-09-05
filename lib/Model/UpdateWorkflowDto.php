@@ -438,9 +438,6 @@ class UpdateWorkflowDto implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable initial cannot be null');
         }
 
-        if ((mb_strlen($initial) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $initial when calling UpdateWorkflowDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['initial'] = $initial;
 

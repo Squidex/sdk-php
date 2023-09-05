@@ -319,9 +319,6 @@ class AddRoleDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
 
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling AddRoleDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['name'] = $name;
 

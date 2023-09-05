@@ -33,6 +33,6 @@
         "psr-4": { "Squidex\\Client\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "Squidex\\Client\\Test\\" : "tests/" }
+        "psr-4": { "Squidex\\Client\\Test\\" : "test/" }
     }
 }

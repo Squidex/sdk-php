@@ -363,9 +363,6 @@ class FieldRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable field cannot be null');
         }
 
-        if ((mb_strlen($field) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $field when calling FieldRuleDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['field'] = $field;
 

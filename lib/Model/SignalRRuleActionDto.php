@@ -358,9 +358,6 @@ class SignalRRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable connection_string cannot be null');
         }
 
-        if ((mb_strlen($connection_string) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $connection_string when calling SignalRRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['connection_string'] = $connection_string;
 
@@ -390,9 +387,6 @@ class SignalRRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable hub_name cannot be null');
         }
 
-        if ((mb_strlen($hub_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $hub_name when calling SignalRRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['hub_name'] = $hub_name;
 

@@ -320,9 +320,6 @@ class CommentRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
 
-        if ((mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling CommentRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['text'] = $text;
 

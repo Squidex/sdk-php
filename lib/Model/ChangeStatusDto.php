@@ -333,9 +333,6 @@ class ChangeStatusDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
 
-        if ((mb_strlen($status) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $status when calling ChangeStatusDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['status'] = $status;
 

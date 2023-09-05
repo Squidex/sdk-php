@@ -357,9 +357,6 @@ class UpdateClientDto implements ModelInterface, ArrayAccess, \JsonSerializable
         if (!is_null($name) && (mb_strlen($name) > 20)) {
             throw new \InvalidArgumentException('invalid length for $name when calling UpdateClientDto., must be smaller than or equal to 20.');
         }
-        if (!is_null($name) && (mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateClientDto., must be bigger than or equal to 0.');
-        }
 
         $this->container['name'] = $name;
 

@@ -39,6 +39,7 @@ class Utils
         $config->setClientId($clientId);
         $config->setClientSecret($clientSecret);
         $config->setAppName($appName);
+        $config->setIgnoreCertificates(true);
 
         self::$singleClient = new ClientProvider(new SquidexClient($config), $config);
 

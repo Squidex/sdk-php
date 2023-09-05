@@ -562,9 +562,6 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable created_by cannot be null');
         }
 
-        if ((mb_strlen($created_by) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $created_by when calling SchemaDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['created_by'] = $created_by;
 
@@ -594,9 +591,6 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable last_modified_by cannot be null');
         }
 
-        if ((mb_strlen($last_modified_by) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $last_modified_by when calling SchemaDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['last_modified_by'] = $last_modified_by;
 
@@ -626,9 +620,6 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
 
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling SchemaDto., must be bigger than or equal to 1.');
-        }
         if ((!preg_match("/^[a-z0-9]+(\\-[a-z0-9]+)*$/", $name))) {
             throw new \InvalidArgumentException("invalid value for \$name when calling SchemaDto., must conform to the pattern /^[a-z0-9]+(\\-[a-z0-9]+)*$/.");
         }

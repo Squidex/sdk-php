@@ -376,9 +376,6 @@ class DiscourseRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
 
-        if ((mb_strlen($url) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $url when calling DiscourseRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['url'] = $url;
 
@@ -408,9 +405,6 @@ class DiscourseRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable api_key cannot be null');
         }
 
-        if ((mb_strlen($api_key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $api_key when calling DiscourseRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['api_key'] = $api_key;
 
@@ -440,9 +434,6 @@ class DiscourseRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable api_username cannot be null');
         }
 
-        if ((mb_strlen($api_username) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $api_username when calling DiscourseRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['api_username'] = $api_username;
 
@@ -472,9 +463,6 @@ class DiscourseRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
 
-        if ((mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling DiscourseRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['text'] = $text;
 

@@ -327,9 +327,6 @@ class PrerenderRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable token cannot be null');
         }
 
-        if ((mb_strlen($token) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $token when calling PrerenderRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['token'] = $token;
 
@@ -359,9 +356,6 @@ class PrerenderRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
 
-        if ((mb_strlen($url) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $url when calling PrerenderRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['url'] = $url;
 

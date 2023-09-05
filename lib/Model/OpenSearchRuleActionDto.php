@@ -355,9 +355,6 @@ class OpenSearchRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable host cannot be null');
         }
 
-        if ((mb_strlen($host) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $host when calling OpenSearchRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['host'] = $host;
 
@@ -387,9 +384,6 @@ class OpenSearchRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable index_name cannot be null');
         }
 
-        if ((mb_strlen($index_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $index_name when calling OpenSearchRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['index_name'] = $index_name;
 

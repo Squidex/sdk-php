@@ -16,7 +16,7 @@ class TestBase extends TestCase
         $clientSecret = $client->getConfig()->getClientSecret();
         $host = $client->getConfig()->getHost();
 
-        echo 'SETUP\n';
+        echo "SETUP\n";
         echo "Using <appName>=$appName\n";
         echo "Using <clientId>=$clientId\n";
         echo "Using <clientSecret>=$clientSecret\n";
@@ -31,7 +31,7 @@ class TestBase extends TestCase
             $client->getClient()->apps()->postApp($request);
         } catch (ApiException $e) {
             if ($e->getCode() == 400) {
-                echo 'App probably already exists.\n';
+                echo "App probably already exists.\n";
             } else {
                 throw $e;
             }
@@ -44,14 +44,14 @@ class TestBase extends TestCase
 
         $waitTime = getenv('CONFIG__WAIT');
         if ($waitTime == null) {
-            echo 'Waiting for server is skipped.\n';
+            echo "Waiting for server is skipped.\n";
             return;
         }
 
         $waitTimeMs = intval($waitTime);
         if ($waitTimeMs <= 0)
         {
-            echo 'Waiting for server is skipped.\n';
+            echo "Waiting for server is skipped.\n";
             return;
         }
 

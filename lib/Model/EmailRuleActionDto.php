@@ -407,9 +407,6 @@ class EmailRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable server_host cannot be null');
         }
 
-        if ((mb_strlen($server_host) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $server_host when calling EmailRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['server_host'] = $server_host;
 
@@ -466,9 +463,6 @@ class EmailRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable server_username cannot be null');
         }
 
-        if ((mb_strlen($server_username) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $server_username when calling EmailRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['server_username'] = $server_username;
 
@@ -498,9 +492,6 @@ class EmailRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable server_password cannot be null');
         }
 
-        if ((mb_strlen($server_password) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $server_password when calling EmailRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['server_password'] = $server_password;
 
@@ -530,9 +521,6 @@ class EmailRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable message_from cannot be null');
         }
 
-        if ((mb_strlen($message_from) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $message_from when calling EmailRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['message_from'] = $message_from;
 
@@ -562,9 +550,6 @@ class EmailRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable message_to cannot be null');
         }
 
-        if ((mb_strlen($message_to) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $message_to when calling EmailRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['message_to'] = $message_to;
 
@@ -594,9 +579,6 @@ class EmailRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable message_subject cannot be null');
         }
 
-        if ((mb_strlen($message_subject) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $message_subject when calling EmailRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['message_subject'] = $message_subject;
 
@@ -626,9 +608,6 @@ class EmailRuleActionDto extends RuleActionDto
             throw new \InvalidArgumentException('non-nullable message_body cannot be null');
         }
 
-        if ((mb_strlen($message_body) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $message_body when calling EmailRuleActionDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['message_body'] = $message_body;
 

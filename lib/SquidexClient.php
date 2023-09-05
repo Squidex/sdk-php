@@ -76,7 +76,7 @@ class SquidexClient
         $stack->setHandler(new CurlHandler());
         $stack->push(requestToken($config, $tokenStore));
 
-        $this->client = new Client(['handler' => $stack]);
+        $this->client = new Client([ 'verify' => false, 'handler' => $stack ]);
     }
 
     /**
@@ -250,6 +250,10 @@ class SquidexClient
 
 class AccessToken
 {
+    private $accessToken = '';
+    private $expiresIn = 0;
+    private $expiresAt = 0;
+    
     public function __construct($accessToken, $expiresIn) {
         $this->accessToken = $accessToken;
         $this->expiresIn = $expiresIn;
@@ -302,7 +306,7 @@ class SquidexInMemoryTokenStore implements SquidexTokenStore
 
 function requestToken($config, $tokenStore) 
 {
-    $requestClient = new Client();
+    $requestClient = new Client([ 'verify' => false ]);
     $clientId = $config->getClientId();
     $clientSecret = $config->getClientSecret();
 

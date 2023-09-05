@@ -319,9 +319,6 @@ class ChangePlanDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable plan_id cannot be null');
         }
 
-        if ((mb_strlen($plan_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $plan_id when calling ChangePlanDto., must be bigger than or equal to 1.');
-        }
 
         $this->container['plan_id'] = $plan_id;
 
