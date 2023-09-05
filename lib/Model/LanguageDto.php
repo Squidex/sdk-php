@@ -63,11 +63,25 @@ class LanguageDto implements ModelInterface, ArrayAccess, \JsonSerializable
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'iso2_code' => null,
@@ -101,6 +115,16 @@ class LanguageDto implements ModelInterface, ArrayAccess, \JsonSerializable
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -259,6 +283,7 @@ class LanguageDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('iso2_code', $data ?? [], null);
         $this->setIfExists('english_name', $data ?? [], null);
         $this->setIfExists('native_name', $data ?? [], null);
+
     }
 
     /**

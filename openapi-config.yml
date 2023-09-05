@@ -5,5 +5,4 @@ globalProperties:
   modelTests: false
 
 additionalProperties:
-  licenseName: MIT
   invokerPackage: Squidex\Client

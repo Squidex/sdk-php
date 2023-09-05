@@ -20,11 +20,33 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+        {{#discriminator}}
+        {{#mappedModels}}'{{mappingName}}' => '{{{modelName}}}'{{^-last}},
+        {{/-last}}{{/mappedModels}}
+        {{/discriminator}}
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+        {{#discriminator}}
+        {{#mappedModels}}'{{modelName}}' => '{{{mappingName}}}'{{^-last}},
+        {{/-last}}{{/mappedModels}}
+        {{/discriminator}}
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         {{#vars}}'{{name}}' => {{#dataFormat}}'{{{.}}}'{{/dataFormat}}{{^dataFormat}}null{{/dataFormat}}{{^-last}},
@@ -56,6 +78,16 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
     public static function openAPITypes()
     {
         return self::$openAPITypes{{#parentSchema}} + parent::openAPITypes(){{/parentSchema}};
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -247,6 +279,16 @@ class {{classname}} {{#parentSchema}}extends {{{parent}}}{{/parentSchema}}{{^par
 
         // Initialize discriminator property with the model name.
         $this->container['{{discriminatorName}}'] = static::$openAPIModelName;
+        {{/discriminator}}
+
+        {{^discriminator}}
+        {{#parentModel}}
+        {{#discriminator}}
+
+        // Initialize discriminator property with the model name.
+        $this->container['{{discriminatorName}}'] = parent::$openAPIMappingsReverse['{{model.classname}}'];
+        {{/discriminator}}
+        {{/parentModel}}
         {{/discriminator}}
     }
 

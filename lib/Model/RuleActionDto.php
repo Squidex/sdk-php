@@ -61,11 +61,61 @@ class RuleActionDto implements ModelInterface, ArrayAccess, \JsonSerializable
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+        'Algolia' => 'AlgoliaRuleActionDto',
+        'AzureQueue' => 'AzureQueueRuleActionDto',
+        'Comment' => 'CommentRuleActionDto',
+        'CreateContent' => 'CreateContentRuleActionDto',
+        'Discourse' => 'DiscourseRuleActionDto',
+        'ElasticSearch' => 'ElasticSearchRuleActionDto',
+        'Email' => 'EmailRuleActionDto',
+        'Fastly' => 'FastlyRuleActionDto',
+        'Medium' => 'MediumRuleActionDto',
+        'Notification' => 'NotificationRuleActionDto',
+        'OpenSearch' => 'OpenSearchRuleActionDto',
+        'Prerender' => 'PrerenderRuleActionDto',
+        'Script' => 'ScriptRuleActionDto',
+        'SignalR' => 'SignalRRuleActionDto',
+        'Slack' => 'SlackRuleActionDto',
+        'Tweet' => 'TweetRuleActionDto',
+        'Typesense' => 'TypesenseRuleActionDto',
+        'Webhook' => 'WebhookRuleActionDto'
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+        'AlgoliaRuleActionDto' => 'Algolia',
+        'AzureQueueRuleActionDto' => 'AzureQueue',
+        'CommentRuleActionDto' => 'Comment',
+        'CreateContentRuleActionDto' => 'CreateContent',
+        'DiscourseRuleActionDto' => 'Discourse',
+        'ElasticSearchRuleActionDto' => 'ElasticSearch',
+        'EmailRuleActionDto' => 'Email',
+        'FastlyRuleActionDto' => 'Fastly',
+        'MediumRuleActionDto' => 'Medium',
+        'NotificationRuleActionDto' => 'Notification',
+        'OpenSearchRuleActionDto' => 'OpenSearch',
+        'PrerenderRuleActionDto' => 'Prerender',
+        'ScriptRuleActionDto' => 'Script',
+        'SignalRRuleActionDto' => 'SignalR',
+        'SlackRuleActionDto' => 'Slack',
+        'TweetRuleActionDto' => 'Tweet',
+        'TypesenseRuleActionDto' => 'Typesense',
+        'WebhookRuleActionDto' => 'Webhook'
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'action_type' => null
@@ -95,6 +145,16 @@ class RuleActionDto implements ModelInterface, ArrayAccess, \JsonSerializable
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -248,6 +308,7 @@ class RuleActionDto implements ModelInterface, ArrayAccess, \JsonSerializable
 
         // Initialize discriminator property with the model name.
         $this->container['action_type'] = static::$openAPIModelName;
+
     }
 
     /**

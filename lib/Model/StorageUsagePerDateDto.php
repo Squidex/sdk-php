@@ -63,11 +63,25 @@ class StorageUsagePerDateDto implements ModelInterface, ArrayAccess, \JsonSerial
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'date' => 'date',
@@ -101,6 +115,16 @@ class StorageUsagePerDateDto implements ModelInterface, ArrayAccess, \JsonSerial
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -259,6 +283,7 @@ class StorageUsagePerDateDto implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('total_count', $data ?? [], null);
         $this->setIfExists('total_size', $data ?? [], null);
+
     }
 
     /**

@@ -64,11 +64,25 @@ class ElasticSearchRuleActionDto extends RuleActionDto
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'host' => 'uri',
@@ -108,6 +122,16 @@ class ElasticSearchRuleActionDto extends RuleActionDto
     public static function openAPITypes()
     {
         return self::$openAPITypes + parent::openAPITypes();
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -274,6 +298,10 @@ class ElasticSearchRuleActionDto extends RuleActionDto
         $this->setIfExists('password', $data ?? [], null);
         $this->setIfExists('document', $data ?? [], null);
         $this->setIfExists('delete', $data ?? [], null);
+
+
+        // Initialize discriminator property with the model name.
+        $this->container['action_type'] = parent::$openAPIMappingsReverse['ElasticSearchRuleActionDto'];
     }
 
     /**

@@ -65,11 +65,25 @@ class UpsertSchemaNestedFieldDto implements ModelInterface, ArrayAccess, \JsonSe
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'name' => null,
@@ -107,6 +121,16 @@ class UpsertSchemaNestedFieldDto implements ModelInterface, ArrayAccess, \JsonSe
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -273,6 +297,7 @@ class UpsertSchemaNestedFieldDto implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('is_locked', $data ?? [], null);
         $this->setIfExists('is_disabled', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
+
     }
 
     /**

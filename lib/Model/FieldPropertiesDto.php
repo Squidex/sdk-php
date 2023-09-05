@@ -69,11 +69,51 @@ class FieldPropertiesDto implements ModelInterface, ArrayAccess, \JsonSerializab
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+        'Array' => 'ArrayFieldPropertiesDto',
+        'Assets' => 'AssetsFieldPropertiesDto',
+        'Boolean' => 'BooleanFieldPropertiesDto',
+        'Component' => 'ComponentFieldPropertiesDto',
+        'Components' => 'ComponentsFieldPropertiesDto',
+        'DateTime' => 'DateTimeFieldPropertiesDto',
+        'Geolocation' => 'GeolocationFieldPropertiesDto',
+        'Json' => 'JsonFieldPropertiesDto',
+        'Number' => 'NumberFieldPropertiesDto',
+        'References' => 'ReferencesFieldPropertiesDto',
+        'String' => 'StringFieldPropertiesDto',
+        'Tags' => 'TagsFieldPropertiesDto',
+        'UI' => 'UIFieldPropertiesDto'
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+        'ArrayFieldPropertiesDto' => 'Array',
+        'AssetsFieldPropertiesDto' => 'Assets',
+        'BooleanFieldPropertiesDto' => 'Boolean',
+        'ComponentFieldPropertiesDto' => 'Component',
+        'ComponentsFieldPropertiesDto' => 'Components',
+        'DateTimeFieldPropertiesDto' => 'DateTime',
+        'GeolocationFieldPropertiesDto' => 'Geolocation',
+        'JsonFieldPropertiesDto' => 'Json',
+        'NumberFieldPropertiesDto' => 'Number',
+        'ReferencesFieldPropertiesDto' => 'References',
+        'StringFieldPropertiesDto' => 'String',
+        'TagsFieldPropertiesDto' => 'Tags',
+        'UIFieldPropertiesDto' => 'UI'
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'label' => null,
@@ -119,6 +159,16 @@ class FieldPropertiesDto implements ModelInterface, ArrayAccess, \JsonSerializab
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -304,6 +354,7 @@ class FieldPropertiesDto implements ModelInterface, ArrayAccess, \JsonSerializab
 
         // Initialize discriminator property with the model name.
         $this->container['field_type'] = static::$openAPIModelName;
+
     }
 
     /**

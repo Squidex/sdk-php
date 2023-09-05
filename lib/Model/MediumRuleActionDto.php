@@ -65,11 +65,25 @@ class MediumRuleActionDto extends RuleActionDto
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'access_token' => null,
@@ -111,6 +125,16 @@ class MediumRuleActionDto extends RuleActionDto
     public static function openAPITypes()
     {
         return self::$openAPITypes + parent::openAPITypes();
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -281,6 +305,10 @@ class MediumRuleActionDto extends RuleActionDto
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('publication_id', $data ?? [], null);
         $this->setIfExists('is_html', $data ?? [], null);
+
+
+        // Initialize discriminator property with the model name.
+        $this->container['action_type'] = parent::$openAPIMappingsReverse['MediumRuleActionDto'];
     }
 
     /**

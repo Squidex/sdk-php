@@ -1,6 +1,7 @@
 <?php
 namespace Squidex\Client\Test;
 
+use PHPUnit\Framework\TestCase;
 use Squidex\Client\ApiException;
 use Squidex\Client\Configuration;
 use Squidex\Client\Model\CreateSchemaDto;
@@ -8,6 +9,7 @@ use Squidex\Client\Model\StringFieldPropertiesDto;
 use Squidex\Client\Model\UpsertSchemaFieldDto;
 use Squidex\Client\ObjectSerializer;
 use Squidex\Client\Test\TestBase;
+use Squidex\Client\Test\Utils;
 
 class SchemasTest extends TestBase
 {
@@ -18,16 +20,13 @@ class SchemasTest extends TestBase
         $this->client = Utils::getClient()->getClient();
     }
 
-    public function test_create_and_fetch_schema()
+    public function testCreateAndFetchSchema()
     {
         $id = uniqid();
 
-        $property = new StringFieldPropertiesDto();
-        $property->setFieldType('string');
-
         $field = new UpsertSchemaFieldDto();
         $field->setName('field1');
-        $field->setProperties($property);
+        $field->setProperties(new StringFieldPropertiesDto());
 
         $request = new CreateSchemaDto();
         $request->setName("schema-$id");

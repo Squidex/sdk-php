@@ -67,11 +67,25 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'default_values' => null,
@@ -117,6 +131,16 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
     public static function openAPITypes()
     {
         return self::$openAPITypes + parent::openAPITypes();
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -295,6 +319,10 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
         $this->setIfExists('must_be_published', $data ?? [], null);
         $this->setIfExists('editor', $data ?? [], null);
         $this->setIfExists('schema_ids', $data ?? [], null);
+
+
+        // Initialize discriminator property with the model name.
+        $this->container['field_type'] = parent::$openAPIMappingsReverse['ReferencesFieldPropertiesDto'];
     }
 
     /**

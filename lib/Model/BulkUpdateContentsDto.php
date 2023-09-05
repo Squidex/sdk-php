@@ -67,11 +67,25 @@ class BulkUpdateContentsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'jobs' => null,
@@ -113,6 +127,16 @@ class BulkUpdateContentsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -287,6 +311,7 @@ class BulkUpdateContentsDto implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('do_not_validate_workflow', $data ?? [], null);
         $this->setIfExists('check_referrers', $data ?? [], null);
         $this->setIfExists('optimize_validation', $data ?? [], null);
+
     }
 
     /**

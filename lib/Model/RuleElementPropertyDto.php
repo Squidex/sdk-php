@@ -67,11 +67,25 @@ class RuleElementPropertyDto implements ModelInterface, ArrayAccess, \JsonSerial
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'editor' => null,
@@ -113,6 +127,16 @@ class RuleElementPropertyDto implements ModelInterface, ArrayAccess, \JsonSerial
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -287,6 +311,7 @@ class RuleElementPropertyDto implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('is_formattable', $data ?? [], null);
         $this->setIfExists('is_required', $data ?? [], null);
+
     }
 
     /**

@@ -512,10 +512,17 @@ class ObjectSerializer
 
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
-            if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
-                $subclass = '\Squidex\Client\Model\\' . $data->{$discriminator};
-                if (is_subclass_of($subclass, $class)) {
-                    $class = $subclass;
+            if (!empty($discriminator)) {
+                $discriminatorProperty = $class::attributeMap()[$discriminator];
+
+                if (isset($data->{$discriminatorProperty}) && is_string($data->{$discriminatorProperty})) {
+                    $discriminatorValue = $data->{$discriminatorProperty};
+                    $discriminatorType = $class::openAPIMAppings()[$discriminatorValue];
+
+                    $subclass = '\Squidex\Client\Model\\' . $discriminatorType;
+                    if (is_subclass_of($subclass, $class)) {
+                        $class = $subclass;
+                    }
                 }
             }
 

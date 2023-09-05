@@ -61,11 +61,37 @@ class RuleTriggerDto implements ModelInterface, ArrayAccess, \JsonSerializable
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+        'AssetChanged' => 'AssetChangedRuleTriggerDto',
+        'Comment' => 'CommentRuleTriggerDto',
+        'ContentChanged' => 'ContentChangedRuleTriggerDto',
+        'Manual' => 'ManualRuleTriggerDto',
+        'SchemaChanged' => 'SchemaChangedRuleTriggerDto',
+        'Usage' => 'UsageRuleTriggerDto'
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+        'AssetChangedRuleTriggerDto' => 'AssetChanged',
+        'CommentRuleTriggerDto' => 'Comment',
+        'ContentChangedRuleTriggerDto' => 'ContentChanged',
+        'ManualRuleTriggerDto' => 'Manual',
+        'SchemaChangedRuleTriggerDto' => 'SchemaChanged',
+        'UsageRuleTriggerDto' => 'Usage'
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'trigger_type' => null
@@ -95,6 +121,16 @@ class RuleTriggerDto implements ModelInterface, ArrayAccess, \JsonSerializable
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -248,6 +284,7 @@ class RuleTriggerDto implements ModelInterface, ArrayAccess, \JsonSerializable
 
         // Initialize discriminator property with the model name.
         $this->container['trigger_type'] = static::$openAPIModelName;
+
     }
 
     /**

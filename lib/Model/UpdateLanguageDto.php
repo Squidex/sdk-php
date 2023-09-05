@@ -63,11 +63,25 @@ class UpdateLanguageDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'is_master' => null,
@@ -101,6 +115,16 @@ class UpdateLanguageDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -259,6 +283,7 @@ class UpdateLanguageDto implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('is_master', $data ?? [], null);
         $this->setIfExists('is_optional', $data ?? [], null);
         $this->setIfExists('fallback', $data ?? [], null);
+
     }
 
     /**

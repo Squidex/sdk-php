@@ -62,11 +62,25 @@ class BooleanFieldPropertiesDto extends FieldPropertiesDto
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'default_values' => null,
@@ -102,6 +116,16 @@ class BooleanFieldPropertiesDto extends FieldPropertiesDto
     public static function openAPITypes()
     {
         return self::$openAPITypes + parent::openAPITypes();
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -260,6 +284,10 @@ class BooleanFieldPropertiesDto extends FieldPropertiesDto
         $this->setIfExists('default_value', $data ?? [], null);
         $this->setIfExists('inline_editable', $data ?? [], null);
         $this->setIfExists('editor', $data ?? [], null);
+
+
+        // Initialize discriminator property with the model name.
+        $this->container['field_type'] = parent::$openAPIMappingsReverse['BooleanFieldPropertiesDto'];
     }
 
     /**

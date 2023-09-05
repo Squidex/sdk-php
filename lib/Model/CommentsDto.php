@@ -64,11 +64,25 @@ class CommentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'created_comments' => null,
@@ -104,6 +118,16 @@ class CommentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -266,6 +290,7 @@ class CommentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('updated_comments', $data ?? [], null);
         $this->setIfExists('deleted_comments', $data ?? [], null);
         $this->setIfExists('version', $data ?? [], null);
+
     }
 
     /**

@@ -67,11 +67,25 @@ class SchemaPropertiesDto implements ModelInterface, ArrayAccess, \JsonSerializa
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'label' => null,
@@ -113,6 +127,16 @@ class SchemaPropertiesDto implements ModelInterface, ArrayAccess, \JsonSerializa
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -287,6 +311,7 @@ class SchemaPropertiesDto implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('content_editor_url', $data ?? [], null);
         $this->setIfExists('validate_on_publish', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
+
     }
 
     /**

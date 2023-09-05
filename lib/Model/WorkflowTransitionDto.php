@@ -62,11 +62,25 @@ class WorkflowTransitionDto implements ModelInterface, ArrayAccess, \JsonSeriali
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'expression' => null,
@@ -98,6 +112,16 @@ class WorkflowTransitionDto implements ModelInterface, ArrayAccess, \JsonSeriali
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -252,6 +276,7 @@ class WorkflowTransitionDto implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $this->setIfExists('expression', $data ?? [], null);
         $this->setIfExists('roles', $data ?? [], null);
+
     }
 
     /**

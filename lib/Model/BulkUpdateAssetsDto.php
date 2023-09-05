@@ -64,11 +64,25 @@ class BulkUpdateAssetsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'jobs' => null,
@@ -104,6 +118,16 @@ class BulkUpdateAssetsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     public static function openAPITypes()
     {
         return self::$openAPITypes;
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -266,6 +290,7 @@ class BulkUpdateAssetsDto implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('check_referrers', $data ?? [], null);
         $this->setIfExists('optimize_validation', $data ?? [], null);
         $this->setIfExists('do_not_script', $data ?? [], null);
+
     }
 
     /**

@@ -61,11 +61,25 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
     ];
 
     /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+    ];
+
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappingsReverse = [
+    ];
+
+    /**
       * Array of property to format mappings. Used for (de)serialization
       *
       * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
         'min_items' => 'int32',
@@ -99,6 +113,16 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
     public static function openAPITypes()
     {
         return self::$openAPITypes + parent::openAPITypes();
+    }
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 
     /**
@@ -253,6 +277,10 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
         $this->setIfExists('min_items', $data ?? [], null);
         $this->setIfExists('max_items', $data ?? [], null);
         $this->setIfExists('unique_fields', $data ?? [], null);
+
+
+        // Initialize discriminator property with the model name.
+        $this->container['field_type'] = parent::$openAPIMappingsReverse['ArrayFieldPropertiesDto'];
     }
 
     /**
