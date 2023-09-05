@@ -84,10 +84,9 @@ class LanguagesApi
 /**
      * @param $options
      */
-    public function __construct($options) {
-        $this->options = $options;
-        $this->client =  new Client();
-        $this->config =  new Configuration();
+    public function __construct($config, $client) {
+        $this->client =  $client;
+        $this->config =  $config;
         $this->headerSelector = new HeaderSelector();
         $this->hostIndex = 0;
     }
@@ -345,7 +344,7 @@ class LanguagesApi
         $resourcePath = '/api/languages';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -423,13 +422,5 @@ class LanguagesApi
         }
 
         return $options;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getAuthorizationHeader()
-    {
-        return ['Authorization' => 'Bearer '.$this->options['access_token']];
     }
 }

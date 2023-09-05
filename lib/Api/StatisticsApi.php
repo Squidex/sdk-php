@@ -102,10 +102,9 @@ class StatisticsApi
 /**
      * @param $options
      */
-    public function __construct($options) {
-        $this->options = $options;
-        $this->client =  new Client();
-        $this->config =  new Configuration();
+    public function __construct($config, $client) {
+        $this->client =  $client;
+        $this->config =  $config;
         $this->headerSelector = new HeaderSelector();
         $this->hostIndex = 0;
     }
@@ -360,7 +359,7 @@ class StatisticsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -371,7 +370,7 @@ class StatisticsApi
         $resourcePath = '/api/apps/{app}/usages/storage/today';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -662,7 +661,7 @@ class StatisticsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -673,7 +672,7 @@ class StatisticsApi
         $resourcePath = '/api/apps/{app}/usages/log';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -974,7 +973,7 @@ class StatisticsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -999,7 +998,7 @@ class StatisticsApi
         $resourcePath = '/api/apps/{app}/usages/storage/{fromDate}/{toDate}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1345,7 +1344,7 @@ class StatisticsApi
         $resourcePath = '/api/teams/{team}/usages/storage/{fromDate}/{toDate}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1667,7 +1666,7 @@ class StatisticsApi
         $resourcePath = '/api/teams/{team}/usages/storage/today';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1968,7 +1967,7 @@ class StatisticsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1993,7 +1992,7 @@ class StatisticsApi
         $resourcePath = '/api/apps/{app}/usages/calls/{fromDate}/{toDate}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2339,7 +2338,7 @@ class StatisticsApi
         $resourcePath = '/api/teams/{team}/usages/calls/{fromDate}/{toDate}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2441,13 +2440,5 @@ class StatisticsApi
         }
 
         return $options;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getAuthorizationHeader()
-    {
-        return ['Authorization' => 'Bearer '.$this->options['access_token']];
     }
 }

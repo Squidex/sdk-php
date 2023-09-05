@@ -93,10 +93,9 @@ class EventConsumersApi
 /**
      * @param $options
      */
-    public function __construct($options) {
-        $this->options = $options;
-        $this->client =  new Client();
-        $this->config =  new Configuration();
+    public function __construct($config, $client) {
+        $this->client =  $client;
+        $this->config =  $config;
         $this->headerSelector = new HeaderSelector();
         $this->hostIndex = 0;
     }
@@ -354,7 +353,7 @@ class EventConsumersApi
         $resourcePath = '/api/event-consumers';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -675,7 +674,7 @@ class EventConsumersApi
         $resourcePath = '/api/event-consumers/{consumerName}/reset';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1004,7 +1003,7 @@ class EventConsumersApi
         $resourcePath = '/api/event-consumers/{consumerName}/start';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1333,7 +1332,7 @@ class EventConsumersApi
         $resourcePath = '/api/event-consumers/{consumerName}/stop';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1419,13 +1418,5 @@ class EventConsumersApi
         }
 
         return $options;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getAuthorizationHeader()
-    {
-        return ['Authorization' => 'Bearer '.$this->options['access_token']];
     }
 }

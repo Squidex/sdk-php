@@ -138,10 +138,9 @@ class RulesApi
 /**
      * @param $options
      */
-    public function __construct($options) {
-        $this->options = $options;
-        $this->client =  new Client();
-        $this->config =  new Configuration();
+    public function __construct($config, $client) {
+        $this->client =  $client;
+        $this->config =  $config;
         $this->headerSelector = new HeaderSelector();
         $this->hostIndex = 0;
     }
@@ -340,7 +339,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -358,7 +357,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/events/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -596,7 +595,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -607,7 +606,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/events';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -842,7 +841,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -860,7 +859,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1103,7 +1102,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1121,7 +1120,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/events';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1359,7 +1358,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1370,7 +1369,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/run';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1689,7 +1688,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1707,7 +1706,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/disable';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2034,7 +2033,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2052,7 +2051,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/enable';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2354,7 +2353,7 @@ class RulesApi
         $resourcePath = '/api/rules/actions';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2652,7 +2651,7 @@ class RulesApi
         $resourcePath = '/api/rules/eventtypes/{type}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2946,7 +2945,7 @@ class RulesApi
         $resourcePath = '/api/rules/eventtypes';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3244,7 +3243,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3258,7 +3257,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/events';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3576,7 +3575,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3587,7 +3586,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3906,7 +3905,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3924,7 +3923,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4166,7 +4165,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4184,7 +4183,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/events/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4516,7 +4515,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4541,7 +4540,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4796,7 +4795,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4815,7 +4814,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/run';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5128,7 +5127,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5146,7 +5145,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/simulate';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5473,7 +5472,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5491,7 +5490,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/simulate';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5733,7 +5732,7 @@ class RulesApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5751,7 +5750,7 @@ class RulesApi
         $resourcePath = '/api/apps/{app}/rules/{id}/trigger';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5845,13 +5844,5 @@ class RulesApi
         }
 
         return $options;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getAuthorizationHeader()
-    {
-        return ['Authorization' => 'Bearer '.$this->options['access_token']];
     }
 }

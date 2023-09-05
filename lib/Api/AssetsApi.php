@@ -138,10 +138,9 @@ class AssetsApi
 /**
      * @param $options
      */
-    public function __construct($options) {
-        $this->options = $options;
-        $this->client =  new Client();
-        $this->config =  new Configuration();
+    public function __construct($config, $client) {
+        $this->client =  $client;
+        $this->config =  $config;
         $this->headerSelector = new HeaderSelector();
         $this->hostIndex = 0;
     }
@@ -500,7 +499,7 @@ class AssetsApi
         $resourcePath = '/api/assets/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -997,7 +996,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1036,7 +1035,7 @@ class AssetsApi
         $resourcePath = '/api/assets/{app}/{idOrSlug}/{more}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1413,7 +1412,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1431,7 +1430,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/folders/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1740,7 +1739,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1753,7 +1752,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/folders';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2090,7 +2089,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2108,7 +2107,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/folders';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2439,7 +2438,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2464,7 +2463,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/folders/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2803,7 +2802,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2828,7 +2827,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/folders/{id}/parent';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3162,7 +3161,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3180,7 +3179,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/bulk';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3432,7 +3431,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3452,7 +3451,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3774,7 +3773,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3792,7 +3791,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4136,7 +4135,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4156,7 +4155,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4556,7 +4555,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4576,7 +4575,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/query';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4882,7 +4881,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4893,7 +4892,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/tags';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5250,7 +5249,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5265,7 +5264,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5661,7 +5660,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5682,7 +5681,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -6044,7 +6043,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6069,7 +6068,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -6431,7 +6430,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6450,7 +6449,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/{id}/content';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -6794,7 +6793,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6819,7 +6818,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/{id}/parent';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -7158,7 +7157,7 @@ class AssetsApi
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7183,7 +7182,7 @@ class AssetsApi
         $resourcePath = '/api/apps/{app}/assets/tags/{name}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -7284,13 +7283,5 @@ class AssetsApi
         }
 
         return $options;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getAuthorizationHeader()
-    {
-        return ['Authorization' => 'Bearer '.$this->options['access_token']];
     }
 }

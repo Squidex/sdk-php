@@ -77,10 +77,9 @@ use {{invokerPackage}}\ObjectSerializer;
 /**
      * @param $options
      */
-    public function __construct($options) {
-        $this->options = $options;
-        $this->client =  new Client();
-        $this->config =  new Configuration();
+    public function __construct($config, $client) {
+        $this->client =  $client;
+        $this->config =  $config;
         $this->headerSelector = new HeaderSelector();
         $this->hostIndex = 0;
     }
@@ -563,7 +562,7 @@ use {{invokerPackage}}\ObjectSerializer;
         {{#required}}
         // verify the required parameter '{{paramName}}' is set
         {{#vendorExtensions.x-hidden}}
-        $app = $this->options['appName'];
+        $app = $this->config->getAppName();
         {{/vendorExtensions.x-hidden}}
         if (${{paramName}} === null || (is_array(${{paramName}}) && count(${{paramName}}) === 0)) {
             throw new \InvalidArgumentException(
@@ -612,7 +611,7 @@ use {{invokerPackage}}\ObjectSerializer;
         $resourcePath = '{{{path}}}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = $this->getAuthorizationHeader();
+        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -843,14 +842,6 @@ use {{invokerPackage}}\ObjectSerializer;
         }
 
         return $options;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getAuthorizationHeader()
-    {
-        return ['Authorization' => 'Bearer '.$this->options['access_token']];
     }
 }
 {{/operations}}
