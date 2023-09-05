@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * SynchronizeSchemaDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,13 +57,13 @@ class SynchronizeSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'properties' => '\Squidex/Client\Model\SchemaPropertiesDto',
-        'scripts' => '\Squidex/Client\Model\SchemaScriptsDto',
+        'properties' => '\Squidex\Client\Model\SchemaPropertiesDto',
+        'scripts' => '\Squidex\Client\Model\SchemaScriptsDto',
         'fields_in_references' => 'string[]',
         'fields_in_lists' => 'string[]',
-        'fields' => '\Squidex/Client\Model\UpsertSchemaFieldDto[]',
+        'fields' => '\Squidex\Client\Model\UpsertSchemaFieldDto[]',
         'preview_urls' => 'array<string,string>',
-        'field_rules' => '\Squidex/Client\Model\FieldRuleDto[]',
+        'field_rules' => '\Squidex\Client\Model\FieldRuleDto[]',
         'category' => 'string',
         'is_published' => 'bool',
         'no_field_deletion' => 'bool',
@@ -362,7 +362,7 @@ class SynchronizeSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets properties
      *
-     * @return \Squidex/Client\Model\SchemaPropertiesDto|null
+     * @return \Squidex\Client\Model\SchemaPropertiesDto|null
      */
     public function getProperties()
     {
@@ -372,7 +372,7 @@ class SynchronizeSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets properties
      *
-     * @param \Squidex/Client\Model\SchemaPropertiesDto|null $properties properties
+     * @param \Squidex\Client\Model\SchemaPropertiesDto|null $properties properties
      *
      * @return self
      */
@@ -389,7 +389,7 @@ class SynchronizeSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets scripts
      *
-     * @return \Squidex/Client\Model\SchemaScriptsDto|null
+     * @return \Squidex\Client\Model\SchemaScriptsDto|null
      */
     public function getScripts()
     {
@@ -399,7 +399,7 @@ class SynchronizeSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets scripts
      *
-     * @param \Squidex/Client\Model\SchemaScriptsDto|null $scripts scripts
+     * @param \Squidex\Client\Model\SchemaScriptsDto|null $scripts scripts
      *
      * @return self
      */
@@ -484,7 +484,7 @@ class SynchronizeSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets fields
      *
-     * @return \Squidex/Client\Model\UpsertSchemaFieldDto[]|null
+     * @return \Squidex\Client\Model\UpsertSchemaFieldDto[]|null
      */
     public function getFields()
     {
@@ -494,7 +494,7 @@ class SynchronizeSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets fields
      *
-     * @param \Squidex/Client\Model\UpsertSchemaFieldDto[]|null $fields Optional fields.
+     * @param \Squidex\Client\Model\UpsertSchemaFieldDto[]|null $fields Optional fields.
      *
      * @return self
      */
@@ -552,7 +552,7 @@ class SynchronizeSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets field_rules
      *
-     * @return \Squidex/Client\Model\FieldRuleDto[]|null
+     * @return \Squidex\Client\Model\FieldRuleDto[]|null
      */
     public function getFieldRules()
     {
@@ -562,7 +562,7 @@ class SynchronizeSchemaDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets field_rules
      *
-     * @param \Squidex/Client\Model\FieldRuleDto[]|null $field_rules The optional field Rules.
+     * @param \Squidex\Client\Model\FieldRuleDto[]|null $field_rules The optional field Rules.
      *
      * @return self
      */

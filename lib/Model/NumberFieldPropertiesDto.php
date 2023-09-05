@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * NumberFieldPropertiesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class NumberFieldPropertiesDto extends FieldPropertiesDto
         'allowed_values' => 'float[]',
         'is_unique' => 'bool',
         'inline_editable' => 'bool',
-        'editor' => '\Squidex/Client\Model\NumberFieldEditor'
+        'editor' => '\Squidex\Client\Model\NumberFieldEditor'
     ];
 
     /**
@@ -552,7 +552,7 @@ class NumberFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets editor
      *
-     * @return \Squidex/Client\Model\NumberFieldEditor|null
+     * @return \Squidex\Client\Model\NumberFieldEditor|null
      */
     public function getEditor()
     {
@@ -562,7 +562,7 @@ class NumberFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets editor
      *
-     * @param \Squidex/Client\Model\NumberFieldEditor|null $editor editor
+     * @param \Squidex\Client\Model\NumberFieldEditor|null $editor editor
      *
      * @return self
      */

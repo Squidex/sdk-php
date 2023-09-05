@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * UpdateAppSettingsDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,8 +57,8 @@ class UpdateAppSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'patterns' => '\Squidex/Client\Model\PatternDto[]',
-        'editors' => '\Squidex/Client\Model\EditorDto[]',
+        'patterns' => '\Squidex\Client\Model\PatternDto[]',
+        'editors' => '\Squidex\Client\Model\EditorDto[]',
         'hide_scheduler' => 'bool',
         'hide_date_time_mode_button' => 'bool'
     ];
@@ -319,7 +319,7 @@ class UpdateAppSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets patterns
      *
-     * @return \Squidex/Client\Model\PatternDto[]
+     * @return \Squidex\Client\Model\PatternDto[]
      */
     public function getPatterns()
     {
@@ -329,7 +329,7 @@ class UpdateAppSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets patterns
      *
-     * @param \Squidex/Client\Model\PatternDto[] $patterns The configured app patterns.
+     * @param \Squidex\Client\Model\PatternDto[] $patterns The configured app patterns.
      *
      * @return self
      */
@@ -346,7 +346,7 @@ class UpdateAppSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets editors
      *
-     * @return \Squidex/Client\Model\EditorDto[]
+     * @return \Squidex\Client\Model\EditorDto[]
      */
     public function getEditors()
     {
@@ -356,7 +356,7 @@ class UpdateAppSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets editors
      *
-     * @param \Squidex/Client\Model\EditorDto[] $editors The configured UI editors.
+     * @param \Squidex\Client\Model\EditorDto[] $editors The configured UI editors.
      *
      * @return self
      */

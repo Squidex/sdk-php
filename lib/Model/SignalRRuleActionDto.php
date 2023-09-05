@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * SignalRRuleActionDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class SignalRRuleActionDto extends RuleActionDto
     protected static $openAPITypes = [
         'connection_string' => 'string',
         'hub_name' => 'string',
-        'action' => '\Squidex/Client\Model\ActionTypeEnum',
+        'action' => '\Squidex\Client\Model\ActionTypeEnum',
         'method_name' => 'string',
         'target' => 'string',
         'payload' => 'string'
@@ -402,7 +402,7 @@ class SignalRRuleActionDto extends RuleActionDto
     /**
      * Gets action
      *
-     * @return \Squidex/Client\Model\ActionTypeEnum
+     * @return \Squidex\Client\Model\ActionTypeEnum
      */
     public function getAction()
     {
@@ -412,7 +412,7 @@ class SignalRRuleActionDto extends RuleActionDto
     /**
      * Sets action
      *
-     * @param \Squidex/Client\Model\ActionTypeEnum $action action
+     * @param \Squidex\Client\Model\ActionTypeEnum $action action
      *
      * @return self
      */

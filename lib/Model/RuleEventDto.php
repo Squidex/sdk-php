@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * RuleEventDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class RuleEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'id' => 'string',
         'created' => '\DateTime',
         'description' => 'string',
@@ -65,8 +65,8 @@ class RuleEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_dump' => 'string',
         'num_calls' => 'int',
         'next_attempt' => '\DateTime',
-        'result' => '\Squidex/Client\Model\RuleResult',
-        'job_result' => '\Squidex/Client\Model\RuleJobResult'
+        'result' => '\Squidex\Client\Model\RuleResult',
+        'job_result' => '\Squidex\Client\Model\RuleJobResult'
     ];
 
     /**
@@ -379,7 +379,7 @@ class RuleEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -389,7 +389,7 @@ class RuleEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -609,7 +609,7 @@ class RuleEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets result
      *
-     * @return \Squidex/Client\Model\RuleResult
+     * @return \Squidex\Client\Model\RuleResult
      */
     public function getResult()
     {
@@ -619,7 +619,7 @@ class RuleEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets result
      *
-     * @param \Squidex/Client\Model\RuleResult $result result
+     * @param \Squidex\Client\Model\RuleResult $result result
      *
      * @return self
      */
@@ -636,7 +636,7 @@ class RuleEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets job_result
      *
-     * @return \Squidex/Client\Model\RuleJobResult
+     * @return \Squidex\Client\Model\RuleJobResult
      */
     public function getJobResult()
     {
@@ -646,7 +646,7 @@ class RuleEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets job_result
      *
-     * @param \Squidex/Client\Model\RuleJobResult $job_result job_result
+     * @param \Squidex\Client\Model\RuleJobResult $job_result job_result
      *
      * @return self
      */

@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * BackupsApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -146,9 +146,9 @@ class BackupsApi
      * @param  string $id The ID of the backup. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\Squidex/Client\Model\ErrorDto
+     * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      */
     public function getBackupContent($id, string $contentType = self::contentTypes['getBackupContent'][0])
     {
@@ -164,9 +164,9 @@ class BackupsApi
      * @param  string $id The ID of the backup. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBackupContentWithHttpInfo($id, string $contentType = self::contentTypes['getBackupContent'][0])
     {
@@ -224,17 +224,17 @@ class BackupsApi
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -269,7 +269,7 @@ class BackupsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -390,6 +390,14 @@ class BackupsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -461,9 +469,9 @@ class BackupsApi
      * @param  string $app_id The ID of the app. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContentV2'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\Squidex/Client\Model\ErrorDto
+     * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      */
     public function getBackupContentV2($id, $app_id = null, string $contentType = self::contentTypes['getBackupContentV2'][0])
     {
@@ -480,9 +488,9 @@ class BackupsApi
      * @param  string $app_id The ID of the app. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContentV2'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBackupContentV2WithHttpInfo($id, $app_id = null, string $contentType = self::contentTypes['getBackupContentV2'][0])
     {
@@ -540,17 +548,17 @@ class BackupsApi
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -585,7 +593,7 @@ class BackupsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -791,7 +799,7 @@ class BackupsApi
      * @param  string $id The ID of the backup to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -808,7 +816,7 @@ class BackupsApi
      * @param  string $id The ID of the backup to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -858,7 +866,7 @@ class BackupsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -866,7 +874,7 @@ class BackupsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -974,6 +982,14 @@ class BackupsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -1043,9 +1059,9 @@ class BackupsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackups'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\BackupJobsDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\BackupJobsDto|\Squidex\Client\Model\ErrorDto
      */
     public function getBackups(string $contentType = self::contentTypes['getBackups'][0])
     {
@@ -1060,9 +1076,9 @@ class BackupsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackups'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\BackupJobsDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\BackupJobsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBackupsWithHttpInfo(string $contentType = self::contentTypes['getBackups'][0])
     {
@@ -1105,38 +1121,38 @@ class BackupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\BackupJobsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\BackupJobsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\BackupJobsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\BackupJobsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\BackupJobsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\BackupJobsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\BackupJobsDto';
+            $returnType = '\Squidex\Client\Model\BackupJobsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1157,7 +1173,7 @@ class BackupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\BackupJobsDto',
+                        '\Squidex\Client\Model\BackupJobsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1165,7 +1181,7 @@ class BackupsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1207,7 +1223,7 @@ class BackupsApi
      */
     public function getBackupsAsyncWithHttpInfo(string $contentType = self::contentTypes['getBackups'][0])
     {
-        $returnType = '\Squidex/Client\Model\BackupJobsDto';
+        $returnType = '\Squidex\Client\Model\BackupJobsDto';
         $request = $this->getBackupsRequest($contentType);
 
         return $this->client
@@ -1275,6 +1291,14 @@ class BackupsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1337,7 +1361,7 @@ class BackupsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBackup'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1353,7 +1377,7 @@ class BackupsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBackup'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1403,7 +1427,7 @@ class BackupsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1411,7 +1435,7 @@ class BackupsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1508,6 +1532,14 @@ class BackupsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1570,9 +1602,9 @@ class BackupsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRestoreJob'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\RestoreJobDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\RestoreJobDto|\Squidex\Client\Model\ErrorDto
      */
     public function getRestoreJob(string $contentType = self::contentTypes['getRestoreJob'][0])
     {
@@ -1587,9 +1619,9 @@ class BackupsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRestoreJob'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\RestoreJobDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\RestoreJobDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRestoreJobWithHttpInfo(string $contentType = self::contentTypes['getRestoreJob'][0])
     {
@@ -1632,38 +1664,38 @@ class BackupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\RestoreJobDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\RestoreJobDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\RestoreJobDto' !== 'string') {
+                        if ('\Squidex\Client\Model\RestoreJobDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\RestoreJobDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\RestoreJobDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\RestoreJobDto';
+            $returnType = '\Squidex\Client\Model\RestoreJobDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1684,7 +1716,7 @@ class BackupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\RestoreJobDto',
+                        '\Squidex\Client\Model\RestoreJobDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1692,7 +1724,7 @@ class BackupsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1734,7 +1766,7 @@ class BackupsApi
      */
     public function getRestoreJobAsyncWithHttpInfo(string $contentType = self::contentTypes['getRestoreJob'][0])
     {
-        $returnType = '\Squidex/Client\Model\RestoreJobDto';
+        $returnType = '\Squidex\Client\Model\RestoreJobDto';
         $request = $this->getRestoreJobRequest($contentType);
 
         return $this->client
@@ -1854,10 +1886,10 @@ class BackupsApi
      *
      * Restore a backup.
      *
-     * @param  \Squidex/Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
+     * @param  \Squidex\Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreJob'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1871,10 +1903,10 @@ class BackupsApi
      *
      * Restore a backup.
      *
-     * @param  \Squidex/Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
+     * @param  \Squidex\Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreJob'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1924,7 +1956,7 @@ class BackupsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1932,7 +1964,7 @@ class BackupsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1947,7 +1979,7 @@ class BackupsApi
      *
      * Restore a backup.
      *
-     * @param  \Squidex/Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
+     * @param  \Squidex\Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreJob'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1968,7 +2000,7 @@ class BackupsApi
      *
      * Restore a backup.
      *
-     * @param  \Squidex/Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
+     * @param  \Squidex\Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreJob'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2005,7 +2037,7 @@ class BackupsApi
     /**
      * Create request for operation 'postRestoreJob'
      *
-     * @param  \Squidex/Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
+     * @param  \Squidex\Client\Model\RestoreRequestDto $restore_request_dto The backup to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreJob'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

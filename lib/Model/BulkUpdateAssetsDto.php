@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * BulkUpdateAssetsDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class BulkUpdateAssetsDto implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'jobs' => '\Squidex/Client\Model\BulkUpdateAssetsJobDto[]',
+        'jobs' => '\Squidex\Client\Model\BulkUpdateAssetsJobDto[]',
         'check_referrers' => 'bool',
         'optimize_validation' => 'bool',
         'do_not_script' => 'bool'
@@ -313,7 +313,7 @@ class BulkUpdateAssetsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets jobs
      *
-     * @return \Squidex/Client\Model\BulkUpdateAssetsJobDto[]|null
+     * @return \Squidex\Client\Model\BulkUpdateAssetsJobDto[]|null
      */
     public function getJobs()
     {
@@ -323,7 +323,7 @@ class BulkUpdateAssetsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets jobs
      *
-     * @param \Squidex/Client\Model\BulkUpdateAssetsJobDto[]|null $jobs The contents to update or insert.
+     * @param \Squidex\Client\Model\BulkUpdateAssetsJobDto[]|null $jobs The contents to update or insert.
      *
      * @return self
      */

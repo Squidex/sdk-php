@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * StatisticsApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -145,9 +145,9 @@ class StatisticsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrentStorageSize'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\CurrentStorageDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\CurrentStorageDto|\Squidex\Client\Model\ErrorDto
      */
     public function getCurrentStorageSize(string $contentType = self::contentTypes['getCurrentStorageSize'][0])
     {
@@ -162,9 +162,9 @@ class StatisticsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrentStorageSize'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\CurrentStorageDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\CurrentStorageDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCurrentStorageSizeWithHttpInfo(string $contentType = self::contentTypes['getCurrentStorageSize'][0])
     {
@@ -207,38 +207,38 @@ class StatisticsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\CurrentStorageDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\CurrentStorageDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\CurrentStorageDto' !== 'string') {
+                        if ('\Squidex\Client\Model\CurrentStorageDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\CurrentStorageDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\CurrentStorageDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\CurrentStorageDto';
+            $returnType = '\Squidex\Client\Model\CurrentStorageDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -259,7 +259,7 @@ class StatisticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\CurrentStorageDto',
+                        '\Squidex\Client\Model\CurrentStorageDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -267,7 +267,7 @@ class StatisticsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -309,7 +309,7 @@ class StatisticsApi
      */
     public function getCurrentStorageSizeAsyncWithHttpInfo(string $contentType = self::contentTypes['getCurrentStorageSize'][0])
     {
-        $returnType = '\Squidex/Client\Model\CurrentStorageDto';
+        $returnType = '\Squidex\Client\Model\CurrentStorageDto';
         $request = $this->getCurrentStorageSizeRequest($contentType);
 
         return $this->client
@@ -377,6 +377,14 @@ class StatisticsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -439,9 +447,9 @@ class StatisticsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\LogDownloadDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\LogDownloadDto|\Squidex\Client\Model\ErrorDto
      */
     public function getLog(string $contentType = self::contentTypes['getLog'][0])
     {
@@ -456,9 +464,9 @@ class StatisticsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\LogDownloadDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\LogDownloadDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLogWithHttpInfo(string $contentType = self::contentTypes['getLog'][0])
     {
@@ -501,38 +509,38 @@ class StatisticsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\LogDownloadDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\LogDownloadDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\LogDownloadDto' !== 'string') {
+                        if ('\Squidex\Client\Model\LogDownloadDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\LogDownloadDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\LogDownloadDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\LogDownloadDto';
+            $returnType = '\Squidex\Client\Model\LogDownloadDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -553,7 +561,7 @@ class StatisticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\LogDownloadDto',
+                        '\Squidex\Client\Model\LogDownloadDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -561,7 +569,7 @@ class StatisticsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -603,7 +611,7 @@ class StatisticsApi
      */
     public function getLogAsyncWithHttpInfo(string $contentType = self::contentTypes['getLog'][0])
     {
-        $returnType = '\Squidex/Client\Model\LogDownloadDto';
+        $returnType = '\Squidex\Client\Model\LogDownloadDto';
         $request = $this->getLogRequest($contentType);
 
         return $this->client
@@ -671,6 +679,14 @@ class StatisticsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -735,9 +751,9 @@ class StatisticsApi
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStorageSizes'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\StorageUsagePerDateDto[]|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\StorageUsagePerDateDto[]|\Squidex\Client\Model\ErrorDto
      */
     public function getStorageSizes($from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
     {
@@ -754,9 +770,9 @@ class StatisticsApi
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStorageSizes'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\StorageUsagePerDateDto[]|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\StorageUsagePerDateDto[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStorageSizesWithHttpInfo($from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
     {
@@ -799,38 +815,38 @@ class StatisticsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\StorageUsagePerDateDto[]' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\StorageUsagePerDateDto[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\StorageUsagePerDateDto[]' !== 'string') {
+                        if ('\Squidex\Client\Model\StorageUsagePerDateDto[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\StorageUsagePerDateDto[]', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\StorageUsagePerDateDto[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\StorageUsagePerDateDto[]';
+            $returnType = '\Squidex\Client\Model\StorageUsagePerDateDto[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -851,7 +867,7 @@ class StatisticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\StorageUsagePerDateDto[]',
+                        '\Squidex\Client\Model\StorageUsagePerDateDto[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -859,7 +875,7 @@ class StatisticsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -905,7 +921,7 @@ class StatisticsApi
      */
     public function getStorageSizesAsyncWithHttpInfo($from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
     {
-        $returnType = '\Squidex/Client\Model\StorageUsagePerDateDto[]';
+        $returnType = '\Squidex\Client\Model\StorageUsagePerDateDto[]';
         $request = $this->getStorageSizesRequest($from_date, $to_date, $contentType);
 
         return $this->client
@@ -990,6 +1006,14 @@ class StatisticsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($from_date !== null) {
             $resourcePath = str_replace(
                 '{' . 'fromDate' . '}',
@@ -1070,9 +1094,9 @@ class StatisticsApi
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStorageSizesForTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\StorageUsagePerDateDto[]|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\StorageUsagePerDateDto[]|\Squidex\Client\Model\ErrorDto
      */
     public function getStorageSizesForTeam($team, $from_date, $to_date, string $contentType = self::contentTypes['getStorageSizesForTeam'][0])
     {
@@ -1090,9 +1114,9 @@ class StatisticsApi
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStorageSizesForTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\StorageUsagePerDateDto[]|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\StorageUsagePerDateDto[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStorageSizesForTeamWithHttpInfo($team, $from_date, $to_date, string $contentType = self::contentTypes['getStorageSizesForTeam'][0])
     {
@@ -1135,38 +1159,38 @@ class StatisticsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\StorageUsagePerDateDto[]' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\StorageUsagePerDateDto[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\StorageUsagePerDateDto[]' !== 'string') {
+                        if ('\Squidex\Client\Model\StorageUsagePerDateDto[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\StorageUsagePerDateDto[]', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\StorageUsagePerDateDto[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\StorageUsagePerDateDto[]';
+            $returnType = '\Squidex\Client\Model\StorageUsagePerDateDto[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1187,7 +1211,7 @@ class StatisticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\StorageUsagePerDateDto[]',
+                        '\Squidex\Client\Model\StorageUsagePerDateDto[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1195,7 +1219,7 @@ class StatisticsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1243,7 +1267,7 @@ class StatisticsApi
      */
     public function getStorageSizesForTeamAsyncWithHttpInfo($team, $from_date, $to_date, string $contentType = self::contentTypes['getStorageSizesForTeam'][0])
     {
-        $returnType = '\Squidex/Client\Model\StorageUsagePerDateDto[]';
+        $returnType = '\Squidex\Client\Model\StorageUsagePerDateDto[]';
         $request = $this->getStorageSizesForTeamRequest($team, $from_date, $to_date, $contentType);
 
         return $this->client
@@ -1414,9 +1438,9 @@ class StatisticsApi
      * @param  string $team The ID of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeamCurrentStorageSizeForTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\CurrentStorageDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\CurrentStorageDto|\Squidex\Client\Model\ErrorDto
      */
     public function getTeamCurrentStorageSizeForTeam($team, string $contentType = self::contentTypes['getTeamCurrentStorageSizeForTeam'][0])
     {
@@ -1432,9 +1456,9 @@ class StatisticsApi
      * @param  string $team The ID of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeamCurrentStorageSizeForTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\CurrentStorageDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\CurrentStorageDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTeamCurrentStorageSizeForTeamWithHttpInfo($team, string $contentType = self::contentTypes['getTeamCurrentStorageSizeForTeam'][0])
     {
@@ -1477,38 +1501,38 @@ class StatisticsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\CurrentStorageDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\CurrentStorageDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\CurrentStorageDto' !== 'string') {
+                        if ('\Squidex\Client\Model\CurrentStorageDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\CurrentStorageDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\CurrentStorageDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\CurrentStorageDto';
+            $returnType = '\Squidex\Client\Model\CurrentStorageDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1529,7 +1553,7 @@ class StatisticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\CurrentStorageDto',
+                        '\Squidex\Client\Model\CurrentStorageDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1537,7 +1561,7 @@ class StatisticsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1581,7 +1605,7 @@ class StatisticsApi
      */
     public function getTeamCurrentStorageSizeForTeamAsyncWithHttpInfo($team, string $contentType = self::contentTypes['getTeamCurrentStorageSizeForTeam'][0])
     {
-        $returnType = '\Squidex/Client\Model\CurrentStorageDto';
+        $returnType = '\Squidex\Client\Model\CurrentStorageDto';
         $request = $this->getTeamCurrentStorageSizeForTeamRequest($team, $contentType);
 
         return $this->client
@@ -1721,9 +1745,9 @@ class StatisticsApi
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsages'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\CallsUsageDtoDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\CallsUsageDtoDto|\Squidex\Client\Model\ErrorDto
      */
     public function getUsages($from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
     {
@@ -1740,9 +1764,9 @@ class StatisticsApi
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsages'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\CallsUsageDtoDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\CallsUsageDtoDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsagesWithHttpInfo($from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
     {
@@ -1785,38 +1809,38 @@ class StatisticsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\CallsUsageDtoDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\CallsUsageDtoDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\CallsUsageDtoDto' !== 'string') {
+                        if ('\Squidex\Client\Model\CallsUsageDtoDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\CallsUsageDtoDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\CallsUsageDtoDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\CallsUsageDtoDto';
+            $returnType = '\Squidex\Client\Model\CallsUsageDtoDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1837,7 +1861,7 @@ class StatisticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\CallsUsageDtoDto',
+                        '\Squidex\Client\Model\CallsUsageDtoDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1845,7 +1869,7 @@ class StatisticsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1891,7 +1915,7 @@ class StatisticsApi
      */
     public function getUsagesAsyncWithHttpInfo($from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
     {
-        $returnType = '\Squidex/Client\Model\CallsUsageDtoDto';
+        $returnType = '\Squidex\Client\Model\CallsUsageDtoDto';
         $request = $this->getUsagesRequest($from_date, $to_date, $contentType);
 
         return $this->client
@@ -1976,6 +2000,14 @@ class StatisticsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($from_date !== null) {
             $resourcePath = str_replace(
                 '{' . 'fromDate' . '}',
@@ -2056,9 +2088,9 @@ class StatisticsApi
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsagesForTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\CallsUsageDtoDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\CallsUsageDtoDto|\Squidex\Client\Model\ErrorDto
      */
     public function getUsagesForTeam($team, $from_date, $to_date, string $contentType = self::contentTypes['getUsagesForTeam'][0])
     {
@@ -2076,9 +2108,9 @@ class StatisticsApi
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsagesForTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\CallsUsageDtoDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\CallsUsageDtoDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsagesForTeamWithHttpInfo($team, $from_date, $to_date, string $contentType = self::contentTypes['getUsagesForTeam'][0])
     {
@@ -2121,38 +2153,38 @@ class StatisticsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\CallsUsageDtoDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\CallsUsageDtoDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\CallsUsageDtoDto' !== 'string') {
+                        if ('\Squidex\Client\Model\CallsUsageDtoDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\CallsUsageDtoDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\CallsUsageDtoDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\CallsUsageDtoDto';
+            $returnType = '\Squidex\Client\Model\CallsUsageDtoDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2173,7 +2205,7 @@ class StatisticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\CallsUsageDtoDto',
+                        '\Squidex\Client\Model\CallsUsageDtoDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2181,7 +2213,7 @@ class StatisticsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2229,7 +2261,7 @@ class StatisticsApi
      */
     public function getUsagesForTeamAsyncWithHttpInfo($team, $from_date, $to_date, string $contentType = self::contentTypes['getUsagesForTeam'][0])
     {
-        $returnType = '\Squidex/Client\Model\CallsUsageDtoDto';
+        $returnType = '\Squidex\Client\Model\CallsUsageDtoDto';
         $request = $this->getUsagesForTeamRequest($team, $from_date, $to_date, $contentType);
 
         return $this->client

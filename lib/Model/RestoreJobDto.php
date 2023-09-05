@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * RestoreJobDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class RestoreJobDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'log' => 'string[]',
         'started' => '\DateTime',
         'stopped' => '\DateTime',
-        'status' => '\Squidex/Client\Model\JobStatus'
+        'status' => '\Squidex\Client\Model\JobStatus'
     ];
 
     /**
@@ -447,7 +447,7 @@ class RestoreJobDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \Squidex/Client\Model\JobStatus
+     * @return \Squidex\Client\Model\JobStatus
      */
     public function getStatus()
     {
@@ -457,7 +457,7 @@ class RestoreJobDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Squidex/Client\Model\JobStatus $status status
+     * @param \Squidex\Client\Model\JobStatus $status status
      *
      * @return self
      */

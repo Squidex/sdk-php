@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * TranslationDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'result' => '\Squidex/Client\Model\TranslationResultCode',
+        'result' => '\Squidex\Client\Model\TranslationResultCode',
         'text' => 'string'
     ];
 
@@ -302,7 +302,7 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets result
      *
-     * @return \Squidex/Client\Model\TranslationResultCode
+     * @return \Squidex\Client\Model\TranslationResultCode
      */
     public function getResult()
     {
@@ -312,7 +312,7 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets result
      *
-     * @param \Squidex/Client\Model\TranslationResultCode $result result
+     * @param \Squidex\Client\Model\TranslationResultCode $result result
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * WorkflowStepDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class WorkflowStepDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'transitions' => 'array<string,\Squidex/Client\Model\WorkflowTransitionDto>',
+        'transitions' => 'array<string,\Squidex\Client\Model\WorkflowTransitionDto>',
         'color' => 'string',
         'validate' => 'bool',
         'no_update' => 'bool',
@@ -327,7 +327,7 @@ class WorkflowStepDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transitions
      *
-     * @return array<string,\Squidex/Client\Model\WorkflowTransitionDto>|null
+     * @return array<string,\Squidex\Client\Model\WorkflowTransitionDto>|null
      */
     public function getTransitions()
     {
@@ -337,7 +337,7 @@ class WorkflowStepDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transitions
      *
-     * @param array<string,\Squidex/Client\Model\WorkflowTransitionDto>|null $transitions The transitions.
+     * @param array<string,\Squidex\Client\Model\WorkflowTransitionDto>|null $transitions The transitions.
      *
      * @return self
      */

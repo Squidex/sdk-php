@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * CommentsApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -141,7 +141,7 @@ class CommentsApi
      * @param  string $comment_id The ID of the comment. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteComment'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -159,7 +159,7 @@ class CommentsApi
      * @param  string $comment_id The ID of the comment. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteComment'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -209,7 +209,7 @@ class CommentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -217,7 +217,7 @@ class CommentsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -335,6 +335,14 @@ class CommentsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($comments_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'commentsId' . '}',
@@ -414,9 +422,9 @@ class CommentsApi
      * @param  int $version The current version. (optional, default to -2)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\CommentsDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\CommentsDto|\Squidex\Client\Model\ErrorDto
      */
     public function getComments($comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
     {
@@ -433,9 +441,9 @@ class CommentsApi
      * @param  int $version The current version. (optional, default to -2)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\CommentsDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\CommentsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCommentsWithHttpInfo($comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
     {
@@ -478,38 +486,38 @@ class CommentsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\CommentsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\CommentsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\CommentsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\CommentsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\CommentsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\CommentsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\CommentsDto';
+            $returnType = '\Squidex\Client\Model\CommentsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -530,7 +538,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\CommentsDto',
+                        '\Squidex\Client\Model\CommentsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -538,7 +546,7 @@ class CommentsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -584,7 +592,7 @@ class CommentsApi
      */
     public function getCommentsAsyncWithHttpInfo($comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
     {
-        $returnType = '\Squidex/Client\Model\CommentsDto';
+        $returnType = '\Squidex\Client\Model\CommentsDto';
         $request = $this->getCommentsRequest($comments_id, $version, $contentType);
 
         return $this->client
@@ -672,6 +680,14 @@ class CommentsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($comments_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'commentsId' . '}',
@@ -742,9 +758,9 @@ class CommentsApi
      * @param  string $resource The path to the resource. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWatchingUsers'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string[]|\Squidex/Client\Model\ErrorDto
+     * @return string[]|\Squidex\Client\Model\ErrorDto
      */
     public function getWatchingUsers($resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
     {
@@ -760,9 +776,9 @@ class CommentsApi
      * @param  string $resource The path to the resource. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWatchingUsers'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string[]|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWatchingUsersWithHttpInfo($resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
     {
@@ -820,17 +836,17 @@ class CommentsApi
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -865,7 +881,7 @@ class CommentsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -986,6 +1002,14 @@ class CommentsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($resource !== null) {
             $resourcePath = str_replace(
                 '{' . 'resource' . '}',
@@ -1054,12 +1078,12 @@ class CommentsApi
      * Create a new comment.
      *
      * @param  string $comments_id The ID of the comments. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\CommentDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\CommentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postComment($comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
     {
@@ -1073,12 +1097,12 @@ class CommentsApi
      * Create a new comment.
      *
      * @param  string $comments_id The ID of the comments. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\CommentDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\CommentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postCommentWithHttpInfo($comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
     {
@@ -1121,53 +1145,53 @@ class CommentsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Squidex/Client\Model\CommentDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\CommentDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\CommentDto' !== 'string') {
+                        if ('\Squidex\Client\Model\CommentDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\CommentDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\CommentDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\CommentDto';
+            $returnType = '\Squidex\Client\Model\CommentDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1188,7 +1212,7 @@ class CommentsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\CommentDto',
+                        '\Squidex\Client\Model\CommentDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1196,7 +1220,7 @@ class CommentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1204,7 +1228,7 @@ class CommentsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1220,7 +1244,7 @@ class CommentsApi
      * Create a new comment.
      *
      * @param  string $comments_id The ID of the comments. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1242,7 +1266,7 @@ class CommentsApi
      * Create a new comment.
      *
      * @param  string $comments_id The ID of the comments. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1250,7 +1274,7 @@ class CommentsApi
      */
     public function postCommentAsyncWithHttpInfo($comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
     {
-        $returnType = '\Squidex/Client\Model\CommentDto';
+        $returnType = '\Squidex\Client\Model\CommentDto';
         $request = $this->postCommentRequest($comments_id, $upsert_comment_dto, $contentType);
 
         return $this->client
@@ -1293,7 +1317,7 @@ class CommentsApi
      * Create request for operation 'postComment'
      *
      * @param  string $comments_id The ID of the comments. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1334,6 +1358,14 @@ class CommentsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($comments_id !== null) {
             $resourcePath = str_replace(
@@ -1411,10 +1443,10 @@ class CommentsApi
      *
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putComment'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1430,10 +1462,10 @@ class CommentsApi
      *
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putComment'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1483,7 +1515,7 @@ class CommentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1491,7 +1523,7 @@ class CommentsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1508,7 +1540,7 @@ class CommentsApi
      *
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1531,7 +1563,7 @@ class CommentsApi
      *
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1570,7 +1602,7 @@ class CommentsApi
      *
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
-     * @param  \Squidex/Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1618,6 +1650,14 @@ class CommentsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($comments_id !== null) {
             $resourcePath = str_replace(

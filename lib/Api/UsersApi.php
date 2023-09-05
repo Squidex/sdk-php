@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * UsersApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -137,9 +137,9 @@ class UsersApi
      * @param  string $id The ID of the user (GUID). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\UserDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\UserDto|\Squidex\Client\Model\ErrorDto
      */
     public function getUser($id, string $contentType = self::contentTypes['getUser'][0])
     {
@@ -155,9 +155,9 @@ class UsersApi
      * @param  string $id The ID of the user (GUID). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\UserDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\UserDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserWithHttpInfo($id, string $contentType = self::contentTypes['getUser'][0])
     {
@@ -200,38 +200,38 @@ class UsersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\UserDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\UserDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\UserDto' !== 'string') {
+                        if ('\Squidex\Client\Model\UserDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\UserDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\UserDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\UserDto';
+            $returnType = '\Squidex\Client\Model\UserDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -252,7 +252,7 @@ class UsersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\UserDto',
+                        '\Squidex\Client\Model\UserDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -260,7 +260,7 @@ class UsersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -304,7 +304,7 @@ class UsersApi
      */
     public function getUserAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getUser'][0])
     {
-        $returnType = '\Squidex/Client\Model\UserDto';
+        $returnType = '\Squidex\Client\Model\UserDto';
         $request = $this->getUserRequest($id, $contentType);
 
         return $this->client
@@ -443,9 +443,9 @@ class UsersApi
      * @param  string $id The ID of the user (GUID). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserPicture'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\Squidex/Client\Model\ErrorDto
+     * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      */
     public function getUserPicture($id, string $contentType = self::contentTypes['getUserPicture'][0])
     {
@@ -461,9 +461,9 @@ class UsersApi
      * @param  string $id The ID of the user (GUID). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserPicture'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserPictureWithHttpInfo($id, string $contentType = self::contentTypes['getUserPicture'][0])
     {
@@ -521,17 +521,17 @@ class UsersApi
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -566,7 +566,7 @@ class UsersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -748,9 +748,9 @@ class UsersApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserResources'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\ResourcesDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\ResourcesDto|\Squidex\Client\Model\ErrorDto
      */
     public function getUserResources(string $contentType = self::contentTypes['getUserResources'][0])
     {
@@ -765,9 +765,9 @@ class UsersApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserResources'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\ResourcesDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\ResourcesDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserResourcesWithHttpInfo(string $contentType = self::contentTypes['getUserResources'][0])
     {
@@ -810,38 +810,38 @@ class UsersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\ResourcesDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ResourcesDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ResourcesDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ResourcesDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ResourcesDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ResourcesDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\ResourcesDto';
+            $returnType = '\Squidex\Client\Model\ResourcesDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -862,7 +862,7 @@ class UsersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ResourcesDto',
+                        '\Squidex\Client\Model\ResourcesDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -870,7 +870,7 @@ class UsersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -912,7 +912,7 @@ class UsersApi
      */
     public function getUserResourcesAsyncWithHttpInfo(string $contentType = self::contentTypes['getUserResources'][0])
     {
-        $returnType = '\Squidex/Client\Model\ResourcesDto';
+        $returnType = '\Squidex\Client\Model\ResourcesDto';
         $request = $this->getUserResourcesRequest($contentType);
 
         return $this->client
@@ -1035,9 +1035,9 @@ class UsersApi
      * @param  string $query The query to search the user by email address. Case invariant. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsers'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\UserDto[]|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\UserDto[]|\Squidex\Client\Model\ErrorDto
      */
     public function getUsers($query = null, string $contentType = self::contentTypes['getUsers'][0])
     {
@@ -1053,9 +1053,9 @@ class UsersApi
      * @param  string $query The query to search the user by email address. Case invariant. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsers'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\UserDto[]|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\UserDto[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsersWithHttpInfo($query = null, string $contentType = self::contentTypes['getUsers'][0])
     {
@@ -1098,38 +1098,38 @@ class UsersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\UserDto[]' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\UserDto[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\UserDto[]' !== 'string') {
+                        if ('\Squidex\Client\Model\UserDto[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\UserDto[]', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\UserDto[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\UserDto[]';
+            $returnType = '\Squidex\Client\Model\UserDto[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1150,7 +1150,7 @@ class UsersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\UserDto[]',
+                        '\Squidex\Client\Model\UserDto[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1158,7 +1158,7 @@ class UsersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1202,7 +1202,7 @@ class UsersApi
      */
     public function getUsersAsyncWithHttpInfo($query = null, string $contentType = self::contentTypes['getUsers'][0])
     {
-        $returnType = '\Squidex/Client\Model\UserDto[]';
+        $returnType = '\Squidex\Client\Model\UserDto[]';
         $request = $this->getUsersRequest($query, $contentType);
 
         return $this->client

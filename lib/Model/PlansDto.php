@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * PlansDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,12 +57,12 @@ class PlansDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'plans' => '\Squidex/Client\Model\PlanDto[]',
+        'plans' => '\Squidex\Client\Model\PlanDto[]',
         'current_plan_id' => 'string',
         'plan_owner' => 'string',
         'portal_link' => 'string',
-        'referral' => '\Squidex/Client\Model\ReferralInfo',
-        'locked' => '\Squidex/Client\Model\PlansLockedReason'
+        'referral' => '\Squidex\Client\Model\ReferralInfo',
+        'locked' => '\Squidex\Client\Model\PlansLockedReason'
     ];
 
     /**
@@ -333,7 +333,7 @@ class PlansDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets plans
      *
-     * @return \Squidex/Client\Model\PlanDto[]
+     * @return \Squidex\Client\Model\PlanDto[]
      */
     public function getPlans()
     {
@@ -343,7 +343,7 @@ class PlansDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets plans
      *
-     * @param \Squidex/Client\Model\PlanDto[] $plans The available plans.
+     * @param \Squidex\Client\Model\PlanDto[] $plans The available plans.
      *
      * @return self
      */
@@ -462,7 +462,7 @@ class PlansDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets referral
      *
-     * @return \Squidex/Client\Model\ReferralInfo|null
+     * @return \Squidex\Client\Model\ReferralInfo|null
      */
     public function getReferral()
     {
@@ -472,7 +472,7 @@ class PlansDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets referral
      *
-     * @param \Squidex/Client\Model\ReferralInfo|null $referral referral
+     * @param \Squidex\Client\Model\ReferralInfo|null $referral referral
      *
      * @return self
      */
@@ -489,7 +489,7 @@ class PlansDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets locked
      *
-     * @return \Squidex/Client\Model\PlansLockedReason
+     * @return \Squidex\Client\Model\PlansLockedReason
      */
     public function getLocked()
     {
@@ -499,7 +499,7 @@ class PlansDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets locked
      *
-     * @param \Squidex/Client\Model\PlansLockedReason $locked locked
+     * @param \Squidex\Client\Model\PlansLockedReason $locked locked
      *
      * @return self
      */

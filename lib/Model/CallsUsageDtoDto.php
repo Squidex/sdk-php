@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * CallsUsageDtoDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class CallsUsageDtoDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'allowed_bytes' => 'int',
         'allowed_calls' => 'int',
         'average_elapsed_ms' => 'float',
-        'details' => 'array<string,\Squidex/Client\Model\CallsUsagePerDateDto[]>'
+        'details' => 'array<string,\Squidex\Client\Model\CallsUsagePerDateDto[]>'
     ];
 
     /**
@@ -591,7 +591,7 @@ class CallsUsageDtoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets details
      *
-     * @return array<string,\Squidex/Client\Model\CallsUsagePerDateDto[]>
+     * @return array<string,\Squidex\Client\Model\CallsUsagePerDateDto[]>
      */
     public function getDetails()
     {
@@ -601,7 +601,7 @@ class CallsUsageDtoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets details
      *
-     * @param array<string,\Squidex/Client\Model\CallsUsagePerDateDto[]> $details The statistics by date and group.
+     * @param array<string,\Squidex\Client\Model\CallsUsagePerDateDto[]> $details The statistics by date and group.
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * FieldDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,15 +57,15 @@ class FieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'field_id' => 'int',
         'name' => 'string',
         'is_hidden' => 'bool',
         'is_locked' => 'bool',
         'is_disabled' => 'bool',
         'partitioning' => 'string',
-        'properties' => '\Squidex/Client\Model\FieldPropertiesDto',
-        'nested' => '\Squidex/Client\Model\NestedFieldDto[]'
+        'properties' => '\Squidex\Client\Model\FieldPropertiesDto',
+        'nested' => '\Squidex\Client\Model\NestedFieldDto[]'
     ];
 
     /**
@@ -384,7 +384,7 @@ class FieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -394,7 +394,7 @@ class FieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -586,7 +586,7 @@ class FieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets properties
      *
-     * @return \Squidex/Client\Model\FieldPropertiesDto
+     * @return \Squidex\Client\Model\FieldPropertiesDto
      */
     public function getProperties()
     {
@@ -596,7 +596,7 @@ class FieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets properties
      *
-     * @param \Squidex/Client\Model\FieldPropertiesDto $properties properties
+     * @param \Squidex\Client\Model\FieldPropertiesDto $properties properties
      *
      * @return self
      */
@@ -613,7 +613,7 @@ class FieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets nested
      *
-     * @return \Squidex/Client\Model\NestedFieldDto[]|null
+     * @return \Squidex\Client\Model\NestedFieldDto[]|null
      */
     public function getNested()
     {
@@ -623,7 +623,7 @@ class FieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets nested
      *
-     * @param \Squidex/Client\Model\NestedFieldDto[]|null $nested The nested fields.
+     * @param \Squidex\Client\Model\NestedFieldDto[]|null $nested The nested fields.
      *
      * @return self
      */

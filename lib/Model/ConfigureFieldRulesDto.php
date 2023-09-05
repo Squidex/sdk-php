@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * ConfigureFieldRulesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class ConfigureFieldRulesDto implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'field_rules' => '\Squidex/Client\Model\FieldRuleDto[]'
+        'field_rules' => '\Squidex\Client\Model\FieldRuleDto[]'
     ];
 
     /**
@@ -292,7 +292,7 @@ class ConfigureFieldRulesDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets field_rules
      *
-     * @return \Squidex/Client\Model\FieldRuleDto[]|null
+     * @return \Squidex\Client\Model\FieldRuleDto[]|null
      */
     public function getFieldRules()
     {
@@ -302,7 +302,7 @@ class ConfigureFieldRulesDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets field_rules
      *
-     * @param \Squidex/Client\Model\FieldRuleDto[]|null $field_rules The field rules to configure.
+     * @param \Squidex\Client\Model\FieldRuleDto[]|null $field_rules The field rules to configure.
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * UpsertSchemaFieldDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class UpsertSchemaFieldDto implements ModelInterface, ArrayAccess, \JsonSerializ
         'is_locked' => 'bool',
         'is_disabled' => 'bool',
         'partitioning' => 'string',
-        'properties' => '\Squidex/Client\Model\FieldPropertiesDto',
-        'nested' => '\Squidex/Client\Model\UpsertSchemaNestedFieldDto[]'
+        'properties' => '\Squidex\Client\Model\FieldPropertiesDto',
+        'nested' => '\Squidex\Client\Model\UpsertSchemaNestedFieldDto[]'
     ];
 
     /**
@@ -498,7 +498,7 @@ class UpsertSchemaFieldDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets properties
      *
-     * @return \Squidex/Client\Model\FieldPropertiesDto
+     * @return \Squidex\Client\Model\FieldPropertiesDto
      */
     public function getProperties()
     {
@@ -508,7 +508,7 @@ class UpsertSchemaFieldDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets properties
      *
-     * @param \Squidex/Client\Model\FieldPropertiesDto $properties properties
+     * @param \Squidex\Client\Model\FieldPropertiesDto $properties properties
      *
      * @return self
      */
@@ -525,7 +525,7 @@ class UpsertSchemaFieldDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets nested
      *
-     * @return \Squidex/Client\Model\UpsertSchemaNestedFieldDto[]|null
+     * @return \Squidex\Client\Model\UpsertSchemaNestedFieldDto[]|null
      */
     public function getNested()
     {
@@ -535,7 +535,7 @@ class UpsertSchemaFieldDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets nested
      *
-     * @param \Squidex/Client\Model\UpsertSchemaNestedFieldDto[]|null $nested The nested fields.
+     * @param \Squidex\Client\Model\UpsertSchemaNestedFieldDto[]|null $nested The nested fields.
      *
      * @return self
      */

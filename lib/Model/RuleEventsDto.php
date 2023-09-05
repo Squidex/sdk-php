@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * RuleEventsDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,9 +57,9 @@ class RuleEventsDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'total' => 'int',
-        'items' => '\Squidex/Client\Model\RuleEventDto[]'
+        'items' => '\Squidex\Client\Model\RuleEventDto[]'
     ];
 
     /**
@@ -315,7 +315,7 @@ class RuleEventsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -325,7 +325,7 @@ class RuleEventsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -369,7 +369,7 @@ class RuleEventsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \Squidex/Client\Model\RuleEventDto[]
+     * @return \Squidex\Client\Model\RuleEventDto[]
      */
     public function getItems()
     {
@@ -379,7 +379,7 @@ class RuleEventsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \Squidex/Client\Model\RuleEventDto[] $items The rule events.
+     * @param \Squidex\Client\Model\RuleEventDto[] $items The rule events.
      *
      * @return self
      */

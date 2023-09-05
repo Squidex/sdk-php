@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * QueryJsonDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class QueryJsonDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'take' => 'int',
         'random' => 'int',
         'top' => 'int',
-        'sort' => '\Squidex/Client\Model\SortNode[]'
+        'sort' => '\Squidex\Client\Model\SortNode[]'
     ];
 
     /**
@@ -522,7 +522,7 @@ class QueryJsonDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sort
      *
-     * @return \Squidex/Client\Model\SortNode[]|null
+     * @return \Squidex\Client\Model\SortNode[]|null
      */
     public function getSort()
     {
@@ -532,7 +532,7 @@ class QueryJsonDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sort
      *
-     * @param \Squidex/Client\Model\SortNode[]|null $sort sort
+     * @param \Squidex\Client\Model\SortNode[]|null $sort sort
      *
      * @return self
      */

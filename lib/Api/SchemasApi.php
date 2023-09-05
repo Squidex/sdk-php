@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * SchemasApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -219,9 +219,9 @@ class SchemasApi
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function deleteField($schema, $id, string $contentType = self::contentTypes['deleteField'][0])
     {
@@ -238,9 +238,9 @@ class SchemasApi
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['deleteField'][0])
     {
@@ -283,53 +283,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -350,7 +350,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -358,7 +358,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -366,7 +366,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -412,7 +412,7 @@ class SchemasApi
      */
     public function deleteFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['deleteField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->deleteFieldRequest($schema, $id, $contentType);
 
         return $this->client
@@ -497,6 +497,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -577,9 +585,9 @@ class SchemasApi
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function deleteNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
     {
@@ -597,9 +605,9 @@ class SchemasApi
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
     {
@@ -642,53 +650,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -709,7 +717,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -717,7 +725,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -725,7 +733,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -773,7 +781,7 @@ class SchemasApi
      */
     public function deleteNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->deleteNestedFieldRequest($schema, $parent_id, $id, $contentType);
 
         return $this->client
@@ -866,6 +874,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -953,9 +969,9 @@ class SchemasApi
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function disableField($schema, $id, string $contentType = self::contentTypes['disableField'][0])
     {
@@ -972,9 +988,9 @@ class SchemasApi
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function disableFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['disableField'][0])
     {
@@ -1017,53 +1033,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1084,7 +1100,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1092,7 +1108,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1100,7 +1116,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1146,7 +1162,7 @@ class SchemasApi
      */
     public function disableFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['disableField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->disableFieldRequest($schema, $id, $contentType);
 
         return $this->client
@@ -1231,6 +1247,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -1311,9 +1335,9 @@ class SchemasApi
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function disableNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
     {
@@ -1331,9 +1355,9 @@ class SchemasApi
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function disableNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
     {
@@ -1376,53 +1400,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1443,7 +1467,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1451,7 +1475,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1459,7 +1483,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1507,7 +1531,7 @@ class SchemasApi
      */
     public function disableNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->disableNestedFieldRequest($schema, $parent_id, $id, $contentType);
 
         return $this->client
@@ -1600,6 +1624,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -1687,9 +1719,9 @@ class SchemasApi
      * @param  int $id The ID of the field to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function enableField($schema, $id, string $contentType = self::contentTypes['enableField'][0])
     {
@@ -1706,9 +1738,9 @@ class SchemasApi
      * @param  int $id The ID of the field to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function enableFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['enableField'][0])
     {
@@ -1751,53 +1783,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1818,7 +1850,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1826,7 +1858,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1834,7 +1866,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1880,7 +1912,7 @@ class SchemasApi
      */
     public function enableFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['enableField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->enableFieldRequest($schema, $id, $contentType);
 
         return $this->client
@@ -1965,6 +1997,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -2045,9 +2085,9 @@ class SchemasApi
      * @param  int $id The ID of the field to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function enableNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
     {
@@ -2065,9 +2105,9 @@ class SchemasApi
      * @param  int $id The ID of the field to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function enableNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
     {
@@ -2110,53 +2150,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2177,7 +2217,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2185,7 +2225,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2193,7 +2233,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2241,7 +2281,7 @@ class SchemasApi
      */
     public function enableNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->enableNestedFieldRequest($schema, $parent_id, $id, $contentType);
 
         return $this->client
@@ -2334,6 +2374,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -2421,9 +2469,9 @@ class SchemasApi
      * @param  int $id The ID of the field to hide. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function hideField($schema, $id, string $contentType = self::contentTypes['hideField'][0])
     {
@@ -2440,9 +2488,9 @@ class SchemasApi
      * @param  int $id The ID of the field to hide. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function hideFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['hideField'][0])
     {
@@ -2485,53 +2533,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2552,7 +2600,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2560,7 +2608,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2568,7 +2616,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2614,7 +2662,7 @@ class SchemasApi
      */
     public function hideFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['hideField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->hideFieldRequest($schema, $id, $contentType);
 
         return $this->client
@@ -2699,6 +2747,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -2779,9 +2835,9 @@ class SchemasApi
      * @param  int $id The ID of the field to hide. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function hideNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
     {
@@ -2799,9 +2855,9 @@ class SchemasApi
      * @param  int $id The ID of the field to hide. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function hideNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
     {
@@ -2844,53 +2900,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2911,7 +2967,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2919,7 +2975,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2927,7 +2983,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2975,7 +3031,7 @@ class SchemasApi
      */
     public function hideNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->hideNestedFieldRequest($schema, $parent_id, $id, $contentType);
 
         return $this->client
@@ -3068,6 +3124,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -3155,9 +3219,9 @@ class SchemasApi
      * @param  int $id The ID of the field to lock. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function lockField($schema, $id, string $contentType = self::contentTypes['lockField'][0])
     {
@@ -3174,9 +3238,9 @@ class SchemasApi
      * @param  int $id The ID of the field to lock. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function lockFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['lockField'][0])
     {
@@ -3219,53 +3283,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3286,7 +3350,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3294,7 +3358,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3302,7 +3366,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3348,7 +3412,7 @@ class SchemasApi
      */
     public function lockFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['lockField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->lockFieldRequest($schema, $id, $contentType);
 
         return $this->client
@@ -3433,6 +3497,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -3513,9 +3585,9 @@ class SchemasApi
      * @param  int $id The ID of the field to lock. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function lockNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
     {
@@ -3533,9 +3605,9 @@ class SchemasApi
      * @param  int $id The ID of the field to lock. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function lockNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
     {
@@ -3578,53 +3650,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3645,7 +3717,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3653,7 +3725,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3661,7 +3733,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3709,7 +3781,7 @@ class SchemasApi
      */
     public function lockNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->lockNestedFieldRequest($schema, $parent_id, $id, $contentType);
 
         return $this->client
@@ -3802,6 +3874,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -3886,12 +3966,12 @@ class SchemasApi
      * Add a schema field.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postField($schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
     {
@@ -3905,12 +3985,12 @@ class SchemasApi
      * Add a schema field.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postFieldWithHttpInfo($schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
     {
@@ -3953,68 +4033,68 @@ class SchemasApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4035,7 +4115,7 @@ class SchemasApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4043,7 +4123,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4051,7 +4131,7 @@ class SchemasApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4059,7 +4139,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4075,7 +4155,7 @@ class SchemasApi
      * Add a schema field.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4097,7 +4177,7 @@ class SchemasApi
      * Add a schema field.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4105,7 +4185,7 @@ class SchemasApi
      */
     public function postFieldAsyncWithHttpInfo($schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->postFieldRequest($schema, $add_field_dto, $contentType);
 
         return $this->client
@@ -4148,7 +4228,7 @@ class SchemasApi
      * Create request for operation 'postField'
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4189,6 +4269,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -4266,12 +4354,12 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postNestedField($schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
     {
@@ -4286,12 +4374,12 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postNestedFieldWithHttpInfo($schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
     {
@@ -4334,68 +4422,68 @@ class SchemasApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4416,7 +4504,7 @@ class SchemasApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4424,7 +4512,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4432,7 +4520,7 @@ class SchemasApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4440,7 +4528,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4457,7 +4545,7 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postNestedField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4480,7 +4568,7 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postNestedField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4488,7 +4576,7 @@ class SchemasApi
      */
     public function postNestedFieldAsyncWithHttpInfo($schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->postNestedFieldRequest($schema, $parent_id, $add_field_dto, $contentType);
 
         return $this->client
@@ -4532,7 +4620,7 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postNestedField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4580,6 +4668,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -4665,12 +4761,12 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putField($schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
     {
@@ -4685,12 +4781,12 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putFieldWithHttpInfo($schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
     {
@@ -4733,53 +4829,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4800,7 +4896,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4808,7 +4904,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4816,7 +4912,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4833,7 +4929,7 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4856,7 +4952,7 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4864,7 +4960,7 @@ class SchemasApi
      */
     public function putFieldAsyncWithHttpInfo($schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putFieldRequest($schema, $id, $update_field_dto, $contentType);
 
         return $this->client
@@ -4908,7 +5004,7 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4956,6 +5052,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -5042,12 +5146,12 @@ class SchemasApi
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putNestedField($schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
     {
@@ -5063,12 +5167,12 @@ class SchemasApi
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putNestedFieldWithHttpInfo($schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
     {
@@ -5111,53 +5215,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5178,7 +5282,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5186,7 +5290,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5194,7 +5298,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5212,7 +5316,7 @@ class SchemasApi
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5236,7 +5340,7 @@ class SchemasApi
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5244,7 +5348,7 @@ class SchemasApi
      */
     public function putNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putNestedFieldRequest($schema, $parent_id, $id, $update_field_dto, $contentType);
 
         return $this->client
@@ -5289,7 +5393,7 @@ class SchemasApi
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
-     * @param  \Squidex/Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
+     * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5344,6 +5448,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -5437,12 +5549,12 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedFieldOrdering'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putNestedFieldOrdering($schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
     {
@@ -5457,12 +5569,12 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedFieldOrdering'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putNestedFieldOrderingWithHttpInfo($schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
     {
@@ -5505,53 +5617,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5572,7 +5684,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5580,7 +5692,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5588,7 +5700,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5605,7 +5717,7 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedFieldOrdering'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5628,7 +5740,7 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedFieldOrdering'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5636,7 +5748,7 @@ class SchemasApi
      */
     public function putNestedFieldOrderingAsyncWithHttpInfo($schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putNestedFieldOrderingRequest($schema, $parent_id, $reorder_fields_dto, $contentType);
 
         return $this->client
@@ -5680,7 +5792,7 @@ class SchemasApi
      *
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putNestedFieldOrdering'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5728,6 +5840,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -5812,12 +5932,12 @@ class SchemasApi
      * Reorder all fields.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putSchemaFieldOrdering($schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
     {
@@ -5831,12 +5951,12 @@ class SchemasApi
      * Reorder all fields.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putSchemaFieldOrderingWithHttpInfo($schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
     {
@@ -5879,53 +5999,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5946,7 +6066,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5954,7 +6074,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5962,7 +6082,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5978,7 +6098,7 @@ class SchemasApi
      * Reorder all fields.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6000,7 +6120,7 @@ class SchemasApi
      * Reorder all fields.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6008,7 +6128,7 @@ class SchemasApi
      */
     public function putSchemaFieldOrderingAsyncWithHttpInfo($schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putSchemaFieldOrderingRequest($schema, $reorder_fields_dto, $contentType);
 
         return $this->client
@@ -6051,7 +6171,7 @@ class SchemasApi
      * Create request for operation 'putSchemaFieldOrdering'
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
+     * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6092,6 +6212,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -6168,12 +6296,12 @@ class SchemasApi
      * Configure UI fields.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
+     * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putSchemaUIFields($schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
     {
@@ -6187,12 +6315,12 @@ class SchemasApi
      * Configure UI fields.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
+     * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putSchemaUIFieldsWithHttpInfo($schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
     {
@@ -6235,53 +6363,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6302,7 +6430,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6310,7 +6438,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6318,7 +6446,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6334,7 +6462,7 @@ class SchemasApi
      * Configure UI fields.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
+     * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6356,7 +6484,7 @@ class SchemasApi
      * Configure UI fields.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
+     * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6364,7 +6492,7 @@ class SchemasApi
      */
     public function putSchemaUIFieldsAsyncWithHttpInfo($schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putSchemaUIFieldsRequest($schema, $configure_ui_fields_dto, $contentType);
 
         return $this->client
@@ -6407,7 +6535,7 @@ class SchemasApi
      * Create request for operation 'putSchemaUIFields'
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
+     * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6448,6 +6576,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -6527,9 +6663,9 @@ class SchemasApi
      * @param  int $id The ID of the field to show. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function showField($schema, $id, string $contentType = self::contentTypes['showField'][0])
     {
@@ -6546,9 +6682,9 @@ class SchemasApi
      * @param  int $id The ID of the field to show. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function showFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['showField'][0])
     {
@@ -6591,53 +6727,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6658,7 +6794,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6666,7 +6802,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6674,7 +6810,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6720,7 +6856,7 @@ class SchemasApi
      */
     public function showFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['showField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->showFieldRequest($schema, $id, $contentType);
 
         return $this->client
@@ -6805,6 +6941,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -6885,9 +7029,9 @@ class SchemasApi
      * @param  int $id The ID of the field to show. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function showNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
     {
@@ -6905,9 +7049,9 @@ class SchemasApi
      * @param  int $id The ID of the field to show. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showNestedField'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function showNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
     {
@@ -6950,53 +7094,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7017,7 +7161,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7025,7 +7169,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7033,7 +7177,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7081,7 +7225,7 @@ class SchemasApi
      */
     public function showNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->showNestedFieldRequest($schema, $parent_id, $id, $contentType);
 
         return $this->client
@@ -7174,6 +7318,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -7260,7 +7412,7 @@ class SchemasApi
      * @param  string $schema The name of the schema to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -7277,7 +7429,7 @@ class SchemasApi
      * @param  string $schema The name of the schema to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -7327,7 +7479,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7335,7 +7487,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7443,6 +7595,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -7513,9 +7673,9 @@ class SchemasApi
      * @param  string $schema The name of the schema to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto
      */
     public function getSchema($schema, string $contentType = self::contentTypes['getSchema'][0])
     {
@@ -7531,9 +7691,9 @@ class SchemasApi
      * @param  string $schema The name of the schema to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSchemaWithHttpInfo($schema, string $contentType = self::contentTypes['getSchema'][0])
     {
@@ -7576,38 +7736,38 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7628,7 +7788,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7636,7 +7796,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7680,7 +7840,7 @@ class SchemasApi
      */
     public function getSchemaAsyncWithHttpInfo($schema, string $contentType = self::contentTypes['getSchema'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->getSchemaRequest($schema, $contentType);
 
         return $this->client
@@ -7757,6 +7917,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -7826,9 +7994,9 @@ class SchemasApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchemas'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemasDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemasDto|\Squidex\Client\Model\ErrorDto
      */
     public function getSchemas(string $contentType = self::contentTypes['getSchemas'][0])
     {
@@ -7843,9 +8011,9 @@ class SchemasApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchemas'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemasDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemasDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSchemasWithHttpInfo(string $contentType = self::contentTypes['getSchemas'][0])
     {
@@ -7888,38 +8056,38 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemasDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemasDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemasDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemasDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemasDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemasDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemasDto';
+            $returnType = '\Squidex\Client\Model\SchemasDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7940,7 +8108,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemasDto',
+                        '\Squidex\Client\Model\SchemasDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7948,7 +8116,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7990,7 +8158,7 @@ class SchemasApi
      */
     public function getSchemasAsyncWithHttpInfo(string $contentType = self::contentTypes['getSchemas'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemasDto';
+        $returnType = '\Squidex\Client\Model\SchemasDto';
         $request = $this->getSchemasRequest($contentType);
 
         return $this->client
@@ -8058,6 +8226,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8118,12 +8294,12 @@ class SchemasApi
      *
      * Create a new schema.
      *
-     * @param  \Squidex/Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postSchema($create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
     {
@@ -8136,12 +8312,12 @@ class SchemasApi
      *
      * Create a new schema.
      *
-     * @param  \Squidex/Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postSchemaWithHttpInfo($create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
     {
@@ -8184,68 +8360,68 @@ class SchemasApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8266,7 +8442,7 @@ class SchemasApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8274,7 +8450,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8282,7 +8458,7 @@ class SchemasApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8290,7 +8466,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8305,7 +8481,7 @@ class SchemasApi
      *
      * Create a new schema.
      *
-     * @param  \Squidex/Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8326,7 +8502,7 @@ class SchemasApi
      *
      * Create a new schema.
      *
-     * @param  \Squidex/Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8334,7 +8510,7 @@ class SchemasApi
      */
     public function postSchemaAsyncWithHttpInfo($create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->postSchemaRequest($create_schema_dto, $contentType);
 
         return $this->client
@@ -8376,7 +8552,7 @@ class SchemasApi
     /**
      * Create request for operation 'postSchema'
      *
-     * @param  \Squidex/Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8410,6 +8586,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8480,9 +8664,9 @@ class SchemasApi
      * @param  string $schema The name of the schema to publish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function publishSchema($schema, string $contentType = self::contentTypes['publishSchema'][0])
     {
@@ -8498,9 +8682,9 @@ class SchemasApi
      * @param  string $schema The name of the schema to publish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function publishSchemaWithHttpInfo($schema, string $contentType = self::contentTypes['publishSchema'][0])
     {
@@ -8543,53 +8727,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8610,7 +8794,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8618,7 +8802,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8626,7 +8810,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8670,7 +8854,7 @@ class SchemasApi
      */
     public function publishSchemaAsyncWithHttpInfo($schema, string $contentType = self::contentTypes['publishSchema'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->publishSchemaRequest($schema, $contentType);
 
         return $this->client
@@ -8747,6 +8931,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -8815,12 +9007,12 @@ class SchemasApi
      * Update a schema category.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putCategory($schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
     {
@@ -8834,12 +9026,12 @@ class SchemasApi
      * Update a schema category.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putCategoryWithHttpInfo($schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
     {
@@ -8882,53 +9074,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8949,7 +9141,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8957,7 +9149,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8965,7 +9157,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8981,7 +9173,7 @@ class SchemasApi
      * Update a schema category.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9003,7 +9195,7 @@ class SchemasApi
      * Update a schema category.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9011,7 +9203,7 @@ class SchemasApi
      */
     public function putCategoryAsyncWithHttpInfo($schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putCategoryRequest($schema, $change_category_dto, $contentType);
 
         return $this->client
@@ -9054,7 +9246,7 @@ class SchemasApi
      * Create request for operation 'putCategory'
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9095,6 +9287,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -9174,9 +9374,9 @@ class SchemasApi
      * @param  array<string,string> $request_body The preview urls for the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPreviewUrls'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putPreviewUrls($schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
     {
@@ -9193,9 +9393,9 @@ class SchemasApi
      * @param  array<string,string> $request_body The preview urls for the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPreviewUrls'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putPreviewUrlsWithHttpInfo($schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
     {
@@ -9238,53 +9438,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9305,7 +9505,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9313,7 +9513,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9321,7 +9521,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9367,7 +9567,7 @@ class SchemasApi
      */
     public function putPreviewUrlsAsyncWithHttpInfo($schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putPreviewUrlsRequest($schema, $request_body, $contentType);
 
         return $this->client
@@ -9452,6 +9652,14 @@ class SchemasApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -9527,12 +9735,12 @@ class SchemasApi
      * Update the rules.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putRules($schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
     {
@@ -9546,12 +9754,12 @@ class SchemasApi
      * Update the rules.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putRulesWithHttpInfo($schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
     {
@@ -9594,53 +9802,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9661,7 +9869,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9669,7 +9877,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9677,7 +9885,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9693,7 +9901,7 @@ class SchemasApi
      * Update the rules.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9715,7 +9923,7 @@ class SchemasApi
      * Update the rules.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9723,7 +9931,7 @@ class SchemasApi
      */
     public function putRulesAsyncWithHttpInfo($schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putRulesRequest($schema, $configure_field_rules_dto, $contentType);
 
         return $this->client
@@ -9766,7 +9974,7 @@ class SchemasApi
      * Create request for operation 'putRules'
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9807,6 +10015,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -9883,12 +10099,12 @@ class SchemasApi
      * Update a schema.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putSchema($schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
     {
@@ -9902,12 +10118,12 @@ class SchemasApi
      * Update a schema.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putSchemaWithHttpInfo($schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
     {
@@ -9950,53 +10166,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10017,7 +10233,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10025,7 +10241,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10033,7 +10249,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10049,7 +10265,7 @@ class SchemasApi
      * Update a schema.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10071,7 +10287,7 @@ class SchemasApi
      * Update a schema.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10079,7 +10295,7 @@ class SchemasApi
      */
     public function putSchemaAsyncWithHttpInfo($schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putSchemaRequest($schema, $update_schema_dto, $contentType);
 
         return $this->client
@@ -10122,7 +10338,7 @@ class SchemasApi
      * Create request for operation 'putSchema'
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10163,6 +10379,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -10239,12 +10463,12 @@ class SchemasApi
      * Synchronize a schema.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putSchemaSync($schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
     {
@@ -10258,12 +10482,12 @@ class SchemasApi
      * Synchronize a schema.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putSchemaSyncWithHttpInfo($schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
     {
@@ -10306,53 +10530,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10373,7 +10597,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10381,7 +10605,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10389,7 +10613,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10405,7 +10629,7 @@ class SchemasApi
      * Synchronize a schema.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10427,7 +10651,7 @@ class SchemasApi
      * Synchronize a schema.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10435,7 +10659,7 @@ class SchemasApi
      */
     public function putSchemaSyncAsyncWithHttpInfo($schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putSchemaSyncRequest($schema, $synchronize_schema_dto, $contentType);
 
         return $this->client
@@ -10478,7 +10702,7 @@ class SchemasApi
      * Create request for operation 'putSchemaSync'
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10519,6 +10743,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -10595,12 +10827,12 @@ class SchemasApi
      * Update the scripts.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putScripts($schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
     {
@@ -10614,12 +10846,12 @@ class SchemasApi
      * Update the scripts.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putScriptsWithHttpInfo($schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
     {
@@ -10662,53 +10894,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10729,7 +10961,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10737,7 +10969,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10745,7 +10977,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10761,7 +10993,7 @@ class SchemasApi
      * Update the scripts.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10783,7 +11015,7 @@ class SchemasApi
      * Update the scripts.
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10791,7 +11023,7 @@ class SchemasApi
      */
     public function putScriptsAsyncWithHttpInfo($schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->putScriptsRequest($schema, $schema_scripts_dto, $contentType);
 
         return $this->client
@@ -10834,7 +11066,7 @@ class SchemasApi
      * Create request for operation 'putScripts'
      *
      * @param  string $schema The name of the schema. (required)
-     * @param  \Squidex/Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10875,6 +11107,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -10953,9 +11193,9 @@ class SchemasApi
      * @param  string $schema The name of the schema to unpublish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpublishSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function unpublishSchema($schema, string $contentType = self::contentTypes['unpublishSchema'][0])
     {
@@ -10971,9 +11211,9 @@ class SchemasApi
      * @param  string $schema The name of the schema to unpublish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpublishSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SchemaDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function unpublishSchemaWithHttpInfo($schema, string $contentType = self::contentTypes['unpublishSchema'][0])
     {
@@ -11016,53 +11256,53 @@ class SchemasApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SchemaDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SchemaDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SchemaDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SchemaDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SchemaDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SchemaDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SchemaDto';
+            $returnType = '\Squidex\Client\Model\SchemaDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -11083,7 +11323,7 @@ class SchemasApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SchemaDto',
+                        '\Squidex\Client\Model\SchemaDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11091,7 +11331,7 @@ class SchemasApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11099,7 +11339,7 @@ class SchemasApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11143,7 +11383,7 @@ class SchemasApi
      */
     public function unpublishSchemaAsyncWithHttpInfo($schema, string $contentType = self::contentTypes['unpublishSchema'][0])
     {
-        $returnType = '\Squidex/Client\Model\SchemaDto';
+        $returnType = '\Squidex\Client\Model\SchemaDto';
         $request = $this->unpublishSchemaRequest($schema, $contentType);
 
         return $this->client
@@ -11219,6 +11459,14 @@ class SchemasApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(

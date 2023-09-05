@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * ContentChangedRuleTriggerDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -55,8 +55,8 @@ class ContentChangedRuleTriggerDto extends RuleTriggerDto
       * @var string[]
       */
     protected static $openAPITypes = [
-        'schemas' => '\Squidex/Client\Model\SchemaCondition[]',
-        'referenced_schemas' => '\Squidex/Client\Model\SchemaCondition[]',
+        'schemas' => '\Squidex\Client\Model\SchemaCondition[]',
+        'referenced_schemas' => '\Squidex\Client\Model\SchemaCondition[]',
         'handle_all' => 'bool'
     ];
 
@@ -303,7 +303,7 @@ class ContentChangedRuleTriggerDto extends RuleTriggerDto
     /**
      * Gets schemas
      *
-     * @return \Squidex/Client\Model\SchemaCondition[]|null
+     * @return \Squidex\Client\Model\SchemaCondition[]|null
      */
     public function getSchemas()
     {
@@ -313,7 +313,7 @@ class ContentChangedRuleTriggerDto extends RuleTriggerDto
     /**
      * Sets schemas
      *
-     * @param \Squidex/Client\Model\SchemaCondition[]|null $schemas The schema settings.
+     * @param \Squidex\Client\Model\SchemaCondition[]|null $schemas The schema settings.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class ContentChangedRuleTriggerDto extends RuleTriggerDto
     /**
      * Gets referenced_schemas
      *
-     * @return \Squidex/Client\Model\SchemaCondition[]|null
+     * @return \Squidex\Client\Model\SchemaCondition[]|null
      */
     public function getReferencedSchemas()
     {
@@ -347,7 +347,7 @@ class ContentChangedRuleTriggerDto extends RuleTriggerDto
     /**
      * Sets referenced_schemas
      *
-     * @param \Squidex/Client\Model\SchemaCondition[]|null $referenced_schemas The schema references.
+     * @param \Squidex\Client\Model\SchemaCondition[]|null $referenced_schemas The schema references.
      *
      * @return self
      */

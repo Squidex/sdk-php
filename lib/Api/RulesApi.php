@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * RulesApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -182,7 +182,7 @@ class RulesApi
      * @param  string $id The event to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -199,7 +199,7 @@ class RulesApi
      * @param  string $id The event to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -249,7 +249,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -257,7 +257,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -365,6 +365,14 @@ class RulesApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -434,7 +442,7 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvents'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -450,7 +458,7 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvents'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -500,7 +508,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -508,7 +516,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -605,6 +613,14 @@ class RulesApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -668,7 +684,7 @@ class RulesApi
      * @param  string $id The ID of the rule to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -685,7 +701,7 @@ class RulesApi
      * @param  string $id The ID of the rule to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -735,7 +751,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -743,7 +759,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -851,6 +867,14 @@ class RulesApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -921,7 +945,7 @@ class RulesApi
      * @param  string $id The ID of the rule to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleEvents'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -938,7 +962,7 @@ class RulesApi
      * @param  string $id The ID of the rule to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleEvents'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -988,7 +1012,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -996,7 +1020,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1104,6 +1128,14 @@ class RulesApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -1173,7 +1205,7 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleRun'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1189,7 +1221,7 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleRun'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1239,7 +1271,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1247,7 +1279,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1344,6 +1376,14 @@ class RulesApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1407,9 +1447,9 @@ class RulesApi
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\RuleDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function disableRule($id, string $contentType = self::contentTypes['disableRule'][0])
     {
@@ -1425,9 +1465,9 @@ class RulesApi
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\RuleDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function disableRuleWithHttpInfo($id, string $contentType = self::contentTypes['disableRule'][0])
     {
@@ -1470,53 +1510,53 @@ class RulesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\RuleDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\RuleDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\RuleDto' !== 'string') {
+                        if ('\Squidex\Client\Model\RuleDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\RuleDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\RuleDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\RuleDto';
+            $returnType = '\Squidex\Client\Model\RuleDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1537,7 +1577,7 @@ class RulesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\RuleDto',
+                        '\Squidex\Client\Model\RuleDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1545,7 +1585,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1553,7 +1593,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1597,7 +1637,7 @@ class RulesApi
      */
     public function disableRuleAsyncWithHttpInfo($id, string $contentType = self::contentTypes['disableRule'][0])
     {
-        $returnType = '\Squidex/Client\Model\RuleDto';
+        $returnType = '\Squidex\Client\Model\RuleDto';
         $request = $this->disableRuleRequest($id, $contentType);
 
         return $this->client
@@ -1674,6 +1714,14 @@ class RulesApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -1744,9 +1792,9 @@ class RulesApi
      * @param  string $id The ID of the rule to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\RuleDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function enableRule($id, string $contentType = self::contentTypes['enableRule'][0])
     {
@@ -1762,9 +1810,9 @@ class RulesApi
      * @param  string $id The ID of the rule to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\RuleDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function enableRuleWithHttpInfo($id, string $contentType = self::contentTypes['enableRule'][0])
     {
@@ -1807,53 +1855,53 @@ class RulesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\RuleDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\RuleDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\RuleDto' !== 'string') {
+                        if ('\Squidex\Client\Model\RuleDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\RuleDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\RuleDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\RuleDto';
+            $returnType = '\Squidex\Client\Model\RuleDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1874,7 +1922,7 @@ class RulesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\RuleDto',
+                        '\Squidex\Client\Model\RuleDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1882,7 +1930,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1890,7 +1938,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1934,7 +1982,7 @@ class RulesApi
      */
     public function enableRuleAsyncWithHttpInfo($id, string $contentType = self::contentTypes['enableRule'][0])
     {
-        $returnType = '\Squidex/Client\Model\RuleDto';
+        $returnType = '\Squidex\Client\Model\RuleDto';
         $request = $this->enableRuleRequest($id, $contentType);
 
         return $this->client
@@ -2011,6 +2059,14 @@ class RulesApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -2080,9 +2136,9 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getActions'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array<string,\Squidex/Client\Model\RuleElementDto>|\Squidex/Client\Model\ErrorDto
+     * @return array<string,\Squidex\Client\Model\RuleElementDto>|\Squidex\Client\Model\ErrorDto
      */
     public function getActions(string $contentType = self::contentTypes['getActions'][0])
     {
@@ -2097,9 +2153,9 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getActions'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of array<string,\Squidex/Client\Model\RuleElementDto>|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,\Squidex\Client\Model\RuleElementDto>|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getActionsWithHttpInfo(string $contentType = self::contentTypes['getActions'][0])
     {
@@ -2142,38 +2198,38 @@ class RulesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('array<string,\Squidex/Client\Model\RuleElementDto>' === '\SplFileObject') {
+                    if ('array<string,\Squidex\Client\Model\RuleElementDto>' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('array<string,\Squidex/Client\Model\RuleElementDto>' !== 'string') {
+                        if ('array<string,\Squidex\Client\Model\RuleElementDto>' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'array<string,\Squidex/Client\Model\RuleElementDto>', []),
+                        ObjectSerializer::deserialize($content, 'array<string,\Squidex\Client\Model\RuleElementDto>', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'array<string,\Squidex/Client\Model\RuleElementDto>';
+            $returnType = 'array<string,\Squidex\Client\Model\RuleElementDto>';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2194,7 +2250,7 @@ class RulesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'array<string,\Squidex/Client\Model\RuleElementDto>',
+                        'array<string,\Squidex\Client\Model\RuleElementDto>',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2202,7 +2258,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2244,7 +2300,7 @@ class RulesApi
      */
     public function getActionsAsyncWithHttpInfo(string $contentType = self::contentTypes['getActions'][0])
     {
-        $returnType = 'array<string,\Squidex/Client\Model\RuleElementDto>';
+        $returnType = 'array<string,\Squidex\Client\Model\RuleElementDto>';
         $request = $this->getActionsRequest($contentType);
 
         return $this->client
@@ -2367,9 +2423,9 @@ class RulesApi
      * @param  string $type The type name of the event. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return mixed|\Squidex/Client\Model\ErrorDto
+     * @return mixed|\Squidex\Client\Model\ErrorDto
      */
     public function getEventSchema($type, string $contentType = self::contentTypes['getEventSchema'][0])
     {
@@ -2385,9 +2441,9 @@ class RulesApi
      * @param  string $type The type name of the event. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventSchema'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of mixed|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of mixed|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEventSchemaWithHttpInfo($type, string $contentType = self::contentTypes['getEventSchema'][0])
     {
@@ -2445,17 +2501,17 @@ class RulesApi
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2490,7 +2546,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2672,9 +2728,9 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventTypes'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string[]|\Squidex/Client\Model\ErrorDto
+     * @return string[]|\Squidex\Client\Model\ErrorDto
      */
     public function getEventTypes(string $contentType = self::contentTypes['getEventTypes'][0])
     {
@@ -2689,9 +2745,9 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventTypes'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string[]|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEventTypesWithHttpInfo(string $contentType = self::contentTypes['getEventTypes'][0])
     {
@@ -2749,17 +2805,17 @@ class RulesApi
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2794,7 +2850,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2961,9 +3017,9 @@ class RulesApi
      * @param  int $take The number of events to take. (optional, default to 20)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEvents'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\RuleEventsDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\RuleEventsDto|\Squidex\Client\Model\ErrorDto
      */
     public function getEvents($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
     {
@@ -2981,9 +3037,9 @@ class RulesApi
      * @param  int $take The number of events to take. (optional, default to 20)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEvents'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\RuleEventsDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\RuleEventsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEventsWithHttpInfo($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
     {
@@ -3026,38 +3082,38 @@ class RulesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\RuleEventsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\RuleEventsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\RuleEventsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\RuleEventsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\RuleEventsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\RuleEventsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\RuleEventsDto';
+            $returnType = '\Squidex\Client\Model\RuleEventsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3078,7 +3134,7 @@ class RulesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\RuleEventsDto',
+                        '\Squidex\Client\Model\RuleEventsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3086,7 +3142,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3134,7 +3190,7 @@ class RulesApi
      */
     public function getEventsAsyncWithHttpInfo($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
     {
-        $returnType = '\Squidex/Client\Model\RuleEventsDto';
+        $returnType = '\Squidex\Client\Model\RuleEventsDto';
         $request = $this->getEventsRequest($rule_id, $skip, $take, $contentType);
 
         return $this->client
@@ -3235,6 +3291,14 @@ class RulesApi
         ) ?? []);
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3297,9 +3361,9 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRules'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\RulesDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\RulesDto|\Squidex\Client\Model\ErrorDto
      */
     public function getRules(string $contentType = self::contentTypes['getRules'][0])
     {
@@ -3314,9 +3378,9 @@ class RulesApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRules'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\RulesDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\RulesDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRulesWithHttpInfo(string $contentType = self::contentTypes['getRules'][0])
     {
@@ -3359,38 +3423,38 @@ class RulesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\RulesDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\RulesDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\RulesDto' !== 'string') {
+                        if ('\Squidex\Client\Model\RulesDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\RulesDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\RulesDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\RulesDto';
+            $returnType = '\Squidex\Client\Model\RulesDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3411,7 +3475,7 @@ class RulesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\RulesDto',
+                        '\Squidex\Client\Model\RulesDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3419,7 +3483,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3461,7 +3525,7 @@ class RulesApi
      */
     public function getRulesAsyncWithHttpInfo(string $contentType = self::contentTypes['getRules'][0])
     {
-        $returnType = '\Squidex/Client\Model\RulesDto';
+        $returnType = '\Squidex\Client\Model\RulesDto';
         $request = $this->getRulesRequest($contentType);
 
         return $this->client
@@ -3529,6 +3593,14 @@ class RulesApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3589,12 +3661,12 @@ class RulesApi
      *
      * Create a new rule.
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\RuleDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postRule($create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
     {
@@ -3607,12 +3679,12 @@ class RulesApi
      *
      * Create a new rule.
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\RuleDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postRuleWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
     {
@@ -3655,53 +3727,53 @@ class RulesApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Squidex/Client\Model\RuleDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\RuleDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\RuleDto' !== 'string') {
+                        if ('\Squidex\Client\Model\RuleDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\RuleDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\RuleDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\RuleDto';
+            $returnType = '\Squidex\Client\Model\RuleDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3722,7 +3794,7 @@ class RulesApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\RuleDto',
+                        '\Squidex\Client\Model\RuleDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3730,7 +3802,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3738,7 +3810,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3753,7 +3825,7 @@ class RulesApi
      *
      * Create a new rule.
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3774,7 +3846,7 @@ class RulesApi
      *
      * Create a new rule.
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3782,7 +3854,7 @@ class RulesApi
      */
     public function postRuleAsyncWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
     {
-        $returnType = '\Squidex/Client\Model\RuleDto';
+        $returnType = '\Squidex\Client\Model\RuleDto';
         $request = $this->postRuleRequest($create_rule_dto, $contentType);
 
         return $this->client
@@ -3824,7 +3896,7 @@ class RulesApi
     /**
      * Create request for operation 'postRule'
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3858,6 +3930,14 @@ class RulesApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3928,7 +4008,7 @@ class RulesApi
      * @param  string $id The event to enqueue. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putEvent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -3945,7 +4025,7 @@ class RulesApi
      * @param  string $id The event to enqueue. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putEvent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -3995,7 +4075,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4003,7 +4083,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4111,6 +4191,14 @@ class RulesApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -4179,12 +4267,12 @@ class RulesApi
      * Update a rule.
      *
      * @param  string $id The ID of the rule to update. (required)
-     * @param  \Squidex/Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\RuleDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putRule($id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
     {
@@ -4198,12 +4286,12 @@ class RulesApi
      * Update a rule.
      *
      * @param  string $id The ID of the rule to update. (required)
-     * @param  \Squidex/Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\RuleDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putRuleWithHttpInfo($id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
     {
@@ -4246,53 +4334,53 @@ class RulesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\RuleDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\RuleDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\RuleDto' !== 'string') {
+                        if ('\Squidex\Client\Model\RuleDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\RuleDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\RuleDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\RuleDto';
+            $returnType = '\Squidex\Client\Model\RuleDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4313,7 +4401,7 @@ class RulesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\RuleDto',
+                        '\Squidex\Client\Model\RuleDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4321,7 +4409,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4329,7 +4417,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4345,7 +4433,7 @@ class RulesApi
      * Update a rule.
      *
      * @param  string $id The ID of the rule to update. (required)
-     * @param  \Squidex/Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4367,7 +4455,7 @@ class RulesApi
      * Update a rule.
      *
      * @param  string $id The ID of the rule to update. (required)
-     * @param  \Squidex/Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4375,7 +4463,7 @@ class RulesApi
      */
     public function putRuleAsyncWithHttpInfo($id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
     {
-        $returnType = '\Squidex/Client\Model\RuleDto';
+        $returnType = '\Squidex\Client\Model\RuleDto';
         $request = $this->putRuleRequest($id, $update_rule_dto, $contentType);
 
         return $this->client
@@ -4418,7 +4506,7 @@ class RulesApi
      * Create request for operation 'putRule'
      *
      * @param  string $id The ID of the rule to update. (required)
-     * @param  \Squidex/Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
+     * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4459,6 +4547,14 @@ class RulesApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
@@ -4538,7 +4634,7 @@ class RulesApi
      * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRuleRun'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -4556,7 +4652,7 @@ class RulesApi
      * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRuleRun'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -4606,7 +4702,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4614,7 +4710,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4735,6 +4831,14 @@ class RulesApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -4805,9 +4909,9 @@ class RulesApi
      * @param  string $id The ID of the rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulateGET'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SimulatedRuleEventsDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SimulatedRuleEventsDto|\Squidex\Client\Model\ErrorDto
      */
     public function simulateGET($id, string $contentType = self::contentTypes['simulateGET'][0])
     {
@@ -4823,9 +4927,9 @@ class RulesApi
      * @param  string $id The ID of the rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulateGET'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SimulatedRuleEventsDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SimulatedRuleEventsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function simulateGETWithHttpInfo($id, string $contentType = self::contentTypes['simulateGET'][0])
     {
@@ -4868,38 +4972,38 @@ class RulesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SimulatedRuleEventsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SimulatedRuleEventsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SimulatedRuleEventsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SimulatedRuleEventsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SimulatedRuleEventsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SimulatedRuleEventsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SimulatedRuleEventsDto';
+            $returnType = '\Squidex\Client\Model\SimulatedRuleEventsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4920,7 +5024,7 @@ class RulesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SimulatedRuleEventsDto',
+                        '\Squidex\Client\Model\SimulatedRuleEventsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4928,7 +5032,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4972,7 +5076,7 @@ class RulesApi
      */
     public function simulateGETAsyncWithHttpInfo($id, string $contentType = self::contentTypes['simulateGET'][0])
     {
-        $returnType = '\Squidex/Client\Model\SimulatedRuleEventsDto';
+        $returnType = '\Squidex\Client\Model\SimulatedRuleEventsDto';
         $request = $this->simulateGETRequest($id, $contentType);
 
         return $this->client
@@ -5049,6 +5153,14 @@ class RulesApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -5116,12 +5228,12 @@ class RulesApi
      *
      * Simulate a rule.
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\SimulatedRuleEventsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\SimulatedRuleEventsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function simulatePOST($create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
     {
@@ -5134,12 +5246,12 @@ class RulesApi
      *
      * Simulate a rule.
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\SimulatedRuleEventsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\SimulatedRuleEventsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function simulatePOSTWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
     {
@@ -5182,53 +5294,53 @@ class RulesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\SimulatedRuleEventsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\SimulatedRuleEventsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\SimulatedRuleEventsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\SimulatedRuleEventsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\SimulatedRuleEventsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\SimulatedRuleEventsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\SimulatedRuleEventsDto';
+            $returnType = '\Squidex\Client\Model\SimulatedRuleEventsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5249,7 +5361,7 @@ class RulesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\SimulatedRuleEventsDto',
+                        '\Squidex\Client\Model\SimulatedRuleEventsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5257,7 +5369,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5265,7 +5377,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5280,7 +5392,7 @@ class RulesApi
      *
      * Simulate a rule.
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5301,7 +5413,7 @@ class RulesApi
      *
      * Simulate a rule.
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5309,7 +5421,7 @@ class RulesApi
      */
     public function simulatePOSTAsyncWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
     {
-        $returnType = '\Squidex/Client\Model\SimulatedRuleEventsDto';
+        $returnType = '\Squidex\Client\Model\SimulatedRuleEventsDto';
         $request = $this->simulatePOSTRequest($create_rule_dto, $contentType);
 
         return $this->client
@@ -5351,7 +5463,7 @@ class RulesApi
     /**
      * Create request for operation 'simulatePOST'
      *
-     * @param  \Squidex/Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
+     * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5385,6 +5497,14 @@ class RulesApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5455,7 +5575,7 @@ class RulesApi
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -5472,7 +5592,7 @@ class RulesApi
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerRule'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -5522,7 +5642,7 @@ class RulesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5530,7 +5650,7 @@ class RulesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5637,6 +5757,14 @@ class RulesApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(

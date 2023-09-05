@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * AddFieldDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class AddFieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'name' => 'string',
         'partitioning' => 'string',
-        'properties' => '\Squidex/Client\Model\FieldPropertiesDto'
+        'properties' => '\Squidex\Client\Model\FieldPropertiesDto'
     ];
 
     /**
@@ -389,7 +389,7 @@ class AddFieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets properties
      *
-     * @return \Squidex/Client\Model\FieldPropertiesDto
+     * @return \Squidex\Client\Model\FieldPropertiesDto
      */
     public function getProperties()
     {
@@ -399,7 +399,7 @@ class AddFieldDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets properties
      *
-     * @param \Squidex/Client\Model\FieldPropertiesDto $properties properties
+     * @param \Squidex\Client\Model\FieldPropertiesDto $properties properties
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * BooleanFieldPropertiesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class BooleanFieldPropertiesDto extends FieldPropertiesDto
         'default_values' => 'array<string,bool>',
         'default_value' => 'bool',
         'inline_editable' => 'bool',
-        'editor' => '\Squidex/Client\Model\BooleanFieldEditor'
+        'editor' => '\Squidex\Client\Model\BooleanFieldEditor'
     ];
 
     /**
@@ -395,7 +395,7 @@ class BooleanFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets editor
      *
-     * @return \Squidex/Client\Model\BooleanFieldEditor|null
+     * @return \Squidex\Client\Model\BooleanFieldEditor|null
      */
     public function getEditor()
     {
@@ -405,7 +405,7 @@ class BooleanFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets editor
      *
-     * @param \Squidex/Client\Model\BooleanFieldEditor|null $editor editor
+     * @param \Squidex\Client\Model\BooleanFieldEditor|null $editor editor
      *
      * @return self
      */

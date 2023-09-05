@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * EventConsumersApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -136,9 +136,9 @@ class EventConsumersApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventConsumers'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\EventConsumersDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\EventConsumersDto|\Squidex\Client\Model\ErrorDto
      */
     public function getEventConsumers(string $contentType = self::contentTypes['getEventConsumers'][0])
     {
@@ -153,9 +153,9 @@ class EventConsumersApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventConsumers'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\EventConsumersDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\EventConsumersDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEventConsumersWithHttpInfo(string $contentType = self::contentTypes['getEventConsumers'][0])
     {
@@ -198,38 +198,38 @@ class EventConsumersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\EventConsumersDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\EventConsumersDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\EventConsumersDto' !== 'string') {
+                        if ('\Squidex\Client\Model\EventConsumersDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\EventConsumersDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\EventConsumersDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\EventConsumersDto';
+            $returnType = '\Squidex\Client\Model\EventConsumersDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -250,7 +250,7 @@ class EventConsumersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\EventConsumersDto',
+                        '\Squidex\Client\Model\EventConsumersDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -258,7 +258,7 @@ class EventConsumersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -300,7 +300,7 @@ class EventConsumersApi
      */
     public function getEventConsumersAsyncWithHttpInfo(string $contentType = self::contentTypes['getEventConsumers'][0])
     {
-        $returnType = '\Squidex/Client\Model\EventConsumersDto';
+        $returnType = '\Squidex\Client\Model\EventConsumersDto';
         $request = $this->getEventConsumersRequest($contentType);
 
         return $this->client
@@ -423,9 +423,9 @@ class EventConsumersApi
      * @param  string $consumer_name The name of the event consumer. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetEventConsumer'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\EventConsumerDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\EventConsumerDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function resetEventConsumer($consumer_name, string $contentType = self::contentTypes['resetEventConsumer'][0])
     {
@@ -441,9 +441,9 @@ class EventConsumersApi
      * @param  string $consumer_name The name of the event consumer. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetEventConsumer'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\EventConsumerDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\EventConsumerDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function resetEventConsumerWithHttpInfo($consumer_name, string $contentType = self::contentTypes['resetEventConsumer'][0])
     {
@@ -486,53 +486,53 @@ class EventConsumersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\EventConsumerDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\EventConsumerDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\EventConsumerDto' !== 'string') {
+                        if ('\Squidex\Client\Model\EventConsumerDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\EventConsumerDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\EventConsumerDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\EventConsumerDto';
+            $returnType = '\Squidex\Client\Model\EventConsumerDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -553,7 +553,7 @@ class EventConsumersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\EventConsumerDto',
+                        '\Squidex\Client\Model\EventConsumerDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -561,7 +561,7 @@ class EventConsumersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -569,7 +569,7 @@ class EventConsumersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -613,7 +613,7 @@ class EventConsumersApi
      */
     public function resetEventConsumerAsyncWithHttpInfo($consumer_name, string $contentType = self::contentTypes['resetEventConsumer'][0])
     {
-        $returnType = '\Squidex/Client\Model\EventConsumerDto';
+        $returnType = '\Squidex\Client\Model\EventConsumerDto';
         $request = $this->resetEventConsumerRequest($consumer_name, $contentType);
 
         return $this->client
@@ -752,9 +752,9 @@ class EventConsumersApi
      * @param  string $consumer_name The name of the event consumer. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEventConsumer'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\EventConsumerDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\EventConsumerDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function startEventConsumer($consumer_name, string $contentType = self::contentTypes['startEventConsumer'][0])
     {
@@ -770,9 +770,9 @@ class EventConsumersApi
      * @param  string $consumer_name The name of the event consumer. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEventConsumer'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\EventConsumerDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\EventConsumerDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function startEventConsumerWithHttpInfo($consumer_name, string $contentType = self::contentTypes['startEventConsumer'][0])
     {
@@ -815,53 +815,53 @@ class EventConsumersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\EventConsumerDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\EventConsumerDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\EventConsumerDto' !== 'string') {
+                        if ('\Squidex\Client\Model\EventConsumerDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\EventConsumerDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\EventConsumerDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\EventConsumerDto';
+            $returnType = '\Squidex\Client\Model\EventConsumerDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -882,7 +882,7 @@ class EventConsumersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\EventConsumerDto',
+                        '\Squidex\Client\Model\EventConsumerDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -890,7 +890,7 @@ class EventConsumersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -898,7 +898,7 @@ class EventConsumersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -942,7 +942,7 @@ class EventConsumersApi
      */
     public function startEventConsumerAsyncWithHttpInfo($consumer_name, string $contentType = self::contentTypes['startEventConsumer'][0])
     {
-        $returnType = '\Squidex/Client\Model\EventConsumerDto';
+        $returnType = '\Squidex\Client\Model\EventConsumerDto';
         $request = $this->startEventConsumerRequest($consumer_name, $contentType);
 
         return $this->client
@@ -1081,9 +1081,9 @@ class EventConsumersApi
      * @param  string $consumer_name The name of the event consumer. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['stopEventConsumer'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\EventConsumerDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\EventConsumerDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function stopEventConsumer($consumer_name, string $contentType = self::contentTypes['stopEventConsumer'][0])
     {
@@ -1099,9 +1099,9 @@ class EventConsumersApi
      * @param  string $consumer_name The name of the event consumer. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['stopEventConsumer'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\EventConsumerDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\EventConsumerDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function stopEventConsumerWithHttpInfo($consumer_name, string $contentType = self::contentTypes['stopEventConsumer'][0])
     {
@@ -1144,53 +1144,53 @@ class EventConsumersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\EventConsumerDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\EventConsumerDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\EventConsumerDto' !== 'string') {
+                        if ('\Squidex\Client\Model\EventConsumerDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\EventConsumerDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\EventConsumerDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\EventConsumerDto';
+            $returnType = '\Squidex\Client\Model\EventConsumerDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1211,7 +1211,7 @@ class EventConsumersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\EventConsumerDto',
+                        '\Squidex\Client\Model\EventConsumerDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1219,7 +1219,7 @@ class EventConsumersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1227,7 +1227,7 @@ class EventConsumersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1271,7 +1271,7 @@ class EventConsumersApi
      */
     public function stopEventConsumerAsyncWithHttpInfo($consumer_name, string $contentType = self::contentTypes['stopEventConsumer'][0])
     {
-        $returnType = '\Squidex/Client\Model\EventConsumerDto';
+        $returnType = '\Squidex\Client\Model\EventConsumerDto';
         $request = $this->stopEventConsumerRequest($consumer_name, $contentType);
 
         return $this->client

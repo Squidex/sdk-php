@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * RuleElementPropertyDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class RuleElementPropertyDto implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'editor' => '\Squidex/Client\Model\RuleFieldEditor',
+        'editor' => '\Squidex\Client\Model\RuleFieldEditor',
         'name' => 'string',
         'display' => 'string',
         'options' => 'string[]',
@@ -349,7 +349,7 @@ class RuleElementPropertyDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets editor
      *
-     * @return \Squidex/Client\Model\RuleFieldEditor
+     * @return \Squidex\Client\Model\RuleFieldEditor
      */
     public function getEditor()
     {
@@ -359,7 +359,7 @@ class RuleElementPropertyDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets editor
      *
-     * @param \Squidex/Client\Model\RuleFieldEditor $editor editor
+     * @param \Squidex\Client\Model\RuleFieldEditor $editor editor
      *
      * @return self
      */

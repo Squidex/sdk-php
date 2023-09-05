@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * ReferencesFieldPropertiesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
         'allow_duplicates' => 'bool',
         'resolve_reference' => 'bool',
         'must_be_published' => 'bool',
-        'editor' => '\Squidex/Client\Model\ReferencesFieldEditor',
+        'editor' => '\Squidex\Client\Model\ReferencesFieldEditor',
         'schema_ids' => 'string[]'
     ];
 
@@ -552,7 +552,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets editor
      *
-     * @return \Squidex/Client\Model\ReferencesFieldEditor|null
+     * @return \Squidex\Client\Model\ReferencesFieldEditor|null
      */
     public function getEditor()
     {
@@ -562,7 +562,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets editor
      *
-     * @param \Squidex/Client\Model\ReferencesFieldEditor|null $editor editor
+     * @param \Squidex\Client\Model\ReferencesFieldEditor|null $editor editor
      *
      * @return self
      */

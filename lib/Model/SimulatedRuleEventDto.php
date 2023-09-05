@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * SimulatedRuleEventDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class SimulatedRuleEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
         'action_name' => 'string',
         'action_data' => 'string',
         'error' => 'string',
-        'skip_reasons' => '\Squidex/Client\Model\SkipReason[]'
+        'skip_reasons' => '\Squidex\Client\Model\SkipReason[]'
     ];
 
     /**
@@ -641,7 +641,7 @@ class SimulatedRuleEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets skip_reasons
      *
-     * @return \Squidex/Client\Model\SkipReason[]
+     * @return \Squidex\Client\Model\SkipReason[]
      */
     public function getSkipReasons()
     {
@@ -651,7 +651,7 @@ class SimulatedRuleEventDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets skip_reasons
      *
-     * @param \Squidex/Client\Model\SkipReason[] $skip_reasons The reason why the event has been skipped.
+     * @param \Squidex\Client\Model\SkipReason[] $skip_reasons The reason why the event has been skipped.
      *
      * @return self
      */

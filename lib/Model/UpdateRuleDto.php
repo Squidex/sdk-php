@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * UpdateRuleDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class UpdateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'trigger' => '\Squidex/Client\Model\RuleTriggerDto',
-        'action' => '\Squidex/Client\Model\RuleActionDto',
+        'trigger' => '\Squidex\Client\Model\RuleTriggerDto',
+        'action' => '\Squidex\Client\Model\RuleActionDto',
         'is_enabled' => 'bool'
     ];
 
@@ -347,7 +347,7 @@ class UpdateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets trigger
      *
-     * @return \Squidex/Client\Model\RuleTriggerDto|null
+     * @return \Squidex\Client\Model\RuleTriggerDto|null
      */
     public function getTrigger()
     {
@@ -357,7 +357,7 @@ class UpdateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trigger
      *
-     * @param \Squidex/Client\Model\RuleTriggerDto|null $trigger trigger
+     * @param \Squidex\Client\Model\RuleTriggerDto|null $trigger trigger
      *
      * @return self
      */
@@ -374,7 +374,7 @@ class UpdateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets action
      *
-     * @return \Squidex/Client\Model\RuleActionDto|null
+     * @return \Squidex\Client\Model\RuleActionDto|null
      */
     public function getAction()
     {
@@ -384,7 +384,7 @@ class UpdateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param \Squidex/Client\Model\RuleActionDto|null $action action
+     * @param \Squidex\Client\Model\RuleActionDto|null $action action
      *
      * @return self
      */

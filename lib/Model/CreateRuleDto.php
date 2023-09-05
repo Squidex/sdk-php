@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * CreateRuleDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,8 +57,8 @@ class CreateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trigger' => '\Squidex/Client\Model\RuleTriggerDto',
-        'action' => '\Squidex/Client\Model\RuleActionDto'
+        'trigger' => '\Squidex\Client\Model\RuleTriggerDto',
+        'action' => '\Squidex\Client\Model\RuleActionDto'
     ];
 
     /**
@@ -305,7 +305,7 @@ class CreateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets trigger
      *
-     * @return \Squidex/Client\Model\RuleTriggerDto
+     * @return \Squidex\Client\Model\RuleTriggerDto
      */
     public function getTrigger()
     {
@@ -315,7 +315,7 @@ class CreateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trigger
      *
-     * @param \Squidex/Client\Model\RuleTriggerDto $trigger trigger
+     * @param \Squidex\Client\Model\RuleTriggerDto $trigger trigger
      *
      * @return self
      */
@@ -332,7 +332,7 @@ class CreateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets action
      *
-     * @return \Squidex/Client\Model\RuleActionDto
+     * @return \Squidex\Client\Model\RuleActionDto
      */
     public function getAction()
     {
@@ -342,7 +342,7 @@ class CreateRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param \Squidex/Client\Model\RuleActionDto $action action
+     * @param \Squidex\Client\Model\RuleActionDto $action action
      *
      * @return self
      */

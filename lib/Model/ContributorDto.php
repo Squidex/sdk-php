@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * ContributorDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class ContributorDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'contributor_id' => 'string',
         'contributor_name' => 'string',
         'contributor_email' => 'string',
@@ -332,7 +332,7 @@ class ContributorDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -342,7 +342,7 @@ class ContributorDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */

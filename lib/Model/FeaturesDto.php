@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * FeaturesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class FeaturesDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'features' => '\Squidex/Client\Model\FeatureDto[]',
+        'features' => '\Squidex\Client\Model\FeatureDto[]',
         'version' => 'int'
     ];
 
@@ -305,7 +305,7 @@ class FeaturesDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets features
      *
-     * @return \Squidex/Client\Model\FeatureDto[]
+     * @return \Squidex\Client\Model\FeatureDto[]
      */
     public function getFeatures()
     {
@@ -315,7 +315,7 @@ class FeaturesDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets features
      *
-     * @param \Squidex/Client\Model\FeatureDto[] $features The latest features.
+     * @param \Squidex\Client\Model\FeatureDto[] $features The latest features.
      *
      * @return self
      */

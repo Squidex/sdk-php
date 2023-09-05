@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * BulkUpdateAssetsJobDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class BulkUpdateAssetsJobDto implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'type' => '\Squidex/Client\Model\BulkUpdateAssetType',
+        'type' => '\Squidex\Client\Model\BulkUpdateAssetType',
         'parent_id' => 'string',
         'file_name' => 'string',
         'slug' => 'string',
@@ -382,7 +382,7 @@ class BulkUpdateAssetsJobDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets type
      *
-     * @return \Squidex/Client\Model\BulkUpdateAssetType|null
+     * @return \Squidex\Client\Model\BulkUpdateAssetType|null
      */
     public function getType()
     {
@@ -392,7 +392,7 @@ class BulkUpdateAssetsJobDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets type
      *
-     * @param \Squidex/Client\Model\BulkUpdateAssetType|null $type type
+     * @param \Squidex\Client\Model\BulkUpdateAssetType|null $type type
      *
      * @return self
      */

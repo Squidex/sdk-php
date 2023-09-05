@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * TranslationsApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -125,12 +125,12 @@ class TranslationsApi
      *
      * Translate a text.
      *
-     * @param  \Squidex/Client\Model\TranslateDto $translate_dto The translation request. (required)
+     * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\TranslationDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\TranslationDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postTranslation($translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
     {
@@ -143,12 +143,12 @@ class TranslationsApi
      *
      * Translate a text.
      *
-     * @param  \Squidex/Client\Model\TranslateDto $translate_dto The translation request. (required)
+     * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\TranslationDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\TranslationDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postTranslationWithHttpInfo($translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
     {
@@ -191,53 +191,53 @@ class TranslationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\TranslationDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\TranslationDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\TranslationDto' !== 'string') {
+                        if ('\Squidex\Client\Model\TranslationDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\TranslationDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\TranslationDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\TranslationDto';
+            $returnType = '\Squidex\Client\Model\TranslationDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -258,7 +258,7 @@ class TranslationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\TranslationDto',
+                        '\Squidex\Client\Model\TranslationDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -266,7 +266,7 @@ class TranslationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -274,7 +274,7 @@ class TranslationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -289,7 +289,7 @@ class TranslationsApi
      *
      * Translate a text.
      *
-     * @param  \Squidex/Client\Model\TranslateDto $translate_dto The translation request. (required)
+     * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -310,7 +310,7 @@ class TranslationsApi
      *
      * Translate a text.
      *
-     * @param  \Squidex/Client\Model\TranslateDto $translate_dto The translation request. (required)
+     * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -318,7 +318,7 @@ class TranslationsApi
      */
     public function postTranslationAsyncWithHttpInfo($translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
     {
-        $returnType = '\Squidex/Client\Model\TranslationDto';
+        $returnType = '\Squidex\Client\Model\TranslationDto';
         $request = $this->postTranslationRequest($translate_dto, $contentType);
 
         return $this->client
@@ -360,7 +360,7 @@ class TranslationsApi
     /**
      * Create request for operation 'postTranslation'
      *
-     * @param  \Squidex/Client\Model\TranslateDto $translate_dto The translation request. (required)
+     * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -394,6 +394,14 @@ class TranslationsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(

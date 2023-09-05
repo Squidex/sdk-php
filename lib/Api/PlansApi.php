@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * PlansApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -136,9 +136,9 @@ class PlansApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\PlansDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\PlansDto|\Squidex\Client\Model\ErrorDto
      */
     public function getPlans(string $contentType = self::contentTypes['getPlans'][0])
     {
@@ -153,9 +153,9 @@ class PlansApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\PlansDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\PlansDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPlansWithHttpInfo(string $contentType = self::contentTypes['getPlans'][0])
     {
@@ -198,38 +198,38 @@ class PlansApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\PlansDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\PlansDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\PlansDto' !== 'string') {
+                        if ('\Squidex\Client\Model\PlansDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\PlansDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\PlansDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\PlansDto';
+            $returnType = '\Squidex\Client\Model\PlansDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -250,7 +250,7 @@ class PlansApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\PlansDto',
+                        '\Squidex\Client\Model\PlansDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -258,7 +258,7 @@ class PlansApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -300,7 +300,7 @@ class PlansApi
      */
     public function getPlansAsyncWithHttpInfo(string $contentType = self::contentTypes['getPlans'][0])
     {
-        $returnType = '\Squidex/Client\Model\PlansDto';
+        $returnType = '\Squidex\Client\Model\PlansDto';
         $request = $this->getPlansRequest($contentType);
 
         return $this->client
@@ -368,6 +368,14 @@ class PlansApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -428,12 +436,12 @@ class PlansApi
      *
      * Change the app plan.
      *
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\PlanChangedDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\PlanChangedDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putPlan($change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
     {
@@ -446,12 +454,12 @@ class PlansApi
      *
      * Change the app plan.
      *
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\PlanChangedDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\PlanChangedDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putPlanWithHttpInfo($change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
     {
@@ -494,53 +502,53 @@ class PlansApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\PlanChangedDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\PlanChangedDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\PlanChangedDto' !== 'string') {
+                        if ('\Squidex\Client\Model\PlanChangedDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\PlanChangedDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\PlanChangedDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\PlanChangedDto';
+            $returnType = '\Squidex\Client\Model\PlanChangedDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -561,7 +569,7 @@ class PlansApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\PlanChangedDto',
+                        '\Squidex\Client\Model\PlanChangedDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -569,7 +577,7 @@ class PlansApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -577,7 +585,7 @@ class PlansApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -592,7 +600,7 @@ class PlansApi
      *
      * Change the app plan.
      *
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -613,7 +621,7 @@ class PlansApi
      *
      * Change the app plan.
      *
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -621,7 +629,7 @@ class PlansApi
      */
     public function putPlanAsyncWithHttpInfo($change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
     {
-        $returnType = '\Squidex/Client\Model\PlanChangedDto';
+        $returnType = '\Squidex\Client\Model\PlanChangedDto';
         $request = $this->putPlanRequest($change_plan_dto, $contentType);
 
         return $this->client
@@ -663,7 +671,7 @@ class PlansApi
     /**
      * Create request for operation 'putPlan'
      *
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -697,6 +705,14 @@ class PlansApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -767,9 +783,9 @@ class PlansApi
      * @param  string $team The name of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeamPlans'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\PlansDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\PlansDto|\Squidex\Client\Model\ErrorDto
      */
     public function getTeamPlans($team, string $contentType = self::contentTypes['getTeamPlans'][0])
     {
@@ -785,9 +801,9 @@ class PlansApi
      * @param  string $team The name of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeamPlans'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\PlansDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\PlansDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTeamPlansWithHttpInfo($team, string $contentType = self::contentTypes['getTeamPlans'][0])
     {
@@ -830,38 +846,38 @@ class PlansApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\PlansDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\PlansDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\PlansDto' !== 'string') {
+                        if ('\Squidex\Client\Model\PlansDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\PlansDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\PlansDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\PlansDto';
+            $returnType = '\Squidex\Client\Model\PlansDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -882,7 +898,7 @@ class PlansApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\PlansDto',
+                        '\Squidex\Client\Model\PlansDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -890,7 +906,7 @@ class PlansApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -934,7 +950,7 @@ class PlansApi
      */
     public function getTeamPlansAsyncWithHttpInfo($team, string $contentType = self::contentTypes['getTeamPlans'][0])
     {
-        $returnType = '\Squidex/Client\Model\PlansDto';
+        $returnType = '\Squidex\Client\Model\PlansDto';
         $request = $this->getTeamPlansRequest($team, $contentType);
 
         return $this->client
@@ -1071,12 +1087,12 @@ class PlansApi
      * Change the team plan.
      *
      * @param  string $team The name of the team. (required)
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeamPlan'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\PlanChangedDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\PlanChangedDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putTeamPlan($team, $change_plan_dto, string $contentType = self::contentTypes['putTeamPlan'][0])
     {
@@ -1090,12 +1106,12 @@ class PlansApi
      * Change the team plan.
      *
      * @param  string $team The name of the team. (required)
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeamPlan'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\PlanChangedDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\PlanChangedDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putTeamPlanWithHttpInfo($team, $change_plan_dto, string $contentType = self::contentTypes['putTeamPlan'][0])
     {
@@ -1138,53 +1154,53 @@ class PlansApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\PlanChangedDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\PlanChangedDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\PlanChangedDto' !== 'string') {
+                        if ('\Squidex\Client\Model\PlanChangedDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\PlanChangedDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\PlanChangedDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\PlanChangedDto';
+            $returnType = '\Squidex\Client\Model\PlanChangedDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1205,7 +1221,7 @@ class PlansApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\PlanChangedDto',
+                        '\Squidex\Client\Model\PlanChangedDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1213,7 +1229,7 @@ class PlansApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1221,7 +1237,7 @@ class PlansApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1237,7 +1253,7 @@ class PlansApi
      * Change the team plan.
      *
      * @param  string $team The name of the team. (required)
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeamPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1259,7 +1275,7 @@ class PlansApi
      * Change the team plan.
      *
      * @param  string $team The name of the team. (required)
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeamPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1267,7 +1283,7 @@ class PlansApi
      */
     public function putTeamPlanAsyncWithHttpInfo($team, $change_plan_dto, string $contentType = self::contentTypes['putTeamPlan'][0])
     {
-        $returnType = '\Squidex/Client\Model\PlanChangedDto';
+        $returnType = '\Squidex\Client\Model\PlanChangedDto';
         $request = $this->putTeamPlanRequest($team, $change_plan_dto, $contentType);
 
         return $this->client
@@ -1310,7 +1326,7 @@ class PlansApi
      * Create request for operation 'putTeamPlan'
      *
      * @param  string $team The name of the team. (required)
-     * @param  \Squidex/Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
+     * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeamPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

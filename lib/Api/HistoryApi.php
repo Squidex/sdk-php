@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * HistoryApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -131,9 +131,9 @@ class HistoryApi
      * @param  string $channel The name of the channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppHistory'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\HistoryEventDto[]|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\HistoryEventDto[]|\Squidex\Client\Model\ErrorDto
      */
     public function getAppHistory($channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
     {
@@ -149,9 +149,9 @@ class HistoryApi
      * @param  string $channel The name of the channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppHistory'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\HistoryEventDto[]|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\HistoryEventDto[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAppHistoryWithHttpInfo($channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
     {
@@ -194,38 +194,38 @@ class HistoryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\HistoryEventDto[]' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\HistoryEventDto[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\HistoryEventDto[]' !== 'string') {
+                        if ('\Squidex\Client\Model\HistoryEventDto[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\HistoryEventDto[]', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\HistoryEventDto[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\HistoryEventDto[]';
+            $returnType = '\Squidex\Client\Model\HistoryEventDto[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -246,7 +246,7 @@ class HistoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\HistoryEventDto[]',
+                        '\Squidex\Client\Model\HistoryEventDto[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -254,7 +254,7 @@ class HistoryApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -298,7 +298,7 @@ class HistoryApi
      */
     public function getAppHistoryAsyncWithHttpInfo($channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
     {
-        $returnType = '\Squidex/Client\Model\HistoryEventDto[]';
+        $returnType = '\Squidex\Client\Model\HistoryEventDto[]';
         $request = $this->getAppHistoryRequest($channel, $contentType);
 
         return $this->client
@@ -377,6 +377,14 @@ class HistoryApi
         ) ?? []);
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -441,9 +449,9 @@ class HistoryApi
      * @param  string $channel The name of the channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeamHistory'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\HistoryEventDto[]|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\HistoryEventDto[]|\Squidex\Client\Model\ErrorDto
      */
     public function getTeamHistory($team, $channel = null, string $contentType = self::contentTypes['getTeamHistory'][0])
     {
@@ -460,9 +468,9 @@ class HistoryApi
      * @param  string $channel The name of the channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeamHistory'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\HistoryEventDto[]|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\HistoryEventDto[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTeamHistoryWithHttpInfo($team, $channel = null, string $contentType = self::contentTypes['getTeamHistory'][0])
     {
@@ -505,38 +513,38 @@ class HistoryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\HistoryEventDto[]' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\HistoryEventDto[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\HistoryEventDto[]' !== 'string') {
+                        if ('\Squidex\Client\Model\HistoryEventDto[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\HistoryEventDto[]', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\HistoryEventDto[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\HistoryEventDto[]';
+            $returnType = '\Squidex\Client\Model\HistoryEventDto[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -557,7 +565,7 @@ class HistoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\HistoryEventDto[]',
+                        '\Squidex\Client\Model\HistoryEventDto[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -565,7 +573,7 @@ class HistoryApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -611,7 +619,7 @@ class HistoryApi
      */
     public function getTeamHistoryAsyncWithHttpInfo($team, $channel = null, string $contentType = self::contentTypes['getTeamHistory'][0])
     {
-        $returnType = '\Squidex/Client\Model\HistoryEventDto[]';
+        $returnType = '\Squidex\Client\Model\HistoryEventDto[]';
         $request = $this->getTeamHistoryRequest($team, $channel, $contentType);
 
         return $this->client

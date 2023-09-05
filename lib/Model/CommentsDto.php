@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * CommentsDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,8 +57,8 @@ class CommentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'created_comments' => '\Squidex/Client\Model\CommentDto[]',
-        'updated_comments' => '\Squidex/Client\Model\CommentDto[]',
+        'created_comments' => '\Squidex\Client\Model\CommentDto[]',
+        'updated_comments' => '\Squidex\Client\Model\CommentDto[]',
         'deleted_comments' => 'string[]',
         'version' => 'int'
     ];
@@ -316,7 +316,7 @@ class CommentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created_comments
      *
-     * @return \Squidex/Client\Model\CommentDto[]|null
+     * @return \Squidex\Client\Model\CommentDto[]|null
      */
     public function getCreatedComments()
     {
@@ -326,7 +326,7 @@ class CommentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_comments
      *
-     * @param \Squidex/Client\Model\CommentDto[]|null $created_comments The created comments including the updates.
+     * @param \Squidex\Client\Model\CommentDto[]|null $created_comments The created comments including the updates.
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class CommentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated_comments
      *
-     * @return \Squidex/Client\Model\CommentDto[]|null
+     * @return \Squidex\Client\Model\CommentDto[]|null
      */
     public function getUpdatedComments()
     {
@@ -360,7 +360,7 @@ class CommentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_comments
      *
-     * @param \Squidex/Client\Model\CommentDto[]|null $updated_comments The updates comments since the last version.
+     * @param \Squidex\Client\Model\CommentDto[]|null $updated_comments The updates comments since the last version.
      *
      * @return self
      */

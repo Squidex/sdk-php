@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * RuleElementDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class RuleElementDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'icon_color' => 'string',
         'icon_image' => 'string',
         'read_more' => 'string',
-        'properties' => '\Squidex/Client\Model\RuleElementPropertyDto[]'
+        'properties' => '\Squidex\Client\Model\RuleElementPropertyDto[]'
     ];
 
     /**
@@ -533,7 +533,7 @@ class RuleElementDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets properties
      *
-     * @return \Squidex/Client\Model\RuleElementPropertyDto[]
+     * @return \Squidex\Client\Model\RuleElementPropertyDto[]
      */
     public function getProperties()
     {
@@ -543,7 +543,7 @@ class RuleElementDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets properties
      *
-     * @param \Squidex/Client\Model\RuleElementPropertyDto[] $properties The properties.
+     * @param \Squidex\Client\Model\RuleElementPropertyDto[] $properties The properties.
      *
      * @return self
      */

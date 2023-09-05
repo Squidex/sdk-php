@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * RuleDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class RuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'id' => 'string',
         'created_by' => 'string',
         'last_modified_by' => 'string',
@@ -66,8 +66,8 @@ class RuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => 'int',
         'is_enabled' => 'bool',
         'name' => 'string',
-        'trigger' => '\Squidex/Client\Model\RuleTriggerDto',
-        'action' => '\Squidex/Client\Model\RuleActionDto',
+        'trigger' => '\Squidex\Client\Model\RuleTriggerDto',
+        'action' => '\Squidex\Client\Model\RuleActionDto',
         'num_succeeded' => 'int',
         'num_failed' => 'int',
         'last_executed' => '\DateTime'
@@ -419,7 +419,7 @@ class RuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -429,7 +429,7 @@ class RuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -669,7 +669,7 @@ class RuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets trigger
      *
-     * @return \Squidex/Client\Model\RuleTriggerDto
+     * @return \Squidex\Client\Model\RuleTriggerDto
      */
     public function getTrigger()
     {
@@ -679,7 +679,7 @@ class RuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trigger
      *
-     * @param \Squidex/Client\Model\RuleTriggerDto $trigger trigger
+     * @param \Squidex\Client\Model\RuleTriggerDto $trigger trigger
      *
      * @return self
      */
@@ -696,7 +696,7 @@ class RuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets action
      *
-     * @return \Squidex/Client\Model\RuleActionDto
+     * @return \Squidex\Client\Model\RuleActionDto
      */
     public function getAction()
     {
@@ -706,7 +706,7 @@ class RuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param \Squidex/Client\Model\RuleActionDto $action action
+     * @param \Squidex\Client\Model\RuleActionDto $action action
      *
      * @return self
      */

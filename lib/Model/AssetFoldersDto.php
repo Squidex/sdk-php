@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * AssetFoldersDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,10 +57,10 @@ class AssetFoldersDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'total' => 'int',
-        'items' => '\Squidex/Client\Model\AssetFolderDto[]',
-        'path' => '\Squidex/Client\Model\AssetFolderDto[]'
+        'items' => '\Squidex\Client\Model\AssetFolderDto[]',
+        'path' => '\Squidex\Client\Model\AssetFolderDto[]'
     ];
 
     /**
@@ -325,7 +325,7 @@ class AssetFoldersDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -335,7 +335,7 @@ class AssetFoldersDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -379,7 +379,7 @@ class AssetFoldersDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \Squidex/Client\Model\AssetFolderDto[]
+     * @return \Squidex\Client\Model\AssetFolderDto[]
      */
     public function getItems()
     {
@@ -389,7 +389,7 @@ class AssetFoldersDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \Squidex/Client\Model\AssetFolderDto[] $items The assets folders.
+     * @param \Squidex\Client\Model\AssetFolderDto[] $items The assets folders.
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class AssetFoldersDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets path
      *
-     * @return \Squidex/Client\Model\AssetFolderDto[]
+     * @return \Squidex\Client\Model\AssetFolderDto[]
      */
     public function getPath()
     {
@@ -416,7 +416,7 @@ class AssetFoldersDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets path
      *
-     * @param \Squidex/Client\Model\AssetFolderDto[] $path The path to the current folder.
+     * @param \Squidex\Client\Model\AssetFolderDto[] $path The path to the current folder.
      *
      * @return self
      */

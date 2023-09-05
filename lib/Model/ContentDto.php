@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * ContentDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class ContentDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'id' => 'string',
         'created_by' => 'string',
         'last_modified_by' => 'string',
@@ -70,11 +70,11 @@ class ContentDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_color' => 'string',
         'new_status_color' => 'string',
         'edit_token' => 'string',
-        'schedule_job' => '\Squidex/Client\Model\ScheduleJobDto',
+        'schedule_job' => '\Squidex\Client\Model\ScheduleJobDto',
         'schema_id' => 'string',
         'schema_name' => 'string',
         'schema_display_name' => 'string',
-        'reference_fields' => '\Squidex/Client\Model\FieldDto[]',
+        'reference_fields' => '\Squidex\Client\Model\FieldDto[]',
         'is_deleted' => 'bool',
         'version' => 'int'
     ];
@@ -461,7 +461,7 @@ class ContentDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -471,7 +471,7 @@ class ContentDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -840,7 +840,7 @@ class ContentDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets schedule_job
      *
-     * @return \Squidex/Client\Model\ScheduleJobDto|null
+     * @return \Squidex\Client\Model\ScheduleJobDto|null
      */
     public function getScheduleJob()
     {
@@ -850,7 +850,7 @@ class ContentDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets schedule_job
      *
-     * @param \Squidex/Client\Model\ScheduleJobDto|null $schedule_job schedule_job
+     * @param \Squidex\Client\Model\ScheduleJobDto|null $schedule_job schedule_job
      *
      * @return self
      */
@@ -962,7 +962,7 @@ class ContentDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets reference_fields
      *
-     * @return \Squidex/Client\Model\FieldDto[]|null
+     * @return \Squidex\Client\Model\FieldDto[]|null
      */
     public function getReferenceFields()
     {
@@ -972,7 +972,7 @@ class ContentDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reference_fields
      *
-     * @param \Squidex/Client\Model\FieldDto[]|null $reference_fields The reference fields.
+     * @param \Squidex\Client\Model\FieldDto[]|null $reference_fields The reference fields.
      *
      * @return self
      */

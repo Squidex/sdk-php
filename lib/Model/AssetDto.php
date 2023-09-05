@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * AssetDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class AssetDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'id' => 'string',
         'parent_id' => 'string',
         'file_name' => 'string',
@@ -72,13 +72,13 @@ class AssetDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'tags' => 'string[]',
         'file_size' => 'int',
         'file_version' => 'int',
-        'type' => '\Squidex/Client\Model\AssetType',
+        'type' => '\Squidex\Client\Model\AssetType',
         'created_by' => 'string',
         'last_modified_by' => 'string',
         'created' => '\DateTime',
         'last_modified' => '\DateTime',
         'version' => 'int',
-        '_meta' => '\Squidex/Client\Model\AssetMeta',
+        '_meta' => '\Squidex\Client\Model\AssetMeta',
         'is_image' => 'bool',
         'pixel_width' => 'int',
         'pixel_height' => 'int'
@@ -517,7 +517,7 @@ class AssetDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -527,7 +527,7 @@ class AssetDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -943,7 +943,7 @@ class AssetDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return \Squidex/Client\Model\AssetType
+     * @return \Squidex\Client\Model\AssetType
      */
     public function getType()
     {
@@ -953,7 +953,7 @@ class AssetDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \Squidex/Client\Model\AssetType $type type
+     * @param \Squidex\Client\Model\AssetType $type type
      *
      * @return self
      */
@@ -1105,7 +1105,7 @@ class AssetDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _meta
      *
-     * @return \Squidex/Client\Model\AssetMeta|null
+     * @return \Squidex\Client\Model\AssetMeta|null
      */
     public function getMeta()
     {
@@ -1115,7 +1115,7 @@ class AssetDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _meta
      *
-     * @param \Squidex/Client\Model\AssetMeta|null $_meta _meta
+     * @param \Squidex\Client\Model\AssetMeta|null $_meta _meta
      *
      * @return self
      */

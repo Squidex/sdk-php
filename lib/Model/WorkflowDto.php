@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * WorkflowDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,10 +57,10 @@ class WorkflowDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'id' => 'string',
         'name' => 'string',
-        'steps' => 'array<string,\Squidex/Client\Model\WorkflowStepDto>',
+        'steps' => 'array<string,\Squidex\Client\Model\WorkflowStepDto>',
         'schema_ids' => 'string[]',
         'initial' => 'string'
     ];
@@ -339,7 +339,7 @@ class WorkflowDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -349,7 +349,7 @@ class WorkflowDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -427,7 +427,7 @@ class WorkflowDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets steps
      *
-     * @return array<string,\Squidex/Client\Model\WorkflowStepDto>
+     * @return array<string,\Squidex\Client\Model\WorkflowStepDto>
      */
     public function getSteps()
     {
@@ -437,7 +437,7 @@ class WorkflowDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets steps
      *
-     * @param array<string,\Squidex/Client\Model\WorkflowStepDto> $steps The workflow steps.
+     * @param array<string,\Squidex\Client\Model\WorkflowStepDto> $steps The workflow steps.
      *
      * @return self
      */

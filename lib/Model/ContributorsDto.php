@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * ContributorsDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,10 +57,10 @@ class ContributorsDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
-        'items' => '\Squidex/Client\Model\ContributorDto[]',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
+        'items' => '\Squidex\Client\Model\ContributorDto[]',
         'max_contributors' => 'int',
-        '_meta' => '\Squidex/Client\Model\ContributorsMetadata'
+        '_meta' => '\Squidex\Client\Model\ContributorsMetadata'
     ];
 
     /**
@@ -322,7 +322,7 @@ class ContributorsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -332,7 +332,7 @@ class ContributorsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -349,7 +349,7 @@ class ContributorsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \Squidex/Client\Model\ContributorDto[]
+     * @return \Squidex\Client\Model\ContributorDto[]
      */
     public function getItems()
     {
@@ -359,7 +359,7 @@ class ContributorsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \Squidex/Client\Model\ContributorDto[] $items The contributors.
+     * @param \Squidex\Client\Model\ContributorDto[] $items The contributors.
      *
      * @return self
      */
@@ -403,7 +403,7 @@ class ContributorsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _meta
      *
-     * @return \Squidex/Client\Model\ContributorsMetadata|null
+     * @return \Squidex\Client\Model\ContributorsMetadata|null
      */
     public function getMeta()
     {
@@ -413,7 +413,7 @@ class ContributorsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _meta
      *
-     * @param \Squidex/Client\Model\ContributorsMetadata|null $_meta _meta
+     * @param \Squidex\Client\Model\ContributorsMetadata|null $_meta _meta
      *
      * @return self
      */

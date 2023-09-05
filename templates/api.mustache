@@ -641,7 +641,6 @@ use {{invokerPackage}}\ObjectSerializer;
         {{/headerParams}}
 
         {{#pathParams}}
-        {{^vendorExtensions.x-hidden}}
         // path params
         {{#collectionFormat}}
         if (is_array(${{paramName}})) {
@@ -655,7 +654,6 @@ use {{invokerPackage}}\ObjectSerializer;
                 $resourcePath
             );
         }
-        {{/vendorExtensions.x-hidden}}
         {{/pathParams}}
 
         {{#formParams}}

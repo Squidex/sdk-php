@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * BulkResultDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class BulkResultDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'error' => '\Squidex/Client\Model\ErrorDto',
+        'error' => '\Squidex\Client\Model\ErrorDto',
         'job_index' => 'int',
         'id' => 'string',
         'content_id' => 'string'
@@ -316,7 +316,7 @@ class BulkResultDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets error
      *
-     * @return \Squidex/Client\Model\ErrorDto|null
+     * @return \Squidex\Client\Model\ErrorDto|null
      */
     public function getError()
     {
@@ -326,7 +326,7 @@ class BulkResultDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param \Squidex/Client\Model\ErrorDto|null $error error
+     * @param \Squidex\Client\Model\ErrorDto|null $error error
      *
      * @return self
      */

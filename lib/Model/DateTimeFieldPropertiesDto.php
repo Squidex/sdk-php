@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * DateTimeFieldPropertiesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class DateTimeFieldPropertiesDto extends FieldPropertiesDto
         'max_value' => '\DateTime',
         'min_value' => '\DateTime',
         'format' => 'string',
-        'editor' => '\Squidex/Client\Model\DateTimeFieldEditor',
-        'calculated_default_value' => '\Squidex/Client\Model\DateTimeCalculatedDefaultValue'
+        'editor' => '\Squidex\Client\Model\DateTimeFieldEditor',
+        'calculated_default_value' => '\Squidex\Client\Model\DateTimeCalculatedDefaultValue'
     ];
 
     /**
@@ -491,7 +491,7 @@ class DateTimeFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets editor
      *
-     * @return \Squidex/Client\Model\DateTimeFieldEditor|null
+     * @return \Squidex\Client\Model\DateTimeFieldEditor|null
      */
     public function getEditor()
     {
@@ -501,7 +501,7 @@ class DateTimeFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets editor
      *
-     * @param \Squidex/Client\Model\DateTimeFieldEditor|null $editor editor
+     * @param \Squidex\Client\Model\DateTimeFieldEditor|null $editor editor
      *
      * @return self
      */
@@ -518,7 +518,7 @@ class DateTimeFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets calculated_default_value
      *
-     * @return \Squidex/Client\Model\DateTimeCalculatedDefaultValue|null
+     * @return \Squidex\Client\Model\DateTimeCalculatedDefaultValue|null
      */
     public function getCalculatedDefaultValue()
     {
@@ -528,7 +528,7 @@ class DateTimeFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets calculated_default_value
      *
-     * @param \Squidex/Client\Model\DateTimeCalculatedDefaultValue|null $calculated_default_value calculated_default_value
+     * @param \Squidex\Client\Model\DateTimeCalculatedDefaultValue|null $calculated_default_value calculated_default_value
      *
      * @return self
      */

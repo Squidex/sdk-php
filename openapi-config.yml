@@ -6,4 +6,4 @@ globalProperties:
 
 additionalProperties:
   licenseName: MIT
-  invokerPackage: Squidex/Client
+  invokerPackage: Squidex\Client

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * BulkUpdateContentsDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class BulkUpdateContentsDto implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'jobs' => '\Squidex/Client\Model\BulkUpdateContentsJobDto[]',
+        'jobs' => '\Squidex\Client\Model\BulkUpdateContentsJobDto[]',
         'publish' => 'bool',
         'do_not_script' => 'bool',
         'do_not_validate' => 'bool',
@@ -337,7 +337,7 @@ class BulkUpdateContentsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets jobs
      *
-     * @return \Squidex/Client\Model\BulkUpdateContentsJobDto[]
+     * @return \Squidex\Client\Model\BulkUpdateContentsJobDto[]
      */
     public function getJobs()
     {
@@ -347,7 +347,7 @@ class BulkUpdateContentsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets jobs
      *
-     * @param \Squidex/Client\Model\BulkUpdateContentsJobDto[] $jobs The contents to update or insert.
+     * @param \Squidex\Client\Model\BulkUpdateContentsJobDto[] $jobs The contents to update or insert.
      *
      * @return self
      */

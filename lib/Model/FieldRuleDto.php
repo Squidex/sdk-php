@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * FieldRuleDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,7 +57,7 @@ class FieldRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'action' => '\Squidex/Client\Model\FieldRuleAction',
+        'action' => '\Squidex\Client\Model\FieldRuleAction',
         'field' => 'string',
         'condition' => 'string'
     ];
@@ -316,7 +316,7 @@ class FieldRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets action
      *
-     * @return \Squidex/Client\Model\FieldRuleAction
+     * @return \Squidex\Client\Model\FieldRuleAction
      */
     public function getAction()
     {
@@ -326,7 +326,7 @@ class FieldRuleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param \Squidex/Client\Model\FieldRuleAction $action action
+     * @param \Squidex\Client\Model\FieldRuleAction $action action
      *
      * @return self
      */

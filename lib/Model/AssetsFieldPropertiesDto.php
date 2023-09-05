@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * AssetsFieldPropertiesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -55,7 +55,7 @@ class AssetsFieldPropertiesDto extends FieldPropertiesDto
       * @var string[]
       */
     protected static $openAPITypes = [
-        'preview_mode' => '\Squidex/Client\Model\AssetPreviewMode',
+        'preview_mode' => '\Squidex\Client\Model\AssetPreviewMode',
         'default_values' => 'array<string,string[]>',
         'default_value' => 'string[]',
         'folder_id' => 'string',
@@ -70,7 +70,7 @@ class AssetsFieldPropertiesDto extends FieldPropertiesDto
         'max_height' => 'int',
         'aspect_width' => 'int',
         'aspect_height' => 'int',
-        'expected_type' => '\Squidex/Client\Model\AssetType',
+        'expected_type' => '\Squidex\Client\Model\AssetType',
         'resolve_first' => 'bool',
         'must_be_image' => 'bool',
         'resolve_image' => 'bool',
@@ -426,7 +426,7 @@ class AssetsFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets preview_mode
      *
-     * @return \Squidex/Client\Model\AssetPreviewMode|null
+     * @return \Squidex\Client\Model\AssetPreviewMode|null
      */
     public function getPreviewMode()
     {
@@ -436,7 +436,7 @@ class AssetsFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets preview_mode
      *
-     * @param \Squidex/Client\Model\AssetPreviewMode|null $preview_mode preview_mode
+     * @param \Squidex\Client\Model\AssetPreviewMode|null $preview_mode preview_mode
      *
      * @return self
      */
@@ -922,7 +922,7 @@ class AssetsFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets expected_type
      *
-     * @return \Squidex/Client\Model\AssetType|null
+     * @return \Squidex\Client\Model\AssetType|null
      */
     public function getExpectedType()
     {
@@ -932,7 +932,7 @@ class AssetsFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets expected_type
      *
-     * @param \Squidex/Client\Model\AssetType|null $expected_type expected_type
+     * @param \Squidex\Client\Model\AssetType|null $expected_type expected_type
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * StringFieldPropertiesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -72,8 +72,8 @@ class StringFieldPropertiesDto extends FieldPropertiesDto
         'is_embeddable' => 'bool',
         'inline_editable' => 'bool',
         'create_enum' => 'bool',
-        'content_type' => '\Squidex/Client\Model\StringContentType',
-        'editor' => '\Squidex/Client\Model\StringFieldEditor'
+        'content_type' => '\Squidex\Client\Model\StringContentType',
+        'editor' => '\Squidex\Client\Model\StringFieldEditor'
     ];
 
     /**
@@ -955,7 +955,7 @@ class StringFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets content_type
      *
-     * @return \Squidex/Client\Model\StringContentType|null
+     * @return \Squidex\Client\Model\StringContentType|null
      */
     public function getContentType()
     {
@@ -965,7 +965,7 @@ class StringFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets content_type
      *
-     * @param \Squidex/Client\Model\StringContentType|null $content_type content_type
+     * @param \Squidex\Client\Model\StringContentType|null $content_type content_type
      *
      * @return self
      */
@@ -982,7 +982,7 @@ class StringFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets editor
      *
-     * @return \Squidex/Client\Model\StringFieldEditor|null
+     * @return \Squidex\Client\Model\StringFieldEditor|null
      */
     public function getEditor()
     {
@@ -992,7 +992,7 @@ class StringFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets editor
      *
-     * @param \Squidex/Client\Model\StringFieldEditor|null $editor editor
+     * @param \Squidex\Client\Model\StringFieldEditor|null $editor editor
      *
      * @return self
      */

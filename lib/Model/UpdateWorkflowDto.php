@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * UpdateWorkflowDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class UpdateWorkflowDto implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'steps' => 'array<string,\Squidex/Client\Model\WorkflowStepDto>',
+        'steps' => 'array<string,\Squidex\Client\Model\WorkflowStepDto>',
         'schema_ids' => 'string[]',
         'initial' => 'string'
     ];
@@ -357,7 +357,7 @@ class UpdateWorkflowDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets steps
      *
-     * @return array<string,\Squidex/Client\Model\WorkflowStepDto>
+     * @return array<string,\Squidex\Client\Model\WorkflowStepDto>
      */
     public function getSteps()
     {
@@ -367,7 +367,7 @@ class UpdateWorkflowDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets steps
      *
-     * @param array<string,\Squidex/Client\Model\WorkflowStepDto> $steps The workflow steps.
+     * @param array<string,\Squidex\Client\Model\WorkflowStepDto> $steps The workflow steps.
      *
      * @return self
      */

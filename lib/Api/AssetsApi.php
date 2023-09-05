@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * AssetsApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -196,9 +196,9 @@ class AssetsApi
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\Squidex/Client\Model\ErrorDto
+     * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      * @deprecated
      */
     public function getAssetContent($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
@@ -229,9 +229,9 @@ class AssetsApi
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function getAssetContentWithHttpInfo($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
@@ -290,17 +290,17 @@ class AssetsApi
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -335,7 +335,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -718,9 +718,9 @@ class AssetsApi
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContentBySlug'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\Squidex/Client\Model\ErrorDto
+     * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      */
     public function getAssetContentBySlug($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
@@ -751,9 +751,9 @@ class AssetsApi
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContentBySlug'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetContentBySlugWithHttpInfo($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
@@ -811,17 +811,17 @@ class AssetsApi
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -856,7 +856,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1169,6 +1169,14 @@ class AssetsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id_or_slug !== null) {
             $resourcePath = str_replace(
                 '{' . 'idOrSlug' . '}',
@@ -1247,7 +1255,7 @@ class AssetsApi
      * @param  string $id The ID of the asset folder to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAssetFolder'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1264,7 +1272,7 @@ class AssetsApi
      * @param  string $id The ID of the asset folder to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAssetFolder'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1314,7 +1322,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1322,7 +1330,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1430,6 +1438,14 @@ class AssetsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -1501,9 +1517,9 @@ class AssetsApi
      * @param  AssetFolderScope $scope The scope of the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetFolders'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetFoldersDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetFoldersDto|\Squidex\Client\Model\ErrorDto
      */
     public function getAssetFolders($parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
     {
@@ -1520,9 +1536,9 @@ class AssetsApi
      * @param  AssetFolderScope $scope The scope of the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetFolders'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetFoldersDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetFoldersDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetFoldersWithHttpInfo($parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
     {
@@ -1565,38 +1581,38 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetFoldersDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetFoldersDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetFoldersDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetFoldersDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetFoldersDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetFoldersDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetFoldersDto';
+            $returnType = '\Squidex\Client\Model\AssetFoldersDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1617,7 +1633,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetFoldersDto',
+                        '\Squidex\Client\Model\AssetFoldersDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1625,7 +1641,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1671,7 +1687,7 @@ class AssetsApi
      */
     public function getAssetFoldersAsyncWithHttpInfo($parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetFoldersDto';
+        $returnType = '\Squidex\Client\Model\AssetFoldersDto';
         $request = $this->getAssetFoldersRequest($parent_id, $scope, $contentType);
 
         return $this->client
@@ -1761,6 +1777,14 @@ class AssetsApi
         ) ?? []);
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1821,12 +1845,12 @@ class AssetsApi
      *
      * Create an asset folder.
      *
-     * @param  \Squidex/Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
+     * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetFolderDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postAssetFolder($create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
     {
@@ -1839,12 +1863,12 @@ class AssetsApi
      *
      * Create an asset folder.
      *
-     * @param  \Squidex/Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
+     * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetFolderDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postAssetFolderWithHttpInfo($create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
     {
@@ -1887,53 +1911,53 @@ class AssetsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Squidex/Client\Model\AssetFolderDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetFolderDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetFolderDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetFolderDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetFolderDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetFolderDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetFolderDto';
+            $returnType = '\Squidex\Client\Model\AssetFolderDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1954,7 +1978,7 @@ class AssetsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetFolderDto',
+                        '\Squidex\Client\Model\AssetFolderDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1962,7 +1986,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1970,7 +1994,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1985,7 +2009,7 @@ class AssetsApi
      *
      * Create an asset folder.
      *
-     * @param  \Squidex/Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
+     * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2006,7 +2030,7 @@ class AssetsApi
      *
      * Create an asset folder.
      *
-     * @param  \Squidex/Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
+     * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2014,7 +2038,7 @@ class AssetsApi
      */
     public function postAssetFolderAsyncWithHttpInfo($create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetFolderDto';
+        $returnType = '\Squidex\Client\Model\AssetFolderDto';
         $request = $this->postAssetFolderRequest($create_asset_folder_dto, $contentType);
 
         return $this->client
@@ -2056,7 +2080,7 @@ class AssetsApi
     /**
      * Create request for operation 'postAssetFolder'
      *
-     * @param  \Squidex/Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
+     * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2090,6 +2114,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2158,12 +2190,12 @@ class AssetsApi
      * Update an asset folder.
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetFolderDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putAssetFolder($id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
     {
@@ -2177,12 +2209,12 @@ class AssetsApi
      * Update an asset folder.
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetFolderDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putAssetFolderWithHttpInfo($id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
     {
@@ -2225,53 +2257,53 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetFolderDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetFolderDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetFolderDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetFolderDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetFolderDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetFolderDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetFolderDto';
+            $returnType = '\Squidex\Client\Model\AssetFolderDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2292,7 +2324,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetFolderDto',
+                        '\Squidex\Client\Model\AssetFolderDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2300,7 +2332,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2308,7 +2340,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2324,7 +2356,7 @@ class AssetsApi
      * Update an asset folder.
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2346,7 +2378,7 @@ class AssetsApi
      * Update an asset folder.
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2354,7 +2386,7 @@ class AssetsApi
      */
     public function putAssetFolderAsyncWithHttpInfo($id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetFolderDto';
+        $returnType = '\Squidex\Client\Model\AssetFolderDto';
         $request = $this->putAssetFolderRequest($id, $rename_asset_folder_dto, $contentType);
 
         return $this->client
@@ -2397,7 +2429,7 @@ class AssetsApi
      * Create request for operation 'putAssetFolder'
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2438,6 +2470,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
@@ -2514,12 +2554,12 @@ class AssetsApi
      * Move an asset folder.
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetFolderDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putAssetFolderParent($id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
     {
@@ -2533,12 +2573,12 @@ class AssetsApi
      * Move an asset folder.
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetFolderDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putAssetFolderParentWithHttpInfo($id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
     {
@@ -2581,53 +2621,53 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetFolderDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetFolderDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetFolderDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetFolderDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetFolderDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetFolderDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetFolderDto';
+            $returnType = '\Squidex\Client\Model\AssetFolderDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2648,7 +2688,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetFolderDto',
+                        '\Squidex\Client\Model\AssetFolderDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2656,7 +2696,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2664,7 +2704,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2680,7 +2720,7 @@ class AssetsApi
      * Move an asset folder.
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2702,7 +2742,7 @@ class AssetsApi
      * Move an asset folder.
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2710,7 +2750,7 @@ class AssetsApi
      */
     public function putAssetFolderParentAsyncWithHttpInfo($id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetFolderDto';
+        $returnType = '\Squidex\Client\Model\AssetFolderDto';
         $request = $this->putAssetFolderParentRequest($id, $move_asset_folder_dto, $contentType);
 
         return $this->client
@@ -2753,7 +2793,7 @@ class AssetsApi
      * Create request for operation 'putAssetFolderParent'
      *
      * @param  string $id The ID of the asset folder. (required)
-     * @param  \Squidex/Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2794,6 +2834,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
@@ -2869,12 +2917,12 @@ class AssetsApi
      *
      * Bulk update assets.
      *
-     * @param  \Squidex/Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
+     * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\BulkResultDto[]|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function bulkUpdateAssets($bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
     {
@@ -2887,12 +2935,12 @@ class AssetsApi
      *
      * Bulk update assets.
      *
-     * @param  \Squidex/Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
+     * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\BulkResultDto[]|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkUpdateAssetsWithHttpInfo($bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
     {
@@ -2935,53 +2983,53 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\BulkResultDto[]' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\BulkResultDto[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\BulkResultDto[]' !== 'string') {
+                        if ('\Squidex\Client\Model\BulkResultDto[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\BulkResultDto[]', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\BulkResultDto[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\BulkResultDto[]';
+            $returnType = '\Squidex\Client\Model\BulkResultDto[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3002,7 +3050,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\BulkResultDto[]',
+                        '\Squidex\Client\Model\BulkResultDto[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3010,7 +3058,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3018,7 +3066,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3033,7 +3081,7 @@ class AssetsApi
      *
      * Bulk update assets.
      *
-     * @param  \Squidex/Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
+     * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3054,7 +3102,7 @@ class AssetsApi
      *
      * Bulk update assets.
      *
-     * @param  \Squidex/Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
+     * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3062,7 +3110,7 @@ class AssetsApi
      */
     public function bulkUpdateAssetsAsyncWithHttpInfo($bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
     {
-        $returnType = '\Squidex/Client\Model\BulkResultDto[]';
+        $returnType = '\Squidex\Client\Model\BulkResultDto[]';
         $request = $this->bulkUpdateAssetsRequest($bulk_update_assets_dto, $contentType);
 
         return $this->client
@@ -3104,7 +3152,7 @@ class AssetsApi
     /**
      * Create request for operation 'bulkUpdateAssets'
      *
-     * @param  \Squidex/Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
+     * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3138,6 +3186,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3210,7 +3266,7 @@ class AssetsApi
      * @param  bool $permanent True to delete the asset permanently. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -3229,7 +3285,7 @@ class AssetsApi
      * @param  bool $permanent True to delete the asset permanently. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -3279,7 +3335,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3287,7 +3343,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3421,6 +3477,14 @@ class AssetsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -3491,9 +3555,9 @@ class AssetsApi
      * @param  string $id The ID of the asset to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto
      */
     public function getAsset($id, string $contentType = self::contentTypes['getAsset'][0])
     {
@@ -3509,9 +3573,9 @@ class AssetsApi
      * @param  string $id The ID of the asset to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetWithHttpInfo($id, string $contentType = self::contentTypes['getAsset'][0])
     {
@@ -3554,38 +3618,38 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetDto';
+            $returnType = '\Squidex\Client\Model\AssetDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3606,7 +3670,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetDto',
+                        '\Squidex\Client\Model\AssetDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3614,7 +3678,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3658,7 +3722,7 @@ class AssetsApi
      */
     public function getAssetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getAsset'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetDto';
+        $returnType = '\Squidex\Client\Model\AssetDto';
         $request = $this->getAssetRequest($id, $contentType);
 
         return $this->client
@@ -3734,6 +3798,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
@@ -3813,9 +3885,9 @@ class AssetsApi
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssets'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetsDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetsDto|\Squidex\Client\Model\ErrorDto
      */
     public function getAssets($parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
     {
@@ -3839,9 +3911,9 @@ class AssetsApi
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssets'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetsDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetsWithHttpInfo($parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
     {
@@ -3884,38 +3956,38 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetsDto';
+            $returnType = '\Squidex\Client\Model\AssetsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3936,7 +4008,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetsDto',
+                        '\Squidex\Client\Model\AssetsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3944,7 +4016,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4004,7 +4076,7 @@ class AssetsApi
      */
     public function getAssetsAsyncWithHttpInfo($parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetsDto';
+        $returnType = '\Squidex\Client\Model\AssetsDto';
         $request = $this->getAssetsRequest($parent_id, $ids, $q, $top, $skip, $orderby, $filter, $x_no_total, $x_no_slow_total, $contentType);
 
         return $this->client
@@ -4161,6 +4233,14 @@ class AssetsApi
             $headerParams['X-NoSlowTotal'] = ObjectSerializer::toHeaderValue($x_no_slow_total);
         }
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4221,14 +4301,14 @@ class AssetsApi
      *
      * Get assets.
      *
-     * @param  \Squidex/Client\Model\QueryDto $query_dto The required query object. (required)
+     * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetsPost'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function getAssetsPost($query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
     {
@@ -4241,14 +4321,14 @@ class AssetsApi
      *
      * Get assets.
      *
-     * @param  \Squidex/Client\Model\QueryDto $query_dto The required query object. (required)
+     * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetsPost'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetsPostWithHttpInfo($query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
     {
@@ -4291,53 +4371,53 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetsDto';
+            $returnType = '\Squidex\Client\Model\AssetsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4358,7 +4438,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetsDto',
+                        '\Squidex\Client\Model\AssetsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4366,7 +4446,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4374,7 +4454,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4389,7 +4469,7 @@ class AssetsApi
      *
      * Get assets.
      *
-     * @param  \Squidex/Client\Model\QueryDto $query_dto The required query object. (required)
+     * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetsPost'] to see the possible values for this operation
@@ -4412,7 +4492,7 @@ class AssetsApi
      *
      * Get assets.
      *
-     * @param  \Squidex/Client\Model\QueryDto $query_dto The required query object. (required)
+     * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetsPost'] to see the possible values for this operation
@@ -4422,7 +4502,7 @@ class AssetsApi
      */
     public function getAssetsPostAsyncWithHttpInfo($query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetsDto';
+        $returnType = '\Squidex\Client\Model\AssetsDto';
         $request = $this->getAssetsPostRequest($query_dto, $x_no_total, $x_no_slow_total, $contentType);
 
         return $this->client
@@ -4464,7 +4544,7 @@ class AssetsApi
     /**
      * Create request for operation 'getAssetsPost'
      *
-     * @param  \Squidex/Client\Model\QueryDto $query_dto The required query object. (required)
+     * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetsPost'] to see the possible values for this operation
@@ -4510,6 +4590,14 @@ class AssetsApi
             $headerParams['X-NoSlowTotal'] = ObjectSerializer::toHeaderValue($x_no_slow_total);
         }
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4579,9 +4667,9 @@ class AssetsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTags'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array<string,int>|\Squidex/Client\Model\ErrorDto
+     * @return array<string,int>|\Squidex\Client\Model\ErrorDto
      */
     public function getTags(string $contentType = self::contentTypes['getTags'][0])
     {
@@ -4596,9 +4684,9 @@ class AssetsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTags'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of array<string,int>|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,int>|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTagsWithHttpInfo(string $contentType = self::contentTypes['getTags'][0])
     {
@@ -4656,17 +4744,17 @@ class AssetsApi
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4701,7 +4789,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4811,6 +4899,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4877,9 +4973,9 @@ class AssetsApi
      * @param  \SplFileObject $file file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postAsset($parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
     {
@@ -4898,9 +4994,9 @@ class AssetsApi
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postAssetWithHttpInfo($parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
     {
@@ -4943,68 +5039,68 @@ class AssetsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Squidex/Client\Model\AssetDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetDto';
+            $returnType = '\Squidex\Client\Model\AssetDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5025,7 +5121,7 @@ class AssetsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetDto',
+                        '\Squidex\Client\Model\AssetDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5033,7 +5129,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5041,7 +5137,7 @@ class AssetsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5049,7 +5145,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5099,7 +5195,7 @@ class AssetsApi
      */
     public function postAssetAsyncWithHttpInfo($parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetDto';
+        $returnType = '\Squidex\Client\Model\AssetDto';
         $request = $this->postAssetRequest($parent_id, $id, $duplicate, $file, $contentType);
 
         return $this->client
@@ -5202,6 +5298,14 @@ class AssetsApi
         ) ?? []);
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
 
         // form params
         if ($file !== null) {
@@ -5280,9 +5384,9 @@ class AssetsApi
      * @param  \SplFileObject $file file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUpsertAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postUpsertAsset($id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
     {
@@ -5301,9 +5405,9 @@ class AssetsApi
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUpsertAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postUpsertAssetWithHttpInfo($id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
     {
@@ -5346,68 +5450,68 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetDto';
+            $returnType = '\Squidex\Client\Model\AssetDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5428,7 +5532,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetDto',
+                        '\Squidex\Client\Model\AssetDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5436,7 +5540,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5444,7 +5548,7 @@ class AssetsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5452,7 +5556,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5502,7 +5606,7 @@ class AssetsApi
      */
     public function postUpsertAssetAsyncWithHttpInfo($id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetDto';
+        $returnType = '\Squidex\Client\Model\AssetDto';
         $request = $this->postUpsertAssetRequest($id, $parent_id, $duplicate, $file, $contentType);
 
         return $this->client
@@ -5603,6 +5707,14 @@ class AssetsApi
 
 
         // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
+        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -5683,12 +5795,12 @@ class AssetsApi
      * Update an asset.
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putAsset($id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
     {
@@ -5702,12 +5814,12 @@ class AssetsApi
      * Update an asset.
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putAssetWithHttpInfo($id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
     {
@@ -5750,53 +5862,53 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetDto';
+            $returnType = '\Squidex\Client\Model\AssetDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5817,7 +5929,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetDto',
+                        '\Squidex\Client\Model\AssetDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5825,7 +5937,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5833,7 +5945,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5849,7 +5961,7 @@ class AssetsApi
      * Update an asset.
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5871,7 +5983,7 @@ class AssetsApi
      * Update an asset.
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5879,7 +5991,7 @@ class AssetsApi
      */
     public function putAssetAsyncWithHttpInfo($id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetDto';
+        $returnType = '\Squidex\Client\Model\AssetDto';
         $request = $this->putAssetRequest($id, $annotate_asset_dto, $contentType);
 
         return $this->client
@@ -5922,7 +6034,7 @@ class AssetsApi
      * Create request for operation 'putAsset'
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5963,6 +6075,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
@@ -6042,9 +6162,9 @@ class AssetsApi
      * @param  \SplFileObject $file file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetContent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putAssetContent($id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
     {
@@ -6061,9 +6181,9 @@ class AssetsApi
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetContent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putAssetContentWithHttpInfo($id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
     {
@@ -6106,68 +6226,68 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetDto';
+            $returnType = '\Squidex\Client\Model\AssetDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6188,7 +6308,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetDto',
+                        '\Squidex\Client\Model\AssetDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6196,7 +6316,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6204,7 +6324,7 @@ class AssetsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6212,7 +6332,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6258,7 +6378,7 @@ class AssetsApi
      */
     public function putAssetContentAsyncWithHttpInfo($id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetDto';
+        $returnType = '\Squidex\Client\Model\AssetDto';
         $request = $this->putAssetContentRequest($id, $file, $contentType);
 
         return $this->client
@@ -6336,6 +6456,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
@@ -6417,12 +6545,12 @@ class AssetsApi
      * Moves the asset.
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putAssetParent($id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
     {
@@ -6436,12 +6564,12 @@ class AssetsApi
      * Moves the asset.
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\AssetDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putAssetParentWithHttpInfo($id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
     {
@@ -6484,53 +6612,53 @@ class AssetsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\AssetDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\AssetDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\AssetDto' !== 'string') {
+                        if ('\Squidex\Client\Model\AssetDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\AssetDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\AssetDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\AssetDto';
+            $returnType = '\Squidex\Client\Model\AssetDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6551,7 +6679,7 @@ class AssetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\AssetDto',
+                        '\Squidex\Client\Model\AssetDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6559,7 +6687,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6567,7 +6695,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6583,7 +6711,7 @@ class AssetsApi
      * Moves the asset.
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6605,7 +6733,7 @@ class AssetsApi
      * Moves the asset.
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6613,7 +6741,7 @@ class AssetsApi
      */
     public function putAssetParentAsyncWithHttpInfo($id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
     {
-        $returnType = '\Squidex/Client\Model\AssetDto';
+        $returnType = '\Squidex\Client\Model\AssetDto';
         $request = $this->putAssetParentRequest($id, $move_asset_dto, $contentType);
 
         return $this->client
@@ -6656,7 +6784,7 @@ class AssetsApi
      * Create request for operation 'putAssetParent'
      *
      * @param  string $id The ID of the asset. (required)
-     * @param  \Squidex/Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
+     * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6697,6 +6825,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($id !== null) {
             $resourcePath = str_replace(
@@ -6773,12 +6909,12 @@ class AssetsApi
      * Rename an asset tag.
      *
      * @param  string $name The tag to return. (required)
-     * @param  \Squidex/Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
+     * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array<string,int>|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return array<string,int>|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putTag($name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
     {
@@ -6792,12 +6928,12 @@ class AssetsApi
      * Rename an asset tag.
      *
      * @param  string $name The tag to return. (required)
-     * @param  \Squidex/Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
+     * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of array<string,int>|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,int>|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putTagWithHttpInfo($name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
     {
@@ -6855,32 +6991,32 @@ class AssetsApi
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6915,7 +7051,7 @@ class AssetsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6923,7 +7059,7 @@ class AssetsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6939,7 +7075,7 @@ class AssetsApi
      * Rename an asset tag.
      *
      * @param  string $name The tag to return. (required)
-     * @param  \Squidex/Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
+     * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6961,7 +7097,7 @@ class AssetsApi
      * Rename an asset tag.
      *
      * @param  string $name The tag to return. (required)
-     * @param  \Squidex/Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
+     * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7012,7 +7148,7 @@ class AssetsApi
      * Create request for operation 'putTag'
      *
      * @param  string $name The tag to return. (required)
-     * @param  \Squidex/Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
+     * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7053,6 +7189,14 @@ class AssetsApi
 
 
 
+        // path params
+        if ($app !== null) {
+            $resourcePath = str_replace(
+                '{' . 'app' . '}',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
+        }
         // path params
         if ($name !== null) {
             $resourcePath = str_replace(

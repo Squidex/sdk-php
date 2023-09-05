@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * SortNode Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class SortNode implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'path' => 'string[]',
-        'order' => '\Squidex/Client\Model\SortOrder'
+        'order' => '\Squidex\Client\Model\SortOrder'
     ];
 
     /**
@@ -332,7 +332,7 @@ class SortNode implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order
      *
-     * @return \Squidex/Client\Model\SortOrder
+     * @return \Squidex\Client\Model\SortOrder
      */
     public function getOrder()
     {
@@ -342,7 +342,7 @@ class SortNode implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order
      *
-     * @param \Squidex/Client\Model\SortOrder $order order
+     * @param \Squidex\Client\Model\SortOrder $order order
      *
      * @return self
      */

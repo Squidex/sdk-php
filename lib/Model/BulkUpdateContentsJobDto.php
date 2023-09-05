@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * BulkUpdateContentsJobDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,12 +57,12 @@ class BulkUpdateContentsJobDto implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'query' => '\Squidex/Client\Model\QueryJsonDto',
+        'query' => '\Squidex\Client\Model\QueryJsonDto',
         'id' => 'string',
         'data' => 'array<string,array>',
         'status' => 'string',
         'due_time' => '\DateTime',
-        'type' => '\Squidex/Client\Model\BulkUpdateContentType',
+        'type' => '\Squidex\Client\Model\BulkUpdateContentType',
         'schema' => 'string',
         'patch' => 'bool',
         'permanent' => 'bool',
@@ -362,7 +362,7 @@ class BulkUpdateContentsJobDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets query
      *
-     * @return \Squidex/Client\Model\QueryJsonDto|null
+     * @return \Squidex\Client\Model\QueryJsonDto|null
      */
     public function getQuery()
     {
@@ -372,7 +372,7 @@ class BulkUpdateContentsJobDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets query
      *
-     * @param \Squidex/Client\Model\QueryJsonDto|null $query query
+     * @param \Squidex\Client\Model\QueryJsonDto|null $query query
      *
      * @return self
      */
@@ -518,7 +518,7 @@ class BulkUpdateContentsJobDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets type
      *
-     * @return \Squidex/Client\Model\BulkUpdateContentType|null
+     * @return \Squidex\Client\Model\BulkUpdateContentType|null
      */
     public function getType()
     {
@@ -528,7 +528,7 @@ class BulkUpdateContentsJobDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets type
      *
-     * @param \Squidex/Client\Model\BulkUpdateContentType|null $type type
+     * @param \Squidex\Client\Model\BulkUpdateContentType|null $type type
      *
      * @return self
      */

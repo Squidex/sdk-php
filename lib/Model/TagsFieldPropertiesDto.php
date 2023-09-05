@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * TagsFieldPropertiesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class TagsFieldPropertiesDto extends FieldPropertiesDto
         'max_items' => 'int',
         'allowed_values' => 'string[]',
         'create_enum' => 'bool',
-        'editor' => '\Squidex/Client\Model\TagsFieldEditor'
+        'editor' => '\Squidex\Client\Model\TagsFieldEditor'
     ];
 
     /**
@@ -518,7 +518,7 @@ class TagsFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets editor
      *
-     * @return \Squidex/Client\Model\TagsFieldEditor|null
+     * @return \Squidex\Client\Model\TagsFieldEditor|null
      */
     public function getEditor()
     {
@@ -528,7 +528,7 @@ class TagsFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets editor
      *
-     * @param \Squidex/Client\Model\TagsFieldEditor|null $editor editor
+     * @param \Squidex\Client\Model\TagsFieldEditor|null $editor editor
      *
      * @return self
      */

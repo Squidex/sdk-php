@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * WebhookRuleActionDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -56,7 +56,7 @@ class WebhookRuleActionDto extends RuleActionDto
       */
     protected static $openAPITypes = [
         'url' => 'string',
-        'method' => '\Squidex/Client\Model\WebhookMethod',
+        'method' => '\Squidex\Client\Model\WebhookMethod',
         'payload' => 'string',
         'payload_type' => 'string',
         'headers' => 'string',
@@ -363,7 +363,7 @@ class WebhookRuleActionDto extends RuleActionDto
     /**
      * Gets method
      *
-     * @return \Squidex/Client\Model\WebhookMethod
+     * @return \Squidex\Client\Model\WebhookMethod
      */
     public function getMethod()
     {
@@ -373,7 +373,7 @@ class WebhookRuleActionDto extends RuleActionDto
     /**
      * Sets method
      *
-     * @param \Squidex/Client\Model\WebhookMethod $method method
+     * @param \Squidex\Client\Model\WebhookMethod $method method
      *
      * @return self
      */

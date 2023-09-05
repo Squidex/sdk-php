@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * UpsertSchemaNestedFieldDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class UpsertSchemaNestedFieldDto implements ModelInterface, ArrayAccess, \JsonSe
         'is_hidden' => 'bool',
         'is_locked' => 'bool',
         'is_disabled' => 'bool',
-        'properties' => '\Squidex/Client\Model\FieldPropertiesDto'
+        'properties' => '\Squidex\Client\Model\FieldPropertiesDto'
     ];
 
     /**
@@ -450,7 +450,7 @@ class UpsertSchemaNestedFieldDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets properties
      *
-     * @return \Squidex/Client\Model\FieldPropertiesDto
+     * @return \Squidex\Client\Model\FieldPropertiesDto
      */
     public function getProperties()
     {
@@ -460,7 +460,7 @@ class UpsertSchemaNestedFieldDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets properties
      *
-     * @param \Squidex/Client\Model\FieldPropertiesDto $properties properties
+     * @param \Squidex\Client\Model\FieldPropertiesDto $properties properties
      *
      * @return self
      */

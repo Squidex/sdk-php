@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * ContentsDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,10 +57,10 @@ class ContentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'total' => 'int',
-        'items' => '\Squidex/Client\Model\ContentDto[]',
-        'statuses' => '\Squidex/Client\Model\StatusInfoDto[]'
+        'items' => '\Squidex\Client\Model\ContentDto[]',
+        'statuses' => '\Squidex\Client\Model\StatusInfoDto[]'
     ];
 
     /**
@@ -325,7 +325,7 @@ class ContentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -335,7 +335,7 @@ class ContentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -379,7 +379,7 @@ class ContentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \Squidex/Client\Model\ContentDto[]
+     * @return \Squidex\Client\Model\ContentDto[]
      */
     public function getItems()
     {
@@ -389,7 +389,7 @@ class ContentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \Squidex/Client\Model\ContentDto[] $items The content items.
+     * @param \Squidex\Client\Model\ContentDto[] $items The content items.
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class ContentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets statuses
      *
-     * @return \Squidex/Client\Model\StatusInfoDto[]
+     * @return \Squidex\Client\Model\StatusInfoDto[]
      */
     public function getStatuses()
     {
@@ -416,7 +416,7 @@ class ContentsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets statuses
      *
-     * @param \Squidex/Client\Model\StatusInfoDto[] $statuses The possible statuses.
+     * @param \Squidex\Client\Model\StatusInfoDto[] $statuses The possible statuses.
      *
      * @return self
      */

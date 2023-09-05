@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Api;
+namespace Squidex\Client\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Squidex/Client\ApiException;
-use Squidex/Client\Configuration;
-use Squidex/Client\HeaderSelector;
-use Squidex/Client\ObjectSerializer;
+use Squidex\Client\ApiException;
+use Squidex\Client\Configuration;
+use Squidex\Client\HeaderSelector;
+use Squidex\Client\ObjectSerializer;
 
 /**
  * TeamsApi Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -150,9 +150,9 @@ class TeamsApi
      * @param  string $id The ID of the contributor. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContributor'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\ContributorsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function deleteContributor($team, $id, string $contentType = self::contentTypes['deleteContributor'][0])
     {
@@ -169,9 +169,9 @@ class TeamsApi
      * @param  string $id The ID of the contributor. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContributor'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\ContributorsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteContributorWithHttpInfo($team, $id, string $contentType = self::contentTypes['deleteContributor'][0])
     {
@@ -214,53 +214,53 @@ class TeamsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\ContributorsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ContributorsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ContributorsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ContributorsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ContributorsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ContributorsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\ContributorsDto';
+            $returnType = '\Squidex\Client\Model\ContributorsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -281,7 +281,7 @@ class TeamsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ContributorsDto',
+                        '\Squidex\Client\Model\ContributorsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -289,7 +289,7 @@ class TeamsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -297,7 +297,7 @@ class TeamsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -343,7 +343,7 @@ class TeamsApi
      */
     public function deleteContributorAsyncWithHttpInfo($team, $id, string $contentType = self::contentTypes['deleteContributor'][0])
     {
-        $returnType = '\Squidex/Client\Model\ContributorsDto';
+        $returnType = '\Squidex\Client\Model\ContributorsDto';
         $request = $this->deleteContributorRequest($team, $id, $contentType);
 
         return $this->client
@@ -498,9 +498,9 @@ class TeamsApi
      * @param  string $team The ID of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMyself'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\ContributorsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function deleteMyself($team, string $contentType = self::contentTypes['deleteMyself'][0])
     {
@@ -516,9 +516,9 @@ class TeamsApi
      * @param  string $team The ID of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMyself'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\ContributorsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteMyselfWithHttpInfo($team, string $contentType = self::contentTypes['deleteMyself'][0])
     {
@@ -561,53 +561,53 @@ class TeamsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\ContributorsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ContributorsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ContributorsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ContributorsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ContributorsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ContributorsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\ContributorsDto';
+            $returnType = '\Squidex\Client\Model\ContributorsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -628,7 +628,7 @@ class TeamsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ContributorsDto',
+                        '\Squidex\Client\Model\ContributorsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -636,7 +636,7 @@ class TeamsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -644,7 +644,7 @@ class TeamsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -688,7 +688,7 @@ class TeamsApi
      */
     public function deleteMyselfAsyncWithHttpInfo($team, string $contentType = self::contentTypes['deleteMyself'][0])
     {
-        $returnType = '\Squidex/Client\Model\ContributorsDto';
+        $returnType = '\Squidex\Client\Model\ContributorsDto';
         $request = $this->deleteMyselfRequest($team, $contentType);
 
         return $this->client
@@ -827,9 +827,9 @@ class TeamsApi
      * @param  string $team The ID of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContributors'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\ContributorsDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto
      */
     public function getContributors($team, string $contentType = self::contentTypes['getContributors'][0])
     {
@@ -845,9 +845,9 @@ class TeamsApi
      * @param  string $team The ID of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContributors'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\ContributorsDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getContributorsWithHttpInfo($team, string $contentType = self::contentTypes['getContributors'][0])
     {
@@ -890,38 +890,38 @@ class TeamsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\ContributorsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ContributorsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ContributorsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ContributorsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ContributorsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ContributorsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\ContributorsDto';
+            $returnType = '\Squidex\Client\Model\ContributorsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -942,7 +942,7 @@ class TeamsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ContributorsDto',
+                        '\Squidex\Client\Model\ContributorsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -950,7 +950,7 @@ class TeamsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -994,7 +994,7 @@ class TeamsApi
      */
     public function getContributorsAsyncWithHttpInfo($team, string $contentType = self::contentTypes['getContributors'][0])
     {
-        $returnType = '\Squidex/Client\Model\ContributorsDto';
+        $returnType = '\Squidex\Client\Model\ContributorsDto';
         $request = $this->getContributorsRequest($team, $contentType);
 
         return $this->client
@@ -1131,12 +1131,12 @@ class TeamsApi
      * Assign contributor to team.
      *
      * @param  string $team The ID of the team. (required)
-     * @param  \Squidex/Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
+     * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\ContributorsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postContributor($team, $assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
     {
@@ -1150,12 +1150,12 @@ class TeamsApi
      * Assign contributor to team.
      *
      * @param  string $team The ID of the team. (required)
-     * @param  \Squidex/Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
+     * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\ContributorsDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postContributorWithHttpInfo($team, $assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
     {
@@ -1198,53 +1198,53 @@ class TeamsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Squidex/Client\Model\ContributorsDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ContributorsDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ContributorsDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ContributorsDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ContributorsDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ContributorsDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\ContributorsDto';
+            $returnType = '\Squidex\Client\Model\ContributorsDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1265,7 +1265,7 @@ class TeamsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ContributorsDto',
+                        '\Squidex\Client\Model\ContributorsDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1273,7 +1273,7 @@ class TeamsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1281,7 +1281,7 @@ class TeamsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1297,7 +1297,7 @@ class TeamsApi
      * Assign contributor to team.
      *
      * @param  string $team The ID of the team. (required)
-     * @param  \Squidex/Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
+     * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1319,7 +1319,7 @@ class TeamsApi
      * Assign contributor to team.
      *
      * @param  string $team The ID of the team. (required)
-     * @param  \Squidex/Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
+     * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1327,7 +1327,7 @@ class TeamsApi
      */
     public function postContributorAsyncWithHttpInfo($team, $assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
     {
-        $returnType = '\Squidex/Client\Model\ContributorsDto';
+        $returnType = '\Squidex\Client\Model\ContributorsDto';
         $request = $this->postContributorRequest($team, $assign_contributor_dto, $contentType);
 
         return $this->client
@@ -1370,7 +1370,7 @@ class TeamsApi
      * Create request for operation 'postContributor'
      *
      * @param  string $team The ID of the team. (required)
-     * @param  \Squidex/Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
+     * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1481,9 +1481,9 @@ class TeamsApi
      * @param  string $team The name of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\TeamDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\TeamDto|\Squidex\Client\Model\ErrorDto
      */
     public function getTeam($team, string $contentType = self::contentTypes['getTeam'][0])
     {
@@ -1499,9 +1499,9 @@ class TeamsApi
      * @param  string $team The name of the team. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\TeamDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\TeamDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTeamWithHttpInfo($team, string $contentType = self::contentTypes['getTeam'][0])
     {
@@ -1544,38 +1544,38 @@ class TeamsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\TeamDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\TeamDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\TeamDto' !== 'string') {
+                        if ('\Squidex\Client\Model\TeamDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\TeamDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\TeamDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\TeamDto';
+            $returnType = '\Squidex\Client\Model\TeamDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1596,7 +1596,7 @@ class TeamsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\TeamDto',
+                        '\Squidex\Client\Model\TeamDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1604,7 +1604,7 @@ class TeamsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1648,7 +1648,7 @@ class TeamsApi
      */
     public function getTeamAsyncWithHttpInfo($team, string $contentType = self::contentTypes['getTeam'][0])
     {
-        $returnType = '\Squidex/Client\Model\TeamDto';
+        $returnType = '\Squidex\Client\Model\TeamDto';
         $request = $this->getTeamRequest($team, $contentType);
 
         return $this->client
@@ -1786,9 +1786,9 @@ class TeamsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeams'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\TeamDto[]|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\TeamDto[]|\Squidex\Client\Model\ErrorDto
      */
     public function getTeams(string $contentType = self::contentTypes['getTeams'][0])
     {
@@ -1803,9 +1803,9 @@ class TeamsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTeams'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\TeamDto[]|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\TeamDto[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTeamsWithHttpInfo(string $contentType = self::contentTypes['getTeams'][0])
     {
@@ -1848,38 +1848,38 @@ class TeamsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\TeamDto[]' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\TeamDto[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\TeamDto[]' !== 'string') {
+                        if ('\Squidex\Client\Model\TeamDto[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\TeamDto[]', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\TeamDto[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\TeamDto[]';
+            $returnType = '\Squidex\Client\Model\TeamDto[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1900,7 +1900,7 @@ class TeamsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\TeamDto[]',
+                        '\Squidex\Client\Model\TeamDto[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1908,7 +1908,7 @@ class TeamsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1950,7 +1950,7 @@ class TeamsApi
      */
     public function getTeamsAsyncWithHttpInfo(string $contentType = self::contentTypes['getTeams'][0])
     {
-        $returnType = '\Squidex/Client\Model\TeamDto[]';
+        $returnType = '\Squidex\Client\Model\TeamDto[]';
         $request = $this->getTeamsRequest($contentType);
 
         return $this->client
@@ -2070,12 +2070,12 @@ class TeamsApi
      *
      * Create a new team.
      *
-     * @param  \Squidex/Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
+     * @param  \Squidex\Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\TeamDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\TeamDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function postTeam($create_team_dto, string $contentType = self::contentTypes['postTeam'][0])
     {
@@ -2088,12 +2088,12 @@ class TeamsApi
      *
      * Create a new team.
      *
-     * @param  \Squidex/Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
+     * @param  \Squidex\Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\TeamDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\TeamDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function postTeamWithHttpInfo($create_team_dto, string $contentType = self::contentTypes['postTeam'][0])
     {
@@ -2136,68 +2136,68 @@ class TeamsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Squidex/Client\Model\TeamDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\TeamDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\TeamDto' !== 'string') {
+                        if ('\Squidex\Client\Model\TeamDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\TeamDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\TeamDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\TeamDto';
+            $returnType = '\Squidex\Client\Model\TeamDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2218,7 +2218,7 @@ class TeamsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\TeamDto',
+                        '\Squidex\Client\Model\TeamDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2226,7 +2226,7 @@ class TeamsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2234,7 +2234,7 @@ class TeamsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2242,7 +2242,7 @@ class TeamsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2257,7 +2257,7 @@ class TeamsApi
      *
      * Create a new team.
      *
-     * @param  \Squidex/Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
+     * @param  \Squidex\Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2278,7 +2278,7 @@ class TeamsApi
      *
      * Create a new team.
      *
-     * @param  \Squidex/Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
+     * @param  \Squidex\Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2286,7 +2286,7 @@ class TeamsApi
      */
     public function postTeamAsyncWithHttpInfo($create_team_dto, string $contentType = self::contentTypes['postTeam'][0])
     {
-        $returnType = '\Squidex/Client\Model\TeamDto';
+        $returnType = '\Squidex\Client\Model\TeamDto';
         $request = $this->postTeamRequest($create_team_dto, $contentType);
 
         return $this->client
@@ -2328,7 +2328,7 @@ class TeamsApi
     /**
      * Create request for operation 'postTeam'
      *
-     * @param  \Squidex/Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
+     * @param  \Squidex\Client\Model\CreateTeamDto $create_team_dto The team object that needs to be added to Squidex. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2422,12 +2422,12 @@ class TeamsApi
      * Update the team.
      *
      * @param  string $team The name of the team to update. (required)
-     * @param  \Squidex/Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
+     * @param  \Squidex\Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Squidex/Client\Model\TeamDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto
+     * @return \Squidex\Client\Model\TeamDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
     public function putTeam($team, $update_team_dto, string $contentType = self::contentTypes['putTeam'][0])
     {
@@ -2441,12 +2441,12 @@ class TeamsApi
      * Update the team.
      *
      * @param  string $team The name of the team to update. (required)
-     * @param  \Squidex/Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
+     * @param  \Squidex\Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeam'] to see the possible values for this operation
      *
-     * @throws \Squidex/Client\ApiException on non-2xx response
+     * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Squidex/Client\Model\TeamDto|\Squidex/Client\Model\ErrorDto|\Squidex/Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Squidex\Client\Model\TeamDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function putTeamWithHttpInfo($team, $update_team_dto, string $contentType = self::contentTypes['putTeam'][0])
     {
@@ -2489,53 +2489,53 @@ class TeamsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Squidex/Client\Model\TeamDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\TeamDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\TeamDto' !== 'string') {
+                        if ('\Squidex\Client\Model\TeamDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\TeamDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\TeamDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\Squidex/Client\Model\ErrorDto' === '\SplFileObject') {
+                    if ('\Squidex\Client\Model\ErrorDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Squidex/Client\Model\ErrorDto' !== 'string') {
+                        if ('\Squidex\Client\Model\ErrorDto' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Squidex/Client\Model\ErrorDto', []),
+                        ObjectSerializer::deserialize($content, '\Squidex\Client\Model\ErrorDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Squidex/Client\Model\TeamDto';
+            $returnType = '\Squidex\Client\Model\TeamDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2556,7 +2556,7 @@ class TeamsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\TeamDto',
+                        '\Squidex\Client\Model\TeamDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2564,7 +2564,7 @@ class TeamsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2572,7 +2572,7 @@ class TeamsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Squidex/Client\Model\ErrorDto',
+                        '\Squidex\Client\Model\ErrorDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2588,7 +2588,7 @@ class TeamsApi
      * Update the team.
      *
      * @param  string $team The name of the team to update. (required)
-     * @param  \Squidex/Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
+     * @param  \Squidex\Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2610,7 +2610,7 @@ class TeamsApi
      * Update the team.
      *
      * @param  string $team The name of the team to update. (required)
-     * @param  \Squidex/Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
+     * @param  \Squidex\Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2618,7 +2618,7 @@ class TeamsApi
      */
     public function putTeamAsyncWithHttpInfo($team, $update_team_dto, string $contentType = self::contentTypes['putTeam'][0])
     {
-        $returnType = '\Squidex/Client\Model\TeamDto';
+        $returnType = '\Squidex\Client\Model\TeamDto';
         $request = $this->putTeamRequest($team, $update_team_dto, $contentType);
 
         return $this->client
@@ -2661,7 +2661,7 @@ class TeamsApi
      * Create request for operation 'putTeam'
      *
      * @param  string $team The name of the team to update. (required)
-     * @param  \Squidex/Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
+     * @param  \Squidex\Client\Model\UpdateTeamDto $update_team_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

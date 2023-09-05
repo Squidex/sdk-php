@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,14 +26,14 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
-use \Squidex/Client\ObjectSerializer;
+namespace Squidex\Client\Model;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * GeolocationFieldPropertiesDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -55,7 +55,7 @@ class GeolocationFieldPropertiesDto extends FieldPropertiesDto
       * @var string[]
       */
     protected static $openAPITypes = [
-        'editor' => '\Squidex/Client\Model\GeolocationFieldEditor'
+        'editor' => '\Squidex\Client\Model\GeolocationFieldEditor'
     ];
 
     /**
@@ -286,7 +286,7 @@ class GeolocationFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Gets editor
      *
-     * @return \Squidex/Client\Model\GeolocationFieldEditor|null
+     * @return \Squidex\Client\Model\GeolocationFieldEditor|null
      */
     public function getEditor()
     {
@@ -296,7 +296,7 @@ class GeolocationFieldPropertiesDto extends FieldPropertiesDto
     /**
      * Sets editor
      *
-     * @param \Squidex/Client\Model\GeolocationFieldEditor|null $editor editor
+     * @param \Squidex\Client\Model\GeolocationFieldEditor|null $editor editor
      *
      * @return self
      */

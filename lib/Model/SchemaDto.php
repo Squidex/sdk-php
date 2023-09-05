@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace Squidex/Client\Model;
+namespace Squidex\Client\Model;
 
 use \ArrayAccess;
-use \Squidex/Client\ObjectSerializer;
+use \Squidex\Client\ObjectSerializer;
 
 /**
  * SchemaDto Class Doc Comment
  *
  * @category Class
- * @package  Squidex/Client
+ * @package  Squidex\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -57,25 +57,25 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\Squidex/Client\Model\ResourceLink>',
+        '_links' => 'array<string,\Squidex\Client\Model\ResourceLink>',
         'id' => 'string',
         'created_by' => 'string',
         'last_modified_by' => 'string',
         'name' => 'string',
-        'type' => '\Squidex/Client\Model\SchemaType',
+        'type' => '\Squidex\Client\Model\SchemaType',
         'category' => 'string',
-        'properties' => '\Squidex/Client\Model\SchemaPropertiesDto',
+        'properties' => '\Squidex\Client\Model\SchemaPropertiesDto',
         'is_singleton' => 'bool',
         'is_published' => 'bool',
         'created' => '\DateTime',
         'last_modified' => '\DateTime',
         'version' => 'int',
-        'scripts' => '\Squidex/Client\Model\SchemaScriptsDto',
+        'scripts' => '\Squidex\Client\Model\SchemaScriptsDto',
         'preview_urls' => 'array<string,string>',
         'fields_in_lists' => 'string[]',
         'fields_in_references' => 'string[]',
-        'field_rules' => '\Squidex/Client\Model\FieldRuleDto[]',
-        'fields' => '\Squidex/Client\Model\FieldDto[]'
+        'field_rules' => '\Squidex\Client\Model\FieldRuleDto[]',
+        'fields' => '\Squidex\Client\Model\FieldDto[]'
     ];
 
     /**
@@ -488,7 +488,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,\Squidex/Client\Model\ResourceLink>
+     * @return array<string,\Squidex\Client\Model\ResourceLink>
      */
     public function getLinks()
     {
@@ -498,7 +498,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,\Squidex/Client\Model\ResourceLink> $_links The links.
+     * @param array<string,\Squidex\Client\Model\ResourceLink> $_links The links.
      *
      * @return self
      */
@@ -641,7 +641,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return \Squidex/Client\Model\SchemaType
+     * @return \Squidex\Client\Model\SchemaType
      */
     public function getType()
     {
@@ -651,7 +651,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \Squidex/Client\Model\SchemaType $type type
+     * @param \Squidex\Client\Model\SchemaType $type type
      *
      * @return self
      */
@@ -702,7 +702,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets properties
      *
-     * @return \Squidex/Client\Model\SchemaPropertiesDto
+     * @return \Squidex\Client\Model\SchemaPropertiesDto
      */
     public function getProperties()
     {
@@ -712,7 +712,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets properties
      *
-     * @param \Squidex/Client\Model\SchemaPropertiesDto $properties properties
+     * @param \Squidex\Client\Model\SchemaPropertiesDto $properties properties
      *
      * @return self
      */
@@ -866,7 +866,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets scripts
      *
-     * @return \Squidex/Client\Model\SchemaScriptsDto
+     * @return \Squidex\Client\Model\SchemaScriptsDto
      */
     public function getScripts()
     {
@@ -876,7 +876,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets scripts
      *
-     * @param \Squidex/Client\Model\SchemaScriptsDto $scripts scripts
+     * @param \Squidex\Client\Model\SchemaScriptsDto $scripts scripts
      *
      * @return self
      */
@@ -974,7 +974,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets field_rules
      *
-     * @return \Squidex/Client\Model\FieldRuleDto[]
+     * @return \Squidex\Client\Model\FieldRuleDto[]
      */
     public function getFieldRules()
     {
@@ -984,7 +984,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets field_rules
      *
-     * @param \Squidex/Client\Model\FieldRuleDto[] $field_rules The field rules.
+     * @param \Squidex\Client\Model\FieldRuleDto[] $field_rules The field rules.
      *
      * @return self
      */
@@ -1001,7 +1001,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fields
      *
-     * @return \Squidex/Client\Model\FieldDto[]
+     * @return \Squidex\Client\Model\FieldDto[]
      */
     public function getFields()
     {
@@ -1011,7 +1011,7 @@ class SchemaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fields
      *
-     * @param \Squidex/Client\Model\FieldDto[] $fields The list of fields.
+     * @param \Squidex\Client\Model\FieldDto[] $fields The list of fields.
      *
      * @return self
      */
