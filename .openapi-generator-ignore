@@ -20,8 +20,8 @@
 # For example, you can ignore all files in a docs folder with the file extension .md:
 /local/docs/*.*
 /local/test/*.*
-
-git_push.sh
+/local/git_push.sh
+/local/README.md
 
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md

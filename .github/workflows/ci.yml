@@ -1,0 +1,38 @@
+name: ci
+concurrency: build
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare - Checkout
+        uses: actions/checkout@v3.4.0
+
+      - name: Prepare - Compose
+        uses: php-actions/composer@v6
+
+      - name: Test - Start Compose
+        run: docker-compose up -d
+        working-directory: tests
+
+      - name: Test - RUN
+        uses: php-actions/phpunit@master
+        env: 
+          CONFIG__WAIT=60
+          CONFIG__SERVER__URL=http://localhost:8080
+        with:
+          bootstrap: vendor/autoload.php
+       
+      - name: Test - Dump docker logs on failure
+        if: failure()
+        uses: jwalton/gh-docker-logs@v2.2.1
+        with:
+         images: 'squidex,squidex/resizer'
+         tail: '100'
+
+      - name: Test - Cleanup
+        if: always()
+        run: docker-compose down
+        working-directory: tests
