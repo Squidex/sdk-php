@@ -1,0 +1,9 @@
+globalProperties:
+  apiDocs: false
+  apiTests: false
+  modelDocs: false
+  modelTests: false
+
+additionalProperties:
+  licenseName: MIT
+  invokerPackage: Squidex/Client

@@ -18,6 +18,10 @@
 
 # You can also negate patterns with an exclamation (!).
 # For example, you can ignore all files in a docs folder with the file extension .md:
-#docs/*.md
+/local/docs/*.*
+/local/test/*.*
+
+git_push.sh
+
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
