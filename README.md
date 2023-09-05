@@ -7,7 +7,7 @@ Requires **PHP 7** or higher.
 
 ## Status
 
-![Version Shield](https://img.shields.io/github/v/release/squidex/sdk-php)(https://packagist.org/packages/squidex/squidex)
+[![Version Shield](https://img.shields.io/github/v/release/squidex/sdk-php)](https://packagist.org/packages/squidex/squidex)
 ![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/squidex/squidex/php)
 
 ## Documentation
