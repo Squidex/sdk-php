@@ -20,8 +20,14 @@
 # For example, you can ignore all files in a docs folder with the file extension .md:
 /local/docs/*.*
 /local/test/*.*
-/local/git_push.sh
-/local/README.md
+
+# Whatever this is for
+git_push.sh
+
+# We use github actions
+.travis.yml
+
+README.md
 
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md

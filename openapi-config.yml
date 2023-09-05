@@ -6,3 +6,4 @@ globalProperties:
 
 additionalProperties:
   invokerPackage: Squidex\Client
+  composerPackageName: squidex/squidex

@@ -1,7 +1,5 @@
 .gitignore
 .php-cs-fixer.dist.php
-.travis.yml
-README.md
 composer.json
 lib/Api/AppsApi.php
 lib/Api/AssetsApi.php
