@@ -68,7 +68,7 @@ class TestBase extends TestCase
             try {
                 $client->getClient()->ping()->getPing();
             } catch (Exception $e) {
-                if (expires < time()) {
+                if ($expires < time()) {
                     throw new Exception("Cannot connect to test system with: $e->getMessage().\n");
                 }
             }
