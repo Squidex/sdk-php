@@ -56,12 +56,14 @@ class TestBase extends TestCase
             return;
         }
 
-        $waitTimeMs = intval($waitTime);
+        $waitTimeMs = intval($waitTime) * 1000;
         if ($waitTimeMs <= 0)
         {
             echo "Waiting for server is skipped.\n";
             return;
         }
+
+        echo "Waiting $waitTime seconds to access server.";
 
         $expires = time() + $waitTimeMs;
         while (true) {
@@ -75,6 +77,8 @@ class TestBase extends TestCase
 
             sleep(100);
         }
+
+        echo "Connected to Server";
     }
 
     public static function tearDownAfterClass(): void
