@@ -31,6 +31,7 @@ use Squidex\Client\Api\USersApi;
 
 class SquidexClient
 {
+    private $client = null;
     private $appsClient = null;
     private $assetsClient = null;
     private $backupsClient = null;
@@ -255,17 +256,17 @@ class AccessToken
         $this->expiresAt = $expiresIn + time();
     }
 
-    public function accessToken()
+    public function getAccessToken()
     {
         return $this->accessToken;
     }
 
-    public function expiresIn()
+    public function getExpiresIn()
     {
         return $this->expiresIn;
     }
 
-    public function expiresAt()
+    public function getExpiresAt()
     {
         return $this->expiresAt;
     }
@@ -329,7 +330,7 @@ function requestToken($config, $tokenStore)
     {
         $token = $tokenStore->get();
 
-        if (isset($token) && $token->expiresAt() < time())
+        if (isset($token) && $token->getExpiresAt() < time())
         {
             $token = null;
             $tokenStore->clear();
@@ -340,7 +341,7 @@ function requestToken($config, $tokenStore)
             $tokenStore->set($token);
         }
 
-        $request = $request->withHeader('Authorization', 'Bearer' . $token->accessToken());
+        $request = $request->withHeader('Authorization', 'Bearer ' . $token->getAccessToken());
         return $handler($request, $options);
     };
 

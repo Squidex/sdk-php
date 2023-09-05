@@ -1,6 +1,5 @@
 <?php
 
-
 use Squidex\Client\Configuration;
 use Squidex\Client\SquidexClient;
 
@@ -13,11 +12,8 @@ $config->setAppName('squidex-website');
 
 $apiInstance = new SquidexClient($config);
 
-$id = 1;
-
 try {
-    $result = $apiInstance->rules()->putRuleRun($id);
-//    $result = $apiInstance->apps()->appClientsGetClients($id);
+    $result = $apiInstance->contents()->getContents('blog');
     print($result);
 } catch (Exception $e) {
     echo $e->getMessage();
