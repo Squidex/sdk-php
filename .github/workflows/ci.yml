@@ -20,8 +20,8 @@ jobs:
       - name: Test - RUN
         uses: php-actions/phpunit@master
         env: 
-          CONFIG__WAIT=60
-          CONFIG__SERVER__URL=http://localhost:8080
+          CONFIG__WAIT: 60
+          CONFIG__SERVER__URL: http://localhost:8080
         with:
           bootstrap: vendor/autoload.php
        
