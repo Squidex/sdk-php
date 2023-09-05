@@ -50,7 +50,7 @@ class TestBase extends TestCase
     {
         $client = TestUtils::getClient();
 
-        $waitTime = getenv('CONFIG__WAIT');
+        $waitTime = "30"; // getenv('CONFIG__WAIT');
         if ($waitTime == null) {
             echo "Waiting for server is skipped.\n";
             return;
@@ -63,22 +63,23 @@ class TestBase extends TestCase
             return;
         }
 
-        echo "Waiting $waitTime seconds to access server.";
+        echo "Waiting $waitTime seconds to access server.\n";
 
         $expires = time() + $waitTimeMs;
         while (true) {
             try {
                 $client->getClient()->ping()->getPing();
-            } catch (Exception $e) {
+                break;
+            } catch (\Exception $e) {
                 if ($expires < time()) {
                     throw new Exception("Cannot connect to test system with: $e->getMessage().\n");
                 }
             }
 
-            sleep(100);
+            usleep(100000);
         }
 
-        echo "Connected to Server";
+        echo 'Connected to Server';
     }
 
     public static function tearDownAfterClass(): void
