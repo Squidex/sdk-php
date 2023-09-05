@@ -7,9 +7,15 @@ use Squidex\Client\Model\CreateAppDto;
 
 class TestBase extends TestCase
 {
+    private static $isInitialized = false;
+
     public static function setUpBeforeClass(): void
     {
-        $client = Utils::getClient();
+        if (self::$isInitialized) {
+            return;
+        }
+
+        $client = TestUtils::getClient();
 
         $appName = $client->getConfig()->getAppName();
         $clientId = $client->getConfig()->getClientId();
@@ -36,11 +42,13 @@ class TestBase extends TestCase
                 throw $e;
             }
         }
+
+        self::$isInitialized = true;
     }
 
     public static function waitForServer()
     {
-        $client = Utils::getClient();
+        $client = TestUtils::getClient();
 
         $waitTime = getenv('CONFIG__WAIT');
         if ($waitTime == null) {

@@ -8,8 +8,6 @@ use Squidex\Client\Model\CreateSchemaDto;
 use Squidex\Client\Model\StringFieldPropertiesDto;
 use Squidex\Client\Model\UpsertSchemaFieldDto;
 use Squidex\Client\ObjectSerializer;
-use Squidex\Client\Test\TestBase;
-use Squidex\Client\Test\Utils;
 
 class SchemasTest extends TestBase
 {
@@ -17,7 +15,7 @@ class SchemasTest extends TestBase
 
     public function setUp(): void
     {
-        $this->client = Utils::getClient()->getClient();
+        $this->client = TestUtils::getClient()->getClient();
     }
 
     public function testCreateAndFetchSchema()
@@ -36,8 +34,10 @@ class SchemasTest extends TestBase
         $createdSchema = $this->client->schemas()->postSchema($request);
 
         $schema = $this->client->schemas()->getSchema($createdSchema->getId());
-        $this->assertFalse(count($createdSchema->getFields()) == 0);
+        $this->assertFalse(empty($schema->getFields()));
         $this->assertEquals($createdSchema->getName(), $schema->getName());
-        $this->assertInstanceOf(StringFieldPropertiesDto::class, $createdSchema->getFields()[0]->getProperties());
+        $this->assertInstanceOf(StringFieldPropertiesDto::class, $schema->getFields()[0]->getProperties());
+        $this->assertEquals('Default', $schema->getType());
+        $this->assertTrue($schema->getIsPublished());
     }
 }

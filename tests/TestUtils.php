@@ -4,7 +4,7 @@ namespace Squidex\Client\Test;
 use Squidex\Client\Configuration;
 use Squidex\Client\SquidexClient;
 
-class Utils
+class TestUtils
 {
     private static $singleClient = null;
 
