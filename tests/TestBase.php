@@ -50,7 +50,7 @@ class TestBase extends TestCase
     {
         $client = TestUtils::getClient();
 
-        $waitTime = "30"; // getenv('CONFIG__WAIT');
+        $waitTime = getenv('CONFIG__WAIT');
         if ($waitTime == null) {
             echo "Waiting for server is skipped.\n";
             return;
