@@ -27,6 +27,8 @@
 
 namespace Squidex\Client;
 
+use Squidex\Client\SquidexInMemoryTokenStore;
+
 /**
  * Configuration Class Doc Comment
  * PHP version 7.4
@@ -45,20 +47,6 @@ class Configuration
      * @var Configuration
      */
     private static $defaultConfiguration;
-
-    /**
-     * Associate array to store API key(s)
-     *
-     * @var string[]
-     */
-    protected $apiKeys = [];
-
-    /**
-     * Associate array to store API prefix (e.g. Bearer)
-     *
-     * @var string[]
-     */
-    protected $apiKeyPrefixes = [];
 
     /**
      * Client ID for OAuth/Bearer authentication
@@ -94,6 +82,20 @@ class Configuration
      * @var string
      */
     protected $host = 'https://cloud.squidex.io';
+
+    /**
+     * The timeout in seconds
+     *
+     * @var float
+     */
+    protected $timeout = 30.0;
+
+    /**
+     * The token store.
+     *
+     * @var SquidexTokenStore
+     */
+    protected $tokenStore = null;
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
@@ -135,6 +137,7 @@ class Configuration
      */
     public function __construct()
     {
+        $this->tokenStore = new SquidexInMemoryTokenStore();
         $this->tempFolderPath = sys_get_temp_dir();
     }
 
@@ -147,6 +150,10 @@ class Configuration
      */
     public function setClientId($clientId)
     {
+        if (!is_string($clientId)) {
+            throw new \InvalidArgumentException('Client ID must be a string.');
+        }
+
         $this->clientId = $clientId;
         return $this;
     }
@@ -170,6 +177,10 @@ class Configuration
      */
     public function setClientSecret($clientSecret)
     {
+        if (!is_string($clientSecret)) {
+            throw new \InvalidArgumentException('Client Secret must be a string.');
+        }
+
         $this->clientSecret = $clientSecret;
         return $this;
     }
@@ -191,7 +202,8 @@ class Configuration
      *
      * @return $this
      */
-    public function setIgnoreCertificates($ignoreCertificates) {
+    public function setIgnoreCertificates($ignoreCertificates)
+    {
         $this->ignoreCertificates = $ignoreCertificates;
         return $this;
     }
@@ -214,6 +226,10 @@ class Configuration
      */
     public function setAppName($appName)
     {
+        if (!is_string($appName)) {
+            throw new \InvalidArgumentException('App Name must be a string.');
+        }
+
         $this->appName = $appName;
         return $this;
     }
@@ -238,7 +254,6 @@ class Configuration
     public function setBooleanFormatForQueryString(string $booleanFormat)
     {
         $this->booleanFormatForQueryString = $booleanFormat;
-
         return $this;
     }
 
@@ -261,6 +276,10 @@ class Configuration
      */
     public function setHost($host)
     {
+        if (!is_string($host)) {
+            throw new \InvalidArgumentException('Host must be a string.');
+        }
+
         $this->host = $host;
         return $this;
     }
@@ -273,6 +292,56 @@ class Configuration
     public function getHost()
     {
         return $this->host;
+    }
+
+    /**
+     * Sets the timeout
+     *
+     * @param float $timeout Timeout in seconds
+     *
+     * @return $this
+     */
+    public function setTimeout($timeout)
+    {
+        if (!is_float($timeout)) {
+            throw new \InvalidArgumentException('Timeout must be a float.');
+        }
+
+        $this->timeout = $timeout;
+        return $this;
+    }
+
+    /**
+     * Gets the timeout
+     *
+     * @return float Timeout in seconds
+     */
+    public function getTimeout()
+    {
+        return $this->timeout;
+    }
+
+    /**
+     * Sets the token store
+     *
+     * @param SquidexTokentStore $timeout Timeout in seconds
+     *
+     * @return $this
+     */
+    public function setTokenStore($tokenStore)
+    {
+        $this->tokenStore = $tokenStore;
+        return $this;
+    }
+
+    /**
+     * Gets the token store
+     *
+     * @return SquidexTokentStore Token store
+     */
+    public function getTokenStore()
+    {
+        return $this->tokenStore;
     }
 
     /**
@@ -370,6 +439,32 @@ class Configuration
     public function getTempFolderPath()
     {
         return $this->tempFolderPath;
+    }
+
+    /**
+     * Validates the configuration.
+     */
+    public function validate()
+    {
+        if (!is_float($this->timeout)) {
+            throw new \InvalidArgumentException('Timeout must be a float.');
+        }
+
+        if (!is_string($this->clientId) || empty($this->clientId)) {
+            throw new \InvalidArgumentException('Client ID must be a string.');
+        }
+
+        if (!is_string($this->clientSecret) || empty($this->clientSecret)) {
+            throw new \InvalidArgumentException('Client Secret must be a string.');
+        }
+
+        if (!is_string($this->appName) || empty($this->appName)) {
+            throw new \InvalidArgumentException('App Name must be a string.');
+        }
+
+        if (!isset($this->tokenStore)) {
+            throw new \InvalidArgumentException('Token store must be defined.');
+        }
     }
 
     /**

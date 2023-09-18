@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\RequestInterface;
+use Squidex\Client\AccessToken;
 use Squidex\Client\Api\AppsApi;
 use Squidex\Client\Api\AssetsApi;
 use Squidex\Client\Api\BackupsApi;
@@ -68,15 +69,15 @@ class SquidexClient
      * @throws ApiException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function __construct($config, $tokenStore = null)
+    public function __construct($config)
     {
         $this->config = $config;
         
         $stack = new HandlerStack();
         $stack->setHandler(new CurlHandler());
-        $stack->push(requestToken($config, $tokenStore));
+        $stack->push(requestToken($config));
 
-        $this->client = new Client([ 'verify' => false, 'handler' => $stack ]);
+        $this->client = new Client([ 'verify' => !$config->getIgnoreCertificates(), 'handler' => $stack, 'timeout' => $config->getTimeout() ]);
     }
 
     /**
@@ -248,71 +249,12 @@ class SquidexClient
     }
 }
 
-class AccessToken
-{
-    private $accessToken = '';
-    private $expiresIn = 0;
-    private $expiresAt = 0;
-    
-    public function __construct($accessToken, $expiresIn) {
-        $this->accessToken = $accessToken;
-        $this->expiresIn = $expiresIn;
-        $this->expiresAt = $expiresIn + time();
-    }
-
-    public function getAccessToken()
-    {
-        return $this->accessToken;
-    }
-
-    public function getExpiresIn()
-    {
-        return $this->expiresIn;
-    }
-
-    public function getExpiresAt()
-    {
-        return $this->expiresAt;
-    }
-}
-
-interface SquidexTokenStore {
-    public function get();
-
-    public function set($token);
-
-    public function clear($token);
-}
-
-class SquidexInMemoryTokenStore implements SquidexTokenStore
-{
-    private $token = null;
-
-    public function get()
-    {
-        return $this->token;
-    }
-
-    public function set($token)
-    {
-        $this->token = $token;
-    }
-
-    public function clear($token)
-    {
-        $this->token = null;
-    }
-}
-
-function requestToken($config, $tokenStore) 
+function requestToken($config) 
 {
     $requestClient = new Client([ 'verify' => false ]);
     $clientId = $config->getClientId();
     $clientSecret = $config->getClientSecret();
-
-    if ($tokenStore == null) {
-        $tokenStore = new SquidexInMemoryTokenStore();
-    }
+    $tokenStore = $config->getTokenStore();
 
     $acquireToken = function () use ($clientId, $clientSecret, $config, $requestClient) 
     {
