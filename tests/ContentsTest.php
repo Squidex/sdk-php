@@ -64,9 +64,9 @@ class ContentsTest extends TestBase
         $value = uniqid();
 
         $createdContent = $this->client->contents()->postContent(static::$schema->getName(), [
-            'field1' => [
-                'iv' => $value
-            ]
+                'field1' => [
+                    'iv' => $value
+                ]
             ]);
 
         $content = $this->client->contents()->getContent(static::$schema->getName(), $createdContent->getId(), -2, null, null, true);
