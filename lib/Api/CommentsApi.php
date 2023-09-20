@@ -136,6 +136,7 @@ class CommentsApi
      *
      * Delete a comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteComment'] to see the possible values for this operation
@@ -144,9 +145,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteComment($comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
+    public function deleteComment($app, $comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
     {
-        $this->deleteCommentWithHttpInfo($comments_id, $comment_id, $contentType);
+        $this->deleteCommentWithHttpInfo($app, $comments_id, $comment_id, $contentType);
     }
 
     /**
@@ -154,6 +155,7 @@ class CommentsApi
      *
      * Delete a comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteComment'] to see the possible values for this operation
@@ -162,9 +164,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCommentWithHttpInfo($comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
+    public function deleteCommentWithHttpInfo($app, $comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
     {
-        $request = $this->deleteCommentRequest($comments_id, $comment_id, $contentType);
+        $request = $this->deleteCommentRequest($app, $comments_id, $comment_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -231,6 +233,7 @@ class CommentsApi
      *
      * Delete a comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteComment'] to see the possible values for this operation
@@ -238,9 +241,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCommentAsync($comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
+    public function deleteCommentAsync($app, $comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
     {
-        return $this->deleteCommentAsyncWithHttpInfo($comments_id, $comment_id, $contentType)
+        return $this->deleteCommentAsyncWithHttpInfo($app, $comments_id, $comment_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -253,6 +256,7 @@ class CommentsApi
      *
      * Delete a comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteComment'] to see the possible values for this operation
@@ -260,10 +264,10 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCommentAsyncWithHttpInfo($comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
+    public function deleteCommentAsyncWithHttpInfo($app, $comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
     {
         $returnType = '';
-        $request = $this->deleteCommentRequest($comments_id, $comment_id, $contentType);
+        $request = $this->deleteCommentRequest($app, $comments_id, $comment_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -291,6 +295,7 @@ class CommentsApi
     /**
      * Create request for operation 'deleteComment'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteComment'] to see the possible values for this operation
@@ -298,11 +303,10 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteCommentRequest($comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
+    public function deleteCommentRequest($app, $comments_id, $comment_id, string $contentType = self::contentTypes['deleteComment'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -417,6 +421,7 @@ class CommentsApi
      *
      * Get all comments.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  int $version The current version. (optional, default to -2)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
@@ -425,9 +430,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\CommentsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getComments($comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
+    public function getComments($app, $comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
     {
-        list($response) = $this->getCommentsWithHttpInfo($comments_id, $version, $contentType);
+        list($response) = $this->getCommentsWithHttpInfo($app, $comments_id, $version, $contentType);
         return $response;
     }
 
@@ -436,6 +441,7 @@ class CommentsApi
      *
      * Get all comments.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  int $version The current version. (optional, default to -2)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
@@ -444,9 +450,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\CommentsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentsWithHttpInfo($comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
+    public function getCommentsWithHttpInfo($app, $comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
     {
-        $request = $this->getCommentsRequest($comments_id, $version, $contentType);
+        $request = $this->getCommentsRequest($app, $comments_id, $version, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -560,6 +566,7 @@ class CommentsApi
      *
      * Get all comments.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  int $version The current version. (optional, default to -2)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
@@ -567,9 +574,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentsAsync($comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
+    public function getCommentsAsync($app, $comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
     {
-        return $this->getCommentsAsyncWithHttpInfo($comments_id, $version, $contentType)
+        return $this->getCommentsAsyncWithHttpInfo($app, $comments_id, $version, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -582,6 +589,7 @@ class CommentsApi
      *
      * Get all comments.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  int $version The current version. (optional, default to -2)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
@@ -589,10 +597,10 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentsAsyncWithHttpInfo($comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
+    public function getCommentsAsyncWithHttpInfo($app, $comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
     {
         $returnType = '\Squidex\Client\Model\CommentsDto';
-        $request = $this->getCommentsRequest($comments_id, $version, $contentType);
+        $request = $this->getCommentsRequest($app, $comments_id, $version, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -633,6 +641,7 @@ class CommentsApi
     /**
      * Create request for operation 'getComments'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  int $version The current version. (optional, default to -2)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
@@ -640,11 +649,10 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentsRequest($comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
+    public function getCommentsRequest($app, $comments_id, $version = -2, string $contentType = self::contentTypes['getComments'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -754,6 +762,7 @@ class CommentsApi
      *
      * Get all watching users..
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $resource The path to the resource. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWatchingUsers'] to see the possible values for this operation
      *
@@ -761,9 +770,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return string[]|\Squidex\Client\Model\ErrorDto
      */
-    public function getWatchingUsers($resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
+    public function getWatchingUsers($app, $resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
     {
-        list($response) = $this->getWatchingUsersWithHttpInfo($resource, $contentType);
+        list($response) = $this->getWatchingUsersWithHttpInfo($app, $resource, $contentType);
         return $response;
     }
 
@@ -772,6 +781,7 @@ class CommentsApi
      *
      * Get all watching users..
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $resource The path to the resource. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWatchingUsers'] to see the possible values for this operation
      *
@@ -779,9 +789,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return array of string[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWatchingUsersWithHttpInfo($resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
+    public function getWatchingUsersWithHttpInfo($app, $resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
     {
-        $request = $this->getWatchingUsersRequest($resource, $contentType);
+        $request = $this->getWatchingUsersRequest($app, $resource, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -895,15 +905,16 @@ class CommentsApi
      *
      * Get all watching users..
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $resource The path to the resource. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWatchingUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWatchingUsersAsync($resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
+    public function getWatchingUsersAsync($app, $resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
     {
-        return $this->getWatchingUsersAsyncWithHttpInfo($resource, $contentType)
+        return $this->getWatchingUsersAsyncWithHttpInfo($app, $resource, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -916,16 +927,17 @@ class CommentsApi
      *
      * Get all watching users..
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $resource The path to the resource. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWatchingUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWatchingUsersAsyncWithHttpInfo($resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
+    public function getWatchingUsersAsyncWithHttpInfo($app, $resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
     {
         $returnType = 'string[]';
-        $request = $this->getWatchingUsersRequest($resource, $contentType);
+        $request = $this->getWatchingUsersRequest($app, $resource, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -966,17 +978,17 @@ class CommentsApi
     /**
      * Create request for operation 'getWatchingUsers'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $resource The path to the resource. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWatchingUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getWatchingUsersRequest($resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
+    public function getWatchingUsersRequest($app, $resource, string $contentType = self::contentTypes['getWatchingUsers'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1076,6 +1088,7 @@ class CommentsApi
      *
      * Create a new comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
@@ -1084,9 +1097,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\CommentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postComment($comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
+    public function postComment($app, $comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
     {
-        list($response) = $this->postCommentWithHttpInfo($comments_id, $upsert_comment_dto, $contentType);
+        list($response) = $this->postCommentWithHttpInfo($app, $comments_id, $upsert_comment_dto, $contentType);
         return $response;
     }
 
@@ -1095,6 +1108,7 @@ class CommentsApi
      *
      * Create a new comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
@@ -1103,9 +1117,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\CommentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCommentWithHttpInfo($comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
+    public function postCommentWithHttpInfo($app, $comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
     {
-        $request = $this->postCommentRequest($comments_id, $upsert_comment_dto, $contentType);
+        $request = $this->postCommentRequest($app, $comments_id, $upsert_comment_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1242,6 +1256,7 @@ class CommentsApi
      *
      * Create a new comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
@@ -1249,9 +1264,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCommentAsync($comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
+    public function postCommentAsync($app, $comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
     {
-        return $this->postCommentAsyncWithHttpInfo($comments_id, $upsert_comment_dto, $contentType)
+        return $this->postCommentAsyncWithHttpInfo($app, $comments_id, $upsert_comment_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1264,6 +1279,7 @@ class CommentsApi
      *
      * Create a new comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
@@ -1271,10 +1287,10 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCommentAsyncWithHttpInfo($comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
+    public function postCommentAsyncWithHttpInfo($app, $comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
     {
         $returnType = '\Squidex\Client\Model\CommentDto';
-        $request = $this->postCommentRequest($comments_id, $upsert_comment_dto, $contentType);
+        $request = $this->postCommentRequest($app, $comments_id, $upsert_comment_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1315,6 +1331,7 @@ class CommentsApi
     /**
      * Create request for operation 'postComment'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to created. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postComment'] to see the possible values for this operation
@@ -1322,11 +1339,10 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCommentRequest($comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
+    public function postCommentRequest($app, $comments_id, $upsert_comment_dto, string $contentType = self::contentTypes['postComment'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1440,6 +1456,7 @@ class CommentsApi
      *
      * Update a comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
@@ -1449,9 +1466,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function putComment($comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
+    public function putComment($app, $comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
     {
-        $this->putCommentWithHttpInfo($comments_id, $comment_id, $upsert_comment_dto, $contentType);
+        $this->putCommentWithHttpInfo($app, $comments_id, $comment_id, $upsert_comment_dto, $contentType);
     }
 
     /**
@@ -1459,6 +1476,7 @@ class CommentsApi
      *
      * Update a comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
@@ -1468,9 +1486,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putCommentWithHttpInfo($comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
+    public function putCommentWithHttpInfo($app, $comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
     {
-        $request = $this->putCommentRequest($comments_id, $comment_id, $upsert_comment_dto, $contentType);
+        $request = $this->putCommentRequest($app, $comments_id, $comment_id, $upsert_comment_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1537,6 +1555,7 @@ class CommentsApi
      *
      * Update a comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
@@ -1545,9 +1564,9 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCommentAsync($comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
+    public function putCommentAsync($app, $comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
     {
-        return $this->putCommentAsyncWithHttpInfo($comments_id, $comment_id, $upsert_comment_dto, $contentType)
+        return $this->putCommentAsyncWithHttpInfo($app, $comments_id, $comment_id, $upsert_comment_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1560,6 +1579,7 @@ class CommentsApi
      *
      * Update a comment.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
@@ -1568,10 +1588,10 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCommentAsyncWithHttpInfo($comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
+    public function putCommentAsyncWithHttpInfo($app, $comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
     {
         $returnType = '';
-        $request = $this->putCommentRequest($comments_id, $comment_id, $upsert_comment_dto, $contentType);
+        $request = $this->putCommentRequest($app, $comments_id, $comment_id, $upsert_comment_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1599,6 +1619,7 @@ class CommentsApi
     /**
      * Create request for operation 'putComment'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $comments_id The ID of the comments. (required)
      * @param  string $comment_id The ID of the comment. (required)
      * @param  \Squidex\Client\Model\UpsertCommentDto $upsert_comment_dto The comment object that needs to updated. (required)
@@ -1607,11 +1628,10 @@ class CommentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putCommentRequest($comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
+    public function putCommentRequest($app, $comments_id, $comment_id, $upsert_comment_dto, string $contentType = self::contentTypes['putComment'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

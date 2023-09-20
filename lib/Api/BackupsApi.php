@@ -142,6 +142,7 @@ class BackupsApi
      *
      * Get the backup content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContent'] to see the possible values for this operation
      *
@@ -149,9 +150,9 @@ class BackupsApi
      * @throws \InvalidArgumentException
      * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      */
-    public function getBackupContent($id, string $contentType = self::contentTypes['getBackupContent'][0])
+    public function getBackupContent($app, $id, string $contentType = self::contentTypes['getBackupContent'][0])
     {
-        list($response) = $this->getBackupContentWithHttpInfo($id, $contentType);
+        list($response) = $this->getBackupContentWithHttpInfo($app, $id, $contentType);
         return $response;
     }
 
@@ -160,6 +161,7 @@ class BackupsApi
      *
      * Get the backup content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContent'] to see the possible values for this operation
      *
@@ -167,9 +169,9 @@ class BackupsApi
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBackupContentWithHttpInfo($id, string $contentType = self::contentTypes['getBackupContent'][0])
+    public function getBackupContentWithHttpInfo($app, $id, string $contentType = self::contentTypes['getBackupContent'][0])
     {
-        $request = $this->getBackupContentRequest($id, $contentType);
+        $request = $this->getBackupContentRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -283,15 +285,16 @@ class BackupsApi
      *
      * Get the backup content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBackupContentAsync($id, string $contentType = self::contentTypes['getBackupContent'][0])
+    public function getBackupContentAsync($app, $id, string $contentType = self::contentTypes['getBackupContent'][0])
     {
-        return $this->getBackupContentAsyncWithHttpInfo($id, $contentType)
+        return $this->getBackupContentAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -304,16 +307,17 @@ class BackupsApi
      *
      * Get the backup content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBackupContentAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getBackupContent'][0])
+    public function getBackupContentAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['getBackupContent'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->getBackupContentRequest($id, $contentType);
+        $request = $this->getBackupContentRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -354,17 +358,17 @@ class BackupsApi
     /**
      * Create request for operation 'getBackupContent'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBackupContentRequest($id, string $contentType = self::contentTypes['getBackupContent'][0])
+    public function getBackupContentRequest($app, $id, string $contentType = self::contentTypes['getBackupContent'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -466,15 +470,16 @@ class BackupsApi
      *
      * @param  string $id The ID of the backup. (required)
      * @param  string $app_id The ID of the app. (optional)
+     * @param  string $app The name of the app. (optional, default to '')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContentV2'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      */
-    public function getBackupContentV2($id, $app_id = null, string $contentType = self::contentTypes['getBackupContentV2'][0])
+    public function getBackupContentV2($id, $app_id = null, $app = '', string $contentType = self::contentTypes['getBackupContentV2'][0])
     {
-        list($response) = $this->getBackupContentV2WithHttpInfo($id, $app_id, $contentType);
+        list($response) = $this->getBackupContentV2WithHttpInfo($id, $app_id, $app, $contentType);
         return $response;
     }
 
@@ -485,15 +490,16 @@ class BackupsApi
      *
      * @param  string $id The ID of the backup. (required)
      * @param  string $app_id The ID of the app. (optional)
+     * @param  string $app The name of the app. (optional, default to '')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContentV2'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBackupContentV2WithHttpInfo($id, $app_id = null, string $contentType = self::contentTypes['getBackupContentV2'][0])
+    public function getBackupContentV2WithHttpInfo($id, $app_id = null, $app = '', string $contentType = self::contentTypes['getBackupContentV2'][0])
     {
-        $request = $this->getBackupContentV2Request($id, $app_id, $contentType);
+        $request = $this->getBackupContentV2Request($id, $app_id, $app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -609,14 +615,15 @@ class BackupsApi
      *
      * @param  string $id The ID of the backup. (required)
      * @param  string $app_id The ID of the app. (optional)
+     * @param  string $app The name of the app. (optional, default to '')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContentV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBackupContentV2Async($id, $app_id = null, string $contentType = self::contentTypes['getBackupContentV2'][0])
+    public function getBackupContentV2Async($id, $app_id = null, $app = '', string $contentType = self::contentTypes['getBackupContentV2'][0])
     {
-        return $this->getBackupContentV2AsyncWithHttpInfo($id, $app_id, $contentType)
+        return $this->getBackupContentV2AsyncWithHttpInfo($id, $app_id, $app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -631,15 +638,16 @@ class BackupsApi
      *
      * @param  string $id The ID of the backup. (required)
      * @param  string $app_id The ID of the app. (optional)
+     * @param  string $app The name of the app. (optional, default to '')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContentV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBackupContentV2AsyncWithHttpInfo($id, $app_id = null, string $contentType = self::contentTypes['getBackupContentV2'][0])
+    public function getBackupContentV2AsyncWithHttpInfo($id, $app_id = null, $app = '', string $contentType = self::contentTypes['getBackupContentV2'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->getBackupContentV2Request($id, $app_id, $contentType);
+        $request = $this->getBackupContentV2Request($id, $app_id, $app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -682,12 +690,13 @@ class BackupsApi
      *
      * @param  string $id The ID of the backup. (required)
      * @param  string $app_id The ID of the app. (optional)
+     * @param  string $app The name of the app. (optional, default to '')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupContentV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBackupContentV2Request($id, $app_id = null, string $contentType = self::contentTypes['getBackupContentV2'][0])
+    public function getBackupContentV2Request($id, $app_id = null, $app = '', string $contentType = self::contentTypes['getBackupContentV2'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -795,6 +804,7 @@ class BackupsApi
      *
      * Delete a backup.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
@@ -802,9 +812,9 @@ class BackupsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteBackup($id, string $contentType = self::contentTypes['deleteBackup'][0])
+    public function deleteBackup($app, $id, string $contentType = self::contentTypes['deleteBackup'][0])
     {
-        $this->deleteBackupWithHttpInfo($id, $contentType);
+        $this->deleteBackupWithHttpInfo($app, $id, $contentType);
     }
 
     /**
@@ -812,6 +822,7 @@ class BackupsApi
      *
      * Delete a backup.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
@@ -819,9 +830,9 @@ class BackupsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteBackupWithHttpInfo($id, string $contentType = self::contentTypes['deleteBackup'][0])
+    public function deleteBackupWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteBackup'][0])
     {
-        $request = $this->deleteBackupRequest($id, $contentType);
+        $request = $this->deleteBackupRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -888,15 +899,16 @@ class BackupsApi
      *
      * Delete a backup.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteBackupAsync($id, string $contentType = self::contentTypes['deleteBackup'][0])
+    public function deleteBackupAsync($app, $id, string $contentType = self::contentTypes['deleteBackup'][0])
     {
-        return $this->deleteBackupAsyncWithHttpInfo($id, $contentType)
+        return $this->deleteBackupAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -909,16 +921,17 @@ class BackupsApi
      *
      * Delete a backup.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteBackupAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteBackup'][0])
+    public function deleteBackupAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteBackup'][0])
     {
         $returnType = '';
-        $request = $this->deleteBackupRequest($id, $contentType);
+        $request = $this->deleteBackupRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -946,17 +959,17 @@ class BackupsApi
     /**
      * Create request for operation 'deleteBackup'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the backup to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteBackupRequest($id, string $contentType = self::contentTypes['deleteBackup'][0])
+    public function deleteBackupRequest($app, $id, string $contentType = self::contentTypes['deleteBackup'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1056,15 +1069,16 @@ class BackupsApi
      *
      * Get all backup jobs.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackups'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\BackupJobsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getBackups(string $contentType = self::contentTypes['getBackups'][0])
+    public function getBackups($app, string $contentType = self::contentTypes['getBackups'][0])
     {
-        list($response) = $this->getBackupsWithHttpInfo($contentType);
+        list($response) = $this->getBackupsWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -1073,15 +1087,16 @@ class BackupsApi
      *
      * Get all backup jobs.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackups'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\BackupJobsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBackupsWithHttpInfo(string $contentType = self::contentTypes['getBackups'][0])
+    public function getBackupsWithHttpInfo($app, string $contentType = self::contentTypes['getBackups'][0])
     {
-        $request = $this->getBackupsRequest($contentType);
+        $request = $this->getBackupsRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1195,14 +1210,15 @@ class BackupsApi
      *
      * Get all backup jobs.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBackupsAsync(string $contentType = self::contentTypes['getBackups'][0])
+    public function getBackupsAsync($app, string $contentType = self::contentTypes['getBackups'][0])
     {
-        return $this->getBackupsAsyncWithHttpInfo($contentType)
+        return $this->getBackupsAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1215,15 +1231,16 @@ class BackupsApi
      *
      * Get all backup jobs.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBackupsAsyncWithHttpInfo(string $contentType = self::contentTypes['getBackups'][0])
+    public function getBackupsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getBackups'][0])
     {
         $returnType = '\Squidex\Client\Model\BackupJobsDto';
-        $request = $this->getBackupsRequest($contentType);
+        $request = $this->getBackupsRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1264,16 +1281,16 @@ class BackupsApi
     /**
      * Create request for operation 'getBackups'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBackupsRequest(string $contentType = self::contentTypes['getBackups'][0])
+    public function getBackupsRequest($app, string $contentType = self::contentTypes['getBackups'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1358,15 +1375,16 @@ class BackupsApi
      *
      * Start a new backup.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBackup'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function postBackup(string $contentType = self::contentTypes['postBackup'][0])
+    public function postBackup($app, string $contentType = self::contentTypes['postBackup'][0])
     {
-        $this->postBackupWithHttpInfo($contentType);
+        $this->postBackupWithHttpInfo($app, $contentType);
     }
 
     /**
@@ -1374,15 +1392,16 @@ class BackupsApi
      *
      * Start a new backup.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBackup'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBackupWithHttpInfo(string $contentType = self::contentTypes['postBackup'][0])
+    public function postBackupWithHttpInfo($app, string $contentType = self::contentTypes['postBackup'][0])
     {
-        $request = $this->postBackupRequest($contentType);
+        $request = $this->postBackupRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1449,14 +1468,15 @@ class BackupsApi
      *
      * Start a new backup.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBackupAsync(string $contentType = self::contentTypes['postBackup'][0])
+    public function postBackupAsync($app, string $contentType = self::contentTypes['postBackup'][0])
     {
-        return $this->postBackupAsyncWithHttpInfo($contentType)
+        return $this->postBackupAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1469,15 +1489,16 @@ class BackupsApi
      *
      * Start a new backup.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBackupAsyncWithHttpInfo(string $contentType = self::contentTypes['postBackup'][0])
+    public function postBackupAsyncWithHttpInfo($app, string $contentType = self::contentTypes['postBackup'][0])
     {
         $returnType = '';
-        $request = $this->postBackupRequest($contentType);
+        $request = $this->postBackupRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1505,16 +1526,16 @@ class BackupsApi
     /**
      * Create request for operation 'postBackup'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBackupRequest(string $contentType = self::contentTypes['postBackup'][0])
+    public function postBackupRequest($app, string $contentType = self::contentTypes['postBackup'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

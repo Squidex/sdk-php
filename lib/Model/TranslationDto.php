@@ -57,7 +57,8 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'result' => '\Squidex\Client\Model\TranslationResultCode',
+        'status' => '\Squidex\Client\Model\TranslationStatus',
+        'result' => '\Squidex\Client\Model\TranslationStatus',
         'text' => 'string'
     ];
 
@@ -83,6 +84,7 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'status' => null,
         'result' => null,
         'text' => null
     ];
@@ -93,7 +95,8 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'result' => false,
+        'status' => false,
+		'result' => false,
 		'text' => true
     ];
 
@@ -193,6 +196,7 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'status' => 'status',
         'result' => 'result',
         'text' => 'text'
     ];
@@ -203,6 +207,7 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'status' => 'setStatus',
         'result' => 'setResult',
         'text' => 'setText'
     ];
@@ -213,6 +218,7 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'status' => 'getStatus',
         'result' => 'getResult',
         'text' => 'getText'
     ];
@@ -274,6 +280,7 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('result', $data ?? [], null);
         $this->setIfExists('text', $data ?? [], null);
 
@@ -306,6 +313,9 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         if ($this->container['result'] === null) {
             $invalidProperties[] = "'result' can't be null";
         }
@@ -325,9 +335,36 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets status
+     *
+     * @return \Squidex\Client\Model\TranslationStatus
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param \Squidex\Client\Model\TranslationStatus $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
      * Gets result
      *
-     * @return \Squidex\Client\Model\TranslationResultCode
+     * @return \Squidex\Client\Model\TranslationStatus
      */
     public function getResult()
     {
@@ -337,7 +374,7 @@ class TranslationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets result
      *
-     * @param \Squidex\Client\Model\TranslationResultCode $result result
+     * @param \Squidex\Client\Model\TranslationStatus $result result
      *
      * @return self
      */

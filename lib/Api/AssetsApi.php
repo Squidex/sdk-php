@@ -192,6 +192,7 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContent'] to see the possible values for this operation
      *
@@ -200,9 +201,9 @@ class AssetsApi
      * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      * @deprecated
      */
-    public function getAssetContent($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
+    public function getAssetContent($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
     {
-        list($response) = $this->getAssetContentWithHttpInfo($id, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format, $contentType);
+        list($response) = $this->getAssetContentWithHttpInfo($id, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
         return $response;
     }
 
@@ -225,6 +226,7 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContent'] to see the possible values for this operation
      *
@@ -233,9 +235,9 @@ class AssetsApi
      * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function getAssetContentWithHttpInfo($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
+    public function getAssetContentWithHttpInfo($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
     {
-        $request = $this->getAssetContentRequest($id, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format, $contentType);
+        $request = $this->getAssetContentRequest($id, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -363,6 +365,7 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContent'] to see the possible values for this operation
      *
@@ -370,9 +373,9 @@ class AssetsApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getAssetContentAsync($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
+    public function getAssetContentAsync($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
     {
-        return $this->getAssetContentAsyncWithHttpInfo($id, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format, $contentType)
+        return $this->getAssetContentAsyncWithHttpInfo($id, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -399,6 +402,7 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContent'] to see the possible values for this operation
      *
@@ -406,10 +410,10 @@ class AssetsApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getAssetContentAsyncWithHttpInfo($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
+    public function getAssetContentAsyncWithHttpInfo($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->getAssetContentRequest($id, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format, $contentType);
+        $request = $this->getAssetContentRequest($id, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -464,6 +468,7 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContent'] to see the possible values for this operation
      *
@@ -471,7 +476,7 @@ class AssetsApi
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function getAssetContentRequest($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
+    public function getAssetContentRequest($id, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContent'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -480,6 +485,7 @@ class AssetsApi
                 'Missing the required parameter $id when calling '
             );
         }
+
 
 
 
@@ -622,6 +628,15 @@ class AssetsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $deleted,
+            'deleted', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $format,
             'format', // param base name
             'ImageFormat', // openApiType
@@ -699,6 +714,7 @@ class AssetsApi
      *
      * Get the asset content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id_or_slug The id or slug of the asset. (required)
      * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
@@ -714,6 +730,7 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContentBySlug'] to see the possible values for this operation
      *
@@ -721,9 +738,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      */
-    public function getAssetContentBySlug($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlug($app, $id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
-        list($response) = $this->getAssetContentBySlugWithHttpInfo($id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format, $contentType);
+        list($response) = $this->getAssetContentBySlugWithHttpInfo($app, $id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
         return $response;
     }
 
@@ -732,6 +749,7 @@ class AssetsApi
      *
      * Get the asset content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id_or_slug The id or slug of the asset. (required)
      * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
@@ -747,6 +765,7 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContentBySlug'] to see the possible values for this operation
      *
@@ -754,9 +773,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssetContentBySlugWithHttpInfo($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlugWithHttpInfo($app, $id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
-        $request = $this->getAssetContentBySlugRequest($id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format, $contentType);
+        $request = $this->getAssetContentBySlugRequest($app, $id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -870,6 +889,7 @@ class AssetsApi
      *
      * Get the asset content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id_or_slug The id or slug of the asset. (required)
      * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
@@ -885,15 +905,16 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContentBySlug'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetContentBySlugAsync($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlugAsync($app, $id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
-        return $this->getAssetContentBySlugAsyncWithHttpInfo($id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format, $contentType)
+        return $this->getAssetContentBySlugAsyncWithHttpInfo($app, $id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -906,6 +927,7 @@ class AssetsApi
      *
      * Get the asset content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id_or_slug The id or slug of the asset. (required)
      * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
@@ -921,16 +943,17 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContentBySlug'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetContentBySlugAsyncWithHttpInfo($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlugAsyncWithHttpInfo($app, $id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->getAssetContentBySlugRequest($id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $format, $contentType);
+        $request = $this->getAssetContentBySlugRequest($app, $id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -971,6 +994,7 @@ class AssetsApi
     /**
      * Create request for operation 'getAssetContentBySlug'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id_or_slug The id or slug of the asset. (required)
      * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
@@ -986,17 +1010,17 @@ class AssetsApi
      * @param  bool $nofocus True to ignore the asset focus point if any. (optional)
      * @param  bool $auto True to use auto format. (optional)
      * @param  bool $force True to force a new resize even if it already stored. (optional)
+     * @param  bool $deleted Also return deleted content items. (optional)
      * @param  ImageFormat $format True to force a new resize even if it already stored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetContentBySlug'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAssetContentBySlugRequest($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlugRequest($app, $id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1016,6 +1040,7 @@ class AssetsApi
                 'Missing the required parameter $more when calling '
             );
         }
+
 
 
 
@@ -1158,6 +1183,15 @@ class AssetsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $deleted,
+            'deleted', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $format,
             'format', // param base name
             'ImageFormat', // openApiType
@@ -1251,6 +1285,7 @@ class AssetsApi
      *
      * Delete an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAssetFolder'] to see the possible values for this operation
      *
@@ -1258,9 +1293,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteAssetFolder($id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
+    public function deleteAssetFolder($app, $id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
     {
-        $this->deleteAssetFolderWithHttpInfo($id, $contentType);
+        $this->deleteAssetFolderWithHttpInfo($app, $id, $contentType);
     }
 
     /**
@@ -1268,6 +1303,7 @@ class AssetsApi
      *
      * Delete an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAssetFolder'] to see the possible values for this operation
      *
@@ -1275,9 +1311,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteAssetFolderWithHttpInfo($id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
+    public function deleteAssetFolderWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
     {
-        $request = $this->deleteAssetFolderRequest($id, $contentType);
+        $request = $this->deleteAssetFolderRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1344,15 +1380,16 @@ class AssetsApi
      *
      * Delete an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAssetFolderAsync($id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
+    public function deleteAssetFolderAsync($app, $id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
     {
-        return $this->deleteAssetFolderAsyncWithHttpInfo($id, $contentType)
+        return $this->deleteAssetFolderAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1365,16 +1402,17 @@ class AssetsApi
      *
      * Delete an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAssetFolderAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
+    public function deleteAssetFolderAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
     {
         $returnType = '';
-        $request = $this->deleteAssetFolderRequest($id, $contentType);
+        $request = $this->deleteAssetFolderRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1402,17 +1440,17 @@ class AssetsApi
     /**
      * Create request for operation 'deleteAssetFolder'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteAssetFolderRequest($id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
+    public function deleteAssetFolderRequest($app, $id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1512,6 +1550,7 @@ class AssetsApi
      *
      * Get asset folders.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  AssetFolderScope $scope The scope of the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetFolders'] to see the possible values for this operation
@@ -1520,9 +1559,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetFoldersDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getAssetFolders($parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
+    public function getAssetFolders($app, $parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
     {
-        list($response) = $this->getAssetFoldersWithHttpInfo($parent_id, $scope, $contentType);
+        list($response) = $this->getAssetFoldersWithHttpInfo($app, $parent_id, $scope, $contentType);
         return $response;
     }
 
@@ -1531,6 +1570,7 @@ class AssetsApi
      *
      * Get asset folders.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  AssetFolderScope $scope The scope of the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetFolders'] to see the possible values for this operation
@@ -1539,9 +1579,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetFoldersDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssetFoldersWithHttpInfo($parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
+    public function getAssetFoldersWithHttpInfo($app, $parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
     {
-        $request = $this->getAssetFoldersRequest($parent_id, $scope, $contentType);
+        $request = $this->getAssetFoldersRequest($app, $parent_id, $scope, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1655,6 +1695,7 @@ class AssetsApi
      *
      * Get asset folders.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  AssetFolderScope $scope The scope of the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetFolders'] to see the possible values for this operation
@@ -1662,9 +1703,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetFoldersAsync($parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
+    public function getAssetFoldersAsync($app, $parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
     {
-        return $this->getAssetFoldersAsyncWithHttpInfo($parent_id, $scope, $contentType)
+        return $this->getAssetFoldersAsyncWithHttpInfo($app, $parent_id, $scope, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1677,6 +1718,7 @@ class AssetsApi
      *
      * Get asset folders.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  AssetFolderScope $scope The scope of the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetFolders'] to see the possible values for this operation
@@ -1684,10 +1726,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetFoldersAsyncWithHttpInfo($parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
+    public function getAssetFoldersAsyncWithHttpInfo($app, $parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetFoldersDto';
-        $request = $this->getAssetFoldersRequest($parent_id, $scope, $contentType);
+        $request = $this->getAssetFoldersRequest($app, $parent_id, $scope, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1728,6 +1770,7 @@ class AssetsApi
     /**
      * Create request for operation 'getAssetFolders'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  AssetFolderScope $scope The scope of the query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetFolders'] to see the possible values for this operation
@@ -1735,11 +1778,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAssetFoldersRequest($parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
+    public function getAssetFoldersRequest($app, $parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1844,6 +1886,7 @@ class AssetsApi
      *
      * Create an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
@@ -1851,9 +1894,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postAssetFolder($create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
+    public function postAssetFolder($app, $create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
     {
-        list($response) = $this->postAssetFolderWithHttpInfo($create_asset_folder_dto, $contentType);
+        list($response) = $this->postAssetFolderWithHttpInfo($app, $create_asset_folder_dto, $contentType);
         return $response;
     }
 
@@ -1862,6 +1905,7 @@ class AssetsApi
      *
      * Create an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
@@ -1869,9 +1913,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postAssetFolderWithHttpInfo($create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
+    public function postAssetFolderWithHttpInfo($app, $create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
     {
-        $request = $this->postAssetFolderRequest($create_asset_folder_dto, $contentType);
+        $request = $this->postAssetFolderRequest($app, $create_asset_folder_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2008,15 +2052,16 @@ class AssetsApi
      *
      * Create an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAssetFolderAsync($create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
+    public function postAssetFolderAsync($app, $create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
     {
-        return $this->postAssetFolderAsyncWithHttpInfo($create_asset_folder_dto, $contentType)
+        return $this->postAssetFolderAsyncWithHttpInfo($app, $create_asset_folder_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2029,16 +2074,17 @@ class AssetsApi
      *
      * Create an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAssetFolderAsyncWithHttpInfo($create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
+    public function postAssetFolderAsyncWithHttpInfo($app, $create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetFolderDto';
-        $request = $this->postAssetFolderRequest($create_asset_folder_dto, $contentType);
+        $request = $this->postAssetFolderRequest($app, $create_asset_folder_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2079,17 +2125,17 @@ class AssetsApi
     /**
      * Create request for operation 'postAssetFolder'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateAssetFolderDto $create_asset_folder_dto The asset folder object that needs to be added to the App. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAssetFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postAssetFolderRequest($create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
+    public function postAssetFolderRequest($app, $create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2188,6 +2234,7 @@ class AssetsApi
      *
      * Update an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
@@ -2196,9 +2243,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putAssetFolder($id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
+    public function putAssetFolder($app, $id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
     {
-        list($response) = $this->putAssetFolderWithHttpInfo($id, $rename_asset_folder_dto, $contentType);
+        list($response) = $this->putAssetFolderWithHttpInfo($app, $id, $rename_asset_folder_dto, $contentType);
         return $response;
     }
 
@@ -2207,6 +2254,7 @@ class AssetsApi
      *
      * Update an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
@@ -2215,9 +2263,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAssetFolderWithHttpInfo($id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
+    public function putAssetFolderWithHttpInfo($app, $id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
     {
-        $request = $this->putAssetFolderRequest($id, $rename_asset_folder_dto, $contentType);
+        $request = $this->putAssetFolderRequest($app, $id, $rename_asset_folder_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2354,6 +2402,7 @@ class AssetsApi
      *
      * Update an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
@@ -2361,9 +2410,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetFolderAsync($id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
+    public function putAssetFolderAsync($app, $id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
     {
-        return $this->putAssetFolderAsyncWithHttpInfo($id, $rename_asset_folder_dto, $contentType)
+        return $this->putAssetFolderAsyncWithHttpInfo($app, $id, $rename_asset_folder_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2376,6 +2425,7 @@ class AssetsApi
      *
      * Update an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
@@ -2383,10 +2433,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetFolderAsyncWithHttpInfo($id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
+    public function putAssetFolderAsyncWithHttpInfo($app, $id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetFolderDto';
-        $request = $this->putAssetFolderRequest($id, $rename_asset_folder_dto, $contentType);
+        $request = $this->putAssetFolderRequest($app, $id, $rename_asset_folder_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2427,6 +2477,7 @@ class AssetsApi
     /**
      * Create request for operation 'putAssetFolder'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\RenameAssetFolderDto $rename_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolder'] to see the possible values for this operation
@@ -2434,11 +2485,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAssetFolderRequest($id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
+    public function putAssetFolderRequest($app, $id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2552,6 +2602,7 @@ class AssetsApi
      *
      * Move an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
@@ -2560,9 +2611,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putAssetFolderParent($id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
+    public function putAssetFolderParent($app, $id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
     {
-        list($response) = $this->putAssetFolderParentWithHttpInfo($id, $move_asset_folder_dto, $contentType);
+        list($response) = $this->putAssetFolderParentWithHttpInfo($app, $id, $move_asset_folder_dto, $contentType);
         return $response;
     }
 
@@ -2571,6 +2622,7 @@ class AssetsApi
      *
      * Move an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
@@ -2579,9 +2631,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetFolderDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAssetFolderParentWithHttpInfo($id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
+    public function putAssetFolderParentWithHttpInfo($app, $id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
     {
-        $request = $this->putAssetFolderParentRequest($id, $move_asset_folder_dto, $contentType);
+        $request = $this->putAssetFolderParentRequest($app, $id, $move_asset_folder_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2718,6 +2770,7 @@ class AssetsApi
      *
      * Move an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
@@ -2725,9 +2778,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetFolderParentAsync($id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
+    public function putAssetFolderParentAsync($app, $id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
     {
-        return $this->putAssetFolderParentAsyncWithHttpInfo($id, $move_asset_folder_dto, $contentType)
+        return $this->putAssetFolderParentAsyncWithHttpInfo($app, $id, $move_asset_folder_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2740,6 +2793,7 @@ class AssetsApi
      *
      * Move an asset folder.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
@@ -2747,10 +2801,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetFolderParentAsyncWithHttpInfo($id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
+    public function putAssetFolderParentAsyncWithHttpInfo($app, $id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetFolderDto';
-        $request = $this->putAssetFolderParentRequest($id, $move_asset_folder_dto, $contentType);
+        $request = $this->putAssetFolderParentRequest($app, $id, $move_asset_folder_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2791,6 +2845,7 @@ class AssetsApi
     /**
      * Create request for operation 'putAssetFolderParent'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset folder. (required)
      * @param  \Squidex\Client\Model\MoveAssetFolderDto $move_asset_folder_dto The asset folder object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetFolderParent'] to see the possible values for this operation
@@ -2798,11 +2853,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAssetFolderParentRequest($id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
+    public function putAssetFolderParentRequest($app, $id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2916,6 +2970,7 @@ class AssetsApi
      *
      * Bulk update assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
@@ -2923,9 +2978,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function bulkUpdateAssets($bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
+    public function bulkUpdateAssets($app, $bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
     {
-        list($response) = $this->bulkUpdateAssetsWithHttpInfo($bulk_update_assets_dto, $contentType);
+        list($response) = $this->bulkUpdateAssetsWithHttpInfo($app, $bulk_update_assets_dto, $contentType);
         return $response;
     }
 
@@ -2934,6 +2989,7 @@ class AssetsApi
      *
      * Bulk update assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
@@ -2941,9 +2997,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function bulkUpdateAssetsWithHttpInfo($bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
+    public function bulkUpdateAssetsWithHttpInfo($app, $bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
     {
-        $request = $this->bulkUpdateAssetsRequest($bulk_update_assets_dto, $contentType);
+        $request = $this->bulkUpdateAssetsRequest($app, $bulk_update_assets_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3080,15 +3136,16 @@ class AssetsApi
      *
      * Bulk update assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkUpdateAssetsAsync($bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
+    public function bulkUpdateAssetsAsync($app, $bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
     {
-        return $this->bulkUpdateAssetsAsyncWithHttpInfo($bulk_update_assets_dto, $contentType)
+        return $this->bulkUpdateAssetsAsyncWithHttpInfo($app, $bulk_update_assets_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3101,16 +3158,17 @@ class AssetsApi
      *
      * Bulk update assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkUpdateAssetsAsyncWithHttpInfo($bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
+    public function bulkUpdateAssetsAsyncWithHttpInfo($app, $bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
     {
         $returnType = '\Squidex\Client\Model\BulkResultDto[]';
-        $request = $this->bulkUpdateAssetsRequest($bulk_update_assets_dto, $contentType);
+        $request = $this->bulkUpdateAssetsRequest($app, $bulk_update_assets_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3151,17 +3209,17 @@ class AssetsApi
     /**
      * Create request for operation 'bulkUpdateAssets'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateAssetsDto $bulk_update_assets_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function bulkUpdateAssetsRequest($bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
+    public function bulkUpdateAssetsRequest($app, $bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3260,6 +3318,7 @@ class AssetsApi
      *
      * Delete an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to delete. (required)
      * @param  bool $check_referrers True to check referrers of this asset. (optional)
      * @param  bool $permanent True to delete the asset permanently. (optional)
@@ -3269,9 +3328,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteAsset($id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
+    public function deleteAsset($app, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
     {
-        $this->deleteAssetWithHttpInfo($id, $check_referrers, $permanent, $contentType);
+        $this->deleteAssetWithHttpInfo($app, $id, $check_referrers, $permanent, $contentType);
     }
 
     /**
@@ -3279,6 +3338,7 @@ class AssetsApi
      *
      * Delete an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to delete. (required)
      * @param  bool $check_referrers True to check referrers of this asset. (optional)
      * @param  bool $permanent True to delete the asset permanently. (optional)
@@ -3288,9 +3348,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteAssetWithHttpInfo($id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
+    public function deleteAssetWithHttpInfo($app, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
     {
-        $request = $this->deleteAssetRequest($id, $check_referrers, $permanent, $contentType);
+        $request = $this->deleteAssetRequest($app, $id, $check_referrers, $permanent, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3357,6 +3417,7 @@ class AssetsApi
      *
      * Delete an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to delete. (required)
      * @param  bool $check_referrers True to check referrers of this asset. (optional)
      * @param  bool $permanent True to delete the asset permanently. (optional)
@@ -3365,9 +3426,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAssetAsync($id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
+    public function deleteAssetAsync($app, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
     {
-        return $this->deleteAssetAsyncWithHttpInfo($id, $check_referrers, $permanent, $contentType)
+        return $this->deleteAssetAsyncWithHttpInfo($app, $id, $check_referrers, $permanent, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3380,6 +3441,7 @@ class AssetsApi
      *
      * Delete an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to delete. (required)
      * @param  bool $check_referrers True to check referrers of this asset. (optional)
      * @param  bool $permanent True to delete the asset permanently. (optional)
@@ -3388,10 +3450,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAssetAsyncWithHttpInfo($id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
+    public function deleteAssetAsyncWithHttpInfo($app, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
     {
         $returnType = '';
-        $request = $this->deleteAssetRequest($id, $check_referrers, $permanent, $contentType);
+        $request = $this->deleteAssetRequest($app, $id, $check_referrers, $permanent, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3419,6 +3481,7 @@ class AssetsApi
     /**
      * Create request for operation 'deleteAsset'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to delete. (required)
      * @param  bool $check_referrers True to check referrers of this asset. (optional)
      * @param  bool $permanent True to delete the asset permanently. (optional)
@@ -3427,11 +3490,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteAssetRequest($id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
+    public function deleteAssetRequest($app, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3551,6 +3613,7 @@ class AssetsApi
      *
      * Get an asset by id.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsset'] to see the possible values for this operation
      *
@@ -3558,9 +3621,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getAsset($id, string $contentType = self::contentTypes['getAsset'][0])
+    public function getAsset($app, $id, string $contentType = self::contentTypes['getAsset'][0])
     {
-        list($response) = $this->getAssetWithHttpInfo($id, $contentType);
+        list($response) = $this->getAssetWithHttpInfo($app, $id, $contentType);
         return $response;
     }
 
@@ -3569,6 +3632,7 @@ class AssetsApi
      *
      * Get an asset by id.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsset'] to see the possible values for this operation
      *
@@ -3576,9 +3640,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssetWithHttpInfo($id, string $contentType = self::contentTypes['getAsset'][0])
+    public function getAssetWithHttpInfo($app, $id, string $contentType = self::contentTypes['getAsset'][0])
     {
-        $request = $this->getAssetRequest($id, $contentType);
+        $request = $this->getAssetRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3692,15 +3756,16 @@ class AssetsApi
      *
      * Get an asset by id.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetAsync($id, string $contentType = self::contentTypes['getAsset'][0])
+    public function getAssetAsync($app, $id, string $contentType = self::contentTypes['getAsset'][0])
     {
-        return $this->getAssetAsyncWithHttpInfo($id, $contentType)
+        return $this->getAssetAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3713,16 +3778,17 @@ class AssetsApi
      *
      * Get an asset by id.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getAsset'][0])
+    public function getAssetAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['getAsset'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetDto';
-        $request = $this->getAssetRequest($id, $contentType);
+        $request = $this->getAssetRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3763,17 +3829,17 @@ class AssetsApi
     /**
      * Create request for operation 'getAsset'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAssetRequest($id, string $contentType = self::contentTypes['getAsset'][0])
+    public function getAssetRequest($app, $id, string $contentType = self::contentTypes['getAsset'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3873,6 +3939,7 @@ class AssetsApi
      *
      * Get assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $ids The optional asset ids. (optional)
      * @param  string $q The optional json query. (optional)
@@ -3888,9 +3955,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getAssets($parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
+    public function getAssets($app, $parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
     {
-        list($response) = $this->getAssetsWithHttpInfo($parent_id, $ids, $q, $top, $skip, $orderby, $filter, $x_no_total, $x_no_slow_total, $contentType);
+        list($response) = $this->getAssetsWithHttpInfo($app, $parent_id, $ids, $q, $top, $skip, $orderby, $filter, $x_no_total, $x_no_slow_total, $contentType);
         return $response;
     }
 
@@ -3899,6 +3966,7 @@ class AssetsApi
      *
      * Get assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $ids The optional asset ids. (optional)
      * @param  string $q The optional json query. (optional)
@@ -3914,9 +3982,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssetsWithHttpInfo($parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
+    public function getAssetsWithHttpInfo($app, $parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
     {
-        $request = $this->getAssetsRequest($parent_id, $ids, $q, $top, $skip, $orderby, $filter, $x_no_total, $x_no_slow_total, $contentType);
+        $request = $this->getAssetsRequest($app, $parent_id, $ids, $q, $top, $skip, $orderby, $filter, $x_no_total, $x_no_slow_total, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4030,6 +4098,7 @@ class AssetsApi
      *
      * Get assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $ids The optional asset ids. (optional)
      * @param  string $q The optional json query. (optional)
@@ -4044,9 +4113,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetsAsync($parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
+    public function getAssetsAsync($app, $parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
     {
-        return $this->getAssetsAsyncWithHttpInfo($parent_id, $ids, $q, $top, $skip, $orderby, $filter, $x_no_total, $x_no_slow_total, $contentType)
+        return $this->getAssetsAsyncWithHttpInfo($app, $parent_id, $ids, $q, $top, $skip, $orderby, $filter, $x_no_total, $x_no_slow_total, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4059,6 +4128,7 @@ class AssetsApi
      *
      * Get assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $ids The optional asset ids. (optional)
      * @param  string $q The optional json query. (optional)
@@ -4073,10 +4143,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetsAsyncWithHttpInfo($parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
+    public function getAssetsAsyncWithHttpInfo($app, $parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetsDto';
-        $request = $this->getAssetsRequest($parent_id, $ids, $q, $top, $skip, $orderby, $filter, $x_no_total, $x_no_slow_total, $contentType);
+        $request = $this->getAssetsRequest($app, $parent_id, $ids, $q, $top, $skip, $orderby, $filter, $x_no_total, $x_no_slow_total, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4117,6 +4187,7 @@ class AssetsApi
     /**
      * Create request for operation 'getAssets'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $ids The optional asset ids. (optional)
      * @param  string $q The optional json query. (optional)
@@ -4131,11 +4202,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAssetsRequest($parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
+    public function getAssetsRequest($app, $parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4300,6 +4370,7 @@ class AssetsApi
      *
      * Get assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
@@ -4309,9 +4380,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getAssetsPost($query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
+    public function getAssetsPost($app, $query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
     {
-        list($response) = $this->getAssetsPostWithHttpInfo($query_dto, $x_no_total, $x_no_slow_total, $contentType);
+        list($response) = $this->getAssetsPostWithHttpInfo($app, $query_dto, $x_no_total, $x_no_slow_total, $contentType);
         return $response;
     }
 
@@ -4320,6 +4391,7 @@ class AssetsApi
      *
      * Get assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
@@ -4329,9 +4401,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssetsPostWithHttpInfo($query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
+    public function getAssetsPostWithHttpInfo($app, $query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
     {
-        $request = $this->getAssetsPostRequest($query_dto, $x_no_total, $x_no_slow_total, $contentType);
+        $request = $this->getAssetsPostRequest($app, $query_dto, $x_no_total, $x_no_slow_total, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4468,6 +4540,7 @@ class AssetsApi
      *
      * Get assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
@@ -4476,9 +4549,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetsPostAsync($query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
+    public function getAssetsPostAsync($app, $query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
     {
-        return $this->getAssetsPostAsyncWithHttpInfo($query_dto, $x_no_total, $x_no_slow_total, $contentType)
+        return $this->getAssetsPostAsyncWithHttpInfo($app, $query_dto, $x_no_total, $x_no_slow_total, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4491,6 +4564,7 @@ class AssetsApi
      *
      * Get assets.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
@@ -4499,10 +4573,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetsPostAsyncWithHttpInfo($query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
+    public function getAssetsPostAsyncWithHttpInfo($app, $query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetsDto';
-        $request = $this->getAssetsPostRequest($query_dto, $x_no_total, $x_no_slow_total, $contentType);
+        $request = $this->getAssetsPostRequest($app, $query_dto, $x_no_total, $x_no_slow_total, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4543,6 +4617,7 @@ class AssetsApi
     /**
      * Create request for operation 'getAssetsPost'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  bool $x_no_total Do not return the total amount. (optional)
      * @param  bool $x_no_slow_total Do not return the total amount, if it would be slow. (optional)
@@ -4551,11 +4626,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAssetsPostRequest($query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
+    public function getAssetsPostRequest($app, $query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4664,15 +4738,16 @@ class AssetsApi
      *
      * Get assets tags.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTags'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array<string,int>|\Squidex\Client\Model\ErrorDto
      */
-    public function getTags(string $contentType = self::contentTypes['getTags'][0])
+    public function getTags($app, string $contentType = self::contentTypes['getTags'][0])
     {
-        list($response) = $this->getTagsWithHttpInfo($contentType);
+        list($response) = $this->getTagsWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -4681,15 +4756,16 @@ class AssetsApi
      *
      * Get assets tags.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTags'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of array<string,int>|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTagsWithHttpInfo(string $contentType = self::contentTypes['getTags'][0])
+    public function getTagsWithHttpInfo($app, string $contentType = self::contentTypes['getTags'][0])
     {
-        $request = $this->getTagsRequest($contentType);
+        $request = $this->getTagsRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4803,14 +4879,15 @@ class AssetsApi
      *
      * Get assets tags.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTagsAsync(string $contentType = self::contentTypes['getTags'][0])
+    public function getTagsAsync($app, string $contentType = self::contentTypes['getTags'][0])
     {
-        return $this->getTagsAsyncWithHttpInfo($contentType)
+        return $this->getTagsAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4823,15 +4900,16 @@ class AssetsApi
      *
      * Get assets tags.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTagsAsyncWithHttpInfo(string $contentType = self::contentTypes['getTags'][0])
+    public function getTagsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getTags'][0])
     {
         $returnType = 'array<string,int>';
-        $request = $this->getTagsRequest($contentType);
+        $request = $this->getTagsRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4872,16 +4950,16 @@ class AssetsApi
     /**
      * Create request for operation 'getTags'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTagsRequest(string $contentType = self::contentTypes['getTags'][0])
+    public function getTagsRequest($app, string $contentType = self::contentTypes['getTags'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4966,6 +5044,7 @@ class AssetsApi
      *
      * Upload a new asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $id The optional custom asset id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -4976,9 +5055,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postAsset($parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
+    public function postAsset($app, $parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
     {
-        list($response) = $this->postAssetWithHttpInfo($parent_id, $id, $duplicate, $file, $contentType);
+        list($response) = $this->postAssetWithHttpInfo($app, $parent_id, $id, $duplicate, $file, $contentType);
         return $response;
     }
 
@@ -4987,6 +5066,7 @@ class AssetsApi
      *
      * Upload a new asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $id The optional custom asset id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -4997,9 +5077,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postAssetWithHttpInfo($parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
+    public function postAssetWithHttpInfo($app, $parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
     {
-        $request = $this->postAssetRequest($parent_id, $id, $duplicate, $file, $contentType);
+        $request = $this->postAssetRequest($app, $parent_id, $id, $duplicate, $file, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5159,6 +5239,7 @@ class AssetsApi
      *
      * Upload a new asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $id The optional custom asset id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -5168,9 +5249,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAssetAsync($parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
+    public function postAssetAsync($app, $parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
     {
-        return $this->postAssetAsyncWithHttpInfo($parent_id, $id, $duplicate, $file, $contentType)
+        return $this->postAssetAsyncWithHttpInfo($app, $parent_id, $id, $duplicate, $file, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5183,6 +5264,7 @@ class AssetsApi
      *
      * Upload a new asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $id The optional custom asset id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -5192,10 +5274,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAssetAsyncWithHttpInfo($parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
+    public function postAssetAsyncWithHttpInfo($app, $parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetDto';
-        $request = $this->postAssetRequest($parent_id, $id, $duplicate, $file, $contentType);
+        $request = $this->postAssetRequest($app, $parent_id, $id, $duplicate, $file, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5236,6 +5318,7 @@ class AssetsApi
     /**
      * Create request for operation 'postAsset'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  string $id The optional custom asset id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -5245,11 +5328,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postAssetRequest($parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
+    public function postAssetRequest($app, $parent_id = null, $id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postAsset'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5377,6 +5459,7 @@ class AssetsApi
      *
      * Upsert an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The optional custom asset id. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -5387,9 +5470,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postUpsertAsset($id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
+    public function postUpsertAsset($app, $id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
     {
-        list($response) = $this->postUpsertAssetWithHttpInfo($id, $parent_id, $duplicate, $file, $contentType);
+        list($response) = $this->postUpsertAssetWithHttpInfo($app, $id, $parent_id, $duplicate, $file, $contentType);
         return $response;
     }
 
@@ -5398,6 +5481,7 @@ class AssetsApi
      *
      * Upsert an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The optional custom asset id. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -5408,9 +5492,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postUpsertAssetWithHttpInfo($id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
+    public function postUpsertAssetWithHttpInfo($app, $id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
     {
-        $request = $this->postUpsertAssetRequest($id, $parent_id, $duplicate, $file, $contentType);
+        $request = $this->postUpsertAssetRequest($app, $id, $parent_id, $duplicate, $file, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5570,6 +5654,7 @@ class AssetsApi
      *
      * Upsert an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The optional custom asset id. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -5579,9 +5664,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUpsertAssetAsync($id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
+    public function postUpsertAssetAsync($app, $id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
     {
-        return $this->postUpsertAssetAsyncWithHttpInfo($id, $parent_id, $duplicate, $file, $contentType)
+        return $this->postUpsertAssetAsyncWithHttpInfo($app, $id, $parent_id, $duplicate, $file, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5594,6 +5679,7 @@ class AssetsApi
      *
      * Upsert an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The optional custom asset id. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -5603,10 +5689,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUpsertAssetAsyncWithHttpInfo($id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
+    public function postUpsertAssetAsyncWithHttpInfo($app, $id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetDto';
-        $request = $this->postUpsertAssetRequest($id, $parent_id, $duplicate, $file, $contentType);
+        $request = $this->postUpsertAssetRequest($app, $id, $parent_id, $duplicate, $file, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5647,6 +5733,7 @@ class AssetsApi
     /**
      * Create request for operation 'postUpsertAsset'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The optional custom asset id. (required)
      * @param  string $parent_id The optional parent folder id. (optional)
      * @param  bool $duplicate True to duplicate the asset, event if the file has been uploaded. (optional)
@@ -5656,11 +5743,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postUpsertAssetRequest($id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
+    public function postUpsertAssetRequest($app, $id, $parent_id = null, $duplicate = null, $file = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5793,6 +5879,7 @@ class AssetsApi
      *
      * Update an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
@@ -5801,9 +5888,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putAsset($id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
+    public function putAsset($app, $id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
     {
-        list($response) = $this->putAssetWithHttpInfo($id, $annotate_asset_dto, $contentType);
+        list($response) = $this->putAssetWithHttpInfo($app, $id, $annotate_asset_dto, $contentType);
         return $response;
     }
 
@@ -5812,6 +5899,7 @@ class AssetsApi
      *
      * Update an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
@@ -5820,9 +5908,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAssetWithHttpInfo($id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
+    public function putAssetWithHttpInfo($app, $id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
     {
-        $request = $this->putAssetRequest($id, $annotate_asset_dto, $contentType);
+        $request = $this->putAssetRequest($app, $id, $annotate_asset_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5959,6 +6047,7 @@ class AssetsApi
      *
      * Update an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
@@ -5966,9 +6055,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetAsync($id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
+    public function putAssetAsync($app, $id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
     {
-        return $this->putAssetAsyncWithHttpInfo($id, $annotate_asset_dto, $contentType)
+        return $this->putAssetAsyncWithHttpInfo($app, $id, $annotate_asset_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5981,6 +6070,7 @@ class AssetsApi
      *
      * Update an asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
@@ -5988,10 +6078,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetAsyncWithHttpInfo($id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
+    public function putAssetAsyncWithHttpInfo($app, $id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetDto';
-        $request = $this->putAssetRequest($id, $annotate_asset_dto, $contentType);
+        $request = $this->putAssetRequest($app, $id, $annotate_asset_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6032,6 +6122,7 @@ class AssetsApi
     /**
      * Create request for operation 'putAsset'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\AnnotateAssetDto $annotate_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAsset'] to see the possible values for this operation
@@ -6039,11 +6130,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAssetRequest($id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
+    public function putAssetRequest($app, $id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6157,6 +6247,7 @@ class AssetsApi
      *
      * Replace asset content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \SplFileObject $file file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetContent'] to see the possible values for this operation
@@ -6165,9 +6256,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putAssetContent($id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
+    public function putAssetContent($app, $id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
     {
-        list($response) = $this->putAssetContentWithHttpInfo($id, $file, $contentType);
+        list($response) = $this->putAssetContentWithHttpInfo($app, $id, $file, $contentType);
         return $response;
     }
 
@@ -6176,6 +6267,7 @@ class AssetsApi
      *
      * Replace asset content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetContent'] to see the possible values for this operation
@@ -6184,9 +6276,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAssetContentWithHttpInfo($id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
+    public function putAssetContentWithHttpInfo($app, $id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
     {
-        $request = $this->putAssetContentRequest($id, $file, $contentType);
+        $request = $this->putAssetContentRequest($app, $id, $file, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6346,6 +6438,7 @@ class AssetsApi
      *
      * Replace asset content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetContent'] to see the possible values for this operation
@@ -6353,9 +6446,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetContentAsync($id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
+    public function putAssetContentAsync($app, $id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
     {
-        return $this->putAssetContentAsyncWithHttpInfo($id, $file, $contentType)
+        return $this->putAssetContentAsyncWithHttpInfo($app, $id, $file, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6368,6 +6461,7 @@ class AssetsApi
      *
      * Replace asset content.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetContent'] to see the possible values for this operation
@@ -6375,10 +6469,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetContentAsyncWithHttpInfo($id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
+    public function putAssetContentAsyncWithHttpInfo($app, $id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetDto';
-        $request = $this->putAssetContentRequest($id, $file, $contentType);
+        $request = $this->putAssetContentRequest($app, $id, $file, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6419,6 +6513,7 @@ class AssetsApi
     /**
      * Create request for operation 'putAssetContent'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetContent'] to see the possible values for this operation
@@ -6426,11 +6521,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAssetContentRequest($id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
+    public function putAssetContentRequest($app, $id, $file = null, string $contentType = self::contentTypes['putAssetContent'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6543,6 +6637,7 @@ class AssetsApi
      *
      * Moves the asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
@@ -6551,9 +6646,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putAssetParent($id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
+    public function putAssetParent($app, $id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
     {
-        list($response) = $this->putAssetParentWithHttpInfo($id, $move_asset_dto, $contentType);
+        list($response) = $this->putAssetParentWithHttpInfo($app, $id, $move_asset_dto, $contentType);
         return $response;
     }
 
@@ -6562,6 +6657,7 @@ class AssetsApi
      *
      * Moves the asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
@@ -6570,9 +6666,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAssetParentWithHttpInfo($id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
+    public function putAssetParentWithHttpInfo($app, $id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
     {
-        $request = $this->putAssetParentRequest($id, $move_asset_dto, $contentType);
+        $request = $this->putAssetParentRequest($app, $id, $move_asset_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6709,6 +6805,7 @@ class AssetsApi
      *
      * Moves the asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
@@ -6716,9 +6813,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetParentAsync($id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
+    public function putAssetParentAsync($app, $id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
     {
-        return $this->putAssetParentAsyncWithHttpInfo($id, $move_asset_dto, $contentType)
+        return $this->putAssetParentAsyncWithHttpInfo($app, $id, $move_asset_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6731,6 +6828,7 @@ class AssetsApi
      *
      * Moves the asset.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
@@ -6738,10 +6836,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetParentAsyncWithHttpInfo($id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
+    public function putAssetParentAsyncWithHttpInfo($app, $id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetDto';
-        $request = $this->putAssetParentRequest($id, $move_asset_dto, $contentType);
+        $request = $this->putAssetParentRequest($app, $id, $move_asset_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6782,6 +6880,7 @@ class AssetsApi
     /**
      * Create request for operation 'putAssetParent'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the asset. (required)
      * @param  \Squidex\Client\Model\MoveAssetDto $move_asset_dto The asset object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetParent'] to see the possible values for this operation
@@ -6789,11 +6888,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAssetParentRequest($id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
+    public function putAssetParentRequest($app, $id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6907,6 +7005,7 @@ class AssetsApi
      *
      * Rename an asset tag.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $name The tag to return. (required)
      * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
@@ -6915,9 +7014,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array<string,int>|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putTag($name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
+    public function putTag($app, $name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
     {
-        list($response) = $this->putTagWithHttpInfo($name, $rename_tag_dto, $contentType);
+        list($response) = $this->putTagWithHttpInfo($app, $name, $rename_tag_dto, $contentType);
         return $response;
     }
 
@@ -6926,6 +7025,7 @@ class AssetsApi
      *
      * Rename an asset tag.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $name The tag to return. (required)
      * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
@@ -6934,9 +7034,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of array<string,int>|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putTagWithHttpInfo($name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
+    public function putTagWithHttpInfo($app, $name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
     {
-        $request = $this->putTagRequest($name, $rename_tag_dto, $contentType);
+        $request = $this->putTagRequest($app, $name, $rename_tag_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7073,6 +7173,7 @@ class AssetsApi
      *
      * Rename an asset tag.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $name The tag to return. (required)
      * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
@@ -7080,9 +7181,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putTagAsync($name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
+    public function putTagAsync($app, $name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
     {
-        return $this->putTagAsyncWithHttpInfo($name, $rename_tag_dto, $contentType)
+        return $this->putTagAsyncWithHttpInfo($app, $name, $rename_tag_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7095,6 +7196,7 @@ class AssetsApi
      *
      * Rename an asset tag.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $name The tag to return. (required)
      * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
@@ -7102,10 +7204,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putTagAsyncWithHttpInfo($name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
+    public function putTagAsyncWithHttpInfo($app, $name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
     {
         $returnType = 'array<string,int>';
-        $request = $this->putTagRequest($name, $rename_tag_dto, $contentType);
+        $request = $this->putTagRequest($app, $name, $rename_tag_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7146,6 +7248,7 @@ class AssetsApi
     /**
      * Create request for operation 'putTag'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $name The tag to return. (required)
      * @param  \Squidex\Client\Model\RenameTagDto $rename_tag_dto The required request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putTag'] to see the possible values for this operation
@@ -7153,11 +7256,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putTagRequest($name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
+    public function putTagRequest($app, $name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

@@ -1,6 +1,6 @@
 <?php
 /**
- * ComponentsFieldPropertiesDto
+ * AskDto
  *
  * PHP version 7.4
  *
@@ -27,10 +27,12 @@
  */
 
 namespace Squidex\Client\Model;
+
+use \ArrayAccess;
 use \Squidex\Client\ObjectSerializer;
 
 /**
- * ComponentsFieldPropertiesDto Class Doc Comment
+ * AskDto Class Doc Comment
  *
  * @category Class
  * @package  Squidex\Client
@@ -38,7 +40,7 @@ use \Squidex\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ComponentsFieldPropertiesDto extends FieldPropertiesDto
+class AskDto implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +49,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ComponentsFieldPropertiesDto';
+    protected static $openAPIModelName = 'AskDto';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,11 +57,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
       * @var string[]
       */
     protected static $openAPITypes = [
-        'min_items' => 'int',
-        'max_items' => 'int',
-        'calculated_default_value' => '\Squidex\Client\Model\ArrayCalculatedDefaultValue',
-        'schema_ids' => 'string[]',
-        'unique_fields' => 'string[]'
+        'prompt' => 'string'
     ];
 
     /**
@@ -84,11 +82,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'min_items' => 'int32',
-        'max_items' => 'int32',
-        'calculated_default_value' => null,
-        'schema_ids' => null,
-        'unique_fields' => null
+        'prompt' => null
     ];
 
     /**
@@ -97,11 +91,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'min_items' => true,
-		'max_items' => true,
-		'calculated_default_value' => false,
-		'schema_ids' => true,
-		'unique_fields' => true
+        'prompt' => false
     ];
 
     /**
@@ -118,7 +108,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes + parent::openAPITypes();
+        return self::$openAPITypes;
     }
 
     /**
@@ -138,7 +128,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats + parent::openAPIFormats();
+        return self::$openAPIFormats;
     }
 
     /**
@@ -148,7 +138,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables + parent::openAPINullables();
+        return self::$openAPINullables;
     }
 
     /**
@@ -200,11 +190,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      * @var string[]
      */
     protected static $attributeMap = [
-        'min_items' => 'minItems',
-        'max_items' => 'maxItems',
-        'calculated_default_value' => 'calculatedDefaultValue',
-        'schema_ids' => 'schemaIds',
-        'unique_fields' => 'uniqueFields'
+        'prompt' => 'prompt'
     ];
 
     /**
@@ -213,11 +199,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      * @var string[]
      */
     protected static $setters = [
-        'min_items' => 'setMinItems',
-        'max_items' => 'setMaxItems',
-        'calculated_default_value' => 'setCalculatedDefaultValue',
-        'schema_ids' => 'setSchemaIds',
-        'unique_fields' => 'setUniqueFields'
+        'prompt' => 'setPrompt'
     ];
 
     /**
@@ -226,11 +208,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      * @var string[]
      */
     protected static $getters = [
-        'min_items' => 'getMinItems',
-        'max_items' => 'getMaxItems',
-        'calculated_default_value' => 'getCalculatedDefaultValue',
-        'schema_ids' => 'getSchemaIds',
-        'unique_fields' => 'getUniqueFields'
+        'prompt' => 'getPrompt'
     ];
 
     /**
@@ -241,7 +219,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -251,7 +229,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -261,7 +239,7 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -275,6 +253,12 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
     }
 
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -284,17 +268,8 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
+        $this->setIfExists('prompt', $data ?? [], null);
 
-        $this->setIfExists('min_items', $data ?? [], null);
-        $this->setIfExists('max_items', $data ?? [], null);
-        $this->setIfExists('calculated_default_value', $data ?? [], null);
-        $this->setIfExists('schema_ids', $data ?? [], null);
-        $this->setIfExists('unique_fields', $data ?? [], null);
-
-
-        // Initialize discriminator property with the model name.
-        $this->container['field_type'] = parent::$openAPIMappingsReverse['ComponentsFieldPropertiesDto'];
     }
 
     /**
@@ -322,7 +297,14 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
+
+        if ($this->container['prompt'] === null) {
+            $invalidProperties[] = "'prompt' can't be null";
+        }
+        if ((mb_strlen($this->container['prompt']) < 1)) {
+            $invalidProperties[] = "invalid value for 'prompt', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -340,164 +322,30 @@ class ComponentsFieldPropertiesDto extends FieldPropertiesDto
 
 
     /**
-     * Gets min_items
+     * Gets prompt
      *
-     * @return int|null
+     * @return string
      */
-    public function getMinItems()
+    public function getPrompt()
     {
-        return $this->container['min_items'];
+        return $this->container['prompt'];
     }
 
     /**
-     * Sets min_items
+     * Sets prompt
      *
-     * @param int|null $min_items The minimum allowed items for the field value.
+     * @param string $prompt The text to ask.
      *
      * @return self
      */
-    public function setMinItems($min_items)
+    public function setPrompt($prompt)
     {
-        if (is_null($min_items)) {
-            array_push($this->openAPINullablesSetToNull, 'min_items');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('min_items', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($prompt)) {
+            throw new \InvalidArgumentException('non-nullable prompt cannot be null');
         }
-        $this->container['min_items'] = $min_items;
 
-        return $this;
-    }
 
-    /**
-     * Gets max_items
-     *
-     * @return int|null
-     */
-    public function getMaxItems()
-    {
-        return $this->container['max_items'];
-    }
-
-    /**
-     * Sets max_items
-     *
-     * @param int|null $max_items The maximum allowed items for the field value.
-     *
-     * @return self
-     */
-    public function setMaxItems($max_items)
-    {
-        if (is_null($max_items)) {
-            array_push($this->openAPINullablesSetToNull, 'max_items');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('max_items', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['max_items'] = $max_items;
-
-        return $this;
-    }
-
-    /**
-     * Gets calculated_default_value
-     *
-     * @return \Squidex\Client\Model\ArrayCalculatedDefaultValue|null
-     */
-    public function getCalculatedDefaultValue()
-    {
-        return $this->container['calculated_default_value'];
-    }
-
-    /**
-     * Sets calculated_default_value
-     *
-     * @param \Squidex\Client\Model\ArrayCalculatedDefaultValue|null $calculated_default_value calculated_default_value
-     *
-     * @return self
-     */
-    public function setCalculatedDefaultValue($calculated_default_value)
-    {
-        if (is_null($calculated_default_value)) {
-            throw new \InvalidArgumentException('non-nullable calculated_default_value cannot be null');
-        }
-        $this->container['calculated_default_value'] = $calculated_default_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets schema_ids
-     *
-     * @return string[]|null
-     */
-    public function getSchemaIds()
-    {
-        return $this->container['schema_ids'];
-    }
-
-    /**
-     * Sets schema_ids
-     *
-     * @param string[]|null $schema_ids The ID of the embedded schemas.
-     *
-     * @return self
-     */
-    public function setSchemaIds($schema_ids)
-    {
-        if (is_null($schema_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'schema_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('schema_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['schema_ids'] = $schema_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets unique_fields
-     *
-     * @return string[]|null
-     */
-    public function getUniqueFields()
-    {
-        return $this->container['unique_fields'];
-    }
-
-    /**
-     * Sets unique_fields
-     *
-     * @param string[]|null $unique_fields The fields that must be unique.
-     *
-     * @return self
-     */
-    public function setUniqueFields($unique_fields)
-    {
-        if (is_null($unique_fields)) {
-            array_push($this->openAPINullablesSetToNull, 'unique_fields');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('unique_fields', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['unique_fields'] = $unique_fields;
+        $this->container['prompt'] = $prompt;
 
         return $this;
     }

@@ -62,6 +62,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
         'allow_duplicates' => 'bool',
         'resolve_reference' => 'bool',
         'must_be_published' => 'bool',
+        'query' => 'string',
         'editor' => '\Squidex\Client\Model\ReferencesFieldEditor',
         'schema_ids' => 'string[]'
     ];
@@ -95,6 +96,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
         'allow_duplicates' => null,
         'resolve_reference' => null,
         'must_be_published' => null,
+        'query' => null,
         'editor' => null,
         'schema_ids' => null
     ];
@@ -112,6 +114,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
 		'allow_duplicates' => false,
 		'resolve_reference' => false,
 		'must_be_published' => false,
+		'query' => true,
 		'editor' => false,
 		'schema_ids' => true
     ];
@@ -219,6 +222,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
         'allow_duplicates' => 'allowDuplicates',
         'resolve_reference' => 'resolveReference',
         'must_be_published' => 'mustBePublished',
+        'query' => 'query',
         'editor' => 'editor',
         'schema_ids' => 'schemaIds'
     ];
@@ -236,6 +240,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
         'allow_duplicates' => 'setAllowDuplicates',
         'resolve_reference' => 'setResolveReference',
         'must_be_published' => 'setMustBePublished',
+        'query' => 'setQuery',
         'editor' => 'setEditor',
         'schema_ids' => 'setSchemaIds'
     ];
@@ -253,6 +258,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
         'allow_duplicates' => 'getAllowDuplicates',
         'resolve_reference' => 'getResolveReference',
         'must_be_published' => 'getMustBePublished',
+        'query' => 'getQuery',
         'editor' => 'getEditor',
         'schema_ids' => 'getSchemaIds'
     ];
@@ -317,6 +323,7 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
         $this->setIfExists('allow_duplicates', $data ?? [], null);
         $this->setIfExists('resolve_reference', $data ?? [], null);
         $this->setIfExists('must_be_published', $data ?? [], null);
+        $this->setIfExists('query', $data ?? [], null);
         $this->setIfExists('editor', $data ?? [], null);
         $this->setIfExists('schema_ids', $data ?? [], null);
 
@@ -573,6 +580,40 @@ class ReferencesFieldPropertiesDto extends FieldPropertiesDto
             throw new \InvalidArgumentException('non-nullable must_be_published cannot be null');
         }
         $this->container['must_be_published'] = $must_be_published;
+
+        return $this;
+    }
+
+    /**
+     * Gets query
+     *
+     * @return string|null
+     */
+    public function getQuery()
+    {
+        return $this->container['query'];
+    }
+
+    /**
+     * Sets query
+     *
+     * @param string|null $query The initial query that is applied in the UI.
+     *
+     * @return self
+     */
+    public function setQuery($query)
+    {
+        if (is_null($query)) {
+            array_push($this->openAPINullablesSetToNull, 'query');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('query', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['query'] = $query;
 
         return $this;
     }

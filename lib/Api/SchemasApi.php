@@ -214,6 +214,7 @@ class SchemasApi
      *
      * Delete a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteField'] to see the possible values for this operation
@@ -222,9 +223,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteField($schema, $id, string $contentType = self::contentTypes['deleteField'][0])
+    public function deleteField($app, $schema, $id, string $contentType = self::contentTypes['deleteField'][0])
     {
-        list($response) = $this->deleteFieldWithHttpInfo($schema, $id, $contentType);
+        list($response) = $this->deleteFieldWithHttpInfo($app, $schema, $id, $contentType);
         return $response;
     }
 
@@ -233,6 +234,7 @@ class SchemasApi
      *
      * Delete a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteField'] to see the possible values for this operation
@@ -241,9 +243,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['deleteField'][0])
+    public function deleteFieldWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['deleteField'][0])
     {
-        $request = $this->deleteFieldRequest($schema, $id, $contentType);
+        $request = $this->deleteFieldRequest($app, $schema, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -380,6 +382,7 @@ class SchemasApi
      *
      * Delete a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteField'] to see the possible values for this operation
@@ -387,9 +390,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteFieldAsync($schema, $id, string $contentType = self::contentTypes['deleteField'][0])
+    public function deleteFieldAsync($app, $schema, $id, string $contentType = self::contentTypes['deleteField'][0])
     {
-        return $this->deleteFieldAsyncWithHttpInfo($schema, $id, $contentType)
+        return $this->deleteFieldAsyncWithHttpInfo($app, $schema, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -402,6 +405,7 @@ class SchemasApi
      *
      * Delete a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteField'] to see the possible values for this operation
@@ -409,10 +413,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['deleteField'][0])
+    public function deleteFieldAsyncWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['deleteField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->deleteFieldRequest($schema, $id, $contentType);
+        $request = $this->deleteFieldRequest($app, $schema, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -453,6 +457,7 @@ class SchemasApi
     /**
      * Create request for operation 'deleteField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteField'] to see the possible values for this operation
@@ -460,11 +465,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteFieldRequest($schema, $id, string $contentType = self::contentTypes['deleteField'][0])
+    public function deleteFieldRequest($app, $schema, $id, string $contentType = self::contentTypes['deleteField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -579,6 +583,7 @@ class SchemasApi
      *
      * Delete a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -588,9 +593,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
+    public function deleteNestedField($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
     {
-        list($response) = $this->deleteNestedFieldWithHttpInfo($schema, $parent_id, $id, $contentType);
+        list($response) = $this->deleteNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, $contentType);
         return $response;
     }
 
@@ -599,6 +604,7 @@ class SchemasApi
      *
      * Delete a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -608,9 +614,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
+    public function deleteNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
     {
-        $request = $this->deleteNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->deleteNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -747,6 +753,7 @@ class SchemasApi
      *
      * Delete a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -755,9 +762,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteNestedFieldAsync($schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
+    public function deleteNestedFieldAsync($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
     {
-        return $this->deleteNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, $contentType)
+        return $this->deleteNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -770,6 +777,7 @@ class SchemasApi
      *
      * Delete a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -778,10 +786,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
+    public function deleteNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->deleteNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->deleteNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -822,6 +830,7 @@ class SchemasApi
     /**
      * Create request for operation 'deleteNestedField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -830,11 +839,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
+    public function deleteNestedFieldRequest($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -964,6 +972,7 @@ class SchemasApi
      *
      * Disable a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableField'] to see the possible values for this operation
@@ -972,9 +981,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function disableField($schema, $id, string $contentType = self::contentTypes['disableField'][0])
+    public function disableField($app, $schema, $id, string $contentType = self::contentTypes['disableField'][0])
     {
-        list($response) = $this->disableFieldWithHttpInfo($schema, $id, $contentType);
+        list($response) = $this->disableFieldWithHttpInfo($app, $schema, $id, $contentType);
         return $response;
     }
 
@@ -983,6 +992,7 @@ class SchemasApi
      *
      * Disable a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableField'] to see the possible values for this operation
@@ -991,9 +1001,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function disableFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['disableField'][0])
+    public function disableFieldWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['disableField'][0])
     {
-        $request = $this->disableFieldRequest($schema, $id, $contentType);
+        $request = $this->disableFieldRequest($app, $schema, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1130,6 +1140,7 @@ class SchemasApi
      *
      * Disable a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableField'] to see the possible values for this operation
@@ -1137,9 +1148,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function disableFieldAsync($schema, $id, string $contentType = self::contentTypes['disableField'][0])
+    public function disableFieldAsync($app, $schema, $id, string $contentType = self::contentTypes['disableField'][0])
     {
-        return $this->disableFieldAsyncWithHttpInfo($schema, $id, $contentType)
+        return $this->disableFieldAsyncWithHttpInfo($app, $schema, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1152,6 +1163,7 @@ class SchemasApi
      *
      * Disable a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableField'] to see the possible values for this operation
@@ -1159,10 +1171,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function disableFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['disableField'][0])
+    public function disableFieldAsyncWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['disableField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->disableFieldRequest($schema, $id, $contentType);
+        $request = $this->disableFieldRequest($app, $schema, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1203,6 +1215,7 @@ class SchemasApi
     /**
      * Create request for operation 'disableField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableField'] to see the possible values for this operation
@@ -1210,11 +1223,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function disableFieldRequest($schema, $id, string $contentType = self::contentTypes['disableField'][0])
+    public function disableFieldRequest($app, $schema, $id, string $contentType = self::contentTypes['disableField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1329,6 +1341,7 @@ class SchemasApi
      *
      * Disable a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -1338,9 +1351,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function disableNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
+    public function disableNestedField($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
     {
-        list($response) = $this->disableNestedFieldWithHttpInfo($schema, $parent_id, $id, $contentType);
+        list($response) = $this->disableNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, $contentType);
         return $response;
     }
 
@@ -1349,6 +1362,7 @@ class SchemasApi
      *
      * Disable a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -1358,9 +1372,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function disableNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
+    public function disableNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
     {
-        $request = $this->disableNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->disableNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1497,6 +1511,7 @@ class SchemasApi
      *
      * Disable a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -1505,9 +1520,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function disableNestedFieldAsync($schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
+    public function disableNestedFieldAsync($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
     {
-        return $this->disableNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, $contentType)
+        return $this->disableNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1520,6 +1535,7 @@ class SchemasApi
      *
      * Disable a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -1528,10 +1544,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function disableNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
+    public function disableNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->disableNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->disableNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1572,6 +1588,7 @@ class SchemasApi
     /**
      * Create request for operation 'disableNestedField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to disable. (required)
@@ -1580,11 +1597,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function disableNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
+    public function disableNestedFieldRequest($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1714,6 +1730,7 @@ class SchemasApi
      *
      * Enable a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableField'] to see the possible values for this operation
@@ -1722,9 +1739,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function enableField($schema, $id, string $contentType = self::contentTypes['enableField'][0])
+    public function enableField($app, $schema, $id, string $contentType = self::contentTypes['enableField'][0])
     {
-        list($response) = $this->enableFieldWithHttpInfo($schema, $id, $contentType);
+        list($response) = $this->enableFieldWithHttpInfo($app, $schema, $id, $contentType);
         return $response;
     }
 
@@ -1733,6 +1750,7 @@ class SchemasApi
      *
      * Enable a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableField'] to see the possible values for this operation
@@ -1741,9 +1759,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function enableFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['enableField'][0])
+    public function enableFieldWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['enableField'][0])
     {
-        $request = $this->enableFieldRequest($schema, $id, $contentType);
+        $request = $this->enableFieldRequest($app, $schema, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1880,6 +1898,7 @@ class SchemasApi
      *
      * Enable a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableField'] to see the possible values for this operation
@@ -1887,9 +1906,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableFieldAsync($schema, $id, string $contentType = self::contentTypes['enableField'][0])
+    public function enableFieldAsync($app, $schema, $id, string $contentType = self::contentTypes['enableField'][0])
     {
-        return $this->enableFieldAsyncWithHttpInfo($schema, $id, $contentType)
+        return $this->enableFieldAsyncWithHttpInfo($app, $schema, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1902,6 +1921,7 @@ class SchemasApi
      *
      * Enable a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableField'] to see the possible values for this operation
@@ -1909,10 +1929,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['enableField'][0])
+    public function enableFieldAsyncWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['enableField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->enableFieldRequest($schema, $id, $contentType);
+        $request = $this->enableFieldRequest($app, $schema, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1953,6 +1973,7 @@ class SchemasApi
     /**
      * Create request for operation 'enableField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableField'] to see the possible values for this operation
@@ -1960,11 +1981,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function enableFieldRequest($schema, $id, string $contentType = self::contentTypes['enableField'][0])
+    public function enableFieldRequest($app, $schema, $id, string $contentType = self::contentTypes['enableField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2079,6 +2099,7 @@ class SchemasApi
      *
      * Enable a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to enable. (required)
@@ -2088,9 +2109,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function enableNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
+    public function enableNestedField($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
     {
-        list($response) = $this->enableNestedFieldWithHttpInfo($schema, $parent_id, $id, $contentType);
+        list($response) = $this->enableNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, $contentType);
         return $response;
     }
 
@@ -2099,6 +2120,7 @@ class SchemasApi
      *
      * Enable a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to enable. (required)
@@ -2108,9 +2130,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function enableNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
+    public function enableNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
     {
-        $request = $this->enableNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->enableNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2247,6 +2269,7 @@ class SchemasApi
      *
      * Enable a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to enable. (required)
@@ -2255,9 +2278,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableNestedFieldAsync($schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
+    public function enableNestedFieldAsync($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
     {
-        return $this->enableNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, $contentType)
+        return $this->enableNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2270,6 +2293,7 @@ class SchemasApi
      *
      * Enable a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to enable. (required)
@@ -2278,10 +2302,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
+    public function enableNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->enableNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->enableNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2322,6 +2346,7 @@ class SchemasApi
     /**
      * Create request for operation 'enableNestedField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to enable. (required)
@@ -2330,11 +2355,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function enableNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
+    public function enableNestedFieldRequest($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2464,6 +2488,7 @@ class SchemasApi
      *
      * Hide a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to hide. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideField'] to see the possible values for this operation
@@ -2472,9 +2497,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function hideField($schema, $id, string $contentType = self::contentTypes['hideField'][0])
+    public function hideField($app, $schema, $id, string $contentType = self::contentTypes['hideField'][0])
     {
-        list($response) = $this->hideFieldWithHttpInfo($schema, $id, $contentType);
+        list($response) = $this->hideFieldWithHttpInfo($app, $schema, $id, $contentType);
         return $response;
     }
 
@@ -2483,6 +2508,7 @@ class SchemasApi
      *
      * Hide a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to hide. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideField'] to see the possible values for this operation
@@ -2491,9 +2517,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function hideFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['hideField'][0])
+    public function hideFieldWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['hideField'][0])
     {
-        $request = $this->hideFieldRequest($schema, $id, $contentType);
+        $request = $this->hideFieldRequest($app, $schema, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2630,6 +2656,7 @@ class SchemasApi
      *
      * Hide a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to hide. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideField'] to see the possible values for this operation
@@ -2637,9 +2664,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function hideFieldAsync($schema, $id, string $contentType = self::contentTypes['hideField'][0])
+    public function hideFieldAsync($app, $schema, $id, string $contentType = self::contentTypes['hideField'][0])
     {
-        return $this->hideFieldAsyncWithHttpInfo($schema, $id, $contentType)
+        return $this->hideFieldAsyncWithHttpInfo($app, $schema, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2652,6 +2679,7 @@ class SchemasApi
      *
      * Hide a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to hide. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideField'] to see the possible values for this operation
@@ -2659,10 +2687,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function hideFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['hideField'][0])
+    public function hideFieldAsyncWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['hideField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->hideFieldRequest($schema, $id, $contentType);
+        $request = $this->hideFieldRequest($app, $schema, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2703,6 +2731,7 @@ class SchemasApi
     /**
      * Create request for operation 'hideField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to hide. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideField'] to see the possible values for this operation
@@ -2710,11 +2739,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function hideFieldRequest($schema, $id, string $contentType = self::contentTypes['hideField'][0])
+    public function hideFieldRequest($app, $schema, $id, string $contentType = self::contentTypes['hideField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2829,6 +2857,7 @@ class SchemasApi
      *
      * Hide a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to hide. (required)
@@ -2838,9 +2867,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function hideNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
+    public function hideNestedField($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
     {
-        list($response) = $this->hideNestedFieldWithHttpInfo($schema, $parent_id, $id, $contentType);
+        list($response) = $this->hideNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, $contentType);
         return $response;
     }
 
@@ -2849,6 +2878,7 @@ class SchemasApi
      *
      * Hide a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to hide. (required)
@@ -2858,9 +2888,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function hideNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
+    public function hideNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
     {
-        $request = $this->hideNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->hideNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2997,6 +3027,7 @@ class SchemasApi
      *
      * Hide a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to hide. (required)
@@ -3005,9 +3036,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function hideNestedFieldAsync($schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
+    public function hideNestedFieldAsync($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
     {
-        return $this->hideNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, $contentType)
+        return $this->hideNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3020,6 +3051,7 @@ class SchemasApi
      *
      * Hide a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to hide. (required)
@@ -3028,10 +3060,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function hideNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
+    public function hideNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->hideNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->hideNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3072,6 +3104,7 @@ class SchemasApi
     /**
      * Create request for operation 'hideNestedField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to hide. (required)
@@ -3080,11 +3113,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function hideNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
+    public function hideNestedFieldRequest($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3214,6 +3246,7 @@ class SchemasApi
      *
      * Lock a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to lock. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockField'] to see the possible values for this operation
@@ -3222,9 +3255,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function lockField($schema, $id, string $contentType = self::contentTypes['lockField'][0])
+    public function lockField($app, $schema, $id, string $contentType = self::contentTypes['lockField'][0])
     {
-        list($response) = $this->lockFieldWithHttpInfo($schema, $id, $contentType);
+        list($response) = $this->lockFieldWithHttpInfo($app, $schema, $id, $contentType);
         return $response;
     }
 
@@ -3233,6 +3266,7 @@ class SchemasApi
      *
      * Lock a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to lock. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockField'] to see the possible values for this operation
@@ -3241,9 +3275,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function lockFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['lockField'][0])
+    public function lockFieldWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['lockField'][0])
     {
-        $request = $this->lockFieldRequest($schema, $id, $contentType);
+        $request = $this->lockFieldRequest($app, $schema, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3380,6 +3414,7 @@ class SchemasApi
      *
      * Lock a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to lock. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockField'] to see the possible values for this operation
@@ -3387,9 +3422,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lockFieldAsync($schema, $id, string $contentType = self::contentTypes['lockField'][0])
+    public function lockFieldAsync($app, $schema, $id, string $contentType = self::contentTypes['lockField'][0])
     {
-        return $this->lockFieldAsyncWithHttpInfo($schema, $id, $contentType)
+        return $this->lockFieldAsyncWithHttpInfo($app, $schema, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3402,6 +3437,7 @@ class SchemasApi
      *
      * Lock a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to lock. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockField'] to see the possible values for this operation
@@ -3409,10 +3445,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lockFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['lockField'][0])
+    public function lockFieldAsyncWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['lockField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->lockFieldRequest($schema, $id, $contentType);
+        $request = $this->lockFieldRequest($app, $schema, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3453,6 +3489,7 @@ class SchemasApi
     /**
      * Create request for operation 'lockField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to lock. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockField'] to see the possible values for this operation
@@ -3460,11 +3497,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function lockFieldRequest($schema, $id, string $contentType = self::contentTypes['lockField'][0])
+    public function lockFieldRequest($app, $schema, $id, string $contentType = self::contentTypes['lockField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3579,6 +3615,7 @@ class SchemasApi
      *
      * Lock a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to lock. (required)
@@ -3588,9 +3625,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function lockNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
+    public function lockNestedField($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
     {
-        list($response) = $this->lockNestedFieldWithHttpInfo($schema, $parent_id, $id, $contentType);
+        list($response) = $this->lockNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, $contentType);
         return $response;
     }
 
@@ -3599,6 +3636,7 @@ class SchemasApi
      *
      * Lock a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to lock. (required)
@@ -3608,9 +3646,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function lockNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
+    public function lockNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
     {
-        $request = $this->lockNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->lockNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3747,6 +3785,7 @@ class SchemasApi
      *
      * Lock a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to lock. (required)
@@ -3755,9 +3794,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lockNestedFieldAsync($schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
+    public function lockNestedFieldAsync($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
     {
-        return $this->lockNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, $contentType)
+        return $this->lockNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3770,6 +3809,7 @@ class SchemasApi
      *
      * Lock a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to lock. (required)
@@ -3778,10 +3818,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lockNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
+    public function lockNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->lockNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->lockNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3822,6 +3862,7 @@ class SchemasApi
     /**
      * Create request for operation 'lockNestedField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to lock. (required)
@@ -3830,11 +3871,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function lockNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
+    public function lockNestedFieldRequest($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3964,6 +4004,7 @@ class SchemasApi
      *
      * Add a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
@@ -3972,9 +4013,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postField($schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
+    public function postField($app, $schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
     {
-        list($response) = $this->postFieldWithHttpInfo($schema, $add_field_dto, $contentType);
+        list($response) = $this->postFieldWithHttpInfo($app, $schema, $add_field_dto, $contentType);
         return $response;
     }
 
@@ -3983,6 +4024,7 @@ class SchemasApi
      *
      * Add a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
@@ -3991,9 +4033,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postFieldWithHttpInfo($schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
+    public function postFieldWithHttpInfo($app, $schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
     {
-        $request = $this->postFieldRequest($schema, $add_field_dto, $contentType);
+        $request = $this->postFieldRequest($app, $schema, $add_field_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4153,6 +4195,7 @@ class SchemasApi
      *
      * Add a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
@@ -4160,9 +4203,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postFieldAsync($schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
+    public function postFieldAsync($app, $schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
     {
-        return $this->postFieldAsyncWithHttpInfo($schema, $add_field_dto, $contentType)
+        return $this->postFieldAsyncWithHttpInfo($app, $schema, $add_field_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4175,6 +4218,7 @@ class SchemasApi
      *
      * Add a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
@@ -4182,10 +4226,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postFieldAsyncWithHttpInfo($schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
+    public function postFieldAsyncWithHttpInfo($app, $schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->postFieldRequest($schema, $add_field_dto, $contentType);
+        $request = $this->postFieldRequest($app, $schema, $add_field_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4226,6 +4270,7 @@ class SchemasApi
     /**
      * Create request for operation 'postField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postField'] to see the possible values for this operation
@@ -4233,11 +4278,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postFieldRequest($schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
+    public function postFieldRequest($app, $schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4351,6 +4395,7 @@ class SchemasApi
      *
      * Add a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
@@ -4360,9 +4405,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postNestedField($schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
+    public function postNestedField($app, $schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
     {
-        list($response) = $this->postNestedFieldWithHttpInfo($schema, $parent_id, $add_field_dto, $contentType);
+        list($response) = $this->postNestedFieldWithHttpInfo($app, $schema, $parent_id, $add_field_dto, $contentType);
         return $response;
     }
 
@@ -4371,6 +4416,7 @@ class SchemasApi
      *
      * Add a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
@@ -4380,9 +4426,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postNestedFieldWithHttpInfo($schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
+    public function postNestedFieldWithHttpInfo($app, $schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
     {
-        $request = $this->postNestedFieldRequest($schema, $parent_id, $add_field_dto, $contentType);
+        $request = $this->postNestedFieldRequest($app, $schema, $parent_id, $add_field_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4542,6 +4588,7 @@ class SchemasApi
      *
      * Add a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
@@ -4550,9 +4597,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postNestedFieldAsync($schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
+    public function postNestedFieldAsync($app, $schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
     {
-        return $this->postNestedFieldAsyncWithHttpInfo($schema, $parent_id, $add_field_dto, $contentType)
+        return $this->postNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $add_field_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4565,6 +4612,7 @@ class SchemasApi
      *
      * Add a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
@@ -4573,10 +4621,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postNestedFieldAsyncWithHttpInfo($schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
+    public function postNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->postNestedFieldRequest($schema, $parent_id, $add_field_dto, $contentType);
+        $request = $this->postNestedFieldRequest($app, $schema, $parent_id, $add_field_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4617,6 +4665,7 @@ class SchemasApi
     /**
      * Create request for operation 'postNestedField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\AddFieldDto $add_field_dto The field object that needs to be added to the schema. (required)
@@ -4625,11 +4674,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postNestedFieldRequest($schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
+    public function postNestedFieldRequest($app, $schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4758,6 +4806,7 @@ class SchemasApi
      *
      * Update a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
      * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
@@ -4767,9 +4816,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putField($schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
+    public function putField($app, $schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
     {
-        list($response) = $this->putFieldWithHttpInfo($schema, $id, $update_field_dto, $contentType);
+        list($response) = $this->putFieldWithHttpInfo($app, $schema, $id, $update_field_dto, $contentType);
         return $response;
     }
 
@@ -4778,6 +4827,7 @@ class SchemasApi
      *
      * Update a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
      * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
@@ -4787,9 +4837,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putFieldWithHttpInfo($schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
+    public function putFieldWithHttpInfo($app, $schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
     {
-        $request = $this->putFieldRequest($schema, $id, $update_field_dto, $contentType);
+        $request = $this->putFieldRequest($app, $schema, $id, $update_field_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4926,6 +4976,7 @@ class SchemasApi
      *
      * Update a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
      * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
@@ -4934,9 +4985,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putFieldAsync($schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
+    public function putFieldAsync($app, $schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
     {
-        return $this->putFieldAsyncWithHttpInfo($schema, $id, $update_field_dto, $contentType)
+        return $this->putFieldAsyncWithHttpInfo($app, $schema, $id, $update_field_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4949,6 +5000,7 @@ class SchemasApi
      *
      * Update a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
      * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
@@ -4957,10 +5009,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putFieldAsyncWithHttpInfo($schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
+    public function putFieldAsyncWithHttpInfo($app, $schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putFieldRequest($schema, $id, $update_field_dto, $contentType);
+        $request = $this->putFieldRequest($app, $schema, $id, $update_field_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5001,6 +5053,7 @@ class SchemasApi
     /**
      * Create request for operation 'putField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to update. (required)
      * @param  \Squidex\Client\Model\UpdateFieldDto $update_field_dto The field object that needs to be added to the schema. (required)
@@ -5009,11 +5062,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putFieldRequest($schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
+    public function putFieldRequest($app, $schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5142,6 +5194,7 @@ class SchemasApi
      *
      * Update a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
@@ -5152,9 +5205,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putNestedField($schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
+    public function putNestedField($app, $schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
     {
-        list($response) = $this->putNestedFieldWithHttpInfo($schema, $parent_id, $id, $update_field_dto, $contentType);
+        list($response) = $this->putNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, $update_field_dto, $contentType);
         return $response;
     }
 
@@ -5163,6 +5216,7 @@ class SchemasApi
      *
      * Update a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
@@ -5173,9 +5227,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putNestedFieldWithHttpInfo($schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
+    public function putNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
     {
-        $request = $this->putNestedFieldRequest($schema, $parent_id, $id, $update_field_dto, $contentType);
+        $request = $this->putNestedFieldRequest($app, $schema, $parent_id, $id, $update_field_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5312,6 +5366,7 @@ class SchemasApi
      *
      * Update a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
@@ -5321,9 +5376,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putNestedFieldAsync($schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
+    public function putNestedFieldAsync($app, $schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
     {
-        return $this->putNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, $update_field_dto, $contentType)
+        return $this->putNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, $update_field_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5336,6 +5391,7 @@ class SchemasApi
      *
      * Update a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
@@ -5345,10 +5401,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
+    public function putNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putNestedFieldRequest($schema, $parent_id, $id, $update_field_dto, $contentType);
+        $request = $this->putNestedFieldRequest($app, $schema, $parent_id, $id, $update_field_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5389,6 +5445,7 @@ class SchemasApi
     /**
      * Create request for operation 'putNestedField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to update. (required)
@@ -5398,11 +5455,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putNestedFieldRequest($schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
+    public function putNestedFieldRequest($app, $schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5546,6 +5602,7 @@ class SchemasApi
      *
      * Reorder all nested fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
@@ -5555,9 +5612,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putNestedFieldOrdering($schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
+    public function putNestedFieldOrdering($app, $schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
     {
-        list($response) = $this->putNestedFieldOrderingWithHttpInfo($schema, $parent_id, $reorder_fields_dto, $contentType);
+        list($response) = $this->putNestedFieldOrderingWithHttpInfo($app, $schema, $parent_id, $reorder_fields_dto, $contentType);
         return $response;
     }
 
@@ -5566,6 +5623,7 @@ class SchemasApi
      *
      * Reorder all nested fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
@@ -5575,9 +5633,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putNestedFieldOrderingWithHttpInfo($schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
+    public function putNestedFieldOrderingWithHttpInfo($app, $schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
     {
-        $request = $this->putNestedFieldOrderingRequest($schema, $parent_id, $reorder_fields_dto, $contentType);
+        $request = $this->putNestedFieldOrderingRequest($app, $schema, $parent_id, $reorder_fields_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5714,6 +5772,7 @@ class SchemasApi
      *
      * Reorder all nested fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
@@ -5722,9 +5781,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putNestedFieldOrderingAsync($schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
+    public function putNestedFieldOrderingAsync($app, $schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
     {
-        return $this->putNestedFieldOrderingAsyncWithHttpInfo($schema, $parent_id, $reorder_fields_dto, $contentType)
+        return $this->putNestedFieldOrderingAsyncWithHttpInfo($app, $schema, $parent_id, $reorder_fields_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5737,6 +5796,7 @@ class SchemasApi
      *
      * Reorder all nested fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
@@ -5745,10 +5805,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putNestedFieldOrderingAsyncWithHttpInfo($schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
+    public function putNestedFieldOrderingAsyncWithHttpInfo($app, $schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putNestedFieldOrderingRequest($schema, $parent_id, $reorder_fields_dto, $contentType);
+        $request = $this->putNestedFieldOrderingRequest($app, $schema, $parent_id, $reorder_fields_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5789,6 +5849,7 @@ class SchemasApi
     /**
      * Create request for operation 'putNestedFieldOrdering'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
@@ -5797,11 +5858,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putNestedFieldOrderingRequest($schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
+    public function putNestedFieldOrderingRequest($app, $schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5930,6 +5990,7 @@ class SchemasApi
      *
      * Reorder all fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
@@ -5938,9 +5999,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putSchemaFieldOrdering($schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
+    public function putSchemaFieldOrdering($app, $schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
     {
-        list($response) = $this->putSchemaFieldOrderingWithHttpInfo($schema, $reorder_fields_dto, $contentType);
+        list($response) = $this->putSchemaFieldOrderingWithHttpInfo($app, $schema, $reorder_fields_dto, $contentType);
         return $response;
     }
 
@@ -5949,6 +6010,7 @@ class SchemasApi
      *
      * Reorder all fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
@@ -5957,9 +6019,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putSchemaFieldOrderingWithHttpInfo($schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
+    public function putSchemaFieldOrderingWithHttpInfo($app, $schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
     {
-        $request = $this->putSchemaFieldOrderingRequest($schema, $reorder_fields_dto, $contentType);
+        $request = $this->putSchemaFieldOrderingRequest($app, $schema, $reorder_fields_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6096,6 +6158,7 @@ class SchemasApi
      *
      * Reorder all fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
@@ -6103,9 +6166,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSchemaFieldOrderingAsync($schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
+    public function putSchemaFieldOrderingAsync($app, $schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
     {
-        return $this->putSchemaFieldOrderingAsyncWithHttpInfo($schema, $reorder_fields_dto, $contentType)
+        return $this->putSchemaFieldOrderingAsyncWithHttpInfo($app, $schema, $reorder_fields_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6118,6 +6181,7 @@ class SchemasApi
      *
      * Reorder all fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
@@ -6125,10 +6189,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSchemaFieldOrderingAsyncWithHttpInfo($schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
+    public function putSchemaFieldOrderingAsyncWithHttpInfo($app, $schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putSchemaFieldOrderingRequest($schema, $reorder_fields_dto, $contentType);
+        $request = $this->putSchemaFieldOrderingRequest($app, $schema, $reorder_fields_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6169,6 +6233,7 @@ class SchemasApi
     /**
      * Create request for operation 'putSchemaFieldOrdering'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ReorderFieldsDto $reorder_fields_dto The request that contains the field ids. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaFieldOrdering'] to see the possible values for this operation
@@ -6176,11 +6241,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putSchemaFieldOrderingRequest($schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
+    public function putSchemaFieldOrderingRequest($app, $schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6294,6 +6358,7 @@ class SchemasApi
      *
      * Configure UI fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
@@ -6302,9 +6367,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putSchemaUIFields($schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
+    public function putSchemaUIFields($app, $schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
     {
-        list($response) = $this->putSchemaUIFieldsWithHttpInfo($schema, $configure_ui_fields_dto, $contentType);
+        list($response) = $this->putSchemaUIFieldsWithHttpInfo($app, $schema, $configure_ui_fields_dto, $contentType);
         return $response;
     }
 
@@ -6313,6 +6378,7 @@ class SchemasApi
      *
      * Configure UI fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
@@ -6321,9 +6387,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putSchemaUIFieldsWithHttpInfo($schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
+    public function putSchemaUIFieldsWithHttpInfo($app, $schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
     {
-        $request = $this->putSchemaUIFieldsRequest($schema, $configure_ui_fields_dto, $contentType);
+        $request = $this->putSchemaUIFieldsRequest($app, $schema, $configure_ui_fields_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6460,6 +6526,7 @@ class SchemasApi
      *
      * Configure UI fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
@@ -6467,9 +6534,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSchemaUIFieldsAsync($schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
+    public function putSchemaUIFieldsAsync($app, $schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
     {
-        return $this->putSchemaUIFieldsAsyncWithHttpInfo($schema, $configure_ui_fields_dto, $contentType)
+        return $this->putSchemaUIFieldsAsyncWithHttpInfo($app, $schema, $configure_ui_fields_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6482,6 +6549,7 @@ class SchemasApi
      *
      * Configure UI fields.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
@@ -6489,10 +6557,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSchemaUIFieldsAsyncWithHttpInfo($schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
+    public function putSchemaUIFieldsAsyncWithHttpInfo($app, $schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putSchemaUIFieldsRequest($schema, $configure_ui_fields_dto, $contentType);
+        $request = $this->putSchemaUIFieldsRequest($app, $schema, $configure_ui_fields_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6533,6 +6601,7 @@ class SchemasApi
     /**
      * Create request for operation 'putSchemaUIFields'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureUIFieldsDto $configure_ui_fields_dto The request that contains the field names. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaUIFields'] to see the possible values for this operation
@@ -6540,11 +6609,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putSchemaUIFieldsRequest($schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
+    public function putSchemaUIFieldsRequest($app, $schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6658,6 +6726,7 @@ class SchemasApi
      *
      * Show a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to show. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showField'] to see the possible values for this operation
@@ -6666,9 +6735,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function showField($schema, $id, string $contentType = self::contentTypes['showField'][0])
+    public function showField($app, $schema, $id, string $contentType = self::contentTypes['showField'][0])
     {
-        list($response) = $this->showFieldWithHttpInfo($schema, $id, $contentType);
+        list($response) = $this->showFieldWithHttpInfo($app, $schema, $id, $contentType);
         return $response;
     }
 
@@ -6677,6 +6746,7 @@ class SchemasApi
      *
      * Show a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to show. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showField'] to see the possible values for this operation
@@ -6685,9 +6755,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function showFieldWithHttpInfo($schema, $id, string $contentType = self::contentTypes['showField'][0])
+    public function showFieldWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['showField'][0])
     {
-        $request = $this->showFieldRequest($schema, $id, $contentType);
+        $request = $this->showFieldRequest($app, $schema, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6824,6 +6894,7 @@ class SchemasApi
      *
      * Show a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to show. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showField'] to see the possible values for this operation
@@ -6831,9 +6902,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function showFieldAsync($schema, $id, string $contentType = self::contentTypes['showField'][0])
+    public function showFieldAsync($app, $schema, $id, string $contentType = self::contentTypes['showField'][0])
     {
-        return $this->showFieldAsyncWithHttpInfo($schema, $id, $contentType)
+        return $this->showFieldAsyncWithHttpInfo($app, $schema, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6846,6 +6917,7 @@ class SchemasApi
      *
      * Show a schema field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to show. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showField'] to see the possible values for this operation
@@ -6853,10 +6925,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function showFieldAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['showField'][0])
+    public function showFieldAsyncWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['showField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->showFieldRequest($schema, $id, $contentType);
+        $request = $this->showFieldRequest($app, $schema, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6897,6 +6969,7 @@ class SchemasApi
     /**
      * Create request for operation 'showField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $id The ID of the field to show. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showField'] to see the possible values for this operation
@@ -6904,11 +6977,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function showFieldRequest($schema, $id, string $contentType = self::contentTypes['showField'][0])
+    public function showFieldRequest($app, $schema, $id, string $contentType = self::contentTypes['showField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7023,6 +7095,7 @@ class SchemasApi
      *
      * Show a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to show. (required)
@@ -7032,9 +7105,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function showNestedField($schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
+    public function showNestedField($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
     {
-        list($response) = $this->showNestedFieldWithHttpInfo($schema, $parent_id, $id, $contentType);
+        list($response) = $this->showNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, $contentType);
         return $response;
     }
 
@@ -7043,6 +7116,7 @@ class SchemasApi
      *
      * Show a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to show. (required)
@@ -7052,9 +7126,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function showNestedFieldWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
+    public function showNestedFieldWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
     {
-        $request = $this->showNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->showNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7191,6 +7265,7 @@ class SchemasApi
      *
      * Show a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to show. (required)
@@ -7199,9 +7274,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function showNestedFieldAsync($schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
+    public function showNestedFieldAsync($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
     {
-        return $this->showNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, $contentType)
+        return $this->showNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7214,6 +7289,7 @@ class SchemasApi
      *
      * Show a nested field.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to show. (required)
@@ -7222,10 +7298,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function showNestedFieldAsyncWithHttpInfo($schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
+    public function showNestedFieldAsyncWithHttpInfo($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->showNestedFieldRequest($schema, $parent_id, $id, $contentType);
+        $request = $this->showNestedFieldRequest($app, $schema, $parent_id, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7266,6 +7342,7 @@ class SchemasApi
     /**
      * Create request for operation 'showNestedField'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  int $parent_id The parent field id. (required)
      * @param  int $id The ID of the field to show. (required)
@@ -7274,11 +7351,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function showNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
+    public function showNestedFieldRequest($app, $schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7408,6 +7484,7 @@ class SchemasApi
      *
      * Delete a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSchema'] to see the possible values for this operation
      *
@@ -7415,9 +7492,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteSchema($schema, string $contentType = self::contentTypes['deleteSchema'][0])
+    public function deleteSchema($app, $schema, string $contentType = self::contentTypes['deleteSchema'][0])
     {
-        $this->deleteSchemaWithHttpInfo($schema, $contentType);
+        $this->deleteSchemaWithHttpInfo($app, $schema, $contentType);
     }
 
     /**
@@ -7425,6 +7502,7 @@ class SchemasApi
      *
      * Delete a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSchema'] to see the possible values for this operation
      *
@@ -7432,9 +7510,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteSchemaWithHttpInfo($schema, string $contentType = self::contentTypes['deleteSchema'][0])
+    public function deleteSchemaWithHttpInfo($app, $schema, string $contentType = self::contentTypes['deleteSchema'][0])
     {
-        $request = $this->deleteSchemaRequest($schema, $contentType);
+        $request = $this->deleteSchemaRequest($app, $schema, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7501,15 +7579,16 @@ class SchemasApi
      *
      * Delete a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteSchemaAsync($schema, string $contentType = self::contentTypes['deleteSchema'][0])
+    public function deleteSchemaAsync($app, $schema, string $contentType = self::contentTypes['deleteSchema'][0])
     {
-        return $this->deleteSchemaAsyncWithHttpInfo($schema, $contentType)
+        return $this->deleteSchemaAsyncWithHttpInfo($app, $schema, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7522,16 +7601,17 @@ class SchemasApi
      *
      * Delete a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteSchemaAsyncWithHttpInfo($schema, string $contentType = self::contentTypes['deleteSchema'][0])
+    public function deleteSchemaAsyncWithHttpInfo($app, $schema, string $contentType = self::contentTypes['deleteSchema'][0])
     {
         $returnType = '';
-        $request = $this->deleteSchemaRequest($schema, $contentType);
+        $request = $this->deleteSchemaRequest($app, $schema, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7559,17 +7639,17 @@ class SchemasApi
     /**
      * Create request for operation 'deleteSchema'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteSchemaRequest($schema, string $contentType = self::contentTypes['deleteSchema'][0])
+    public function deleteSchemaRequest($app, $schema, string $contentType = self::contentTypes['deleteSchema'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7669,6 +7749,7 @@ class SchemasApi
      *
      * Get a schema by name.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchema'] to see the possible values for this operation
      *
@@ -7676,9 +7757,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getSchema($schema, string $contentType = self::contentTypes['getSchema'][0])
+    public function getSchema($app, $schema, string $contentType = self::contentTypes['getSchema'][0])
     {
-        list($response) = $this->getSchemaWithHttpInfo($schema, $contentType);
+        list($response) = $this->getSchemaWithHttpInfo($app, $schema, $contentType);
         return $response;
     }
 
@@ -7687,6 +7768,7 @@ class SchemasApi
      *
      * Get a schema by name.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchema'] to see the possible values for this operation
      *
@@ -7694,9 +7776,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSchemaWithHttpInfo($schema, string $contentType = self::contentTypes['getSchema'][0])
+    public function getSchemaWithHttpInfo($app, $schema, string $contentType = self::contentTypes['getSchema'][0])
     {
-        $request = $this->getSchemaRequest($schema, $contentType);
+        $request = $this->getSchemaRequest($app, $schema, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7810,15 +7892,16 @@ class SchemasApi
      *
      * Get a schema by name.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSchemaAsync($schema, string $contentType = self::contentTypes['getSchema'][0])
+    public function getSchemaAsync($app, $schema, string $contentType = self::contentTypes['getSchema'][0])
     {
-        return $this->getSchemaAsyncWithHttpInfo($schema, $contentType)
+        return $this->getSchemaAsyncWithHttpInfo($app, $schema, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7831,16 +7914,17 @@ class SchemasApi
      *
      * Get a schema by name.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSchemaAsyncWithHttpInfo($schema, string $contentType = self::contentTypes['getSchema'][0])
+    public function getSchemaAsyncWithHttpInfo($app, $schema, string $contentType = self::contentTypes['getSchema'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->getSchemaRequest($schema, $contentType);
+        $request = $this->getSchemaRequest($app, $schema, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7881,17 +7965,17 @@ class SchemasApi
     /**
      * Create request for operation 'getSchema'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to retrieve. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSchemaRequest($schema, string $contentType = self::contentTypes['getSchema'][0])
+    public function getSchemaRequest($app, $schema, string $contentType = self::contentTypes['getSchema'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7991,15 +8075,16 @@ class SchemasApi
      *
      * Get schemas.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchemas'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemasDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getSchemas(string $contentType = self::contentTypes['getSchemas'][0])
+    public function getSchemas($app, string $contentType = self::contentTypes['getSchemas'][0])
     {
-        list($response) = $this->getSchemasWithHttpInfo($contentType);
+        list($response) = $this->getSchemasWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -8008,15 +8093,16 @@ class SchemasApi
      *
      * Get schemas.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchemas'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemasDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSchemasWithHttpInfo(string $contentType = self::contentTypes['getSchemas'][0])
+    public function getSchemasWithHttpInfo($app, string $contentType = self::contentTypes['getSchemas'][0])
     {
-        $request = $this->getSchemasRequest($contentType);
+        $request = $this->getSchemasRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8130,14 +8216,15 @@ class SchemasApi
      *
      * Get schemas.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchemas'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSchemasAsync(string $contentType = self::contentTypes['getSchemas'][0])
+    public function getSchemasAsync($app, string $contentType = self::contentTypes['getSchemas'][0])
     {
-        return $this->getSchemasAsyncWithHttpInfo($contentType)
+        return $this->getSchemasAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8150,15 +8237,16 @@ class SchemasApi
      *
      * Get schemas.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchemas'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSchemasAsyncWithHttpInfo(string $contentType = self::contentTypes['getSchemas'][0])
+    public function getSchemasAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getSchemas'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemasDto';
-        $request = $this->getSchemasRequest($contentType);
+        $request = $this->getSchemasRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8199,16 +8287,16 @@ class SchemasApi
     /**
      * Create request for operation 'getSchemas'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSchemas'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSchemasRequest(string $contentType = self::contentTypes['getSchemas'][0])
+    public function getSchemasRequest($app, string $contentType = self::contentTypes['getSchemas'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -8293,6 +8381,7 @@ class SchemasApi
      *
      * Create a new schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
@@ -8300,9 +8389,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postSchema($create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
+    public function postSchema($app, $create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
     {
-        list($response) = $this->postSchemaWithHttpInfo($create_schema_dto, $contentType);
+        list($response) = $this->postSchemaWithHttpInfo($app, $create_schema_dto, $contentType);
         return $response;
     }
 
@@ -8311,6 +8400,7 @@ class SchemasApi
      *
      * Create a new schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
@@ -8318,9 +8408,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSchemaWithHttpInfo($create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
+    public function postSchemaWithHttpInfo($app, $create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
     {
-        $request = $this->postSchemaRequest($create_schema_dto, $contentType);
+        $request = $this->postSchemaRequest($app, $create_schema_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8480,15 +8570,16 @@ class SchemasApi
      *
      * Create a new schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSchemaAsync($create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
+    public function postSchemaAsync($app, $create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
     {
-        return $this->postSchemaAsyncWithHttpInfo($create_schema_dto, $contentType)
+        return $this->postSchemaAsyncWithHttpInfo($app, $create_schema_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8501,16 +8592,17 @@ class SchemasApi
      *
      * Create a new schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSchemaAsyncWithHttpInfo($create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
+    public function postSchemaAsyncWithHttpInfo($app, $create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->postSchemaRequest($create_schema_dto, $contentType);
+        $request = $this->postSchemaRequest($app, $create_schema_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8551,17 +8643,17 @@ class SchemasApi
     /**
      * Create request for operation 'postSchema'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateSchemaDto $create_schema_dto The schema object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSchemaRequest($create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
+    public function postSchemaRequest($app, $create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -8660,6 +8752,7 @@ class SchemasApi
      *
      * Publish a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to publish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishSchema'] to see the possible values for this operation
      *
@@ -8667,9 +8760,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function publishSchema($schema, string $contentType = self::contentTypes['publishSchema'][0])
+    public function publishSchema($app, $schema, string $contentType = self::contentTypes['publishSchema'][0])
     {
-        list($response) = $this->publishSchemaWithHttpInfo($schema, $contentType);
+        list($response) = $this->publishSchemaWithHttpInfo($app, $schema, $contentType);
         return $response;
     }
 
@@ -8678,6 +8771,7 @@ class SchemasApi
      *
      * Publish a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to publish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishSchema'] to see the possible values for this operation
      *
@@ -8685,9 +8779,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function publishSchemaWithHttpInfo($schema, string $contentType = self::contentTypes['publishSchema'][0])
+    public function publishSchemaWithHttpInfo($app, $schema, string $contentType = self::contentTypes['publishSchema'][0])
     {
-        $request = $this->publishSchemaRequest($schema, $contentType);
+        $request = $this->publishSchemaRequest($app, $schema, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8824,15 +8918,16 @@ class SchemasApi
      *
      * Publish a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to publish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function publishSchemaAsync($schema, string $contentType = self::contentTypes['publishSchema'][0])
+    public function publishSchemaAsync($app, $schema, string $contentType = self::contentTypes['publishSchema'][0])
     {
-        return $this->publishSchemaAsyncWithHttpInfo($schema, $contentType)
+        return $this->publishSchemaAsyncWithHttpInfo($app, $schema, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8845,16 +8940,17 @@ class SchemasApi
      *
      * Publish a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to publish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function publishSchemaAsyncWithHttpInfo($schema, string $contentType = self::contentTypes['publishSchema'][0])
+    public function publishSchemaAsyncWithHttpInfo($app, $schema, string $contentType = self::contentTypes['publishSchema'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->publishSchemaRequest($schema, $contentType);
+        $request = $this->publishSchemaRequest($app, $schema, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8895,17 +8991,17 @@ class SchemasApi
     /**
      * Create request for operation 'publishSchema'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to publish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function publishSchemaRequest($schema, string $contentType = self::contentTypes['publishSchema'][0])
+    public function publishSchemaRequest($app, $schema, string $contentType = self::contentTypes['publishSchema'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -9005,6 +9101,7 @@ class SchemasApi
      *
      * Update a schema category.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
@@ -9013,9 +9110,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putCategory($schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
+    public function putCategory($app, $schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
     {
-        list($response) = $this->putCategoryWithHttpInfo($schema, $change_category_dto, $contentType);
+        list($response) = $this->putCategoryWithHttpInfo($app, $schema, $change_category_dto, $contentType);
         return $response;
     }
 
@@ -9024,6 +9121,7 @@ class SchemasApi
      *
      * Update a schema category.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
@@ -9032,9 +9130,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putCategoryWithHttpInfo($schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
+    public function putCategoryWithHttpInfo($app, $schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
     {
-        $request = $this->putCategoryRequest($schema, $change_category_dto, $contentType);
+        $request = $this->putCategoryRequest($app, $schema, $change_category_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9171,6 +9269,7 @@ class SchemasApi
      *
      * Update a schema category.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
@@ -9178,9 +9277,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCategoryAsync($schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
+    public function putCategoryAsync($app, $schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
     {
-        return $this->putCategoryAsyncWithHttpInfo($schema, $change_category_dto, $contentType)
+        return $this->putCategoryAsyncWithHttpInfo($app, $schema, $change_category_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9193,6 +9292,7 @@ class SchemasApi
      *
      * Update a schema category.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
@@ -9200,10 +9300,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCategoryAsyncWithHttpInfo($schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
+    public function putCategoryAsyncWithHttpInfo($app, $schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putCategoryRequest($schema, $change_category_dto, $contentType);
+        $request = $this->putCategoryRequest($app, $schema, $change_category_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9244,6 +9344,7 @@ class SchemasApi
     /**
      * Create request for operation 'putCategory'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ChangeCategoryDto $change_category_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCategory'] to see the possible values for this operation
@@ -9251,11 +9352,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putCategoryRequest($schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
+    public function putCategoryRequest($app, $schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -9369,6 +9469,7 @@ class SchemasApi
      *
      * Update the preview urls.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,string> $request_body The preview urls for the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPreviewUrls'] to see the possible values for this operation
@@ -9377,9 +9478,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putPreviewUrls($schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
+    public function putPreviewUrls($app, $schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
     {
-        list($response) = $this->putPreviewUrlsWithHttpInfo($schema, $request_body, $contentType);
+        list($response) = $this->putPreviewUrlsWithHttpInfo($app, $schema, $request_body, $contentType);
         return $response;
     }
 
@@ -9388,6 +9489,7 @@ class SchemasApi
      *
      * Update the preview urls.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,string> $request_body The preview urls for the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPreviewUrls'] to see the possible values for this operation
@@ -9396,9 +9498,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putPreviewUrlsWithHttpInfo($schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
+    public function putPreviewUrlsWithHttpInfo($app, $schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
     {
-        $request = $this->putPreviewUrlsRequest($schema, $request_body, $contentType);
+        $request = $this->putPreviewUrlsRequest($app, $schema, $request_body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9535,6 +9637,7 @@ class SchemasApi
      *
      * Update the preview urls.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,string> $request_body The preview urls for the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPreviewUrls'] to see the possible values for this operation
@@ -9542,9 +9645,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putPreviewUrlsAsync($schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
+    public function putPreviewUrlsAsync($app, $schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
     {
-        return $this->putPreviewUrlsAsyncWithHttpInfo($schema, $request_body, $contentType)
+        return $this->putPreviewUrlsAsyncWithHttpInfo($app, $schema, $request_body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9557,6 +9660,7 @@ class SchemasApi
      *
      * Update the preview urls.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,string> $request_body The preview urls for the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPreviewUrls'] to see the possible values for this operation
@@ -9564,10 +9668,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putPreviewUrlsAsyncWithHttpInfo($schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
+    public function putPreviewUrlsAsyncWithHttpInfo($app, $schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putPreviewUrlsRequest($schema, $request_body, $contentType);
+        $request = $this->putPreviewUrlsRequest($app, $schema, $request_body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9608,6 +9712,7 @@ class SchemasApi
     /**
      * Create request for operation 'putPreviewUrls'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,string> $request_body The preview urls for the schema. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPreviewUrls'] to see the possible values for this operation
@@ -9615,11 +9720,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putPreviewUrlsRequest($schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
+    public function putPreviewUrlsRequest($app, $schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -9733,6 +9837,7 @@ class SchemasApi
      *
      * Update the rules.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
@@ -9741,9 +9846,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putRules($schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
+    public function putRules($app, $schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
     {
-        list($response) = $this->putRulesWithHttpInfo($schema, $configure_field_rules_dto, $contentType);
+        list($response) = $this->putRulesWithHttpInfo($app, $schema, $configure_field_rules_dto, $contentType);
         return $response;
     }
 
@@ -9752,6 +9857,7 @@ class SchemasApi
      *
      * Update the rules.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
@@ -9760,9 +9866,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putRulesWithHttpInfo($schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
+    public function putRulesWithHttpInfo($app, $schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
     {
-        $request = $this->putRulesRequest($schema, $configure_field_rules_dto, $contentType);
+        $request = $this->putRulesRequest($app, $schema, $configure_field_rules_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9899,6 +10005,7 @@ class SchemasApi
      *
      * Update the rules.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
@@ -9906,9 +10013,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRulesAsync($schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
+    public function putRulesAsync($app, $schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
     {
-        return $this->putRulesAsyncWithHttpInfo($schema, $configure_field_rules_dto, $contentType)
+        return $this->putRulesAsyncWithHttpInfo($app, $schema, $configure_field_rules_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9921,6 +10028,7 @@ class SchemasApi
      *
      * Update the rules.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
@@ -9928,10 +10036,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRulesAsyncWithHttpInfo($schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
+    public function putRulesAsyncWithHttpInfo($app, $schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putRulesRequest($schema, $configure_field_rules_dto, $contentType);
+        $request = $this->putRulesRequest($app, $schema, $configure_field_rules_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9972,6 +10080,7 @@ class SchemasApi
     /**
      * Create request for operation 'putRules'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ConfigureFieldRulesDto $configure_field_rules_dto The schema rules object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRules'] to see the possible values for this operation
@@ -9979,11 +10088,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putRulesRequest($schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
+    public function putRulesRequest($app, $schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -10097,6 +10205,7 @@ class SchemasApi
      *
      * Update a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
@@ -10105,9 +10214,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putSchema($schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
+    public function putSchema($app, $schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
     {
-        list($response) = $this->putSchemaWithHttpInfo($schema, $update_schema_dto, $contentType);
+        list($response) = $this->putSchemaWithHttpInfo($app, $schema, $update_schema_dto, $contentType);
         return $response;
     }
 
@@ -10116,6 +10225,7 @@ class SchemasApi
      *
      * Update a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
@@ -10124,9 +10234,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putSchemaWithHttpInfo($schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
+    public function putSchemaWithHttpInfo($app, $schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
     {
-        $request = $this->putSchemaRequest($schema, $update_schema_dto, $contentType);
+        $request = $this->putSchemaRequest($app, $schema, $update_schema_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10263,6 +10373,7 @@ class SchemasApi
      *
      * Update a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
@@ -10270,9 +10381,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSchemaAsync($schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
+    public function putSchemaAsync($app, $schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
     {
-        return $this->putSchemaAsyncWithHttpInfo($schema, $update_schema_dto, $contentType)
+        return $this->putSchemaAsyncWithHttpInfo($app, $schema, $update_schema_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10285,6 +10396,7 @@ class SchemasApi
      *
      * Update a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
@@ -10292,10 +10404,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSchemaAsyncWithHttpInfo($schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
+    public function putSchemaAsyncWithHttpInfo($app, $schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putSchemaRequest($schema, $update_schema_dto, $contentType);
+        $request = $this->putSchemaRequest($app, $schema, $update_schema_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10336,6 +10448,7 @@ class SchemasApi
     /**
      * Create request for operation 'putSchema'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\UpdateSchemaDto $update_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchema'] to see the possible values for this operation
@@ -10343,11 +10456,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putSchemaRequest($schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
+    public function putSchemaRequest($app, $schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -10461,6 +10573,7 @@ class SchemasApi
      *
      * Synchronize a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
@@ -10469,9 +10582,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putSchemaSync($schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
+    public function putSchemaSync($app, $schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
     {
-        list($response) = $this->putSchemaSyncWithHttpInfo($schema, $synchronize_schema_dto, $contentType);
+        list($response) = $this->putSchemaSyncWithHttpInfo($app, $schema, $synchronize_schema_dto, $contentType);
         return $response;
     }
 
@@ -10480,6 +10593,7 @@ class SchemasApi
      *
      * Synchronize a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
@@ -10488,9 +10602,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putSchemaSyncWithHttpInfo($schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
+    public function putSchemaSyncWithHttpInfo($app, $schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
     {
-        $request = $this->putSchemaSyncRequest($schema, $synchronize_schema_dto, $contentType);
+        $request = $this->putSchemaSyncRequest($app, $schema, $synchronize_schema_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10627,6 +10741,7 @@ class SchemasApi
      *
      * Synchronize a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
@@ -10634,9 +10749,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSchemaSyncAsync($schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
+    public function putSchemaSyncAsync($app, $schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
     {
-        return $this->putSchemaSyncAsyncWithHttpInfo($schema, $synchronize_schema_dto, $contentType)
+        return $this->putSchemaSyncAsyncWithHttpInfo($app, $schema, $synchronize_schema_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10649,6 +10764,7 @@ class SchemasApi
      *
      * Synchronize a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
@@ -10656,10 +10772,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSchemaSyncAsyncWithHttpInfo($schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
+    public function putSchemaSyncAsyncWithHttpInfo($app, $schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putSchemaSyncRequest($schema, $synchronize_schema_dto, $contentType);
+        $request = $this->putSchemaSyncRequest($app, $schema, $synchronize_schema_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10700,6 +10816,7 @@ class SchemasApi
     /**
      * Create request for operation 'putSchemaSync'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SynchronizeSchemaDto $synchronize_schema_dto The schema object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSchemaSync'] to see the possible values for this operation
@@ -10707,11 +10824,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putSchemaSyncRequest($schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
+    public function putSchemaSyncRequest($app, $schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -10825,6 +10941,7 @@ class SchemasApi
      *
      * Update the scripts.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
@@ -10833,9 +10950,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putScripts($schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
+    public function putScripts($app, $schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
     {
-        list($response) = $this->putScriptsWithHttpInfo($schema, $schema_scripts_dto, $contentType);
+        list($response) = $this->putScriptsWithHttpInfo($app, $schema, $schema_scripts_dto, $contentType);
         return $response;
     }
 
@@ -10844,6 +10961,7 @@ class SchemasApi
      *
      * Update the scripts.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
@@ -10852,9 +10970,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putScriptsWithHttpInfo($schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
+    public function putScriptsWithHttpInfo($app, $schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
     {
-        $request = $this->putScriptsRequest($schema, $schema_scripts_dto, $contentType);
+        $request = $this->putScriptsRequest($app, $schema, $schema_scripts_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10991,6 +11109,7 @@ class SchemasApi
      *
      * Update the scripts.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
@@ -10998,9 +11117,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putScriptsAsync($schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
+    public function putScriptsAsync($app, $schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
     {
-        return $this->putScriptsAsyncWithHttpInfo($schema, $schema_scripts_dto, $contentType)
+        return $this->putScriptsAsyncWithHttpInfo($app, $schema, $schema_scripts_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11013,6 +11132,7 @@ class SchemasApi
      *
      * Update the scripts.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
@@ -11020,10 +11140,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putScriptsAsyncWithHttpInfo($schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
+    public function putScriptsAsyncWithHttpInfo($app, $schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->putScriptsRequest($schema, $schema_scripts_dto, $contentType);
+        $request = $this->putScriptsRequest($app, $schema, $schema_scripts_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11064,6 +11184,7 @@ class SchemasApi
     /**
      * Create request for operation 'putScripts'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\SchemaScriptsDto $schema_scripts_dto The schema scripts object that needs to updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putScripts'] to see the possible values for this operation
@@ -11071,11 +11192,10 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putScriptsRequest($schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
+    public function putScriptsRequest($app, $schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -11189,6 +11309,7 @@ class SchemasApi
      *
      * Unpublish a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to unpublish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpublishSchema'] to see the possible values for this operation
      *
@@ -11196,9 +11317,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function unpublishSchema($schema, string $contentType = self::contentTypes['unpublishSchema'][0])
+    public function unpublishSchema($app, $schema, string $contentType = self::contentTypes['unpublishSchema'][0])
     {
-        list($response) = $this->unpublishSchemaWithHttpInfo($schema, $contentType);
+        list($response) = $this->unpublishSchemaWithHttpInfo($app, $schema, $contentType);
         return $response;
     }
 
@@ -11207,6 +11328,7 @@ class SchemasApi
      *
      * Unpublish a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to unpublish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpublishSchema'] to see the possible values for this operation
      *
@@ -11214,9 +11336,9 @@ class SchemasApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SchemaDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function unpublishSchemaWithHttpInfo($schema, string $contentType = self::contentTypes['unpublishSchema'][0])
+    public function unpublishSchemaWithHttpInfo($app, $schema, string $contentType = self::contentTypes['unpublishSchema'][0])
     {
-        $request = $this->unpublishSchemaRequest($schema, $contentType);
+        $request = $this->unpublishSchemaRequest($app, $schema, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11353,15 +11475,16 @@ class SchemasApi
      *
      * Unpublish a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to unpublish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpublishSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unpublishSchemaAsync($schema, string $contentType = self::contentTypes['unpublishSchema'][0])
+    public function unpublishSchemaAsync($app, $schema, string $contentType = self::contentTypes['unpublishSchema'][0])
     {
-        return $this->unpublishSchemaAsyncWithHttpInfo($schema, $contentType)
+        return $this->unpublishSchemaAsyncWithHttpInfo($app, $schema, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11374,16 +11497,17 @@ class SchemasApi
      *
      * Unpublish a schema.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to unpublish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpublishSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unpublishSchemaAsyncWithHttpInfo($schema, string $contentType = self::contentTypes['unpublishSchema'][0])
+    public function unpublishSchemaAsyncWithHttpInfo($app, $schema, string $contentType = self::contentTypes['unpublishSchema'][0])
     {
         $returnType = '\Squidex\Client\Model\SchemaDto';
-        $request = $this->unpublishSchemaRequest($schema, $contentType);
+        $request = $this->unpublishSchemaRequest($app, $schema, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11424,17 +11548,17 @@ class SchemasApi
     /**
      * Create request for operation 'unpublishSchema'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema to unpublish. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpublishSchema'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function unpublishSchemaRequest($schema, string $contentType = self::contentTypes['unpublishSchema'][0])
+    public function unpublishSchemaRequest($app, $schema, string $contentType = self::contentTypes['unpublishSchema'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

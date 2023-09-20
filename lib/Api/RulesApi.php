@@ -178,6 +178,7 @@ class RulesApi
      *
      * Cancels an event.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvent'] to see the possible values for this operation
      *
@@ -185,9 +186,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteEvent($id, string $contentType = self::contentTypes['deleteEvent'][0])
+    public function deleteEvent($app, $id, string $contentType = self::contentTypes['deleteEvent'][0])
     {
-        $this->deleteEventWithHttpInfo($id, $contentType);
+        $this->deleteEventWithHttpInfo($app, $id, $contentType);
     }
 
     /**
@@ -195,6 +196,7 @@ class RulesApi
      *
      * Cancels an event.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvent'] to see the possible values for this operation
      *
@@ -202,9 +204,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteEventWithHttpInfo($id, string $contentType = self::contentTypes['deleteEvent'][0])
+    public function deleteEventWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteEvent'][0])
     {
-        $request = $this->deleteEventRequest($id, $contentType);
+        $request = $this->deleteEventRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -271,15 +273,16 @@ class RulesApi
      *
      * Cancels an event.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteEventAsync($id, string $contentType = self::contentTypes['deleteEvent'][0])
+    public function deleteEventAsync($app, $id, string $contentType = self::contentTypes['deleteEvent'][0])
     {
-        return $this->deleteEventAsyncWithHttpInfo($id, $contentType)
+        return $this->deleteEventAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -292,16 +295,17 @@ class RulesApi
      *
      * Cancels an event.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteEventAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteEvent'][0])
+    public function deleteEventAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteEvent'][0])
     {
         $returnType = '';
-        $request = $this->deleteEventRequest($id, $contentType);
+        $request = $this->deleteEventRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -329,17 +333,17 @@ class RulesApi
     /**
      * Create request for operation 'deleteEvent'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteEventRequest($id, string $contentType = self::contentTypes['deleteEvent'][0])
+    public function deleteEventRequest($app, $id, string $contentType = self::contentTypes['deleteEvent'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -439,15 +443,16 @@ class RulesApi
      *
      * Cancels all events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvents'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteEvents(string $contentType = self::contentTypes['deleteEvents'][0])
+    public function deleteEvents($app, string $contentType = self::contentTypes['deleteEvents'][0])
     {
-        $this->deleteEventsWithHttpInfo($contentType);
+        $this->deleteEventsWithHttpInfo($app, $contentType);
     }
 
     /**
@@ -455,15 +460,16 @@ class RulesApi
      *
      * Cancels all events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvents'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteEventsWithHttpInfo(string $contentType = self::contentTypes['deleteEvents'][0])
+    public function deleteEventsWithHttpInfo($app, string $contentType = self::contentTypes['deleteEvents'][0])
     {
-        $request = $this->deleteEventsRequest($contentType);
+        $request = $this->deleteEventsRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -530,14 +536,15 @@ class RulesApi
      *
      * Cancels all events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteEventsAsync(string $contentType = self::contentTypes['deleteEvents'][0])
+    public function deleteEventsAsync($app, string $contentType = self::contentTypes['deleteEvents'][0])
     {
-        return $this->deleteEventsAsyncWithHttpInfo($contentType)
+        return $this->deleteEventsAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -550,15 +557,16 @@ class RulesApi
      *
      * Cancels all events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteEventsAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteEvents'][0])
+    public function deleteEventsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['deleteEvents'][0])
     {
         $returnType = '';
-        $request = $this->deleteEventsRequest($contentType);
+        $request = $this->deleteEventsRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -586,16 +594,16 @@ class RulesApi
     /**
      * Create request for operation 'deleteEvents'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteEventsRequest(string $contentType = self::contentTypes['deleteEvents'][0])
+    public function deleteEventsRequest($app, string $contentType = self::contentTypes['deleteEvents'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -680,6 +688,7 @@ class RulesApi
      *
      * Delete a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRule'] to see the possible values for this operation
      *
@@ -687,9 +696,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteRule($id, string $contentType = self::contentTypes['deleteRule'][0])
+    public function deleteRule($app, $id, string $contentType = self::contentTypes['deleteRule'][0])
     {
-        $this->deleteRuleWithHttpInfo($id, $contentType);
+        $this->deleteRuleWithHttpInfo($app, $id, $contentType);
     }
 
     /**
@@ -697,6 +706,7 @@ class RulesApi
      *
      * Delete a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRule'] to see the possible values for this operation
      *
@@ -704,9 +714,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteRuleWithHttpInfo($id, string $contentType = self::contentTypes['deleteRule'][0])
+    public function deleteRuleWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteRule'][0])
     {
-        $request = $this->deleteRuleRequest($id, $contentType);
+        $request = $this->deleteRuleRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -773,15 +783,16 @@ class RulesApi
      *
      * Delete a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRuleAsync($id, string $contentType = self::contentTypes['deleteRule'][0])
+    public function deleteRuleAsync($app, $id, string $contentType = self::contentTypes['deleteRule'][0])
     {
-        return $this->deleteRuleAsyncWithHttpInfo($id, $contentType)
+        return $this->deleteRuleAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -794,16 +805,17 @@ class RulesApi
      *
      * Delete a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRuleAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteRule'][0])
+    public function deleteRuleAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteRule'][0])
     {
         $returnType = '';
-        $request = $this->deleteRuleRequest($id, $contentType);
+        $request = $this->deleteRuleRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -831,17 +843,17 @@ class RulesApi
     /**
      * Create request for operation 'deleteRule'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteRuleRequest($id, string $contentType = self::contentTypes['deleteRule'][0])
+    public function deleteRuleRequest($app, $id, string $contentType = self::contentTypes['deleteRule'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -941,6 +953,7 @@ class RulesApi
      *
      * Cancels all rule events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleEvents'] to see the possible values for this operation
      *
@@ -948,9 +961,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteRuleEvents($id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
+    public function deleteRuleEvents($app, $id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
     {
-        $this->deleteRuleEventsWithHttpInfo($id, $contentType);
+        $this->deleteRuleEventsWithHttpInfo($app, $id, $contentType);
     }
 
     /**
@@ -958,6 +971,7 @@ class RulesApi
      *
      * Cancels all rule events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleEvents'] to see the possible values for this operation
      *
@@ -965,9 +979,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteRuleEventsWithHttpInfo($id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
+    public function deleteRuleEventsWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
     {
-        $request = $this->deleteRuleEventsRequest($id, $contentType);
+        $request = $this->deleteRuleEventsRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1034,15 +1048,16 @@ class RulesApi
      *
      * Cancels all rule events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRuleEventsAsync($id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
+    public function deleteRuleEventsAsync($app, $id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
     {
-        return $this->deleteRuleEventsAsyncWithHttpInfo($id, $contentType)
+        return $this->deleteRuleEventsAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1055,16 +1070,17 @@ class RulesApi
      *
      * Cancels all rule events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRuleEventsAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
+    public function deleteRuleEventsAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
     {
         $returnType = '';
-        $request = $this->deleteRuleEventsRequest($id, $contentType);
+        $request = $this->deleteRuleEventsRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1092,17 +1108,17 @@ class RulesApi
     /**
      * Create request for operation 'deleteRuleEvents'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to cancel. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteRuleEventsRequest($id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
+    public function deleteRuleEventsRequest($app, $id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1202,15 +1218,16 @@ class RulesApi
      *
      * Cancel the current run.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleRun'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteRuleRun(string $contentType = self::contentTypes['deleteRuleRun'][0])
+    public function deleteRuleRun($app, string $contentType = self::contentTypes['deleteRuleRun'][0])
     {
-        $this->deleteRuleRunWithHttpInfo($contentType);
+        $this->deleteRuleRunWithHttpInfo($app, $contentType);
     }
 
     /**
@@ -1218,15 +1235,16 @@ class RulesApi
      *
      * Cancel the current run.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleRun'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteRuleRunWithHttpInfo(string $contentType = self::contentTypes['deleteRuleRun'][0])
+    public function deleteRuleRunWithHttpInfo($app, string $contentType = self::contentTypes['deleteRuleRun'][0])
     {
-        $request = $this->deleteRuleRunRequest($contentType);
+        $request = $this->deleteRuleRunRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1293,14 +1311,15 @@ class RulesApi
      *
      * Cancel the current run.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleRun'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRuleRunAsync(string $contentType = self::contentTypes['deleteRuleRun'][0])
+    public function deleteRuleRunAsync($app, string $contentType = self::contentTypes['deleteRuleRun'][0])
     {
-        return $this->deleteRuleRunAsyncWithHttpInfo($contentType)
+        return $this->deleteRuleRunAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1313,15 +1332,16 @@ class RulesApi
      *
      * Cancel the current run.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleRun'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRuleRunAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteRuleRun'][0])
+    public function deleteRuleRunAsyncWithHttpInfo($app, string $contentType = self::contentTypes['deleteRuleRun'][0])
     {
         $returnType = '';
-        $request = $this->deleteRuleRunRequest($contentType);
+        $request = $this->deleteRuleRunRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1349,16 +1369,16 @@ class RulesApi
     /**
      * Create request for operation 'deleteRuleRun'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRuleRun'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteRuleRunRequest(string $contentType = self::contentTypes['deleteRuleRun'][0])
+    public function deleteRuleRunRequest($app, string $contentType = self::contentTypes['deleteRuleRun'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1443,6 +1463,7 @@ class RulesApi
      *
      * Disable a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableRule'] to see the possible values for this operation
      *
@@ -1450,9 +1471,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function disableRule($id, string $contentType = self::contentTypes['disableRule'][0])
+    public function disableRule($app, $id, string $contentType = self::contentTypes['disableRule'][0])
     {
-        list($response) = $this->disableRuleWithHttpInfo($id, $contentType);
+        list($response) = $this->disableRuleWithHttpInfo($app, $id, $contentType);
         return $response;
     }
 
@@ -1461,6 +1482,7 @@ class RulesApi
      *
      * Disable a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableRule'] to see the possible values for this operation
      *
@@ -1468,9 +1490,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function disableRuleWithHttpInfo($id, string $contentType = self::contentTypes['disableRule'][0])
+    public function disableRuleWithHttpInfo($app, $id, string $contentType = self::contentTypes['disableRule'][0])
     {
-        $request = $this->disableRuleRequest($id, $contentType);
+        $request = $this->disableRuleRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1607,15 +1629,16 @@ class RulesApi
      *
      * Disable a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function disableRuleAsync($id, string $contentType = self::contentTypes['disableRule'][0])
+    public function disableRuleAsync($app, $id, string $contentType = self::contentTypes['disableRule'][0])
     {
-        return $this->disableRuleAsyncWithHttpInfo($id, $contentType)
+        return $this->disableRuleAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1628,16 +1651,17 @@ class RulesApi
      *
      * Disable a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function disableRuleAsyncWithHttpInfo($id, string $contentType = self::contentTypes['disableRule'][0])
+    public function disableRuleAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['disableRule'][0])
     {
         $returnType = '\Squidex\Client\Model\RuleDto';
-        $request = $this->disableRuleRequest($id, $contentType);
+        $request = $this->disableRuleRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1678,17 +1702,17 @@ class RulesApi
     /**
      * Create request for operation 'disableRule'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function disableRuleRequest($id, string $contentType = self::contentTypes['disableRule'][0])
+    public function disableRuleRequest($app, $id, string $contentType = self::contentTypes['disableRule'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1788,6 +1812,7 @@ class RulesApi
      *
      * Enable a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableRule'] to see the possible values for this operation
      *
@@ -1795,9 +1820,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function enableRule($id, string $contentType = self::contentTypes['enableRule'][0])
+    public function enableRule($app, $id, string $contentType = self::contentTypes['enableRule'][0])
     {
-        list($response) = $this->enableRuleWithHttpInfo($id, $contentType);
+        list($response) = $this->enableRuleWithHttpInfo($app, $id, $contentType);
         return $response;
     }
 
@@ -1806,6 +1831,7 @@ class RulesApi
      *
      * Enable a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableRule'] to see the possible values for this operation
      *
@@ -1813,9 +1839,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function enableRuleWithHttpInfo($id, string $contentType = self::contentTypes['enableRule'][0])
+    public function enableRuleWithHttpInfo($app, $id, string $contentType = self::contentTypes['enableRule'][0])
     {
-        $request = $this->enableRuleRequest($id, $contentType);
+        $request = $this->enableRuleRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1952,15 +1978,16 @@ class RulesApi
      *
      * Enable a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableRuleAsync($id, string $contentType = self::contentTypes['enableRule'][0])
+    public function enableRuleAsync($app, $id, string $contentType = self::contentTypes['enableRule'][0])
     {
-        return $this->enableRuleAsyncWithHttpInfo($id, $contentType)
+        return $this->enableRuleAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1973,16 +2000,17 @@ class RulesApi
      *
      * Enable a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableRuleAsyncWithHttpInfo($id, string $contentType = self::contentTypes['enableRule'][0])
+    public function enableRuleAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['enableRule'][0])
     {
         $returnType = '\Squidex\Client\Model\RuleDto';
-        $request = $this->enableRuleRequest($id, $contentType);
+        $request = $this->enableRuleRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2023,17 +2051,17 @@ class RulesApi
     /**
      * Create request for operation 'enableRule'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to enable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function enableRuleRequest($id, string $contentType = self::contentTypes['enableRule'][0])
+    public function enableRuleRequest($app, $id, string $contentType = self::contentTypes['enableRule'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3011,6 +3039,7 @@ class RulesApi
      *
      * Get rule events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $rule_id The optional rule id to filter to events. (optional)
      * @param  int $skip The number of events to skip. (optional, default to 0)
      * @param  int $take The number of events to take. (optional, default to 20)
@@ -3020,9 +3049,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RuleEventsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getEvents($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
+    public function getEvents($app, $rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
     {
-        list($response) = $this->getEventsWithHttpInfo($rule_id, $skip, $take, $contentType);
+        list($response) = $this->getEventsWithHttpInfo($app, $rule_id, $skip, $take, $contentType);
         return $response;
     }
 
@@ -3031,6 +3060,7 @@ class RulesApi
      *
      * Get rule events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $rule_id The optional rule id to filter to events. (optional)
      * @param  int $skip The number of events to skip. (optional, default to 0)
      * @param  int $take The number of events to take. (optional, default to 20)
@@ -3040,9 +3070,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RuleEventsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEventsWithHttpInfo($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
+    public function getEventsWithHttpInfo($app, $rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
     {
-        $request = $this->getEventsRequest($rule_id, $skip, $take, $contentType);
+        $request = $this->getEventsRequest($app, $rule_id, $skip, $take, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3156,6 +3186,7 @@ class RulesApi
      *
      * Get rule events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $rule_id The optional rule id to filter to events. (optional)
      * @param  int $skip The number of events to skip. (optional, default to 0)
      * @param  int $take The number of events to take. (optional, default to 20)
@@ -3164,9 +3195,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEventsAsync($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
+    public function getEventsAsync($app, $rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
     {
-        return $this->getEventsAsyncWithHttpInfo($rule_id, $skip, $take, $contentType)
+        return $this->getEventsAsyncWithHttpInfo($app, $rule_id, $skip, $take, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3179,6 +3210,7 @@ class RulesApi
      *
      * Get rule events.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $rule_id The optional rule id to filter to events. (optional)
      * @param  int $skip The number of events to skip. (optional, default to 0)
      * @param  int $take The number of events to take. (optional, default to 20)
@@ -3187,10 +3219,10 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEventsAsyncWithHttpInfo($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
+    public function getEventsAsyncWithHttpInfo($app, $rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
     {
         $returnType = '\Squidex\Client\Model\RuleEventsDto';
-        $request = $this->getEventsRequest($rule_id, $skip, $take, $contentType);
+        $request = $this->getEventsRequest($app, $rule_id, $skip, $take, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3231,6 +3263,7 @@ class RulesApi
     /**
      * Create request for operation 'getEvents'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $rule_id The optional rule id to filter to events. (optional)
      * @param  int $skip The number of events to skip. (optional, default to 0)
      * @param  int $take The number of events to take. (optional, default to 20)
@@ -3239,11 +3272,10 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getEventsRequest($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
+    public function getEventsRequest($app, $rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3358,15 +3390,16 @@ class RulesApi
      *
      * Get rules.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRules'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RulesDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getRules(string $contentType = self::contentTypes['getRules'][0])
+    public function getRules($app, string $contentType = self::contentTypes['getRules'][0])
     {
-        list($response) = $this->getRulesWithHttpInfo($contentType);
+        list($response) = $this->getRulesWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -3375,15 +3408,16 @@ class RulesApi
      *
      * Get rules.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRules'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RulesDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRulesWithHttpInfo(string $contentType = self::contentTypes['getRules'][0])
+    public function getRulesWithHttpInfo($app, string $contentType = self::contentTypes['getRules'][0])
     {
-        $request = $this->getRulesRequest($contentType);
+        $request = $this->getRulesRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3497,14 +3531,15 @@ class RulesApi
      *
      * Get rules.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRules'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRulesAsync(string $contentType = self::contentTypes['getRules'][0])
+    public function getRulesAsync($app, string $contentType = self::contentTypes['getRules'][0])
     {
-        return $this->getRulesAsyncWithHttpInfo($contentType)
+        return $this->getRulesAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3517,15 +3552,16 @@ class RulesApi
      *
      * Get rules.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRules'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRulesAsyncWithHttpInfo(string $contentType = self::contentTypes['getRules'][0])
+    public function getRulesAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getRules'][0])
     {
         $returnType = '\Squidex\Client\Model\RulesDto';
-        $request = $this->getRulesRequest($contentType);
+        $request = $this->getRulesRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3566,16 +3602,16 @@ class RulesApi
     /**
      * Create request for operation 'getRules'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRules'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRulesRequest(string $contentType = self::contentTypes['getRules'][0])
+    public function getRulesRequest($app, string $contentType = self::contentTypes['getRules'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3660,6 +3696,7 @@ class RulesApi
      *
      * Create a new rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
@@ -3667,9 +3704,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postRule($create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
+    public function postRule($app, $create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
     {
-        list($response) = $this->postRuleWithHttpInfo($create_rule_dto, $contentType);
+        list($response) = $this->postRuleWithHttpInfo($app, $create_rule_dto, $contentType);
         return $response;
     }
 
@@ -3678,6 +3715,7 @@ class RulesApi
      *
      * Create a new rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
@@ -3685,9 +3723,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postRuleWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
+    public function postRuleWithHttpInfo($app, $create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
     {
-        $request = $this->postRuleRequest($create_rule_dto, $contentType);
+        $request = $this->postRuleRequest($app, $create_rule_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3824,15 +3862,16 @@ class RulesApi
      *
      * Create a new rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRuleAsync($create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
+    public function postRuleAsync($app, $create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
     {
-        return $this->postRuleAsyncWithHttpInfo($create_rule_dto, $contentType)
+        return $this->postRuleAsyncWithHttpInfo($app, $create_rule_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3845,16 +3884,17 @@ class RulesApi
      *
      * Create a new rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRuleAsyncWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
+    public function postRuleAsyncWithHttpInfo($app, $create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
     {
         $returnType = '\Squidex\Client\Model\RuleDto';
-        $request = $this->postRuleRequest($create_rule_dto, $contentType);
+        $request = $this->postRuleRequest($app, $create_rule_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3895,17 +3935,17 @@ class RulesApi
     /**
      * Create request for operation 'postRule'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postRuleRequest($create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
+    public function postRuleRequest($app, $create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4004,6 +4044,7 @@ class RulesApi
      *
      * Retry the event immediately.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to enqueue. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putEvent'] to see the possible values for this operation
      *
@@ -4011,9 +4052,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function putEvent($id, string $contentType = self::contentTypes['putEvent'][0])
+    public function putEvent($app, $id, string $contentType = self::contentTypes['putEvent'][0])
     {
-        $this->putEventWithHttpInfo($id, $contentType);
+        $this->putEventWithHttpInfo($app, $id, $contentType);
     }
 
     /**
@@ -4021,6 +4062,7 @@ class RulesApi
      *
      * Retry the event immediately.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to enqueue. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putEvent'] to see the possible values for this operation
      *
@@ -4028,9 +4070,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putEventWithHttpInfo($id, string $contentType = self::contentTypes['putEvent'][0])
+    public function putEventWithHttpInfo($app, $id, string $contentType = self::contentTypes['putEvent'][0])
     {
-        $request = $this->putEventRequest($id, $contentType);
+        $request = $this->putEventRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4097,15 +4139,16 @@ class RulesApi
      *
      * Retry the event immediately.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to enqueue. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putEventAsync($id, string $contentType = self::contentTypes['putEvent'][0])
+    public function putEventAsync($app, $id, string $contentType = self::contentTypes['putEvent'][0])
     {
-        return $this->putEventAsyncWithHttpInfo($id, $contentType)
+        return $this->putEventAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4118,16 +4161,17 @@ class RulesApi
      *
      * Retry the event immediately.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to enqueue. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putEventAsyncWithHttpInfo($id, string $contentType = self::contentTypes['putEvent'][0])
+    public function putEventAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['putEvent'][0])
     {
         $returnType = '';
-        $request = $this->putEventRequest($id, $contentType);
+        $request = $this->putEventRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4155,17 +4199,17 @@ class RulesApi
     /**
      * Create request for operation 'putEvent'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The event to enqueue. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putEventRequest($id, string $contentType = self::contentTypes['putEvent'][0])
+    public function putEventRequest($app, $id, string $contentType = self::contentTypes['putEvent'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4265,6 +4309,7 @@ class RulesApi
      *
      * Update a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to update. (required)
      * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
@@ -4273,9 +4318,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putRule($id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
+    public function putRule($app, $id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
     {
-        list($response) = $this->putRuleWithHttpInfo($id, $update_rule_dto, $contentType);
+        list($response) = $this->putRuleWithHttpInfo($app, $id, $update_rule_dto, $contentType);
         return $response;
     }
 
@@ -4284,6 +4329,7 @@ class RulesApi
      *
      * Update a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to update. (required)
      * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
@@ -4292,9 +4338,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RuleDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putRuleWithHttpInfo($id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
+    public function putRuleWithHttpInfo($app, $id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
     {
-        $request = $this->putRuleRequest($id, $update_rule_dto, $contentType);
+        $request = $this->putRuleRequest($app, $id, $update_rule_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4431,6 +4477,7 @@ class RulesApi
      *
      * Update a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to update. (required)
      * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
@@ -4438,9 +4485,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRuleAsync($id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
+    public function putRuleAsync($app, $id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
     {
-        return $this->putRuleAsyncWithHttpInfo($id, $update_rule_dto, $contentType)
+        return $this->putRuleAsyncWithHttpInfo($app, $id, $update_rule_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4453,6 +4500,7 @@ class RulesApi
      *
      * Update a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to update. (required)
      * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
@@ -4460,10 +4508,10 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRuleAsyncWithHttpInfo($id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
+    public function putRuleAsyncWithHttpInfo($app, $id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
     {
         $returnType = '\Squidex\Client\Model\RuleDto';
-        $request = $this->putRuleRequest($id, $update_rule_dto, $contentType);
+        $request = $this->putRuleRequest($app, $id, $update_rule_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4504,6 +4552,7 @@ class RulesApi
     /**
      * Create request for operation 'putRule'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to update. (required)
      * @param  \Squidex\Client\Model\UpdateRuleDto $update_rule_dto The rule object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRule'] to see the possible values for this operation
@@ -4511,11 +4560,10 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putRuleRequest($id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
+    public function putRuleRequest($app, $id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4629,6 +4677,7 @@ class RulesApi
      *
      * Run a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to run. (required)
      * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRuleRun'] to see the possible values for this operation
@@ -4637,9 +4686,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function putRuleRun($id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
+    public function putRuleRun($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
     {
-        $this->putRuleRunWithHttpInfo($id, $from_snapshots, $contentType);
+        $this->putRuleRunWithHttpInfo($app, $id, $from_snapshots, $contentType);
     }
 
     /**
@@ -4647,6 +4696,7 @@ class RulesApi
      *
      * Run a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to run. (required)
      * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRuleRun'] to see the possible values for this operation
@@ -4655,9 +4705,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putRuleRunWithHttpInfo($id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
+    public function putRuleRunWithHttpInfo($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
     {
-        $request = $this->putRuleRunRequest($id, $from_snapshots, $contentType);
+        $request = $this->putRuleRunRequest($app, $id, $from_snapshots, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4724,6 +4774,7 @@ class RulesApi
      *
      * Run a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to run. (required)
      * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRuleRun'] to see the possible values for this operation
@@ -4731,9 +4782,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRuleRunAsync($id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
+    public function putRuleRunAsync($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
     {
-        return $this->putRuleRunAsyncWithHttpInfo($id, $from_snapshots, $contentType)
+        return $this->putRuleRunAsyncWithHttpInfo($app, $id, $from_snapshots, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4746,6 +4797,7 @@ class RulesApi
      *
      * Run a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to run. (required)
      * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRuleRun'] to see the possible values for this operation
@@ -4753,10 +4805,10 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRuleRunAsyncWithHttpInfo($id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
+    public function putRuleRunAsyncWithHttpInfo($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
     {
         $returnType = '';
-        $request = $this->putRuleRunRequest($id, $from_snapshots, $contentType);
+        $request = $this->putRuleRunRequest($app, $id, $from_snapshots, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4784,6 +4836,7 @@ class RulesApi
     /**
      * Create request for operation 'putRuleRun'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to run. (required)
      * @param  bool $from_snapshots Runs the rule from snapeshots if possible. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRuleRun'] to see the possible values for this operation
@@ -4791,11 +4844,10 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putRuleRunRequest($id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
+    public function putRuleRunRequest($app, $id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4905,6 +4957,7 @@ class RulesApi
      *
      * Simulate a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulateGET'] to see the possible values for this operation
      *
@@ -4912,9 +4965,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SimulatedRuleEventsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function simulateGET($id, string $contentType = self::contentTypes['simulateGET'][0])
+    public function simulateGET($app, $id, string $contentType = self::contentTypes['simulateGET'][0])
     {
-        list($response) = $this->simulateGETWithHttpInfo($id, $contentType);
+        list($response) = $this->simulateGETWithHttpInfo($app, $id, $contentType);
         return $response;
     }
 
@@ -4923,6 +4976,7 @@ class RulesApi
      *
      * Simulate a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulateGET'] to see the possible values for this operation
      *
@@ -4930,9 +4984,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SimulatedRuleEventsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function simulateGETWithHttpInfo($id, string $contentType = self::contentTypes['simulateGET'][0])
+    public function simulateGETWithHttpInfo($app, $id, string $contentType = self::contentTypes['simulateGET'][0])
     {
-        $request = $this->simulateGETRequest($id, $contentType);
+        $request = $this->simulateGETRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5046,15 +5100,16 @@ class RulesApi
      *
      * Simulate a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulateGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function simulateGETAsync($id, string $contentType = self::contentTypes['simulateGET'][0])
+    public function simulateGETAsync($app, $id, string $contentType = self::contentTypes['simulateGET'][0])
     {
-        return $this->simulateGETAsyncWithHttpInfo($id, $contentType)
+        return $this->simulateGETAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5067,16 +5122,17 @@ class RulesApi
      *
      * Simulate a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulateGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function simulateGETAsyncWithHttpInfo($id, string $contentType = self::contentTypes['simulateGET'][0])
+    public function simulateGETAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['simulateGET'][0])
     {
         $returnType = '\Squidex\Client\Model\SimulatedRuleEventsDto';
-        $request = $this->simulateGETRequest($id, $contentType);
+        $request = $this->simulateGETRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5117,17 +5173,17 @@ class RulesApi
     /**
      * Create request for operation 'simulateGET'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulateGET'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function simulateGETRequest($id, string $contentType = self::contentTypes['simulateGET'][0])
+    public function simulateGETRequest($app, $id, string $contentType = self::contentTypes['simulateGET'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5227,6 +5283,7 @@ class RulesApi
      *
      * Simulate a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
@@ -5234,9 +5291,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SimulatedRuleEventsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function simulatePOST($create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
+    public function simulatePOST($app, $create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
     {
-        list($response) = $this->simulatePOSTWithHttpInfo($create_rule_dto, $contentType);
+        list($response) = $this->simulatePOSTWithHttpInfo($app, $create_rule_dto, $contentType);
         return $response;
     }
 
@@ -5245,6 +5302,7 @@ class RulesApi
      *
      * Simulate a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
@@ -5252,9 +5310,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SimulatedRuleEventsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function simulatePOSTWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
+    public function simulatePOSTWithHttpInfo($app, $create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
     {
-        $request = $this->simulatePOSTRequest($create_rule_dto, $contentType);
+        $request = $this->simulatePOSTRequest($app, $create_rule_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5391,15 +5449,16 @@ class RulesApi
      *
      * Simulate a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function simulatePOSTAsync($create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
+    public function simulatePOSTAsync($app, $create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
     {
-        return $this->simulatePOSTAsyncWithHttpInfo($create_rule_dto, $contentType)
+        return $this->simulatePOSTAsyncWithHttpInfo($app, $create_rule_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5412,16 +5471,17 @@ class RulesApi
      *
      * Simulate a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function simulatePOSTAsyncWithHttpInfo($create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
+    public function simulatePOSTAsyncWithHttpInfo($app, $create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
     {
         $returnType = '\Squidex\Client\Model\SimulatedRuleEventsDto';
-        $request = $this->simulatePOSTRequest($create_rule_dto, $contentType);
+        $request = $this->simulatePOSTRequest($app, $create_rule_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5462,17 +5522,17 @@ class RulesApi
     /**
      * Create request for operation 'simulatePOST'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateRuleDto $create_rule_dto The rule to simulate. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['simulatePOST'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function simulatePOSTRequest($create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
+    public function simulatePOSTRequest($app, $create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5571,6 +5631,7 @@ class RulesApi
      *
      * Trigger a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerRule'] to see the possible values for this operation
      *
@@ -5578,9 +5639,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function triggerRule($id, string $contentType = self::contentTypes['triggerRule'][0])
+    public function triggerRule($app, $id, string $contentType = self::contentTypes['triggerRule'][0])
     {
-        $this->triggerRuleWithHttpInfo($id, $contentType);
+        $this->triggerRuleWithHttpInfo($app, $id, $contentType);
     }
 
     /**
@@ -5588,6 +5649,7 @@ class RulesApi
      *
      * Trigger a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerRule'] to see the possible values for this operation
      *
@@ -5595,9 +5657,9 @@ class RulesApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function triggerRuleWithHttpInfo($id, string $contentType = self::contentTypes['triggerRule'][0])
+    public function triggerRuleWithHttpInfo($app, $id, string $contentType = self::contentTypes['triggerRule'][0])
     {
-        $request = $this->triggerRuleRequest($id, $contentType);
+        $request = $this->triggerRuleRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5664,15 +5726,16 @@ class RulesApi
      *
      * Trigger a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function triggerRuleAsync($id, string $contentType = self::contentTypes['triggerRule'][0])
+    public function triggerRuleAsync($app, $id, string $contentType = self::contentTypes['triggerRule'][0])
     {
-        return $this->triggerRuleAsyncWithHttpInfo($id, $contentType)
+        return $this->triggerRuleAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5685,16 +5748,17 @@ class RulesApi
      *
      * Trigger a rule.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function triggerRuleAsyncWithHttpInfo($id, string $contentType = self::contentTypes['triggerRule'][0])
+    public function triggerRuleAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['triggerRule'][0])
     {
         $returnType = '';
-        $request = $this->triggerRuleRequest($id, $contentType);
+        $request = $this->triggerRuleRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5722,17 +5786,17 @@ class RulesApi
     /**
      * Create request for operation 'triggerRule'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the rule to disable. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerRule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function triggerRuleRequest($id, string $contentType = self::contentTypes['triggerRule'][0])
+    public function triggerRuleRequest($app, $id, string $contentType = self::contentTypes['triggerRule'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

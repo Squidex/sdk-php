@@ -133,15 +133,16 @@ class PlansApi
      *
      * Get app plan information.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\PlansDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getPlans(string $contentType = self::contentTypes['getPlans'][0])
+    public function getPlans($app, string $contentType = self::contentTypes['getPlans'][0])
     {
-        list($response) = $this->getPlansWithHttpInfo($contentType);
+        list($response) = $this->getPlansWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -150,15 +151,16 @@ class PlansApi
      *
      * Get app plan information.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\PlansDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPlansWithHttpInfo(string $contentType = self::contentTypes['getPlans'][0])
+    public function getPlansWithHttpInfo($app, string $contentType = self::contentTypes['getPlans'][0])
     {
-        $request = $this->getPlansRequest($contentType);
+        $request = $this->getPlansRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -272,14 +274,15 @@ class PlansApi
      *
      * Get app plan information.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPlansAsync(string $contentType = self::contentTypes['getPlans'][0])
+    public function getPlansAsync($app, string $contentType = self::contentTypes['getPlans'][0])
     {
-        return $this->getPlansAsyncWithHttpInfo($contentType)
+        return $this->getPlansAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -292,15 +295,16 @@ class PlansApi
      *
      * Get app plan information.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPlansAsyncWithHttpInfo(string $contentType = self::contentTypes['getPlans'][0])
+    public function getPlansAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getPlans'][0])
     {
         $returnType = '\Squidex\Client\Model\PlansDto';
-        $request = $this->getPlansRequest($contentType);
+        $request = $this->getPlansRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -341,16 +345,16 @@ class PlansApi
     /**
      * Create request for operation 'getPlans'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPlansRequest(string $contentType = self::contentTypes['getPlans'][0])
+    public function getPlansRequest($app, string $contentType = self::contentTypes['getPlans'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -435,6 +439,7 @@ class PlansApi
      *
      * Change the app plan.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
@@ -442,9 +447,9 @@ class PlansApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\PlanChangedDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putPlan($change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
+    public function putPlan($app, $change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
     {
-        list($response) = $this->putPlanWithHttpInfo($change_plan_dto, $contentType);
+        list($response) = $this->putPlanWithHttpInfo($app, $change_plan_dto, $contentType);
         return $response;
     }
 
@@ -453,6 +458,7 @@ class PlansApi
      *
      * Change the app plan.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
@@ -460,9 +466,9 @@ class PlansApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\PlanChangedDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putPlanWithHttpInfo($change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
+    public function putPlanWithHttpInfo($app, $change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
     {
-        $request = $this->putPlanRequest($change_plan_dto, $contentType);
+        $request = $this->putPlanRequest($app, $change_plan_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -599,15 +605,16 @@ class PlansApi
      *
      * Change the app plan.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putPlanAsync($change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
+    public function putPlanAsync($app, $change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
     {
-        return $this->putPlanAsyncWithHttpInfo($change_plan_dto, $contentType)
+        return $this->putPlanAsyncWithHttpInfo($app, $change_plan_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -620,16 +627,17 @@ class PlansApi
      *
      * Change the app plan.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putPlanAsyncWithHttpInfo($change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
+    public function putPlanAsyncWithHttpInfo($app, $change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
     {
         $returnType = '\Squidex\Client\Model\PlanChangedDto';
-        $request = $this->putPlanRequest($change_plan_dto, $contentType);
+        $request = $this->putPlanRequest($app, $change_plan_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -670,17 +678,17 @@ class PlansApi
     /**
      * Create request for operation 'putPlan'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\ChangePlanDto $change_plan_dto Plan object that needs to be changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putPlanRequest($change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
+    public function putPlanRequest($app, $change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

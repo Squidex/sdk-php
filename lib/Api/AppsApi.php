@@ -226,15 +226,16 @@ class AppsApi
      *
      * Get the app asset scripts.
      *
+     * @param  string $app The name of the app to get the asset scripts for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetScripts'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetScriptsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getAssetScripts(string $contentType = self::contentTypes['getAssetScripts'][0])
+    public function getAssetScripts($app, string $contentType = self::contentTypes['getAssetScripts'][0])
     {
-        list($response) = $this->getAssetScriptsWithHttpInfo($contentType);
+        list($response) = $this->getAssetScriptsWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -243,15 +244,16 @@ class AppsApi
      *
      * Get the app asset scripts.
      *
+     * @param  string $app The name of the app to get the asset scripts for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetScripts'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetScriptsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssetScriptsWithHttpInfo(string $contentType = self::contentTypes['getAssetScripts'][0])
+    public function getAssetScriptsWithHttpInfo($app, string $contentType = self::contentTypes['getAssetScripts'][0])
     {
-        $request = $this->getAssetScriptsRequest($contentType);
+        $request = $this->getAssetScriptsRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -365,14 +367,15 @@ class AppsApi
      *
      * Get the app asset scripts.
      *
+     * @param  string $app The name of the app to get the asset scripts for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetScripts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetScriptsAsync(string $contentType = self::contentTypes['getAssetScripts'][0])
+    public function getAssetScriptsAsync($app, string $contentType = self::contentTypes['getAssetScripts'][0])
     {
-        return $this->getAssetScriptsAsyncWithHttpInfo($contentType)
+        return $this->getAssetScriptsAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -385,15 +388,16 @@ class AppsApi
      *
      * Get the app asset scripts.
      *
+     * @param  string $app The name of the app to get the asset scripts for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetScripts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetScriptsAsyncWithHttpInfo(string $contentType = self::contentTypes['getAssetScripts'][0])
+    public function getAssetScriptsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getAssetScripts'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetScriptsDto';
-        $request = $this->getAssetScriptsRequest($contentType);
+        $request = $this->getAssetScriptsRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -434,16 +438,16 @@ class AppsApi
     /**
      * Create request for operation 'getAssetScripts'
      *
+     * @param  string $app The name of the app to get the asset scripts for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAssetScripts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAssetScriptsRequest(string $contentType = self::contentTypes['getAssetScripts'][0])
+    public function getAssetScriptsRequest($app, string $contentType = self::contentTypes['getAssetScripts'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -528,6 +532,7 @@ class AppsApi
      *
      * Update the app asset scripts.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetScripts'] to see the possible values for this operation
      *
@@ -535,9 +540,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AssetScriptsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putAssetScripts($update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
+    public function putAssetScripts($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
     {
-        list($response) = $this->putAssetScriptsWithHttpInfo($update_asset_scripts_dto, $contentType);
+        list($response) = $this->putAssetScriptsWithHttpInfo($app, $update_asset_scripts_dto, $contentType);
         return $response;
     }
 
@@ -546,6 +551,7 @@ class AppsApi
      *
      * Update the app asset scripts.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetScripts'] to see the possible values for this operation
      *
@@ -553,9 +559,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AssetScriptsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAssetScriptsWithHttpInfo($update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
+    public function putAssetScriptsWithHttpInfo($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
     {
-        $request = $this->putAssetScriptsRequest($update_asset_scripts_dto, $contentType);
+        $request = $this->putAssetScriptsRequest($app, $update_asset_scripts_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -692,15 +698,16 @@ class AppsApi
      *
      * Update the app asset scripts.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetScripts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetScriptsAsync($update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
+    public function putAssetScriptsAsync($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
     {
-        return $this->putAssetScriptsAsyncWithHttpInfo($update_asset_scripts_dto, $contentType)
+        return $this->putAssetScriptsAsyncWithHttpInfo($app, $update_asset_scripts_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -713,16 +720,17 @@ class AppsApi
      *
      * Update the app asset scripts.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetScripts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAssetScriptsAsyncWithHttpInfo($update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
+    public function putAssetScriptsAsyncWithHttpInfo($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
     {
         $returnType = '\Squidex\Client\Model\AssetScriptsDto';
-        $request = $this->putAssetScriptsRequest($update_asset_scripts_dto, $contentType);
+        $request = $this->putAssetScriptsRequest($app, $update_asset_scripts_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -763,17 +771,17 @@ class AppsApi
     /**
      * Create request for operation 'putAssetScripts'
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAssetScriptsDto $update_asset_scripts_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAssetScripts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAssetScriptsRequest($update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
+    public function putAssetScriptsRequest($app, $update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -872,6 +880,7 @@ class AppsApi
      *
      * Revoke an app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteClient'] to see the possible values for this operation
      *
@@ -879,9 +888,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ClientsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteClient($id, string $contentType = self::contentTypes['deleteClient'][0])
+    public function deleteClient($app, $id, string $contentType = self::contentTypes['deleteClient'][0])
     {
-        list($response) = $this->deleteClientWithHttpInfo($id, $contentType);
+        list($response) = $this->deleteClientWithHttpInfo($app, $id, $contentType);
         return $response;
     }
 
@@ -890,6 +899,7 @@ class AppsApi
      *
      * Revoke an app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteClient'] to see the possible values for this operation
      *
@@ -897,9 +907,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ClientsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteClientWithHttpInfo($id, string $contentType = self::contentTypes['deleteClient'][0])
+    public function deleteClientWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteClient'][0])
     {
-        $request = $this->deleteClientRequest($id, $contentType);
+        $request = $this->deleteClientRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1036,15 +1046,16 @@ class AppsApi
      *
      * Revoke an app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteClient'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteClientAsync($id, string $contentType = self::contentTypes['deleteClient'][0])
+    public function deleteClientAsync($app, $id, string $contentType = self::contentTypes['deleteClient'][0])
     {
-        return $this->deleteClientAsyncWithHttpInfo($id, $contentType)
+        return $this->deleteClientAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1057,16 +1068,17 @@ class AppsApi
      *
      * Revoke an app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteClient'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteClientAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteClient'][0])
+    public function deleteClientAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteClient'][0])
     {
         $returnType = '\Squidex\Client\Model\ClientsDto';
-        $request = $this->deleteClientRequest($id, $contentType);
+        $request = $this->deleteClientRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1107,17 +1119,17 @@ class AppsApi
     /**
      * Create request for operation 'deleteClient'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteClient'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteClientRequest($id, string $contentType = self::contentTypes['deleteClient'][0])
+    public function deleteClientRequest($app, $id, string $contentType = self::contentTypes['deleteClient'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1217,15 +1229,16 @@ class AppsApi
      *
      * Get app clients.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ClientsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getClients(string $contentType = self::contentTypes['getClients'][0])
+    public function getClients($app, string $contentType = self::contentTypes['getClients'][0])
     {
-        list($response) = $this->getClientsWithHttpInfo($contentType);
+        list($response) = $this->getClientsWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -1234,15 +1247,16 @@ class AppsApi
      *
      * Get app clients.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ClientsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getClientsWithHttpInfo(string $contentType = self::contentTypes['getClients'][0])
+    public function getClientsWithHttpInfo($app, string $contentType = self::contentTypes['getClients'][0])
     {
-        $request = $this->getClientsRequest($contentType);
+        $request = $this->getClientsRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1356,14 +1370,15 @@ class AppsApi
      *
      * Get app clients.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getClientsAsync(string $contentType = self::contentTypes['getClients'][0])
+    public function getClientsAsync($app, string $contentType = self::contentTypes['getClients'][0])
     {
-        return $this->getClientsAsyncWithHttpInfo($contentType)
+        return $this->getClientsAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1376,15 +1391,16 @@ class AppsApi
      *
      * Get app clients.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getClientsAsyncWithHttpInfo(string $contentType = self::contentTypes['getClients'][0])
+    public function getClientsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getClients'][0])
     {
         $returnType = '\Squidex\Client\Model\ClientsDto';
-        $request = $this->getClientsRequest($contentType);
+        $request = $this->getClientsRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1425,16 +1441,16 @@ class AppsApi
     /**
      * Create request for operation 'getClients'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getClientsRequest(string $contentType = self::contentTypes['getClients'][0])
+    public function getClientsRequest($app, string $contentType = self::contentTypes['getClients'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1519,6 +1535,7 @@ class AppsApi
      *
      * Create a new app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateClientDto $create_client_dto Client object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postClient'] to see the possible values for this operation
      *
@@ -1526,9 +1543,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ClientsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postClient($create_client_dto, string $contentType = self::contentTypes['postClient'][0])
+    public function postClient($app, $create_client_dto, string $contentType = self::contentTypes['postClient'][0])
     {
-        list($response) = $this->postClientWithHttpInfo($create_client_dto, $contentType);
+        list($response) = $this->postClientWithHttpInfo($app, $create_client_dto, $contentType);
         return $response;
     }
 
@@ -1537,6 +1554,7 @@ class AppsApi
      *
      * Create a new app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateClientDto $create_client_dto Client object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postClient'] to see the possible values for this operation
      *
@@ -1544,9 +1562,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ClientsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postClientWithHttpInfo($create_client_dto, string $contentType = self::contentTypes['postClient'][0])
+    public function postClientWithHttpInfo($app, $create_client_dto, string $contentType = self::contentTypes['postClient'][0])
     {
-        $request = $this->postClientRequest($create_client_dto, $contentType);
+        $request = $this->postClientRequest($app, $create_client_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1683,15 +1701,16 @@ class AppsApi
      *
      * Create a new app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateClientDto $create_client_dto Client object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postClient'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postClientAsync($create_client_dto, string $contentType = self::contentTypes['postClient'][0])
+    public function postClientAsync($app, $create_client_dto, string $contentType = self::contentTypes['postClient'][0])
     {
-        return $this->postClientAsyncWithHttpInfo($create_client_dto, $contentType)
+        return $this->postClientAsyncWithHttpInfo($app, $create_client_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1704,16 +1723,17 @@ class AppsApi
      *
      * Create a new app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateClientDto $create_client_dto Client object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postClient'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postClientAsyncWithHttpInfo($create_client_dto, string $contentType = self::contentTypes['postClient'][0])
+    public function postClientAsyncWithHttpInfo($app, $create_client_dto, string $contentType = self::contentTypes['postClient'][0])
     {
         $returnType = '\Squidex\Client\Model\ClientsDto';
-        $request = $this->postClientRequest($create_client_dto, $contentType);
+        $request = $this->postClientRequest($app, $create_client_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1754,17 +1774,17 @@ class AppsApi
     /**
      * Create request for operation 'postClient'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\CreateClientDto $create_client_dto Client object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postClient'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postClientRequest($create_client_dto, string $contentType = self::contentTypes['postClient'][0])
+    public function postClientRequest($app, $create_client_dto, string $contentType = self::contentTypes['postClient'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1863,6 +1883,7 @@ class AppsApi
      *
      * Updates an app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be updated. (required)
      * @param  \Squidex\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putClient'] to see the possible values for this operation
@@ -1871,9 +1892,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ClientsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putClient($id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
+    public function putClient($app, $id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
     {
-        list($response) = $this->putClientWithHttpInfo($id, $update_client_dto, $contentType);
+        list($response) = $this->putClientWithHttpInfo($app, $id, $update_client_dto, $contentType);
         return $response;
     }
 
@@ -1882,6 +1903,7 @@ class AppsApi
      *
      * Updates an app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be updated. (required)
      * @param  \Squidex\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putClient'] to see the possible values for this operation
@@ -1890,9 +1912,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ClientsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putClientWithHttpInfo($id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
+    public function putClientWithHttpInfo($app, $id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
     {
-        $request = $this->putClientRequest($id, $update_client_dto, $contentType);
+        $request = $this->putClientRequest($app, $id, $update_client_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2029,6 +2051,7 @@ class AppsApi
      *
      * Updates an app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be updated. (required)
      * @param  \Squidex\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putClient'] to see the possible values for this operation
@@ -2036,9 +2059,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putClientAsync($id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
+    public function putClientAsync($app, $id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
     {
-        return $this->putClientAsyncWithHttpInfo($id, $update_client_dto, $contentType)
+        return $this->putClientAsyncWithHttpInfo($app, $id, $update_client_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2051,6 +2074,7 @@ class AppsApi
      *
      * Updates an app client.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be updated. (required)
      * @param  \Squidex\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putClient'] to see the possible values for this operation
@@ -2058,10 +2082,10 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putClientAsyncWithHttpInfo($id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
+    public function putClientAsyncWithHttpInfo($app, $id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
     {
         $returnType = '\Squidex\Client\Model\ClientsDto';
-        $request = $this->putClientRequest($id, $update_client_dto, $contentType);
+        $request = $this->putClientRequest($app, $id, $update_client_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2102,6 +2126,7 @@ class AppsApi
     /**
      * Create request for operation 'putClient'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the client that must be updated. (required)
      * @param  \Squidex\Client\Model\UpdateClientDto $update_client_dto Client object that needs to be updated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putClient'] to see the possible values for this operation
@@ -2109,11 +2134,10 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putClientRequest($id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
+    public function putClientRequest($app, $id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2227,6 +2251,7 @@ class AppsApi
      *
      * Remove contributor.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the contributor. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContributor'] to see the possible values for this operation
      *
@@ -2234,9 +2259,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteContributor($id, string $contentType = self::contentTypes['deleteContributor'][0])
+    public function deleteContributor($app, $id, string $contentType = self::contentTypes['deleteContributor'][0])
     {
-        list($response) = $this->deleteContributorWithHttpInfo($id, $contentType);
+        list($response) = $this->deleteContributorWithHttpInfo($app, $id, $contentType);
         return $response;
     }
 
@@ -2245,6 +2270,7 @@ class AppsApi
      *
      * Remove contributor.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the contributor. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContributor'] to see the possible values for this operation
      *
@@ -2252,9 +2278,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteContributorWithHttpInfo($id, string $contentType = self::contentTypes['deleteContributor'][0])
+    public function deleteContributorWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteContributor'][0])
     {
-        $request = $this->deleteContributorRequest($id, $contentType);
+        $request = $this->deleteContributorRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2391,15 +2417,16 @@ class AppsApi
      *
      * Remove contributor.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the contributor. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContributor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteContributorAsync($id, string $contentType = self::contentTypes['deleteContributor'][0])
+    public function deleteContributorAsync($app, $id, string $contentType = self::contentTypes['deleteContributor'][0])
     {
-        return $this->deleteContributorAsyncWithHttpInfo($id, $contentType)
+        return $this->deleteContributorAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2412,16 +2439,17 @@ class AppsApi
      *
      * Remove contributor.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the contributor. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContributor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteContributorAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteContributor'][0])
+    public function deleteContributorAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteContributor'][0])
     {
         $returnType = '\Squidex\Client\Model\ContributorsDto';
-        $request = $this->deleteContributorRequest($id, $contentType);
+        $request = $this->deleteContributorRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2462,17 +2490,17 @@ class AppsApi
     /**
      * Create request for operation 'deleteContributor'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the contributor. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContributor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteContributorRequest($id, string $contentType = self::contentTypes['deleteContributor'][0])
+    public function deleteContributorRequest($app, $id, string $contentType = self::contentTypes['deleteContributor'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2572,15 +2600,16 @@ class AppsApi
      *
      * Remove yourself.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMyself'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteMyself(string $contentType = self::contentTypes['deleteMyself'][0])
+    public function deleteMyself($app, string $contentType = self::contentTypes['deleteMyself'][0])
     {
-        list($response) = $this->deleteMyselfWithHttpInfo($contentType);
+        list($response) = $this->deleteMyselfWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -2589,15 +2618,16 @@ class AppsApi
      *
      * Remove yourself.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMyself'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteMyselfWithHttpInfo(string $contentType = self::contentTypes['deleteMyself'][0])
+    public function deleteMyselfWithHttpInfo($app, string $contentType = self::contentTypes['deleteMyself'][0])
     {
-        $request = $this->deleteMyselfRequest($contentType);
+        $request = $this->deleteMyselfRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2734,14 +2764,15 @@ class AppsApi
      *
      * Remove yourself.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMyself'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteMyselfAsync(string $contentType = self::contentTypes['deleteMyself'][0])
+    public function deleteMyselfAsync($app, string $contentType = self::contentTypes['deleteMyself'][0])
     {
-        return $this->deleteMyselfAsyncWithHttpInfo($contentType)
+        return $this->deleteMyselfAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2754,15 +2785,16 @@ class AppsApi
      *
      * Remove yourself.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMyself'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteMyselfAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteMyself'][0])
+    public function deleteMyselfAsyncWithHttpInfo($app, string $contentType = self::contentTypes['deleteMyself'][0])
     {
         $returnType = '\Squidex\Client\Model\ContributorsDto';
-        $request = $this->deleteMyselfRequest($contentType);
+        $request = $this->deleteMyselfRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2803,16 +2835,16 @@ class AppsApi
     /**
      * Create request for operation 'deleteMyself'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMyself'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteMyselfRequest(string $contentType = self::contentTypes['deleteMyself'][0])
+    public function deleteMyselfRequest($app, string $contentType = self::contentTypes['deleteMyself'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2897,15 +2929,16 @@ class AppsApi
      *
      * Get app contributors.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContributors'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getContributors(string $contentType = self::contentTypes['getContributors'][0])
+    public function getContributors($app, string $contentType = self::contentTypes['getContributors'][0])
     {
-        list($response) = $this->getContributorsWithHttpInfo($contentType);
+        list($response) = $this->getContributorsWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -2914,15 +2947,16 @@ class AppsApi
      *
      * Get app contributors.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContributors'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getContributorsWithHttpInfo(string $contentType = self::contentTypes['getContributors'][0])
+    public function getContributorsWithHttpInfo($app, string $contentType = self::contentTypes['getContributors'][0])
     {
-        $request = $this->getContributorsRequest($contentType);
+        $request = $this->getContributorsRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3036,14 +3070,15 @@ class AppsApi
      *
      * Get app contributors.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContributors'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContributorsAsync(string $contentType = self::contentTypes['getContributors'][0])
+    public function getContributorsAsync($app, string $contentType = self::contentTypes['getContributors'][0])
     {
-        return $this->getContributorsAsyncWithHttpInfo($contentType)
+        return $this->getContributorsAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3056,15 +3091,16 @@ class AppsApi
      *
      * Get app contributors.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContributors'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContributorsAsyncWithHttpInfo(string $contentType = self::contentTypes['getContributors'][0])
+    public function getContributorsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getContributors'][0])
     {
         $returnType = '\Squidex\Client\Model\ContributorsDto';
-        $request = $this->getContributorsRequest($contentType);
+        $request = $this->getContributorsRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3105,16 +3141,16 @@ class AppsApi
     /**
      * Create request for operation 'getContributors'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContributors'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getContributorsRequest(string $contentType = self::contentTypes['getContributors'][0])
+    public function getContributorsRequest($app, string $contentType = self::contentTypes['getContributors'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3199,6 +3235,7 @@ class AppsApi
      *
      * Assign contributor to app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
@@ -3206,9 +3243,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postContributor($assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
+    public function postContributor($app, $assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
     {
-        list($response) = $this->postContributorWithHttpInfo($assign_contributor_dto, $contentType);
+        list($response) = $this->postContributorWithHttpInfo($app, $assign_contributor_dto, $contentType);
         return $response;
     }
 
@@ -3217,6 +3254,7 @@ class AppsApi
      *
      * Assign contributor to app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
@@ -3224,9 +3262,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContributorsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postContributorWithHttpInfo($assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
+    public function postContributorWithHttpInfo($app, $assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
     {
-        $request = $this->postContributorRequest($assign_contributor_dto, $contentType);
+        $request = $this->postContributorRequest($app, $assign_contributor_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3363,15 +3401,16 @@ class AppsApi
      *
      * Assign contributor to app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postContributorAsync($assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
+    public function postContributorAsync($app, $assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
     {
-        return $this->postContributorAsyncWithHttpInfo($assign_contributor_dto, $contentType)
+        return $this->postContributorAsyncWithHttpInfo($app, $assign_contributor_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3384,16 +3423,17 @@ class AppsApi
      *
      * Assign contributor to app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postContributorAsyncWithHttpInfo($assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
+    public function postContributorAsyncWithHttpInfo($app, $assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
     {
         $returnType = '\Squidex\Client\Model\ContributorsDto';
-        $request = $this->postContributorRequest($assign_contributor_dto, $contentType);
+        $request = $this->postContributorRequest($app, $assign_contributor_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3434,17 +3474,17 @@ class AppsApi
     /**
      * Create request for operation 'postContributor'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AssignContributorDto $assign_contributor_dto Contributor object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContributor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postContributorRequest($assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
+    public function postContributorRequest($app, $assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3543,15 +3583,16 @@ class AppsApi
      *
      * Get the app image.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      */
-    public function getImage(string $contentType = self::contentTypes['getImage'][0])
+    public function getImage($app, string $contentType = self::contentTypes['getImage'][0])
     {
-        list($response) = $this->getImageWithHttpInfo($contentType);
+        list($response) = $this->getImageWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -3560,15 +3601,16 @@ class AppsApi
      *
      * Get the app image.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getImageWithHttpInfo(string $contentType = self::contentTypes['getImage'][0])
+    public function getImageWithHttpInfo($app, string $contentType = self::contentTypes['getImage'][0])
     {
-        $request = $this->getImageRequest($contentType);
+        $request = $this->getImageRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3682,14 +3724,15 @@ class AppsApi
      *
      * Get the app image.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getImageAsync(string $contentType = self::contentTypes['getImage'][0])
+    public function getImageAsync($app, string $contentType = self::contentTypes['getImage'][0])
     {
-        return $this->getImageAsyncWithHttpInfo($contentType)
+        return $this->getImageAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3702,15 +3745,16 @@ class AppsApi
      *
      * Get the app image.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getImageAsyncWithHttpInfo(string $contentType = self::contentTypes['getImage'][0])
+    public function getImageAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getImage'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->getImageRequest($contentType);
+        $request = $this->getImageRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3751,16 +3795,16 @@ class AppsApi
     /**
      * Create request for operation 'getImage'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getImageRequest(string $contentType = self::contentTypes['getImage'][0])
+    public function getImageRequest($app, string $contentType = self::contentTypes['getImage'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3845,6 +3889,7 @@ class AppsApi
      *
      * Deletes an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to delete from the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteLanguage'] to see the possible values for this operation
      *
@@ -3852,9 +3897,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppLanguagesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteLanguage($language, string $contentType = self::contentTypes['deleteLanguage'][0])
+    public function deleteLanguage($app, $language, string $contentType = self::contentTypes['deleteLanguage'][0])
     {
-        list($response) = $this->deleteLanguageWithHttpInfo($language, $contentType);
+        list($response) = $this->deleteLanguageWithHttpInfo($app, $language, $contentType);
         return $response;
     }
 
@@ -3863,6 +3908,7 @@ class AppsApi
      *
      * Deletes an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to delete from the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteLanguage'] to see the possible values for this operation
      *
@@ -3870,9 +3916,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppLanguagesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteLanguageWithHttpInfo($language, string $contentType = self::contentTypes['deleteLanguage'][0])
+    public function deleteLanguageWithHttpInfo($app, $language, string $contentType = self::contentTypes['deleteLanguage'][0])
     {
-        $request = $this->deleteLanguageRequest($language, $contentType);
+        $request = $this->deleteLanguageRequest($app, $language, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4009,15 +4055,16 @@ class AppsApi
      *
      * Deletes an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to delete from the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteLanguage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteLanguageAsync($language, string $contentType = self::contentTypes['deleteLanguage'][0])
+    public function deleteLanguageAsync($app, $language, string $contentType = self::contentTypes['deleteLanguage'][0])
     {
-        return $this->deleteLanguageAsyncWithHttpInfo($language, $contentType)
+        return $this->deleteLanguageAsyncWithHttpInfo($app, $language, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4030,16 +4077,17 @@ class AppsApi
      *
      * Deletes an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to delete from the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteLanguage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteLanguageAsyncWithHttpInfo($language, string $contentType = self::contentTypes['deleteLanguage'][0])
+    public function deleteLanguageAsyncWithHttpInfo($app, $language, string $contentType = self::contentTypes['deleteLanguage'][0])
     {
         $returnType = '\Squidex\Client\Model\AppLanguagesDto';
-        $request = $this->deleteLanguageRequest($language, $contentType);
+        $request = $this->deleteLanguageRequest($app, $language, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4080,17 +4128,17 @@ class AppsApi
     /**
      * Create request for operation 'deleteLanguage'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to delete from the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteLanguage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteLanguageRequest($language, string $contentType = self::contentTypes['deleteLanguage'][0])
+    public function deleteLanguageRequest($app, $language, string $contentType = self::contentTypes['deleteLanguage'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4190,15 +4238,16 @@ class AppsApi
      *
      * Get app languages.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLanguages'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppLanguagesDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getLanguages(string $contentType = self::contentTypes['getLanguages'][0])
+    public function getLanguages($app, string $contentType = self::contentTypes['getLanguages'][0])
     {
-        list($response) = $this->getLanguagesWithHttpInfo($contentType);
+        list($response) = $this->getLanguagesWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -4207,15 +4256,16 @@ class AppsApi
      *
      * Get app languages.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLanguages'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppLanguagesDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLanguagesWithHttpInfo(string $contentType = self::contentTypes['getLanguages'][0])
+    public function getLanguagesWithHttpInfo($app, string $contentType = self::contentTypes['getLanguages'][0])
     {
-        $request = $this->getLanguagesRequest($contentType);
+        $request = $this->getLanguagesRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4329,14 +4379,15 @@ class AppsApi
      *
      * Get app languages.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLanguages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLanguagesAsync(string $contentType = self::contentTypes['getLanguages'][0])
+    public function getLanguagesAsync($app, string $contentType = self::contentTypes['getLanguages'][0])
     {
-        return $this->getLanguagesAsyncWithHttpInfo($contentType)
+        return $this->getLanguagesAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4349,15 +4400,16 @@ class AppsApi
      *
      * Get app languages.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLanguages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLanguagesAsyncWithHttpInfo(string $contentType = self::contentTypes['getLanguages'][0])
+    public function getLanguagesAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getLanguages'][0])
     {
         $returnType = '\Squidex\Client\Model\AppLanguagesDto';
-        $request = $this->getLanguagesRequest($contentType);
+        $request = $this->getLanguagesRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4398,16 +4450,16 @@ class AppsApi
     /**
      * Create request for operation 'getLanguages'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLanguages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getLanguagesRequest(string $contentType = self::contentTypes['getLanguages'][0])
+    public function getLanguagesRequest($app, string $contentType = self::contentTypes['getLanguages'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4492,6 +4544,7 @@ class AppsApi
      *
      * Attaches an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postLanguage'] to see the possible values for this operation
      *
@@ -4499,9 +4552,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppLanguagesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postLanguage($add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
+    public function postLanguage($app, $add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
     {
-        list($response) = $this->postLanguageWithHttpInfo($add_language_dto, $contentType);
+        list($response) = $this->postLanguageWithHttpInfo($app, $add_language_dto, $contentType);
         return $response;
     }
 
@@ -4510,6 +4563,7 @@ class AppsApi
      *
      * Attaches an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postLanguage'] to see the possible values for this operation
      *
@@ -4517,9 +4571,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppLanguagesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postLanguageWithHttpInfo($add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
+    public function postLanguageWithHttpInfo($app, $add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
     {
-        $request = $this->postLanguageRequest($add_language_dto, $contentType);
+        $request = $this->postLanguageRequest($app, $add_language_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4656,15 +4710,16 @@ class AppsApi
      *
      * Attaches an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postLanguage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postLanguageAsync($add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
+    public function postLanguageAsync($app, $add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
     {
-        return $this->postLanguageAsyncWithHttpInfo($add_language_dto, $contentType)
+        return $this->postLanguageAsyncWithHttpInfo($app, $add_language_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4677,16 +4732,17 @@ class AppsApi
      *
      * Attaches an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postLanguage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postLanguageAsyncWithHttpInfo($add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
+    public function postLanguageAsyncWithHttpInfo($app, $add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
     {
         $returnType = '\Squidex\Client\Model\AppLanguagesDto';
-        $request = $this->postLanguageRequest($add_language_dto, $contentType);
+        $request = $this->postLanguageRequest($app, $add_language_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4727,17 +4783,17 @@ class AppsApi
     /**
      * Create request for operation 'postLanguage'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddLanguageDto $add_language_dto The language to add to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postLanguage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postLanguageRequest($add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
+    public function postLanguageRequest($app, $add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4836,6 +4892,7 @@ class AppsApi
      *
      * Updates an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to update. (required)
      * @param  \Squidex\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putLanguage'] to see the possible values for this operation
@@ -4844,9 +4901,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppLanguagesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putLanguage($language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
+    public function putLanguage($app, $language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
     {
-        list($response) = $this->putLanguageWithHttpInfo($language, $update_language_dto, $contentType);
+        list($response) = $this->putLanguageWithHttpInfo($app, $language, $update_language_dto, $contentType);
         return $response;
     }
 
@@ -4855,6 +4912,7 @@ class AppsApi
      *
      * Updates an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to update. (required)
      * @param  \Squidex\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putLanguage'] to see the possible values for this operation
@@ -4863,9 +4921,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppLanguagesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putLanguageWithHttpInfo($language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
+    public function putLanguageWithHttpInfo($app, $language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
     {
-        $request = $this->putLanguageRequest($language, $update_language_dto, $contentType);
+        $request = $this->putLanguageRequest($app, $language, $update_language_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5002,6 +5060,7 @@ class AppsApi
      *
      * Updates an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to update. (required)
      * @param  \Squidex\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putLanguage'] to see the possible values for this operation
@@ -5009,9 +5068,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putLanguageAsync($language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
+    public function putLanguageAsync($app, $language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
     {
-        return $this->putLanguageAsyncWithHttpInfo($language, $update_language_dto, $contentType)
+        return $this->putLanguageAsyncWithHttpInfo($app, $language, $update_language_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5024,6 +5083,7 @@ class AppsApi
      *
      * Updates an app language.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to update. (required)
      * @param  \Squidex\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putLanguage'] to see the possible values for this operation
@@ -5031,10 +5091,10 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putLanguageAsyncWithHttpInfo($language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
+    public function putLanguageAsyncWithHttpInfo($app, $language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
     {
         $returnType = '\Squidex\Client\Model\AppLanguagesDto';
-        $request = $this->putLanguageRequest($language, $update_language_dto, $contentType);
+        $request = $this->putLanguageRequest($app, $language, $update_language_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5075,6 +5135,7 @@ class AppsApi
     /**
      * Create request for operation 'putLanguage'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $language The language to update. (required)
      * @param  \Squidex\Client\Model\UpdateLanguageDto $update_language_dto The language object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putLanguage'] to see the possible values for this operation
@@ -5082,11 +5143,10 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putLanguageRequest($language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
+    public function putLanguageRequest($app, $language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5200,6 +5260,7 @@ class AppsApi
      *
      * Remove role from app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRole'] to see the possible values for this operation
      *
@@ -5207,9 +5268,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RolesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteRole($role_name, string $contentType = self::contentTypes['deleteRole'][0])
+    public function deleteRole($app, $role_name, string $contentType = self::contentTypes['deleteRole'][0])
     {
-        list($response) = $this->deleteRoleWithHttpInfo($role_name, $contentType);
+        list($response) = $this->deleteRoleWithHttpInfo($app, $role_name, $contentType);
         return $response;
     }
 
@@ -5218,6 +5279,7 @@ class AppsApi
      *
      * Remove role from app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRole'] to see the possible values for this operation
      *
@@ -5225,9 +5287,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RolesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteRoleWithHttpInfo($role_name, string $contentType = self::contentTypes['deleteRole'][0])
+    public function deleteRoleWithHttpInfo($app, $role_name, string $contentType = self::contentTypes['deleteRole'][0])
     {
-        $request = $this->deleteRoleRequest($role_name, $contentType);
+        $request = $this->deleteRoleRequest($app, $role_name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5364,15 +5426,16 @@ class AppsApi
      *
      * Remove role from app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRoleAsync($role_name, string $contentType = self::contentTypes['deleteRole'][0])
+    public function deleteRoleAsync($app, $role_name, string $contentType = self::contentTypes['deleteRole'][0])
     {
-        return $this->deleteRoleAsyncWithHttpInfo($role_name, $contentType)
+        return $this->deleteRoleAsyncWithHttpInfo($app, $role_name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5385,16 +5448,17 @@ class AppsApi
      *
      * Remove role from app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRoleAsyncWithHttpInfo($role_name, string $contentType = self::contentTypes['deleteRole'][0])
+    public function deleteRoleAsyncWithHttpInfo($app, $role_name, string $contentType = self::contentTypes['deleteRole'][0])
     {
         $returnType = '\Squidex\Client\Model\RolesDto';
-        $request = $this->deleteRoleRequest($role_name, $contentType);
+        $request = $this->deleteRoleRequest($app, $role_name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5435,17 +5499,17 @@ class AppsApi
     /**
      * Create request for operation 'deleteRole'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteRoleRequest($role_name, string $contentType = self::contentTypes['deleteRole'][0])
+    public function deleteRoleRequest($app, $role_name, string $contentType = self::contentTypes['deleteRole'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5545,15 +5609,16 @@ class AppsApi
      *
      * Get app permissions.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPermissions'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string[]|\Squidex\Client\Model\ErrorDto
      */
-    public function getPermissions(string $contentType = self::contentTypes['getPermissions'][0])
+    public function getPermissions($app, string $contentType = self::contentTypes['getPermissions'][0])
     {
-        list($response) = $this->getPermissionsWithHttpInfo($contentType);
+        list($response) = $this->getPermissionsWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -5562,15 +5627,16 @@ class AppsApi
      *
      * Get app permissions.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPermissions'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPermissionsWithHttpInfo(string $contentType = self::contentTypes['getPermissions'][0])
+    public function getPermissionsWithHttpInfo($app, string $contentType = self::contentTypes['getPermissions'][0])
     {
-        $request = $this->getPermissionsRequest($contentType);
+        $request = $this->getPermissionsRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5684,14 +5750,15 @@ class AppsApi
      *
      * Get app permissions.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPermissions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPermissionsAsync(string $contentType = self::contentTypes['getPermissions'][0])
+    public function getPermissionsAsync($app, string $contentType = self::contentTypes['getPermissions'][0])
     {
-        return $this->getPermissionsAsyncWithHttpInfo($contentType)
+        return $this->getPermissionsAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5704,15 +5771,16 @@ class AppsApi
      *
      * Get app permissions.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPermissions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPermissionsAsyncWithHttpInfo(string $contentType = self::contentTypes['getPermissions'][0])
+    public function getPermissionsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getPermissions'][0])
     {
         $returnType = 'string[]';
-        $request = $this->getPermissionsRequest($contentType);
+        $request = $this->getPermissionsRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5753,16 +5821,16 @@ class AppsApi
     /**
      * Create request for operation 'getPermissions'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPermissions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPermissionsRequest(string $contentType = self::contentTypes['getPermissions'][0])
+    public function getPermissionsRequest($app, string $contentType = self::contentTypes['getPermissions'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5847,15 +5915,16 @@ class AppsApi
      *
      * Get app roles.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoles'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RolesDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getRoles(string $contentType = self::contentTypes['getRoles'][0])
+    public function getRoles($app, string $contentType = self::contentTypes['getRoles'][0])
     {
-        list($response) = $this->getRolesWithHttpInfo($contentType);
+        list($response) = $this->getRolesWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -5864,15 +5933,16 @@ class AppsApi
      *
      * Get app roles.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoles'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RolesDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRolesWithHttpInfo(string $contentType = self::contentTypes['getRoles'][0])
+    public function getRolesWithHttpInfo($app, string $contentType = self::contentTypes['getRoles'][0])
     {
-        $request = $this->getRolesRequest($contentType);
+        $request = $this->getRolesRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5986,14 +6056,15 @@ class AppsApi
      *
      * Get app roles.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRolesAsync(string $contentType = self::contentTypes['getRoles'][0])
+    public function getRolesAsync($app, string $contentType = self::contentTypes['getRoles'][0])
     {
-        return $this->getRolesAsyncWithHttpInfo($contentType)
+        return $this->getRolesAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6006,15 +6077,16 @@ class AppsApi
      *
      * Get app roles.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRolesAsyncWithHttpInfo(string $contentType = self::contentTypes['getRoles'][0])
+    public function getRolesAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getRoles'][0])
     {
         $returnType = '\Squidex\Client\Model\RolesDto';
-        $request = $this->getRolesRequest($contentType);
+        $request = $this->getRolesRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6055,16 +6127,16 @@ class AppsApi
     /**
      * Create request for operation 'getRoles'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRolesRequest(string $contentType = self::contentTypes['getRoles'][0])
+    public function getRolesRequest($app, string $contentType = self::contentTypes['getRoles'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6149,6 +6221,7 @@ class AppsApi
      *
      * Add role to app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRole'] to see the possible values for this operation
      *
@@ -6156,9 +6229,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RolesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postRole($add_role_dto, string $contentType = self::contentTypes['postRole'][0])
+    public function postRole($app, $add_role_dto, string $contentType = self::contentTypes['postRole'][0])
     {
-        list($response) = $this->postRoleWithHttpInfo($add_role_dto, $contentType);
+        list($response) = $this->postRoleWithHttpInfo($app, $add_role_dto, $contentType);
         return $response;
     }
 
@@ -6167,6 +6240,7 @@ class AppsApi
      *
      * Add role to app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRole'] to see the possible values for this operation
      *
@@ -6174,9 +6248,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RolesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postRoleWithHttpInfo($add_role_dto, string $contentType = self::contentTypes['postRole'][0])
+    public function postRoleWithHttpInfo($app, $add_role_dto, string $contentType = self::contentTypes['postRole'][0])
     {
-        $request = $this->postRoleRequest($add_role_dto, $contentType);
+        $request = $this->postRoleRequest($app, $add_role_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6313,15 +6387,16 @@ class AppsApi
      *
      * Add role to app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRoleAsync($add_role_dto, string $contentType = self::contentTypes['postRole'][0])
+    public function postRoleAsync($app, $add_role_dto, string $contentType = self::contentTypes['postRole'][0])
     {
-        return $this->postRoleAsyncWithHttpInfo($add_role_dto, $contentType)
+        return $this->postRoleAsyncWithHttpInfo($app, $add_role_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6334,16 +6409,17 @@ class AppsApi
      *
      * Add role to app.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRoleAsyncWithHttpInfo($add_role_dto, string $contentType = self::contentTypes['postRole'][0])
+    public function postRoleAsyncWithHttpInfo($app, $add_role_dto, string $contentType = self::contentTypes['postRole'][0])
     {
         $returnType = '\Squidex\Client\Model\RolesDto';
-        $request = $this->postRoleRequest($add_role_dto, $contentType);
+        $request = $this->postRoleRequest($app, $add_role_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6384,17 +6460,17 @@ class AppsApi
     /**
      * Create request for operation 'postRole'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddRoleDto $add_role_dto Role object that needs to be added to the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRole'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postRoleRequest($add_role_dto, string $contentType = self::contentTypes['postRole'][0])
+    public function postRoleRequest($app, $add_role_dto, string $contentType = self::contentTypes['postRole'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6493,6 +6569,7 @@ class AppsApi
      *
      * Update an app role.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role to be updated. (required)
      * @param  \Squidex\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRole'] to see the possible values for this operation
@@ -6501,9 +6578,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\RolesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putRole($role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
+    public function putRole($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
     {
-        list($response) = $this->putRoleWithHttpInfo($role_name, $update_role_dto, $contentType);
+        list($response) = $this->putRoleWithHttpInfo($app, $role_name, $update_role_dto, $contentType);
         return $response;
     }
 
@@ -6512,6 +6589,7 @@ class AppsApi
      *
      * Update an app role.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role to be updated. (required)
      * @param  \Squidex\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRole'] to see the possible values for this operation
@@ -6520,9 +6598,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\RolesDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putRoleWithHttpInfo($role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
+    public function putRoleWithHttpInfo($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
     {
-        $request = $this->putRoleRequest($role_name, $update_role_dto, $contentType);
+        $request = $this->putRoleRequest($app, $role_name, $update_role_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6659,6 +6737,7 @@ class AppsApi
      *
      * Update an app role.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role to be updated. (required)
      * @param  \Squidex\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRole'] to see the possible values for this operation
@@ -6666,9 +6745,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRoleAsync($role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
+    public function putRoleAsync($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
     {
-        return $this->putRoleAsyncWithHttpInfo($role_name, $update_role_dto, $contentType)
+        return $this->putRoleAsyncWithHttpInfo($app, $role_name, $update_role_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6681,6 +6760,7 @@ class AppsApi
      *
      * Update an app role.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role to be updated. (required)
      * @param  \Squidex\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRole'] to see the possible values for this operation
@@ -6688,10 +6768,10 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRoleAsyncWithHttpInfo($role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
+    public function putRoleAsyncWithHttpInfo($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
     {
         $returnType = '\Squidex\Client\Model\RolesDto';
-        $request = $this->putRoleRequest($role_name, $update_role_dto, $contentType);
+        $request = $this->putRoleRequest($app, $role_name, $update_role_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6732,6 +6812,7 @@ class AppsApi
     /**
      * Create request for operation 'putRole'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $role_name The name of the role to be updated. (required)
      * @param  \Squidex\Client\Model\UpdateRoleDto $update_role_dto Role to be updated for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRole'] to see the possible values for this operation
@@ -6739,11 +6820,10 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putRoleRequest($role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
+    public function putRoleRequest($app, $role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6857,15 +6937,16 @@ class AppsApi
      *
      * Get the app settings.
      *
+     * @param  string $app The name of the app to get the settings for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppSettingsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getSettings(string $contentType = self::contentTypes['getSettings'][0])
+    public function getSettings($app, string $contentType = self::contentTypes['getSettings'][0])
     {
-        list($response) = $this->getSettingsWithHttpInfo($contentType);
+        list($response) = $this->getSettingsWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -6874,15 +6955,16 @@ class AppsApi
      *
      * Get the app settings.
      *
+     * @param  string $app The name of the app to get the settings for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppSettingsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSettingsWithHttpInfo(string $contentType = self::contentTypes['getSettings'][0])
+    public function getSettingsWithHttpInfo($app, string $contentType = self::contentTypes['getSettings'][0])
     {
-        $request = $this->getSettingsRequest($contentType);
+        $request = $this->getSettingsRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6996,14 +7078,15 @@ class AppsApi
      *
      * Get the app settings.
      *
+     * @param  string $app The name of the app to get the settings for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSettingsAsync(string $contentType = self::contentTypes['getSettings'][0])
+    public function getSettingsAsync($app, string $contentType = self::contentTypes['getSettings'][0])
     {
-        return $this->getSettingsAsyncWithHttpInfo($contentType)
+        return $this->getSettingsAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7016,15 +7099,16 @@ class AppsApi
      *
      * Get the app settings.
      *
+     * @param  string $app The name of the app to get the settings for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getSettings'][0])
+    public function getSettingsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getSettings'][0])
     {
         $returnType = '\Squidex\Client\Model\AppSettingsDto';
-        $request = $this->getSettingsRequest($contentType);
+        $request = $this->getSettingsRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7065,16 +7149,16 @@ class AppsApi
     /**
      * Create request for operation 'getSettings'
      *
+     * @param  string $app The name of the app to get the settings for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSettingsRequest(string $contentType = self::contentTypes['getSettings'][0])
+    public function getSettingsRequest($app, string $contentType = self::contentTypes['getSettings'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7159,6 +7243,7 @@ class AppsApi
      *
      * Update the app settings.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSettings'] to see the possible values for this operation
      *
@@ -7166,9 +7251,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppSettingsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putSettings($update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
+    public function putSettings($app, $update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
     {
-        list($response) = $this->putSettingsWithHttpInfo($update_app_settings_dto, $contentType);
+        list($response) = $this->putSettingsWithHttpInfo($app, $update_app_settings_dto, $contentType);
         return $response;
     }
 
@@ -7177,6 +7262,7 @@ class AppsApi
      *
      * Update the app settings.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSettings'] to see the possible values for this operation
      *
@@ -7184,9 +7270,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppSettingsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putSettingsWithHttpInfo($update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
+    public function putSettingsWithHttpInfo($app, $update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
     {
-        $request = $this->putSettingsRequest($update_app_settings_dto, $contentType);
+        $request = $this->putSettingsRequest($app, $update_app_settings_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7323,15 +7409,16 @@ class AppsApi
      *
      * Update the app settings.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSettingsAsync($update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
+    public function putSettingsAsync($app, $update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
     {
-        return $this->putSettingsAsyncWithHttpInfo($update_app_settings_dto, $contentType)
+        return $this->putSettingsAsyncWithHttpInfo($app, $update_app_settings_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7344,16 +7431,17 @@ class AppsApi
      *
      * Update the app settings.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSettingsAsyncWithHttpInfo($update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
+    public function putSettingsAsyncWithHttpInfo($app, $update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
     {
         $returnType = '\Squidex\Client\Model\AppSettingsDto';
-        $request = $this->putSettingsRequest($update_app_settings_dto, $contentType);
+        $request = $this->putSettingsRequest($app, $update_app_settings_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7394,17 +7482,17 @@ class AppsApi
     /**
      * Create request for operation 'putSettings'
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppSettingsDto $update_app_settings_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putSettingsRequest($update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
+    public function putSettingsRequest($app, $update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7503,6 +7591,7 @@ class AppsApi
      *
      * Delete a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWorkflow'] to see the possible values for this operation
      *
@@ -7510,9 +7599,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\WorkflowsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteWorkflow($id, string $contentType = self::contentTypes['deleteWorkflow'][0])
+    public function deleteWorkflow($app, $id, string $contentType = self::contentTypes['deleteWorkflow'][0])
     {
-        list($response) = $this->deleteWorkflowWithHttpInfo($id, $contentType);
+        list($response) = $this->deleteWorkflowWithHttpInfo($app, $id, $contentType);
         return $response;
     }
 
@@ -7521,6 +7610,7 @@ class AppsApi
      *
      * Delete a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWorkflow'] to see the possible values for this operation
      *
@@ -7528,9 +7618,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\WorkflowsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteWorkflowWithHttpInfo($id, string $contentType = self::contentTypes['deleteWorkflow'][0])
+    public function deleteWorkflowWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteWorkflow'][0])
     {
-        $request = $this->deleteWorkflowRequest($id, $contentType);
+        $request = $this->deleteWorkflowRequest($app, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7667,15 +7757,16 @@ class AppsApi
      *
      * Delete a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWorkflow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteWorkflowAsync($id, string $contentType = self::contentTypes['deleteWorkflow'][0])
+    public function deleteWorkflowAsync($app, $id, string $contentType = self::contentTypes['deleteWorkflow'][0])
     {
-        return $this->deleteWorkflowAsyncWithHttpInfo($id, $contentType)
+        return $this->deleteWorkflowAsyncWithHttpInfo($app, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7688,16 +7779,17 @@ class AppsApi
      *
      * Delete a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWorkflow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteWorkflowAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteWorkflow'][0])
+    public function deleteWorkflowAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteWorkflow'][0])
     {
         $returnType = '\Squidex\Client\Model\WorkflowsDto';
-        $request = $this->deleteWorkflowRequest($id, $contentType);
+        $request = $this->deleteWorkflowRequest($app, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7738,17 +7830,17 @@ class AppsApi
     /**
      * Create request for operation 'deleteWorkflow'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWorkflow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteWorkflowRequest($id, string $contentType = self::contentTypes['deleteWorkflow'][0])
+    public function deleteWorkflowRequest($app, $id, string $contentType = self::contentTypes['deleteWorkflow'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7848,15 +7940,16 @@ class AppsApi
      *
      * Get app workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflows'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\WorkflowsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getWorkflows(string $contentType = self::contentTypes['getWorkflows'][0])
+    public function getWorkflows($app, string $contentType = self::contentTypes['getWorkflows'][0])
     {
-        list($response) = $this->getWorkflowsWithHttpInfo($contentType);
+        list($response) = $this->getWorkflowsWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -7865,15 +7958,16 @@ class AppsApi
      *
      * Get app workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflows'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\WorkflowsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWorkflowsWithHttpInfo(string $contentType = self::contentTypes['getWorkflows'][0])
+    public function getWorkflowsWithHttpInfo($app, string $contentType = self::contentTypes['getWorkflows'][0])
     {
-        $request = $this->getWorkflowsRequest($contentType);
+        $request = $this->getWorkflowsRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7987,14 +8081,15 @@ class AppsApi
      *
      * Get app workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWorkflowsAsync(string $contentType = self::contentTypes['getWorkflows'][0])
+    public function getWorkflowsAsync($app, string $contentType = self::contentTypes['getWorkflows'][0])
     {
-        return $this->getWorkflowsAsyncWithHttpInfo($contentType)
+        return $this->getWorkflowsAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8007,15 +8102,16 @@ class AppsApi
      *
      * Get app workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWorkflowsAsyncWithHttpInfo(string $contentType = self::contentTypes['getWorkflows'][0])
+    public function getWorkflowsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getWorkflows'][0])
     {
         $returnType = '\Squidex\Client\Model\WorkflowsDto';
-        $request = $this->getWorkflowsRequest($contentType);
+        $request = $this->getWorkflowsRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8056,16 +8152,16 @@ class AppsApi
     /**
      * Create request for operation 'getWorkflows'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getWorkflowsRequest(string $contentType = self::contentTypes['getWorkflows'][0])
+    public function getWorkflowsRequest($app, string $contentType = self::contentTypes['getWorkflows'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -8150,6 +8246,7 @@ class AppsApi
      *
      * Create a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postWorkflow'] to see the possible values for this operation
      *
@@ -8157,9 +8254,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\WorkflowsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postWorkflow($add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
+    public function postWorkflow($app, $add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
     {
-        list($response) = $this->postWorkflowWithHttpInfo($add_workflow_dto, $contentType);
+        list($response) = $this->postWorkflowWithHttpInfo($app, $add_workflow_dto, $contentType);
         return $response;
     }
 
@@ -8168,6 +8265,7 @@ class AppsApi
      *
      * Create a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postWorkflow'] to see the possible values for this operation
      *
@@ -8175,9 +8273,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\WorkflowsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postWorkflowWithHttpInfo($add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
+    public function postWorkflowWithHttpInfo($app, $add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
     {
-        $request = $this->postWorkflowRequest($add_workflow_dto, $contentType);
+        $request = $this->postWorkflowRequest($app, $add_workflow_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8314,15 +8412,16 @@ class AppsApi
      *
      * Create a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postWorkflow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postWorkflowAsync($add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
+    public function postWorkflowAsync($app, $add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
     {
-        return $this->postWorkflowAsyncWithHttpInfo($add_workflow_dto, $contentType)
+        return $this->postWorkflowAsyncWithHttpInfo($app, $add_workflow_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8335,16 +8434,17 @@ class AppsApi
      *
      * Create a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postWorkflow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postWorkflowAsyncWithHttpInfo($add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
+    public function postWorkflowAsyncWithHttpInfo($app, $add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
     {
         $returnType = '\Squidex\Client\Model\WorkflowsDto';
-        $request = $this->postWorkflowRequest($add_workflow_dto, $contentType);
+        $request = $this->postWorkflowRequest($app, $add_workflow_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8385,17 +8485,17 @@ class AppsApi
     /**
      * Create request for operation 'postWorkflow'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AddWorkflowDto $add_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postWorkflow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postWorkflowRequest($add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
+    public function postWorkflowRequest($app, $add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -8494,6 +8594,7 @@ class AppsApi
      *
      * Update a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  \Squidex\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putWorkflow'] to see the possible values for this operation
@@ -8502,9 +8603,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\WorkflowsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putWorkflow($id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
+    public function putWorkflow($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
     {
-        list($response) = $this->putWorkflowWithHttpInfo($id, $update_workflow_dto, $contentType);
+        list($response) = $this->putWorkflowWithHttpInfo($app, $id, $update_workflow_dto, $contentType);
         return $response;
     }
 
@@ -8513,6 +8614,7 @@ class AppsApi
      *
      * Update a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  \Squidex\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putWorkflow'] to see the possible values for this operation
@@ -8521,9 +8623,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\WorkflowsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putWorkflowWithHttpInfo($id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
+    public function putWorkflowWithHttpInfo($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
     {
-        $request = $this->putWorkflowRequest($id, $update_workflow_dto, $contentType);
+        $request = $this->putWorkflowRequest($app, $id, $update_workflow_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8660,6 +8762,7 @@ class AppsApi
      *
      * Update a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  \Squidex\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putWorkflow'] to see the possible values for this operation
@@ -8667,9 +8770,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putWorkflowAsync($id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
+    public function putWorkflowAsync($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
     {
-        return $this->putWorkflowAsyncWithHttpInfo($id, $update_workflow_dto, $contentType)
+        return $this->putWorkflowAsyncWithHttpInfo($app, $id, $update_workflow_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8682,6 +8785,7 @@ class AppsApi
      *
      * Update a workflow.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  \Squidex\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putWorkflow'] to see the possible values for this operation
@@ -8689,10 +8793,10 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putWorkflowAsyncWithHttpInfo($id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
+    public function putWorkflowAsyncWithHttpInfo($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
     {
         $returnType = '\Squidex\Client\Model\WorkflowsDto';
-        $request = $this->putWorkflowRequest($id, $update_workflow_dto, $contentType);
+        $request = $this->putWorkflowRequest($app, $id, $update_workflow_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8733,6 +8837,7 @@ class AppsApi
     /**
      * Create request for operation 'putWorkflow'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the workflow to update. (required)
      * @param  \Squidex\Client\Model\UpdateWorkflowDto $update_workflow_dto The new workflow. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putWorkflow'] to see the possible values for this operation
@@ -8740,11 +8845,10 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putWorkflowRequest($id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
+    public function putWorkflowRequest($app, $id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -8858,15 +8962,16 @@ class AppsApi
      *
      * Delete the app.
      *
+     * @param  string $app The name of the app to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApp'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteApp(string $contentType = self::contentTypes['deleteApp'][0])
+    public function deleteApp($app, string $contentType = self::contentTypes['deleteApp'][0])
     {
-        $this->deleteAppWithHttpInfo($contentType);
+        $this->deleteAppWithHttpInfo($app, $contentType);
     }
 
     /**
@@ -8874,15 +8979,16 @@ class AppsApi
      *
      * Delete the app.
      *
+     * @param  string $app The name of the app to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApp'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteAppWithHttpInfo(string $contentType = self::contentTypes['deleteApp'][0])
+    public function deleteAppWithHttpInfo($app, string $contentType = self::contentTypes['deleteApp'][0])
     {
-        $request = $this->deleteAppRequest($contentType);
+        $request = $this->deleteAppRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8949,14 +9055,15 @@ class AppsApi
      *
      * Delete the app.
      *
+     * @param  string $app The name of the app to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAppAsync(string $contentType = self::contentTypes['deleteApp'][0])
+    public function deleteAppAsync($app, string $contentType = self::contentTypes['deleteApp'][0])
     {
-        return $this->deleteAppAsyncWithHttpInfo($contentType)
+        return $this->deleteAppAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8969,15 +9076,16 @@ class AppsApi
      *
      * Delete the app.
      *
+     * @param  string $app The name of the app to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAppAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteApp'][0])
+    public function deleteAppAsyncWithHttpInfo($app, string $contentType = self::contentTypes['deleteApp'][0])
     {
         $returnType = '';
-        $request = $this->deleteAppRequest($contentType);
+        $request = $this->deleteAppRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9005,16 +9113,16 @@ class AppsApi
     /**
      * Create request for operation 'deleteApp'
      *
+     * @param  string $app The name of the app to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteAppRequest(string $contentType = self::contentTypes['deleteApp'][0])
+    public function deleteAppRequest($app, string $contentType = self::contentTypes['deleteApp'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -9099,15 +9207,16 @@ class AppsApi
      *
      * Remove the app image.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteImage'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteImage(string $contentType = self::contentTypes['deleteImage'][0])
+    public function deleteImage($app, string $contentType = self::contentTypes['deleteImage'][0])
     {
-        list($response) = $this->deleteImageWithHttpInfo($contentType);
+        list($response) = $this->deleteImageWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -9116,15 +9225,16 @@ class AppsApi
      *
      * Remove the app image.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteImage'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteImageWithHttpInfo(string $contentType = self::contentTypes['deleteImage'][0])
+    public function deleteImageWithHttpInfo($app, string $contentType = self::contentTypes['deleteImage'][0])
     {
-        $request = $this->deleteImageRequest($contentType);
+        $request = $this->deleteImageRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9261,14 +9371,15 @@ class AppsApi
      *
      * Remove the app image.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteImageAsync(string $contentType = self::contentTypes['deleteImage'][0])
+    public function deleteImageAsync($app, string $contentType = self::contentTypes['deleteImage'][0])
     {
-        return $this->deleteImageAsyncWithHttpInfo($contentType)
+        return $this->deleteImageAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9281,15 +9392,16 @@ class AppsApi
      *
      * Remove the app image.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteImageAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteImage'][0])
+    public function deleteImageAsyncWithHttpInfo($app, string $contentType = self::contentTypes['deleteImage'][0])
     {
         $returnType = '\Squidex\Client\Model\AppDto';
-        $request = $this->deleteImageRequest($contentType);
+        $request = $this->deleteImageRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9330,16 +9442,16 @@ class AppsApi
     /**
      * Create request for operation 'deleteImage'
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteImageRequest(string $contentType = self::contentTypes['deleteImage'][0])
+    public function deleteImageRequest($app, string $contentType = self::contentTypes['deleteImage'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -9424,15 +9536,16 @@ class AppsApi
      *
      * Get an app by name.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApp'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getApp(string $contentType = self::contentTypes['getApp'][0])
+    public function getApp($app, string $contentType = self::contentTypes['getApp'][0])
     {
-        list($response) = $this->getAppWithHttpInfo($contentType);
+        list($response) = $this->getAppWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -9441,15 +9554,16 @@ class AppsApi
      *
      * Get an app by name.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApp'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAppWithHttpInfo(string $contentType = self::contentTypes['getApp'][0])
+    public function getAppWithHttpInfo($app, string $contentType = self::contentTypes['getApp'][0])
     {
-        $request = $this->getAppRequest($contentType);
+        $request = $this->getAppRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9563,14 +9677,15 @@ class AppsApi
      *
      * Get an app by name.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAppAsync(string $contentType = self::contentTypes['getApp'][0])
+    public function getAppAsync($app, string $contentType = self::contentTypes['getApp'][0])
     {
-        return $this->getAppAsyncWithHttpInfo($contentType)
+        return $this->getAppAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9583,15 +9698,16 @@ class AppsApi
      *
      * Get an app by name.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAppAsyncWithHttpInfo(string $contentType = self::contentTypes['getApp'][0])
+    public function getAppAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getApp'][0])
     {
         $returnType = '\Squidex\Client\Model\AppDto';
-        $request = $this->getAppRequest($contentType);
+        $request = $this->getAppRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9632,16 +9748,16 @@ class AppsApi
     /**
      * Create request for operation 'getApp'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAppRequest(string $contentType = self::contentTypes['getApp'][0])
+    public function getAppRequest($app, string $contentType = self::contentTypes['getApp'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -10669,6 +10785,7 @@ class AppsApi
      *
      * Update the app.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApp'] to see the possible values for this operation
      *
@@ -10676,9 +10793,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putApp($update_app_dto, string $contentType = self::contentTypes['putApp'][0])
+    public function putApp($app, $update_app_dto, string $contentType = self::contentTypes['putApp'][0])
     {
-        list($response) = $this->putAppWithHttpInfo($update_app_dto, $contentType);
+        list($response) = $this->putAppWithHttpInfo($app, $update_app_dto, $contentType);
         return $response;
     }
 
@@ -10687,6 +10804,7 @@ class AppsApi
      *
      * Update the app.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApp'] to see the possible values for this operation
      *
@@ -10694,9 +10812,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAppWithHttpInfo($update_app_dto, string $contentType = self::contentTypes['putApp'][0])
+    public function putAppWithHttpInfo($app, $update_app_dto, string $contentType = self::contentTypes['putApp'][0])
     {
-        $request = $this->putAppRequest($update_app_dto, $contentType);
+        $request = $this->putAppRequest($app, $update_app_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10833,15 +10951,16 @@ class AppsApi
      *
      * Update the app.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAppAsync($update_app_dto, string $contentType = self::contentTypes['putApp'][0])
+    public function putAppAsync($app, $update_app_dto, string $contentType = self::contentTypes['putApp'][0])
     {
-        return $this->putAppAsyncWithHttpInfo($update_app_dto, $contentType)
+        return $this->putAppAsyncWithHttpInfo($app, $update_app_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10854,16 +10973,17 @@ class AppsApi
      *
      * Update the app.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAppAsyncWithHttpInfo($update_app_dto, string $contentType = self::contentTypes['putApp'][0])
+    public function putAppAsyncWithHttpInfo($app, $update_app_dto, string $contentType = self::contentTypes['putApp'][0])
     {
         $returnType = '\Squidex\Client\Model\AppDto';
-        $request = $this->putAppRequest($update_app_dto, $contentType);
+        $request = $this->putAppRequest($app, $update_app_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10904,17 +11024,17 @@ class AppsApi
     /**
      * Create request for operation 'putApp'
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\UpdateAppDto $update_app_dto The values to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAppRequest($update_app_dto, string $contentType = self::contentTypes['putApp'][0])
+    public function putAppRequest($app, $update_app_dto, string $contentType = self::contentTypes['putApp'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -11013,6 +11133,7 @@ class AppsApi
      *
      * Transfer the app.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAppTeam'] to see the possible values for this operation
      *
@@ -11020,9 +11141,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putAppTeam($transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
+    public function putAppTeam($app, $transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
     {
-        list($response) = $this->putAppTeamWithHttpInfo($transfer_to_team_dto, $contentType);
+        list($response) = $this->putAppTeamWithHttpInfo($app, $transfer_to_team_dto, $contentType);
         return $response;
     }
 
@@ -11031,6 +11152,7 @@ class AppsApi
      *
      * Transfer the app.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAppTeam'] to see the possible values for this operation
      *
@@ -11038,9 +11160,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAppTeamWithHttpInfo($transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
+    public function putAppTeamWithHttpInfo($app, $transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
     {
-        $request = $this->putAppTeamRequest($transfer_to_team_dto, $contentType);
+        $request = $this->putAppTeamRequest($app, $transfer_to_team_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11177,15 +11299,16 @@ class AppsApi
      *
      * Transfer the app.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAppTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAppTeamAsync($transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
+    public function putAppTeamAsync($app, $transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
     {
-        return $this->putAppTeamAsyncWithHttpInfo($transfer_to_team_dto, $contentType)
+        return $this->putAppTeamAsyncWithHttpInfo($app, $transfer_to_team_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11198,16 +11321,17 @@ class AppsApi
      *
      * Transfer the app.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAppTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAppTeamAsyncWithHttpInfo($transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
+    public function putAppTeamAsyncWithHttpInfo($app, $transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
     {
         $returnType = '\Squidex\Client\Model\AppDto';
-        $request = $this->putAppTeamRequest($transfer_to_team_dto, $contentType);
+        $request = $this->putAppTeamRequest($app, $transfer_to_team_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11248,17 +11372,17 @@ class AppsApi
     /**
      * Create request for operation 'putAppTeam'
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \Squidex\Client\Model\TransferToTeamDto $transfer_to_team_dto The team information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAppTeam'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAppTeamRequest($transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
+    public function putAppTeamRequest($app, $transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -11357,6 +11481,7 @@ class AppsApi
      *
      * Upload the app image.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \SplFileObject $file file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
      *
@@ -11364,9 +11489,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function uploadImage($file = null, string $contentType = self::contentTypes['uploadImage'][0])
+    public function uploadImage($app, $file = null, string $contentType = self::contentTypes['uploadImage'][0])
     {
-        list($response) = $this->uploadImageWithHttpInfo($file, $contentType);
+        list($response) = $this->uploadImageWithHttpInfo($app, $file, $contentType);
         return $response;
     }
 
@@ -11375,6 +11500,7 @@ class AppsApi
      *
      * Upload the app image.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
      *
@@ -11382,9 +11508,9 @@ class AppsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\AppDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function uploadImageWithHttpInfo($file = null, string $contentType = self::contentTypes['uploadImage'][0])
+    public function uploadImageWithHttpInfo($app, $file = null, string $contentType = self::contentTypes['uploadImage'][0])
     {
-        $request = $this->uploadImageRequest($file, $contentType);
+        $request = $this->uploadImageRequest($app, $file, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11521,15 +11647,16 @@ class AppsApi
      *
      * Upload the app image.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadImageAsync($file = null, string $contentType = self::contentTypes['uploadImage'][0])
+    public function uploadImageAsync($app, $file = null, string $contentType = self::contentTypes['uploadImage'][0])
     {
-        return $this->uploadImageAsyncWithHttpInfo($file, $contentType)
+        return $this->uploadImageAsyncWithHttpInfo($app, $file, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11542,16 +11669,17 @@ class AppsApi
      *
      * Upload the app image.
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadImageAsyncWithHttpInfo($file = null, string $contentType = self::contentTypes['uploadImage'][0])
+    public function uploadImageAsyncWithHttpInfo($app, $file = null, string $contentType = self::contentTypes['uploadImage'][0])
     {
         $returnType = '\Squidex\Client\Model\AppDto';
-        $request = $this->uploadImageRequest($file, $contentType);
+        $request = $this->uploadImageRequest($app, $file, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11592,17 +11720,17 @@ class AppsApi
     /**
      * Create request for operation 'uploadImage'
      *
+     * @param  string $app The name of the app to update. (required)
      * @param  \SplFileObject $file (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function uploadImageRequest($file = null, string $contentType = self::contentTypes['uploadImage'][0])
+    public function uploadImageRequest($app, $file = null, string $contentType = self::contentTypes['uploadImage'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

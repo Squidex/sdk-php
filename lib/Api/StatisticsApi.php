@@ -142,15 +142,16 @@ class StatisticsApi
      *
      * Get total asset size.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrentStorageSize'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\CurrentStorageDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getCurrentStorageSize(string $contentType = self::contentTypes['getCurrentStorageSize'][0])
+    public function getCurrentStorageSize($app, string $contentType = self::contentTypes['getCurrentStorageSize'][0])
     {
-        list($response) = $this->getCurrentStorageSizeWithHttpInfo($contentType);
+        list($response) = $this->getCurrentStorageSizeWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -159,15 +160,16 @@ class StatisticsApi
      *
      * Get total asset size.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrentStorageSize'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\CurrentStorageDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCurrentStorageSizeWithHttpInfo(string $contentType = self::contentTypes['getCurrentStorageSize'][0])
+    public function getCurrentStorageSizeWithHttpInfo($app, string $contentType = self::contentTypes['getCurrentStorageSize'][0])
     {
-        $request = $this->getCurrentStorageSizeRequest($contentType);
+        $request = $this->getCurrentStorageSizeRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -281,14 +283,15 @@ class StatisticsApi
      *
      * Get total asset size.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrentStorageSize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCurrentStorageSizeAsync(string $contentType = self::contentTypes['getCurrentStorageSize'][0])
+    public function getCurrentStorageSizeAsync($app, string $contentType = self::contentTypes['getCurrentStorageSize'][0])
     {
-        return $this->getCurrentStorageSizeAsyncWithHttpInfo($contentType)
+        return $this->getCurrentStorageSizeAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -301,15 +304,16 @@ class StatisticsApi
      *
      * Get total asset size.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrentStorageSize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCurrentStorageSizeAsyncWithHttpInfo(string $contentType = self::contentTypes['getCurrentStorageSize'][0])
+    public function getCurrentStorageSizeAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getCurrentStorageSize'][0])
     {
         $returnType = '\Squidex\Client\Model\CurrentStorageDto';
-        $request = $this->getCurrentStorageSizeRequest($contentType);
+        $request = $this->getCurrentStorageSizeRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -350,16 +354,16 @@ class StatisticsApi
     /**
      * Create request for operation 'getCurrentStorageSize'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrentStorageSize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCurrentStorageSizeRequest(string $contentType = self::contentTypes['getCurrentStorageSize'][0])
+    public function getCurrentStorageSizeRequest($app, string $contentType = self::contentTypes['getCurrentStorageSize'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -444,15 +448,16 @@ class StatisticsApi
      *
      * Get api calls as log file.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\LogDownloadDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getLog(string $contentType = self::contentTypes['getLog'][0])
+    public function getLog($app, string $contentType = self::contentTypes['getLog'][0])
     {
-        list($response) = $this->getLogWithHttpInfo($contentType);
+        list($response) = $this->getLogWithHttpInfo($app, $contentType);
         return $response;
     }
 
@@ -461,15 +466,16 @@ class StatisticsApi
      *
      * Get api calls as log file.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\LogDownloadDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLogWithHttpInfo(string $contentType = self::contentTypes['getLog'][0])
+    public function getLogWithHttpInfo($app, string $contentType = self::contentTypes['getLog'][0])
     {
-        $request = $this->getLogRequest($contentType);
+        $request = $this->getLogRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -583,14 +589,15 @@ class StatisticsApi
      *
      * Get api calls as log file.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLogAsync(string $contentType = self::contentTypes['getLog'][0])
+    public function getLogAsync($app, string $contentType = self::contentTypes['getLog'][0])
     {
-        return $this->getLogAsyncWithHttpInfo($contentType)
+        return $this->getLogAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -603,15 +610,16 @@ class StatisticsApi
      *
      * Get api calls as log file.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLogAsyncWithHttpInfo(string $contentType = self::contentTypes['getLog'][0])
+    public function getLogAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getLog'][0])
     {
         $returnType = '\Squidex\Client\Model\LogDownloadDto';
-        $request = $this->getLogRequest($contentType);
+        $request = $this->getLogRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -652,16 +660,16 @@ class StatisticsApi
     /**
      * Create request for operation 'getLog'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getLogRequest(string $contentType = self::contentTypes['getLog'][0])
+    public function getLogRequest($app, string $contentType = self::contentTypes['getLog'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -746,6 +754,7 @@ class StatisticsApi
      *
      * Get asset usage by date.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStorageSizes'] to see the possible values for this operation
@@ -754,9 +763,9 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\StorageUsagePerDateDto[]|\Squidex\Client\Model\ErrorDto
      */
-    public function getStorageSizes($from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
+    public function getStorageSizes($app, $from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
     {
-        list($response) = $this->getStorageSizesWithHttpInfo($from_date, $to_date, $contentType);
+        list($response) = $this->getStorageSizesWithHttpInfo($app, $from_date, $to_date, $contentType);
         return $response;
     }
 
@@ -765,6 +774,7 @@ class StatisticsApi
      *
      * Get asset usage by date.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStorageSizes'] to see the possible values for this operation
@@ -773,9 +783,9 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\StorageUsagePerDateDto[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getStorageSizesWithHttpInfo($from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
+    public function getStorageSizesWithHttpInfo($app, $from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
     {
-        $request = $this->getStorageSizesRequest($from_date, $to_date, $contentType);
+        $request = $this->getStorageSizesRequest($app, $from_date, $to_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -889,6 +899,7 @@ class StatisticsApi
      *
      * Get asset usage by date.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStorageSizes'] to see the possible values for this operation
@@ -896,9 +907,9 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getStorageSizesAsync($from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
+    public function getStorageSizesAsync($app, $from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
     {
-        return $this->getStorageSizesAsyncWithHttpInfo($from_date, $to_date, $contentType)
+        return $this->getStorageSizesAsyncWithHttpInfo($app, $from_date, $to_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -911,6 +922,7 @@ class StatisticsApi
      *
      * Get asset usage by date.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStorageSizes'] to see the possible values for this operation
@@ -918,10 +930,10 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getStorageSizesAsyncWithHttpInfo($from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
+    public function getStorageSizesAsyncWithHttpInfo($app, $from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
     {
         $returnType = '\Squidex\Client\Model\StorageUsagePerDateDto[]';
-        $request = $this->getStorageSizesRequest($from_date, $to_date, $contentType);
+        $request = $this->getStorageSizesRequest($app, $from_date, $to_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -962,6 +974,7 @@ class StatisticsApi
     /**
      * Create request for operation 'getStorageSizes'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStorageSizes'] to see the possible values for this operation
@@ -969,11 +982,10 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getStorageSizesRequest($from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
+    public function getStorageSizesRequest($app, $from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1740,6 +1752,7 @@ class StatisticsApi
      *
      * Get api calls in date range.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsages'] to see the possible values for this operation
@@ -1748,9 +1761,9 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\CallsUsageDtoDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getUsages($from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
+    public function getUsages($app, $from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
     {
-        list($response) = $this->getUsagesWithHttpInfo($from_date, $to_date, $contentType);
+        list($response) = $this->getUsagesWithHttpInfo($app, $from_date, $to_date, $contentType);
         return $response;
     }
 
@@ -1759,6 +1772,7 @@ class StatisticsApi
      *
      * Get api calls in date range.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsages'] to see the possible values for this operation
@@ -1767,9 +1781,9 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\CallsUsageDtoDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUsagesWithHttpInfo($from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
+    public function getUsagesWithHttpInfo($app, $from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
     {
-        $request = $this->getUsagesRequest($from_date, $to_date, $contentType);
+        $request = $this->getUsagesRequest($app, $from_date, $to_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1883,6 +1897,7 @@ class StatisticsApi
      *
      * Get api calls in date range.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsages'] to see the possible values for this operation
@@ -1890,9 +1905,9 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUsagesAsync($from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
+    public function getUsagesAsync($app, $from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
     {
-        return $this->getUsagesAsyncWithHttpInfo($from_date, $to_date, $contentType)
+        return $this->getUsagesAsyncWithHttpInfo($app, $from_date, $to_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1905,6 +1920,7 @@ class StatisticsApi
      *
      * Get api calls in date range.
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsages'] to see the possible values for this operation
@@ -1912,10 +1928,10 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUsagesAsyncWithHttpInfo($from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
+    public function getUsagesAsyncWithHttpInfo($app, $from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
     {
         $returnType = '\Squidex\Client\Model\CallsUsageDtoDto';
-        $request = $this->getUsagesRequest($from_date, $to_date, $contentType);
+        $request = $this->getUsagesRequest($app, $from_date, $to_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1956,6 +1972,7 @@ class StatisticsApi
     /**
      * Create request for operation 'getUsages'
      *
+     * @param  string $app The name of the app. (required)
      * @param  \DateTime $from_date The from date. (required)
      * @param  \DateTime $to_date The to date. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsages'] to see the possible values for this operation
@@ -1963,11 +1980,10 @@ class StatisticsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUsagesRequest($from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
+    public function getUsagesRequest($app, $from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

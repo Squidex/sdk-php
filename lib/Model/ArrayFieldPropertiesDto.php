@@ -57,6 +57,7 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
     protected static $openAPITypes = [
         'min_items' => 'int',
         'max_items' => 'int',
+        'calculated_default_value' => '\Squidex\Client\Model\ArrayCalculatedDefaultValue',
         'unique_fields' => 'string[]'
     ];
 
@@ -84,6 +85,7 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
     protected static $openAPIFormats = [
         'min_items' => 'int32',
         'max_items' => 'int32',
+        'calculated_default_value' => null,
         'unique_fields' => null
     ];
 
@@ -95,6 +97,7 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
     protected static array $openAPINullables = [
         'min_items' => true,
 		'max_items' => true,
+		'calculated_default_value' => false,
 		'unique_fields' => true
     ];
 
@@ -196,6 +199,7 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
     protected static $attributeMap = [
         'min_items' => 'minItems',
         'max_items' => 'maxItems',
+        'calculated_default_value' => 'calculatedDefaultValue',
         'unique_fields' => 'uniqueFields'
     ];
 
@@ -207,6 +211,7 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
     protected static $setters = [
         'min_items' => 'setMinItems',
         'max_items' => 'setMaxItems',
+        'calculated_default_value' => 'setCalculatedDefaultValue',
         'unique_fields' => 'setUniqueFields'
     ];
 
@@ -218,6 +223,7 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
     protected static $getters = [
         'min_items' => 'getMinItems',
         'max_items' => 'getMaxItems',
+        'calculated_default_value' => 'getCalculatedDefaultValue',
         'unique_fields' => 'getUniqueFields'
     ];
 
@@ -276,6 +282,7 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
 
         $this->setIfExists('min_items', $data ?? [], null);
         $this->setIfExists('max_items', $data ?? [], null);
+        $this->setIfExists('calculated_default_value', $data ?? [], null);
         $this->setIfExists('unique_fields', $data ?? [], null);
 
 
@@ -389,6 +396,33 @@ class ArrayFieldPropertiesDto extends FieldPropertiesDto
             }
         }
         $this->container['max_items'] = $max_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets calculated_default_value
+     *
+     * @return \Squidex\Client\Model\ArrayCalculatedDefaultValue|null
+     */
+    public function getCalculatedDefaultValue()
+    {
+        return $this->container['calculated_default_value'];
+    }
+
+    /**
+     * Sets calculated_default_value
+     *
+     * @param \Squidex\Client\Model\ArrayCalculatedDefaultValue|null $calculated_default_value calculated_default_value
+     *
+     * @return self
+     */
+    public function setCalculatedDefaultValue($calculated_default_value)
+    {
+        if (is_null($calculated_default_value)) {
+            throw new \InvalidArgumentException('non-nullable calculated_default_value cannot be null');
+        }
+        $this->container['calculated_default_value'] = $calculated_default_value;
 
         return $this;
     }

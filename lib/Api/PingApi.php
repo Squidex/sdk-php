@@ -130,15 +130,16 @@ class PingApi
      *
      * Get ping status.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppPing'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function getAppPing(string $contentType = self::contentTypes['getAppPing'][0])
+    public function getAppPing($app, string $contentType = self::contentTypes['getAppPing'][0])
     {
-        $this->getAppPingWithHttpInfo($contentType);
+        $this->getAppPingWithHttpInfo($app, $contentType);
     }
 
     /**
@@ -146,15 +147,16 @@ class PingApi
      *
      * Get ping status.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppPing'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAppPingWithHttpInfo(string $contentType = self::contentTypes['getAppPing'][0])
+    public function getAppPingWithHttpInfo($app, string $contentType = self::contentTypes['getAppPing'][0])
     {
-        $request = $this->getAppPingRequest($contentType);
+        $request = $this->getAppPingRequest($app, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -213,14 +215,15 @@ class PingApi
      *
      * Get ping status.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppPing'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAppPingAsync(string $contentType = self::contentTypes['getAppPing'][0])
+    public function getAppPingAsync($app, string $contentType = self::contentTypes['getAppPing'][0])
     {
-        return $this->getAppPingAsyncWithHttpInfo($contentType)
+        return $this->getAppPingAsyncWithHttpInfo($app, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -233,15 +236,16 @@ class PingApi
      *
      * Get ping status.
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppPing'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAppPingAsyncWithHttpInfo(string $contentType = self::contentTypes['getAppPing'][0])
+    public function getAppPingAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getAppPing'][0])
     {
         $returnType = '';
-        $request = $this->getAppPingRequest($contentType);
+        $request = $this->getAppPingRequest($app, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -269,16 +273,16 @@ class PingApi
     /**
      * Create request for operation 'getAppPing'
      *
+     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppPing'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAppPingRequest(string $contentType = self::contentTypes['getAppPing'][0])
+    public function getAppPingRequest($app, string $contentType = self::contentTypes['getAppPing'][0])
     {
 
         // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
