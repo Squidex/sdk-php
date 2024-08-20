@@ -124,7 +124,6 @@ class SearchApi
      *
      * Get search results.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $query The search query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchResults'] to see the possible values for this operation
      *
@@ -132,9 +131,9 @@ class SearchApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\SearchResultDto[]|\Squidex\Client\Model\ErrorDto
      */
-    public function getSearchResults($app, $query = null, string $contentType = self::contentTypes['getSearchResults'][0])
+    public function getSearchResults($query = null, string $contentType = self::contentTypes['getSearchResults'][0])
     {
-        list($response) = $this->getSearchResultsWithHttpInfo($app, $query, $contentType);
+        list($response) = $this->getSearchResultsWithHttpInfo($query, $contentType);
         return $response;
     }
 
@@ -143,7 +142,6 @@ class SearchApi
      *
      * Get search results.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $query The search query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchResults'] to see the possible values for this operation
      *
@@ -151,9 +149,9 @@ class SearchApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\SearchResultDto[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchResultsWithHttpInfo($app, $query = null, string $contentType = self::contentTypes['getSearchResults'][0])
+    public function getSearchResultsWithHttpInfo($query = null, string $contentType = self::contentTypes['getSearchResults'][0])
     {
-        $request = $this->getSearchResultsRequest($app, $query, $contentType);
+        $request = $this->getSearchResultsRequest($query, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -267,16 +265,15 @@ class SearchApi
      *
      * Get search results.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $query The search query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchResults'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchResultsAsync($app, $query = null, string $contentType = self::contentTypes['getSearchResults'][0])
+    public function getSearchResultsAsync($query = null, string $contentType = self::contentTypes['getSearchResults'][0])
     {
-        return $this->getSearchResultsAsyncWithHttpInfo($app, $query, $contentType)
+        return $this->getSearchResultsAsyncWithHttpInfo($query, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -289,17 +286,16 @@ class SearchApi
      *
      * Get search results.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $query The search query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchResults'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchResultsAsyncWithHttpInfo($app, $query = null, string $contentType = self::contentTypes['getSearchResults'][0])
+    public function getSearchResultsAsyncWithHttpInfo($query = null, string $contentType = self::contentTypes['getSearchResults'][0])
     {
         $returnType = '\Squidex\Client\Model\SearchResultDto[]';
-        $request = $this->getSearchResultsRequest($app, $query, $contentType);
+        $request = $this->getSearchResultsRequest($query, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -340,17 +336,17 @@ class SearchApi
     /**
      * Create request for operation 'getSearchResults'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $query The search query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchResults'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchResultsRequest($app, $query = null, string $contentType = self::contentTypes['getSearchResults'][0])
+    public function getSearchResultsRequest($query = null, string $contentType = self::contentTypes['getSearchResults'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

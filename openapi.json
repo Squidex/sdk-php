@@ -762,7 +762,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -1616,7 +1617,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -1672,7 +1674,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "fromDate",
@@ -1827,7 +1830,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -1938,7 +1942,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "fromDate",
@@ -2099,7 +2104,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "query",
@@ -2168,7 +2174,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -2267,7 +2274,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -2377,7 +2385,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -2466,7 +2475,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -2555,7 +2565,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -2655,7 +2666,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -2753,7 +2765,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -2840,7 +2853,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -2949,7 +2963,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3048,7 +3063,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3136,7 +3152,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3235,7 +3252,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3323,7 +3341,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3422,7 +3441,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3510,7 +3530,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3609,7 +3630,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3697,7 +3719,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3796,7 +3819,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3884,7 +3908,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -3982,7 +4007,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -4036,7 +4062,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -4122,7 +4149,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4186,7 +4214,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4273,7 +4302,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4342,7 +4372,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4431,7 +4462,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4520,7 +4552,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4609,7 +4642,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4698,7 +4732,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4787,7 +4822,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4863,7 +4899,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -4980,7 +5017,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -5034,7 +5072,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -5113,7 +5152,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -5169,7 +5209,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -5256,7 +5297,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -5325,7 +5367,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -5401,7 +5444,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -5477,7 +5521,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -5546,7 +5591,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -5622,7 +5668,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -5688,7 +5735,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -5767,7 +5815,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -5833,7 +5882,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "ruleId",
@@ -5919,7 +5969,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -5975,7 +6026,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -6042,7 +6094,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -6193,7 +6246,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -6249,7 +6303,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -6522,7 +6577,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -6719,7 +6775,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -6775,7 +6832,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -6844,7 +6902,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "channel",
@@ -7301,7 +7360,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -7483,7 +7543,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -7620,7 +7681,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -7762,7 +7824,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -7882,7 +7945,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -8035,7 +8099,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -8160,7 +8225,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -8276,7 +8342,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -8374,7 +8441,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -8452,7 +8520,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -8591,7 +8660,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -8730,7 +8800,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -8838,7 +8909,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -8932,7 +9004,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -9025,7 +9098,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -9139,7 +9213,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -9255,7 +9330,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -9360,7 +9436,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -9463,7 +9540,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -9568,7 +9646,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "The query string",
@@ -9657,7 +9736,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "X-Unpublished",
@@ -9739,7 +9819,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "The query string",
@@ -9828,7 +9909,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "X-Unpublished",
@@ -9910,7 +9992,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "ids",
@@ -10079,7 +10162,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "X-Fields",
@@ -10211,7 +10295,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "schema",
@@ -10302,7 +10387,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -10361,7 +10447,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -10500,7 +10587,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -10555,7 +10643,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -10708,7 +10797,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "idOrSlug",
@@ -11141,7 +11231,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "parentId",
@@ -11215,7 +11306,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -11294,7 +11386,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -11381,7 +11474,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -11450,7 +11544,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -11540,7 +11635,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -11600,7 +11696,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "name",
@@ -11694,7 +11791,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "parentId",
@@ -11833,7 +11931,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "ParentId",
@@ -11959,7 +12058,8 @@
               "type": "string"
             },
             "x-position": 0,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "X-NoTotal",
@@ -12056,7 +12156,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -12121,7 +12222,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -12244,7 +12346,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -12331,7 +12434,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -12418,7 +12522,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -12501,7 +12606,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -12608,7 +12714,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -12697,7 +12804,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -12751,7 +12859,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -12831,7 +12940,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -12886,7 +12996,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -12966,7 +13077,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -13054,7 +13166,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -13130,7 +13243,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -13184,7 +13298,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -13263,7 +13378,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -13327,7 +13443,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -13403,7 +13520,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -13451,7 +13569,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -13536,7 +13655,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -13602,7 +13722,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -13656,7 +13777,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -13735,7 +13857,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "language",
@@ -13822,7 +13945,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "language",
@@ -13898,7 +14022,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -13952,7 +14077,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -14031,7 +14157,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -14090,7 +14217,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "roleName",
@@ -14177,7 +14305,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "roleName",
@@ -14419,7 +14548,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -14471,7 +14601,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -14548,7 +14679,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -14607,7 +14739,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -14686,7 +14819,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -14738,7 +14872,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -14817,7 +14952,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "responses": {
@@ -14871,7 +15007,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           }
         ],
         "requestBody": {
@@ -14950,7 +15087,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",
@@ -15037,7 +15175,8 @@
               "type": "string"
             },
             "x-position": 1,
-            "x-fern-sdk-variable": "appName"
+            "x-fern-sdk-variable": "appName",
+            "x-hidden": "true"
           },
           {
             "name": "id",

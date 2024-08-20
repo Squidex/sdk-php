@@ -199,7 +199,6 @@ class ContentsApi
      *
      * Bulk update content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateContents'] to see the possible values for this operation
@@ -208,9 +207,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function bulkUpdateContents($app, $schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
+    public function bulkUpdateContents($schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
     {
-        list($response) = $this->bulkUpdateContentsWithHttpInfo($app, $schema, $bulk_update_contents_dto, $contentType);
+        list($response) = $this->bulkUpdateContentsWithHttpInfo($schema, $bulk_update_contents_dto, $contentType);
         return $response;
     }
 
@@ -219,7 +218,6 @@ class ContentsApi
      *
      * Bulk update content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateContents'] to see the possible values for this operation
@@ -228,9 +226,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function bulkUpdateContentsWithHttpInfo($app, $schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
+    public function bulkUpdateContentsWithHttpInfo($schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
     {
-        $request = $this->bulkUpdateContentsRequest($app, $schema, $bulk_update_contents_dto, $contentType);
+        $request = $this->bulkUpdateContentsRequest($schema, $bulk_update_contents_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -367,7 +365,6 @@ class ContentsApi
      *
      * Bulk update content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateContents'] to see the possible values for this operation
@@ -375,9 +372,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkUpdateContentsAsync($app, $schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
+    public function bulkUpdateContentsAsync($schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
     {
-        return $this->bulkUpdateContentsAsyncWithHttpInfo($app, $schema, $bulk_update_contents_dto, $contentType)
+        return $this->bulkUpdateContentsAsyncWithHttpInfo($schema, $bulk_update_contents_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -390,7 +387,6 @@ class ContentsApi
      *
      * Bulk update content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateContents'] to see the possible values for this operation
@@ -398,10 +394,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkUpdateContentsAsyncWithHttpInfo($app, $schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
+    public function bulkUpdateContentsAsyncWithHttpInfo($schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
     {
         $returnType = '\Squidex\Client\Model\BulkResultDto[]';
-        $request = $this->bulkUpdateContentsRequest($app, $schema, $bulk_update_contents_dto, $contentType);
+        $request = $this->bulkUpdateContentsRequest($schema, $bulk_update_contents_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -442,7 +438,6 @@ class ContentsApi
     /**
      * Create request for operation 'bulkUpdateContents'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateContents'] to see the possible values for this operation
@@ -450,10 +445,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function bulkUpdateContentsRequest($app, $schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
+    public function bulkUpdateContentsRequest($schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -567,7 +563,6 @@ class ContentsApi
      *
      * Create a new draft version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to create the draft for. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -578,9 +573,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function createDraft($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
+    public function createDraft($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
     {
-        list($response) = $this->createDraftWithHttpInfo($app, $schema, $id, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->createDraftWithHttpInfo($schema, $id, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -589,7 +584,6 @@ class ContentsApi
      *
      * Create a new draft version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to create the draft for. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -600,9 +594,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createDraftWithHttpInfo($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
+    public function createDraftWithHttpInfo($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
     {
-        $request = $this->createDraftRequest($app, $schema, $id, $x_unpublished, $x_languages, $contentType);
+        $request = $this->createDraftRequest($schema, $id, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -739,7 +733,6 @@ class ContentsApi
      *
      * Create a new draft version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to create the draft for. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -749,9 +742,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDraftAsync($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
+    public function createDraftAsync($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
     {
-        return $this->createDraftAsyncWithHttpInfo($app, $schema, $id, $x_unpublished, $x_languages, $contentType)
+        return $this->createDraftAsyncWithHttpInfo($schema, $id, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -764,7 +757,6 @@ class ContentsApi
      *
      * Create a new draft version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to create the draft for. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -774,10 +766,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDraftAsyncWithHttpInfo($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
+    public function createDraftAsyncWithHttpInfo($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->createDraftRequest($app, $schema, $id, $x_unpublished, $x_languages, $contentType);
+        $request = $this->createDraftRequest($schema, $id, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -818,7 +810,6 @@ class ContentsApi
     /**
      * Create request for operation 'createDraft'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to create the draft for. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -828,10 +819,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createDraftRequest($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
+    public function createDraftRequest($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -956,7 +948,6 @@ class ContentsApi
      *
      * Delete a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete. (required)
      * @param  bool $check_referrers True to check referrers of this content. (optional)
@@ -967,9 +958,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteContent($app, $schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
+    public function deleteContent($schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
     {
-        $this->deleteContentWithHttpInfo($app, $schema, $id, $check_referrers, $permanent, $contentType);
+        $this->deleteContentWithHttpInfo($schema, $id, $check_referrers, $permanent, $contentType);
     }
 
     /**
@@ -977,7 +968,6 @@ class ContentsApi
      *
      * Delete a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete. (required)
      * @param  bool $check_referrers True to check referrers of this content. (optional)
@@ -988,9 +978,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteContentWithHttpInfo($app, $schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
+    public function deleteContentWithHttpInfo($schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
     {
-        $request = $this->deleteContentRequest($app, $schema, $id, $check_referrers, $permanent, $contentType);
+        $request = $this->deleteContentRequest($schema, $id, $check_referrers, $permanent, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1057,7 +1047,6 @@ class ContentsApi
      *
      * Delete a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete. (required)
      * @param  bool $check_referrers True to check referrers of this content. (optional)
@@ -1067,9 +1056,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteContentAsync($app, $schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
+    public function deleteContentAsync($schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
     {
-        return $this->deleteContentAsyncWithHttpInfo($app, $schema, $id, $check_referrers, $permanent, $contentType)
+        return $this->deleteContentAsyncWithHttpInfo($schema, $id, $check_referrers, $permanent, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1082,7 +1071,6 @@ class ContentsApi
      *
      * Delete a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete. (required)
      * @param  bool $check_referrers True to check referrers of this content. (optional)
@@ -1092,10 +1080,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteContentAsyncWithHttpInfo($app, $schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
+    public function deleteContentAsyncWithHttpInfo($schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
     {
         $returnType = '';
-        $request = $this->deleteContentRequest($app, $schema, $id, $check_referrers, $permanent, $contentType);
+        $request = $this->deleteContentRequest($schema, $id, $check_referrers, $permanent, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1123,7 +1111,6 @@ class ContentsApi
     /**
      * Create request for operation 'deleteContent'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete. (required)
      * @param  bool $check_referrers True to check referrers of this content. (optional)
@@ -1133,10 +1120,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteContentRequest($app, $schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
+    public function deleteContentRequest($schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1271,7 +1259,6 @@ class ContentsApi
      *
      * Cancel status change of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to cancel. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1282,9 +1269,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteContentStatus($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
+    public function deleteContentStatus($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
     {
-        list($response) = $this->deleteContentStatusWithHttpInfo($app, $schema, $id, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->deleteContentStatusWithHttpInfo($schema, $id, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -1293,7 +1280,6 @@ class ContentsApi
      *
      * Cancel status change of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to cancel. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1304,9 +1290,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteContentStatusWithHttpInfo($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
+    public function deleteContentStatusWithHttpInfo($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
     {
-        $request = $this->deleteContentStatusRequest($app, $schema, $id, $x_unpublished, $x_languages, $contentType);
+        $request = $this->deleteContentStatusRequest($schema, $id, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1443,7 +1429,6 @@ class ContentsApi
      *
      * Cancel status change of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to cancel. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1453,9 +1438,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteContentStatusAsync($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
+    public function deleteContentStatusAsync($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
     {
-        return $this->deleteContentStatusAsyncWithHttpInfo($app, $schema, $id, $x_unpublished, $x_languages, $contentType)
+        return $this->deleteContentStatusAsyncWithHttpInfo($schema, $id, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1468,7 +1453,6 @@ class ContentsApi
      *
      * Cancel status change of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to cancel. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1478,10 +1462,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteContentStatusAsyncWithHttpInfo($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
+    public function deleteContentStatusAsyncWithHttpInfo($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->deleteContentStatusRequest($app, $schema, $id, $x_unpublished, $x_languages, $contentType);
+        $request = $this->deleteContentStatusRequest($schema, $id, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1522,7 +1506,6 @@ class ContentsApi
     /**
      * Create request for operation 'deleteContentStatus'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to cancel. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1532,10 +1515,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteContentStatusRequest($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
+    public function deleteContentStatusRequest($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -1660,7 +1644,6 @@ class ContentsApi
      *
      * Delete the draft version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete the draft from. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1671,9 +1654,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function deleteVersion($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
+    public function deleteVersion($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
     {
-        list($response) = $this->deleteVersionWithHttpInfo($app, $schema, $id, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->deleteVersionWithHttpInfo($schema, $id, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -1682,7 +1665,6 @@ class ContentsApi
      *
      * Delete the draft version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete the draft from. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1693,9 +1675,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteVersionWithHttpInfo($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
+    public function deleteVersionWithHttpInfo($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
     {
-        $request = $this->deleteVersionRequest($app, $schema, $id, $x_unpublished, $x_languages, $contentType);
+        $request = $this->deleteVersionRequest($schema, $id, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1832,7 +1814,6 @@ class ContentsApi
      *
      * Delete the draft version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete the draft from. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1842,9 +1823,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteVersionAsync($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
+    public function deleteVersionAsync($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
     {
-        return $this->deleteVersionAsyncWithHttpInfo($app, $schema, $id, $x_unpublished, $x_languages, $contentType)
+        return $this->deleteVersionAsyncWithHttpInfo($schema, $id, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1857,7 +1838,6 @@ class ContentsApi
      *
      * Delete the draft version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete the draft from. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1867,10 +1847,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteVersionAsyncWithHttpInfo($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
+    public function deleteVersionAsyncWithHttpInfo($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->deleteVersionRequest($app, $schema, $id, $x_unpublished, $x_languages, $contentType);
+        $request = $this->deleteVersionRequest($schema, $id, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1911,7 +1891,6 @@ class ContentsApi
     /**
      * Create request for operation 'deleteVersion'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to delete the draft from. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
@@ -1921,10 +1900,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteVersionRequest($app, $schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
+    public function deleteVersionRequest($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2049,7 +2029,6 @@ class ContentsApi
      *
      * Get a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The optional version. (optional, default to -2)
@@ -2063,9 +2042,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getContent($app, $schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
+    public function getContent($schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
     {
-        list($response) = $this->getContentWithHttpInfo($app, $schema, $id, $version, $x_fields, $x_flatten, $x_languages, $x_unpublished, $contentType);
+        list($response) = $this->getContentWithHttpInfo($schema, $id, $version, $x_fields, $x_flatten, $x_languages, $x_unpublished, $contentType);
         return $response;
     }
 
@@ -2074,7 +2053,6 @@ class ContentsApi
      *
      * Get a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The optional version. (optional, default to -2)
@@ -2088,9 +2066,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getContentWithHttpInfo($app, $schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
+    public function getContentWithHttpInfo($schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
     {
-        $request = $this->getContentRequest($app, $schema, $id, $version, $x_fields, $x_flatten, $x_languages, $x_unpublished, $contentType);
+        $request = $this->getContentRequest($schema, $id, $version, $x_fields, $x_flatten, $x_languages, $x_unpublished, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2204,7 +2182,6 @@ class ContentsApi
      *
      * Get a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The optional version. (optional, default to -2)
@@ -2217,9 +2194,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentAsync($app, $schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
+    public function getContentAsync($schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
     {
-        return $this->getContentAsyncWithHttpInfo($app, $schema, $id, $version, $x_fields, $x_flatten, $x_languages, $x_unpublished, $contentType)
+        return $this->getContentAsyncWithHttpInfo($schema, $id, $version, $x_fields, $x_flatten, $x_languages, $x_unpublished, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2232,7 +2209,6 @@ class ContentsApi
      *
      * Get a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The optional version. (optional, default to -2)
@@ -2245,10 +2221,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentAsyncWithHttpInfo($app, $schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
+    public function getContentAsyncWithHttpInfo($schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->getContentRequest($app, $schema, $id, $version, $x_fields, $x_flatten, $x_languages, $x_unpublished, $contentType);
+        $request = $this->getContentRequest($schema, $id, $version, $x_fields, $x_flatten, $x_languages, $x_unpublished, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2289,7 +2265,6 @@ class ContentsApi
     /**
      * Create request for operation 'getContent'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The optional version. (optional, default to -2)
@@ -2302,10 +2277,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getContentRequest($app, $schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
+    public function getContentRequest($schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2450,7 +2426,6 @@ class ContentsApi
      *
      * Get a content item validity.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentValidity'] to see the possible values for this operation
@@ -2459,9 +2434,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function getContentValidity($app, $schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
+    public function getContentValidity($schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
     {
-        $this->getContentValidityWithHttpInfo($app, $schema, $id, $contentType);
+        $this->getContentValidityWithHttpInfo($schema, $id, $contentType);
     }
 
     /**
@@ -2469,7 +2444,6 @@ class ContentsApi
      *
      * Get a content item validity.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentValidity'] to see the possible values for this operation
@@ -2478,9 +2452,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getContentValidityWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
+    public function getContentValidityWithHttpInfo($schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
     {
-        $request = $this->getContentValidityRequest($app, $schema, $id, $contentType);
+        $request = $this->getContentValidityRequest($schema, $id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2547,7 +2521,6 @@ class ContentsApi
      *
      * Get a content item validity.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentValidity'] to see the possible values for this operation
@@ -2555,9 +2528,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentValidityAsync($app, $schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
+    public function getContentValidityAsync($schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
     {
-        return $this->getContentValidityAsyncWithHttpInfo($app, $schema, $id, $contentType)
+        return $this->getContentValidityAsyncWithHttpInfo($schema, $id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2570,7 +2543,6 @@ class ContentsApi
      *
      * Get a content item validity.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentValidity'] to see the possible values for this operation
@@ -2578,10 +2550,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentValidityAsyncWithHttpInfo($app, $schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
+    public function getContentValidityAsyncWithHttpInfo($schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
     {
         $returnType = '';
-        $request = $this->getContentValidityRequest($app, $schema, $id, $contentType);
+        $request = $this->getContentValidityRequest($schema, $id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2609,7 +2581,6 @@ class ContentsApi
     /**
      * Create request for operation 'getContentValidity'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentValidity'] to see the possible values for this operation
@@ -2617,10 +2588,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getContentValidityRequest($app, $schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
+    public function getContentValidityRequest($schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -2735,7 +2707,6 @@ class ContentsApi
      *
      * Get a content by version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The version fo the content to fetch. (required)
@@ -2748,9 +2719,9 @@ class ContentsApi
      * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      * @deprecated
      */
-    public function getContentVersion($app, $schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
+    public function getContentVersion($schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
     {
-        list($response) = $this->getContentVersionWithHttpInfo($app, $schema, $id, $version, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->getContentVersionWithHttpInfo($schema, $id, $version, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -2759,7 +2730,6 @@ class ContentsApi
      *
      * Get a content by version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The version fo the content to fetch. (required)
@@ -2772,9 +2742,9 @@ class ContentsApi
      * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function getContentVersionWithHttpInfo($app, $schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
+    public function getContentVersionWithHttpInfo($schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
     {
-        $request = $this->getContentVersionRequest($app, $schema, $id, $version, $x_unpublished, $x_languages, $contentType);
+        $request = $this->getContentVersionRequest($schema, $id, $version, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2888,7 +2858,6 @@ class ContentsApi
      *
      * Get a content by version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The version fo the content to fetch. (required)
@@ -2900,9 +2869,9 @@ class ContentsApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getContentVersionAsync($app, $schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
+    public function getContentVersionAsync($schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
     {
-        return $this->getContentVersionAsyncWithHttpInfo($app, $schema, $id, $version, $x_unpublished, $x_languages, $contentType)
+        return $this->getContentVersionAsyncWithHttpInfo($schema, $id, $version, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2915,7 +2884,6 @@ class ContentsApi
      *
      * Get a content by version.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The version fo the content to fetch. (required)
@@ -2927,10 +2895,10 @@ class ContentsApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getContentVersionAsyncWithHttpInfo($app, $schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
+    public function getContentVersionAsyncWithHttpInfo($schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->getContentVersionRequest($app, $schema, $id, $version, $x_unpublished, $x_languages, $contentType);
+        $request = $this->getContentVersionRequest($schema, $id, $version, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2971,7 +2939,6 @@ class ContentsApi
     /**
      * Create request for operation 'getContentVersion'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  int $version The version fo the content to fetch. (required)
@@ -2983,10 +2950,11 @@ class ContentsApi
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function getContentVersionRequest($app, $schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
+    public function getContentVersionRequest($schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3126,7 +3094,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $ids The optional ids of the content to fetch. (optional)
      * @param  string $q The optional json query. (optional)
@@ -3147,9 +3114,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getContents($app, $schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
+    public function getContents($schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
     {
-        list($response) = $this->getContentsWithHttpInfo($app, $schema, $ids, $q, $search, $top, $skip, $orderby, $filter, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        list($response) = $this->getContentsWithHttpInfo($schema, $ids, $q, $search, $top, $skip, $orderby, $filter, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
         return $response;
     }
 
@@ -3158,7 +3125,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $ids The optional ids of the content to fetch. (optional)
      * @param  string $q The optional json query. (optional)
@@ -3179,9 +3145,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getContentsWithHttpInfo($app, $schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
+    public function getContentsWithHttpInfo($schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
     {
-        $request = $this->getContentsRequest($app, $schema, $ids, $q, $search, $top, $skip, $orderby, $filter, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        $request = $this->getContentsRequest($schema, $ids, $q, $search, $top, $skip, $orderby, $filter, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3295,7 +3261,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $ids The optional ids of the content to fetch. (optional)
      * @param  string $q The optional json query. (optional)
@@ -3315,9 +3280,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentsAsync($app, $schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
+    public function getContentsAsync($schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
     {
-        return $this->getContentsAsyncWithHttpInfo($app, $schema, $ids, $q, $search, $top, $skip, $orderby, $filter, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType)
+        return $this->getContentsAsyncWithHttpInfo($schema, $ids, $q, $search, $top, $skip, $orderby, $filter, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3330,7 +3295,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $ids The optional ids of the content to fetch. (optional)
      * @param  string $q The optional json query. (optional)
@@ -3350,10 +3314,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentsAsyncWithHttpInfo($app, $schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
+    public function getContentsAsyncWithHttpInfo($schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentsDto';
-        $request = $this->getContentsRequest($app, $schema, $ids, $q, $search, $top, $skip, $orderby, $filter, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        $request = $this->getContentsRequest($schema, $ids, $q, $search, $top, $skip, $orderby, $filter, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3394,7 +3358,6 @@ class ContentsApi
     /**
      * Create request for operation 'getContents'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $ids The optional ids of the content to fetch. (optional)
      * @param  string $q The optional json query. (optional)
@@ -3414,10 +3377,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getContentsRequest($app, $schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
+    public function getContentsRequest($schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -3617,7 +3581,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
@@ -3632,9 +3595,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getContentsPost($app, $schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
+    public function getContentsPost($schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
     {
-        list($response) = $this->getContentsPostWithHttpInfo($app, $schema, $query_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        list($response) = $this->getContentsPostWithHttpInfo($schema, $query_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
         return $response;
     }
 
@@ -3643,7 +3606,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
@@ -3658,9 +3620,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getContentsPostWithHttpInfo($app, $schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
+    public function getContentsPostWithHttpInfo($schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
     {
-        $request = $this->getContentsPostRequest($app, $schema, $query_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        $request = $this->getContentsPostRequest($schema, $query_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3797,7 +3759,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
@@ -3811,9 +3772,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentsPostAsync($app, $schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
+    public function getContentsPostAsync($schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
     {
-        return $this->getContentsPostAsyncWithHttpInfo($app, $schema, $query_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType)
+        return $this->getContentsPostAsyncWithHttpInfo($schema, $query_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3826,7 +3787,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
@@ -3840,10 +3800,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentsPostAsyncWithHttpInfo($app, $schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
+    public function getContentsPostAsyncWithHttpInfo($schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentsDto';
-        $request = $this->getContentsPostRequest($app, $schema, $query_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        $request = $this->getContentsPostRequest($schema, $query_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3884,7 +3844,6 @@ class ContentsApi
     /**
      * Create request for operation 'getContentsPost'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\QueryDto $query_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
@@ -3898,10 +3857,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getContentsPostRequest($app, $schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
+    public function getContentsPostRequest($schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4045,7 +4005,6 @@ class ContentsApi
      *
      * Get all references of a content.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4061,9 +4020,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getReferences($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
+    public function getReferences($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
     {
-        list($response) = $this->getReferencesWithHttpInfo($app, $schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
+        list($response) = $this->getReferencesWithHttpInfo($schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
         return $response;
     }
 
@@ -4072,7 +4031,6 @@ class ContentsApi
      *
      * Get all references of a content.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4088,9 +4046,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getReferencesWithHttpInfo($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
+    public function getReferencesWithHttpInfo($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
     {
-        $request = $this->getReferencesRequest($app, $schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
+        $request = $this->getReferencesRequest($schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4204,7 +4162,6 @@ class ContentsApi
      *
      * Get all references of a content.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4219,9 +4176,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReferencesAsync($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
+    public function getReferencesAsync($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
     {
-        return $this->getReferencesAsyncWithHttpInfo($app, $schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType)
+        return $this->getReferencesAsyncWithHttpInfo($schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4234,7 +4191,6 @@ class ContentsApi
      *
      * Get all references of a content.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4249,10 +4205,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReferencesAsyncWithHttpInfo($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
+    public function getReferencesAsyncWithHttpInfo($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentsDto';
-        $request = $this->getReferencesRequest($app, $schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
+        $request = $this->getReferencesRequest($schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4293,7 +4249,6 @@ class ContentsApi
     /**
      * Create request for operation 'getReferences'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4308,10 +4263,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getReferencesRequest($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
+    public function getReferencesRequest($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4466,7 +4422,6 @@ class ContentsApi
      *
      * Get a referencing contents of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4482,9 +4437,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getReferencing($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
+    public function getReferencing($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
     {
-        list($response) = $this->getReferencingWithHttpInfo($app, $schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
+        list($response) = $this->getReferencingWithHttpInfo($schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
         return $response;
     }
 
@@ -4493,7 +4448,6 @@ class ContentsApi
      *
      * Get a referencing contents of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4509,9 +4463,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getReferencingWithHttpInfo($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
+    public function getReferencingWithHttpInfo($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
     {
-        $request = $this->getReferencingRequest($app, $schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
+        $request = $this->getReferencingRequest($schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4625,7 +4579,6 @@ class ContentsApi
      *
      * Get a referencing contents of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4640,9 +4593,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReferencingAsync($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
+    public function getReferencingAsync($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
     {
-        return $this->getReferencingAsyncWithHttpInfo($app, $schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType)
+        return $this->getReferencingAsyncWithHttpInfo($schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4655,7 +4608,6 @@ class ContentsApi
      *
      * Get a referencing contents of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4670,10 +4622,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReferencingAsyncWithHttpInfo($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
+    public function getReferencingAsyncWithHttpInfo($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentsDto';
-        $request = $this->getReferencingRequest($app, $schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
+        $request = $this->getReferencingRequest($schema, $id, $q, $x_fields, $x_flatten, $x_languages, $x_unpublished, $x_no_slow_total, $x_no_total, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4714,7 +4666,6 @@ class ContentsApi
     /**
      * Create request for operation 'getReferencing'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content to fetch. (required)
      * @param  string $q The optional json query. (optional)
@@ -4729,10 +4680,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getReferencingRequest($app, $schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
+    public function getReferencingRequest($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -4887,7 +4839,6 @@ class ContentsApi
      *
      * Patchs a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to patch. (required)
      * @param  array<string,array> $request_body The patch for the content item. (required)
@@ -4899,9 +4850,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function patchContent($app, $schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
+    public function patchContent($schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
     {
-        list($response) = $this->patchContentWithHttpInfo($app, $schema, $id, $request_body, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->patchContentWithHttpInfo($schema, $id, $request_body, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -4910,7 +4861,6 @@ class ContentsApi
      *
      * Patchs a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to patch. (required)
      * @param  array<string,array> $request_body The patch for the content item. (required)
@@ -4922,9 +4872,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchContentWithHttpInfo($app, $schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
+    public function patchContentWithHttpInfo($schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
     {
-        $request = $this->patchContentRequest($app, $schema, $id, $request_body, $x_unpublished, $x_languages, $contentType);
+        $request = $this->patchContentRequest($schema, $id, $request_body, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5061,7 +5011,6 @@ class ContentsApi
      *
      * Patchs a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to patch. (required)
      * @param  array<string,array> $request_body The patch for the content item. (required)
@@ -5072,9 +5021,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchContentAsync($app, $schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
+    public function patchContentAsync($schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
     {
-        return $this->patchContentAsyncWithHttpInfo($app, $schema, $id, $request_body, $x_unpublished, $x_languages, $contentType)
+        return $this->patchContentAsyncWithHttpInfo($schema, $id, $request_body, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5087,7 +5036,6 @@ class ContentsApi
      *
      * Patchs a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to patch. (required)
      * @param  array<string,array> $request_body The patch for the content item. (required)
@@ -5098,10 +5046,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchContentAsyncWithHttpInfo($app, $schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
+    public function patchContentAsyncWithHttpInfo($schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->patchContentRequest($app, $schema, $id, $request_body, $x_unpublished, $x_languages, $contentType);
+        $request = $this->patchContentRequest($schema, $id, $request_body, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5142,7 +5090,6 @@ class ContentsApi
     /**
      * Create request for operation 'patchContent'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to patch. (required)
      * @param  array<string,array> $request_body The patch for the content item. (required)
@@ -5153,10 +5100,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function patchContentRequest($app, $schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
+    public function patchContentRequest($schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5295,7 +5243,6 @@ class ContentsApi
      *
      * Create a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
      * @param  string $status The initial status. (optional)
@@ -5309,9 +5256,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postContent($app, $schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
+    public function postContent($schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
     {
-        list($response) = $this->postContentWithHttpInfo($app, $schema, $request_body, $status, $id, $publish, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->postContentWithHttpInfo($schema, $request_body, $status, $id, $publish, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -5320,7 +5267,6 @@ class ContentsApi
      *
      * Create a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
      * @param  string $status The initial status. (optional)
@@ -5334,9 +5280,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postContentWithHttpInfo($app, $schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
+    public function postContentWithHttpInfo($schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
     {
-        $request = $this->postContentRequest($app, $schema, $request_body, $status, $id, $publish, $x_unpublished, $x_languages, $contentType);
+        $request = $this->postContentRequest($schema, $request_body, $status, $id, $publish, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5473,7 +5419,6 @@ class ContentsApi
      *
      * Create a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
      * @param  string $status The initial status. (optional)
@@ -5486,9 +5431,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postContentAsync($app, $schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
+    public function postContentAsync($schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
     {
-        return $this->postContentAsyncWithHttpInfo($app, $schema, $request_body, $status, $id, $publish, $x_unpublished, $x_languages, $contentType)
+        return $this->postContentAsyncWithHttpInfo($schema, $request_body, $status, $id, $publish, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5501,7 +5446,6 @@ class ContentsApi
      *
      * Create a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
      * @param  string $status The initial status. (optional)
@@ -5514,10 +5458,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postContentAsyncWithHttpInfo($app, $schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
+    public function postContentAsyncWithHttpInfo($schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->postContentRequest($app, $schema, $request_body, $status, $id, $publish, $x_unpublished, $x_languages, $contentType);
+        $request = $this->postContentRequest($schema, $request_body, $status, $id, $publish, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5558,7 +5502,6 @@ class ContentsApi
     /**
      * Create request for operation 'postContent'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
      * @param  string $status The initial status. (optional)
@@ -5571,10 +5514,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postContentRequest($app, $schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
+    public function postContentRequest($schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -5728,7 +5672,6 @@ class ContentsApi
      *
      * Import content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ImportContentsDto $import_contents_dto The import request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContents'] to see the possible values for this operation
@@ -5738,9 +5681,9 @@ class ContentsApi
      * @return \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      * @deprecated
      */
-    public function postContents($app, $schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
+    public function postContents($schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
     {
-        list($response) = $this->postContentsWithHttpInfo($app, $schema, $import_contents_dto, $contentType);
+        list($response) = $this->postContentsWithHttpInfo($schema, $import_contents_dto, $contentType);
         return $response;
     }
 
@@ -5749,7 +5692,6 @@ class ContentsApi
      *
      * Import content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ImportContentsDto $import_contents_dto The import request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContents'] to see the possible values for this operation
@@ -5759,9 +5701,9 @@ class ContentsApi
      * @return array of \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function postContentsWithHttpInfo($app, $schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
+    public function postContentsWithHttpInfo($schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
     {
-        $request = $this->postContentsRequest($app, $schema, $import_contents_dto, $contentType);
+        $request = $this->postContentsRequest($schema, $import_contents_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5898,7 +5840,6 @@ class ContentsApi
      *
      * Import content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ImportContentsDto $import_contents_dto The import request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContents'] to see the possible values for this operation
@@ -5907,9 +5848,9 @@ class ContentsApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function postContentsAsync($app, $schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
+    public function postContentsAsync($schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
     {
-        return $this->postContentsAsyncWithHttpInfo($app, $schema, $import_contents_dto, $contentType)
+        return $this->postContentsAsyncWithHttpInfo($schema, $import_contents_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5922,7 +5863,6 @@ class ContentsApi
      *
      * Import content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ImportContentsDto $import_contents_dto The import request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContents'] to see the possible values for this operation
@@ -5931,10 +5871,10 @@ class ContentsApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function postContentsAsyncWithHttpInfo($app, $schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
+    public function postContentsAsyncWithHttpInfo($schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
     {
         $returnType = '\Squidex\Client\Model\BulkResultDto[]';
-        $request = $this->postContentsRequest($app, $schema, $import_contents_dto, $contentType);
+        $request = $this->postContentsRequest($schema, $import_contents_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5975,7 +5915,6 @@ class ContentsApi
     /**
      * Create request for operation 'postContents'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  \Squidex\Client\Model\ImportContentsDto $import_contents_dto The import request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postContents'] to see the possible values for this operation
@@ -5984,10 +5923,11 @@ class ContentsApi
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function postContentsRequest($app, $schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
+    public function postContentsRequest($schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6101,7 +6041,6 @@ class ContentsApi
      *
      * Upsert a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6117,9 +6056,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postUpsertContent($app, $schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
+    public function postUpsertContent($schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
     {
-        list($response) = $this->postUpsertContentWithHttpInfo($app, $schema, $id, $request_body, $status, $patch, $enrich_defaults, $publish, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->postUpsertContentWithHttpInfo($schema, $id, $request_body, $status, $patch, $enrich_defaults, $publish, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -6128,7 +6067,6 @@ class ContentsApi
      *
      * Upsert a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6144,9 +6082,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postUpsertContentWithHttpInfo($app, $schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
+    public function postUpsertContentWithHttpInfo($schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
     {
-        $request = $this->postUpsertContentRequest($app, $schema, $id, $request_body, $status, $patch, $enrich_defaults, $publish, $x_unpublished, $x_languages, $contentType);
+        $request = $this->postUpsertContentRequest($schema, $id, $request_body, $status, $patch, $enrich_defaults, $publish, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6283,7 +6221,6 @@ class ContentsApi
      *
      * Upsert a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6298,9 +6235,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUpsertContentAsync($app, $schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
+    public function postUpsertContentAsync($schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
     {
-        return $this->postUpsertContentAsyncWithHttpInfo($app, $schema, $id, $request_body, $status, $patch, $enrich_defaults, $publish, $x_unpublished, $x_languages, $contentType)
+        return $this->postUpsertContentAsyncWithHttpInfo($schema, $id, $request_body, $status, $patch, $enrich_defaults, $publish, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6313,7 +6250,6 @@ class ContentsApi
      *
      * Upsert a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6328,10 +6264,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUpsertContentAsyncWithHttpInfo($app, $schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
+    public function postUpsertContentAsyncWithHttpInfo($schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->postUpsertContentRequest($app, $schema, $id, $request_body, $status, $patch, $enrich_defaults, $publish, $x_unpublished, $x_languages, $contentType);
+        $request = $this->postUpsertContentRequest($schema, $id, $request_body, $status, $patch, $enrich_defaults, $publish, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6372,7 +6308,6 @@ class ContentsApi
     /**
      * Create request for operation 'postUpsertContent'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6387,10 +6322,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postUpsertContentRequest($app, $schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
+    public function postUpsertContentRequest($schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6569,7 +6505,6 @@ class ContentsApi
      *
      * Update a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6582,9 +6517,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putContent($app, $schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
+    public function putContent($schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
     {
-        list($response) = $this->putContentWithHttpInfo($app, $schema, $id, $request_body, $enrich_defaults, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->putContentWithHttpInfo($schema, $id, $request_body, $enrich_defaults, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -6593,7 +6528,6 @@ class ContentsApi
      *
      * Update a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6606,9 +6540,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putContentWithHttpInfo($app, $schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
+    public function putContentWithHttpInfo($schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
     {
-        $request = $this->putContentRequest($app, $schema, $id, $request_body, $enrich_defaults, $x_unpublished, $x_languages, $contentType);
+        $request = $this->putContentRequest($schema, $id, $request_body, $enrich_defaults, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6745,7 +6679,6 @@ class ContentsApi
      *
      * Update a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6757,9 +6690,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putContentAsync($app, $schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
+    public function putContentAsync($schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
     {
-        return $this->putContentAsyncWithHttpInfo($app, $schema, $id, $request_body, $enrich_defaults, $x_unpublished, $x_languages, $contentType)
+        return $this->putContentAsyncWithHttpInfo($schema, $id, $request_body, $enrich_defaults, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6772,7 +6705,6 @@ class ContentsApi
      *
      * Update a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6784,10 +6716,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putContentAsyncWithHttpInfo($app, $schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
+    public function putContentAsyncWithHttpInfo($schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->putContentRequest($app, $schema, $id, $request_body, $enrich_defaults, $x_unpublished, $x_languages, $contentType);
+        $request = $this->putContentRequest($schema, $id, $request_body, $enrich_defaults, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6828,7 +6760,6 @@ class ContentsApi
     /**
      * Create request for operation 'putContent'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  array<string,array> $request_body The full data for the content item. (required)
@@ -6840,10 +6771,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putContentRequest($app, $schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
+    public function putContentRequest($schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -6992,7 +6924,6 @@ class ContentsApi
      *
      * Enrich a content item with defaults.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  bool $enrich_required_fields True, to also enrich required fields. Default: false. (optional)
@@ -7004,9 +6935,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putContentDefaults($app, $schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
+    public function putContentDefaults($schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
     {
-        list($response) = $this->putContentDefaultsWithHttpInfo($app, $schema, $id, $enrich_required_fields, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->putContentDefaultsWithHttpInfo($schema, $id, $enrich_required_fields, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -7015,7 +6946,6 @@ class ContentsApi
      *
      * Enrich a content item with defaults.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  bool $enrich_required_fields True, to also enrich required fields. Default: false. (optional)
@@ -7027,9 +6957,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putContentDefaultsWithHttpInfo($app, $schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
+    public function putContentDefaultsWithHttpInfo($schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
     {
-        $request = $this->putContentDefaultsRequest($app, $schema, $id, $enrich_required_fields, $x_unpublished, $x_languages, $contentType);
+        $request = $this->putContentDefaultsRequest($schema, $id, $enrich_required_fields, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7166,7 +7096,6 @@ class ContentsApi
      *
      * Enrich a content item with defaults.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  bool $enrich_required_fields True, to also enrich required fields. Default: false. (optional)
@@ -7177,9 +7106,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putContentDefaultsAsync($app, $schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
+    public function putContentDefaultsAsync($schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
     {
-        return $this->putContentDefaultsAsyncWithHttpInfo($app, $schema, $id, $enrich_required_fields, $x_unpublished, $x_languages, $contentType)
+        return $this->putContentDefaultsAsyncWithHttpInfo($schema, $id, $enrich_required_fields, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7192,7 +7121,6 @@ class ContentsApi
      *
      * Enrich a content item with defaults.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  bool $enrich_required_fields True, to also enrich required fields. Default: false. (optional)
@@ -7203,10 +7131,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putContentDefaultsAsyncWithHttpInfo($app, $schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
+    public function putContentDefaultsAsyncWithHttpInfo($schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->putContentDefaultsRequest($app, $schema, $id, $enrich_required_fields, $x_unpublished, $x_languages, $contentType);
+        $request = $this->putContentDefaultsRequest($schema, $id, $enrich_required_fields, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7247,7 +7175,6 @@ class ContentsApi
     /**
      * Create request for operation 'putContentDefaults'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to update. (required)
      * @param  bool $enrich_required_fields True, to also enrich required fields. Default: false. (optional)
@@ -7258,10 +7185,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putContentDefaultsRequest($app, $schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
+    public function putContentDefaultsRequest($schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7396,7 +7324,6 @@ class ContentsApi
      *
      * Change status of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to change. (required)
      * @param  \Squidex\Client\Model\ChangeStatusDto $change_status_dto The status request. (required)
@@ -7408,9 +7335,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function putContentStatus($app, $schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
+    public function putContentStatus($schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
     {
-        list($response) = $this->putContentStatusWithHttpInfo($app, $schema, $id, $change_status_dto, $x_unpublished, $x_languages, $contentType);
+        list($response) = $this->putContentStatusWithHttpInfo($schema, $id, $change_status_dto, $x_unpublished, $x_languages, $contentType);
         return $response;
     }
 
@@ -7419,7 +7346,6 @@ class ContentsApi
      *
      * Change status of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to change. (required)
      * @param  \Squidex\Client\Model\ChangeStatusDto $change_status_dto The status request. (required)
@@ -7431,9 +7357,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putContentStatusWithHttpInfo($app, $schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
+    public function putContentStatusWithHttpInfo($schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
     {
-        $request = $this->putContentStatusRequest($app, $schema, $id, $change_status_dto, $x_unpublished, $x_languages, $contentType);
+        $request = $this->putContentStatusRequest($schema, $id, $change_status_dto, $x_unpublished, $x_languages, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7570,7 +7496,6 @@ class ContentsApi
      *
      * Change status of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to change. (required)
      * @param  \Squidex\Client\Model\ChangeStatusDto $change_status_dto The status request. (required)
@@ -7581,9 +7506,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putContentStatusAsync($app, $schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
+    public function putContentStatusAsync($schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
     {
-        return $this->putContentStatusAsyncWithHttpInfo($app, $schema, $id, $change_status_dto, $x_unpublished, $x_languages, $contentType)
+        return $this->putContentStatusAsyncWithHttpInfo($schema, $id, $change_status_dto, $x_unpublished, $x_languages, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7596,7 +7521,6 @@ class ContentsApi
      *
      * Change status of a content item.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to change. (required)
      * @param  \Squidex\Client\Model\ChangeStatusDto $change_status_dto The status request. (required)
@@ -7607,10 +7531,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putContentStatusAsyncWithHttpInfo($app, $schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
+    public function putContentStatusAsyncWithHttpInfo($schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentDto';
-        $request = $this->putContentStatusRequest($app, $schema, $id, $change_status_dto, $x_unpublished, $x_languages, $contentType);
+        $request = $this->putContentStatusRequest($schema, $id, $change_status_dto, $x_unpublished, $x_languages, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7651,7 +7575,6 @@ class ContentsApi
     /**
      * Create request for operation 'putContentStatus'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $schema The name of the schema. (required)
      * @param  string $id The ID of the content item to change. (required)
      * @param  \Squidex\Client\Model\ChangeStatusDto $change_status_dto The status request. (required)
@@ -7662,10 +7585,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putContentStatusRequest($app, $schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
+    public function putContentStatusRequest($schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -7804,7 +7728,6 @@ class ContentsApi
      *
      * Bulk update content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $schema The name of the schema. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAllContents'] to see the possible values for this operation
@@ -7813,9 +7736,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function bulkUpdateAllContents($app, $bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
+    public function bulkUpdateAllContents($bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
     {
-        list($response) = $this->bulkUpdateAllContentsWithHttpInfo($app, $bulk_update_contents_dto, $schema, $contentType);
+        list($response) = $this->bulkUpdateAllContentsWithHttpInfo($bulk_update_contents_dto, $schema, $contentType);
         return $response;
     }
 
@@ -7824,7 +7747,6 @@ class ContentsApi
      *
      * Bulk update content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $schema The name of the schema. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAllContents'] to see the possible values for this operation
@@ -7833,9 +7755,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\BulkResultDto[]|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function bulkUpdateAllContentsWithHttpInfo($app, $bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
+    public function bulkUpdateAllContentsWithHttpInfo($bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
     {
-        $request = $this->bulkUpdateAllContentsRequest($app, $bulk_update_contents_dto, $schema, $contentType);
+        $request = $this->bulkUpdateAllContentsRequest($bulk_update_contents_dto, $schema, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7972,7 +7894,6 @@ class ContentsApi
      *
      * Bulk update content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $schema The name of the schema. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAllContents'] to see the possible values for this operation
@@ -7980,9 +7901,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkUpdateAllContentsAsync($app, $bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
+    public function bulkUpdateAllContentsAsync($bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
     {
-        return $this->bulkUpdateAllContentsAsyncWithHttpInfo($app, $bulk_update_contents_dto, $schema, $contentType)
+        return $this->bulkUpdateAllContentsAsyncWithHttpInfo($bulk_update_contents_dto, $schema, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7995,7 +7916,6 @@ class ContentsApi
      *
      * Bulk update content items.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $schema The name of the schema. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAllContents'] to see the possible values for this operation
@@ -8003,10 +7923,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkUpdateAllContentsAsyncWithHttpInfo($app, $bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
+    public function bulkUpdateAllContentsAsyncWithHttpInfo($bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
     {
         $returnType = '\Squidex\Client\Model\BulkResultDto[]';
-        $request = $this->bulkUpdateAllContentsRequest($app, $bulk_update_contents_dto, $schema, $contentType);
+        $request = $this->bulkUpdateAllContentsRequest($bulk_update_contents_dto, $schema, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8047,7 +7967,6 @@ class ContentsApi
     /**
      * Create request for operation 'bulkUpdateAllContents'
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\BulkUpdateContentsDto $bulk_update_contents_dto The bulk update request. (required)
      * @param  string $schema The name of the schema. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAllContents'] to see the possible values for this operation
@@ -8055,10 +7974,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function bulkUpdateAllContentsRequest($app, $bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
+    public function bulkUpdateAllContentsRequest($bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -8167,7 +8087,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $ids The list of ids to query. (optional)
      * @param  \DateTime $schedule_from The start of the schedule. (optional)
      * @param  \DateTime $schedule_to The end of the schedule. (optional)
@@ -8186,9 +8105,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getAllContents($app, $ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
+    public function getAllContents($ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
     {
-        list($response) = $this->getAllContentsWithHttpInfo($app, $ids, $schedule_from, $schedule_to, $referencing, $references, $q, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        list($response) = $this->getAllContentsWithHttpInfo($ids, $schedule_from, $schedule_to, $referencing, $references, $q, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
         return $response;
     }
 
@@ -8197,7 +8116,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $ids The list of ids to query. (optional)
      * @param  \DateTime $schedule_from The start of the schedule. (optional)
      * @param  \DateTime $schedule_to The end of the schedule. (optional)
@@ -8216,9 +8134,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllContentsWithHttpInfo($app, $ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
+    public function getAllContentsWithHttpInfo($ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
     {
-        $request = $this->getAllContentsRequest($app, $ids, $schedule_from, $schedule_to, $referencing, $references, $q, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        $request = $this->getAllContentsRequest($ids, $schedule_from, $schedule_to, $referencing, $references, $q, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8332,7 +8250,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $ids The list of ids to query. (optional)
      * @param  \DateTime $schedule_from The start of the schedule. (optional)
      * @param  \DateTime $schedule_to The end of the schedule. (optional)
@@ -8350,9 +8267,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllContentsAsync($app, $ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
+    public function getAllContentsAsync($ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
     {
-        return $this->getAllContentsAsyncWithHttpInfo($app, $ids, $schedule_from, $schedule_to, $referencing, $references, $q, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType)
+        return $this->getAllContentsAsyncWithHttpInfo($ids, $schedule_from, $schedule_to, $referencing, $references, $q, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8365,7 +8282,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $ids The list of ids to query. (optional)
      * @param  \DateTime $schedule_from The start of the schedule. (optional)
      * @param  \DateTime $schedule_to The end of the schedule. (optional)
@@ -8383,10 +8299,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllContentsAsyncWithHttpInfo($app, $ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
+    public function getAllContentsAsyncWithHttpInfo($ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentsDto';
-        $request = $this->getAllContentsRequest($app, $ids, $schedule_from, $schedule_to, $referencing, $references, $q, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        $request = $this->getAllContentsRequest($ids, $schedule_from, $schedule_to, $referencing, $references, $q, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8427,7 +8343,6 @@ class ContentsApi
     /**
      * Create request for operation 'getAllContents'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $ids The list of ids to query. (optional)
      * @param  \DateTime $schedule_from The start of the schedule. (optional)
      * @param  \DateTime $schedule_to The end of the schedule. (optional)
@@ -8445,10 +8360,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllContentsRequest($app, $ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
+    public function getAllContentsRequest($ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -8623,7 +8539,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AllContentsByPostDto $all_contents_by_post_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
      * @param  bool $x_flatten Provide the data as flat object. (optional)
@@ -8637,9 +8552,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getAllContentsPost($app, $all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
+    public function getAllContentsPost($all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
     {
-        list($response) = $this->getAllContentsPostWithHttpInfo($app, $all_contents_by_post_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        list($response) = $this->getAllContentsPostWithHttpInfo($all_contents_by_post_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
         return $response;
     }
 
@@ -8648,7 +8563,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AllContentsByPostDto $all_contents_by_post_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
      * @param  bool $x_flatten Provide the data as flat object. (optional)
@@ -8662,9 +8576,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\ContentsDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllContentsPostWithHttpInfo($app, $all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
+    public function getAllContentsPostWithHttpInfo($all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
     {
-        $request = $this->getAllContentsPostRequest($app, $all_contents_by_post_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        $request = $this->getAllContentsPostRequest($all_contents_by_post_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8801,7 +8715,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AllContentsByPostDto $all_contents_by_post_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
      * @param  bool $x_flatten Provide the data as flat object. (optional)
@@ -8814,9 +8727,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllContentsPostAsync($app, $all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
+    public function getAllContentsPostAsync($all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
     {
-        return $this->getAllContentsPostAsyncWithHttpInfo($app, $all_contents_by_post_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType)
+        return $this->getAllContentsPostAsyncWithHttpInfo($all_contents_by_post_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8829,7 +8742,6 @@ class ContentsApi
      *
      * Queries contents.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AllContentsByPostDto $all_contents_by_post_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
      * @param  bool $x_flatten Provide the data as flat object. (optional)
@@ -8842,10 +8754,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllContentsPostAsyncWithHttpInfo($app, $all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
+    public function getAllContentsPostAsyncWithHttpInfo($all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
     {
         $returnType = '\Squidex\Client\Model\ContentsDto';
-        $request = $this->getAllContentsPostRequest($app, $all_contents_by_post_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
+        $request = $this->getAllContentsPostRequest($all_contents_by_post_dto, $x_fields, $x_flatten, $x_languages, $x_no_slow_total, $x_no_total, $x_unpublished, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8886,7 +8798,6 @@ class ContentsApi
     /**
      * Create request for operation 'getAllContentsPost'
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\AllContentsByPostDto $all_contents_by_post_dto The required query object. (required)
      * @param  string $x_fields The list of content fields (comma-separated). (optional)
      * @param  bool $x_flatten Provide the data as flat object. (optional)
@@ -8899,10 +8810,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllContentsPostRequest($app, $all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
+    public function getAllContentsPostRequest($all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -9031,7 +8943,6 @@ class ContentsApi
      *
      * GraphQL endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9042,9 +8953,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return mixed|\Squidex\Client\Model\ErrorDto
      */
-    public function getGraphQL($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
+    public function getGraphQL($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
     {
-        list($response) = $this->getGraphQLWithHttpInfo($app, $the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
+        list($response) = $this->getGraphQLWithHttpInfo($the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
         return $response;
     }
 
@@ -9053,7 +8964,6 @@ class ContentsApi
      *
      * GraphQL endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9064,9 +8974,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of mixed|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGraphQLWithHttpInfo($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
+    public function getGraphQLWithHttpInfo($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
     {
-        $request = $this->getGraphQLRequest($app, $the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
+        $request = $this->getGraphQLRequest($the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9180,7 +9090,6 @@ class ContentsApi
      *
      * GraphQL endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9190,9 +9099,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGraphQLAsync($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
+    public function getGraphQLAsync($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
     {
-        return $this->getGraphQLAsyncWithHttpInfo($app, $the_query_string, $variables, $operation_name, $x_unpublished, $contentType)
+        return $this->getGraphQLAsyncWithHttpInfo($the_query_string, $variables, $operation_name, $x_unpublished, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9205,7 +9114,6 @@ class ContentsApi
      *
      * GraphQL endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9215,10 +9123,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGraphQLAsyncWithHttpInfo($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
+    public function getGraphQLAsyncWithHttpInfo($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
     {
         $returnType = 'mixed';
-        $request = $this->getGraphQLRequest($app, $the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
+        $request = $this->getGraphQLRequest($the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9259,7 +9167,6 @@ class ContentsApi
     /**
      * Create request for operation 'getGraphQL'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9269,10 +9176,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGraphQLRequest($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
+    public function getGraphQLRequest($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -9392,7 +9300,6 @@ class ContentsApi
      *
      * GraphQL batch endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9403,9 +9310,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return mixed|\Squidex\Client\Model\ErrorDto
      */
-    public function getGraphQLBatch($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
+    public function getGraphQLBatch($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
     {
-        list($response) = $this->getGraphQLBatchWithHttpInfo($app, $the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
+        list($response) = $this->getGraphQLBatchWithHttpInfo($the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
         return $response;
     }
 
@@ -9414,7 +9321,6 @@ class ContentsApi
      *
      * GraphQL batch endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9425,9 +9331,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of mixed|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGraphQLBatchWithHttpInfo($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
+    public function getGraphQLBatchWithHttpInfo($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
     {
-        $request = $this->getGraphQLBatchRequest($app, $the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
+        $request = $this->getGraphQLBatchRequest($the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9541,7 +9447,6 @@ class ContentsApi
      *
      * GraphQL batch endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9551,9 +9456,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGraphQLBatchAsync($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
+    public function getGraphQLBatchAsync($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
     {
-        return $this->getGraphQLBatchAsyncWithHttpInfo($app, $the_query_string, $variables, $operation_name, $x_unpublished, $contentType)
+        return $this->getGraphQLBatchAsyncWithHttpInfo($the_query_string, $variables, $operation_name, $x_unpublished, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9566,7 +9471,6 @@ class ContentsApi
      *
      * GraphQL batch endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9576,10 +9480,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGraphQLBatchAsyncWithHttpInfo($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
+    public function getGraphQLBatchAsyncWithHttpInfo($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
     {
         $returnType = 'mixed';
-        $request = $this->getGraphQLBatchRequest($app, $the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
+        $request = $this->getGraphQLBatchRequest($the_query_string, $variables, $operation_name, $x_unpublished, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9620,7 +9524,6 @@ class ContentsApi
     /**
      * Create request for operation 'getGraphQLBatch'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $the_query_string The optional version of the asset. (optional)
      * @param  string $variables The optional operation variables. (optional)
      * @param  string $operation_name The optional operation name. (optional)
@@ -9630,10 +9533,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGraphQLBatchRequest($app, $the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
+    public function getGraphQLBatchRequest($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -9753,7 +9657,6 @@ class ContentsApi
      *
      * GraphQL endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQL'] to see the possible values for this operation
@@ -9762,9 +9665,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return mixed|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postGraphQL($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
+    public function postGraphQL($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
     {
-        list($response) = $this->postGraphQLWithHttpInfo($app, $x_unpublished, $body, $contentType);
+        list($response) = $this->postGraphQLWithHttpInfo($x_unpublished, $body, $contentType);
         return $response;
     }
 
@@ -9773,7 +9676,6 @@ class ContentsApi
      *
      * GraphQL endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQL'] to see the possible values for this operation
@@ -9782,9 +9684,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of mixed|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postGraphQLWithHttpInfo($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
+    public function postGraphQLWithHttpInfo($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
     {
-        $request = $this->postGraphQLRequest($app, $x_unpublished, $body, $contentType);
+        $request = $this->postGraphQLRequest($x_unpublished, $body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9921,7 +9823,6 @@ class ContentsApi
      *
      * GraphQL endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQL'] to see the possible values for this operation
@@ -9929,9 +9830,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postGraphQLAsync($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
+    public function postGraphQLAsync($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
     {
-        return $this->postGraphQLAsyncWithHttpInfo($app, $x_unpublished, $body, $contentType)
+        return $this->postGraphQLAsyncWithHttpInfo($x_unpublished, $body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9944,7 +9845,6 @@ class ContentsApi
      *
      * GraphQL endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQL'] to see the possible values for this operation
@@ -9952,10 +9852,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postGraphQLAsyncWithHttpInfo($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
+    public function postGraphQLAsyncWithHttpInfo($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
     {
         $returnType = 'mixed';
-        $request = $this->postGraphQLRequest($app, $x_unpublished, $body, $contentType);
+        $request = $this->postGraphQLRequest($x_unpublished, $body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9996,7 +9896,6 @@ class ContentsApi
     /**
      * Create request for operation 'postGraphQL'
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQL'] to see the possible values for this operation
@@ -10004,10 +9903,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postGraphQLRequest($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
+    public function postGraphQLRequest($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -10105,7 +10005,6 @@ class ContentsApi
      *
      * GraphQL batch endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQLBatch'] to see the possible values for this operation
@@ -10114,9 +10013,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return mixed|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postGraphQLBatch($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
+    public function postGraphQLBatch($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
     {
-        list($response) = $this->postGraphQLBatchWithHttpInfo($app, $x_unpublished, $body, $contentType);
+        list($response) = $this->postGraphQLBatchWithHttpInfo($x_unpublished, $body, $contentType);
         return $response;
     }
 
@@ -10125,7 +10024,6 @@ class ContentsApi
      *
      * GraphQL batch endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQLBatch'] to see the possible values for this operation
@@ -10134,9 +10032,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return array of mixed|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postGraphQLBatchWithHttpInfo($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
+    public function postGraphQLBatchWithHttpInfo($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
     {
-        $request = $this->postGraphQLBatchRequest($app, $x_unpublished, $body, $contentType);
+        $request = $this->postGraphQLBatchRequest($x_unpublished, $body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10273,7 +10171,6 @@ class ContentsApi
      *
      * GraphQL batch endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQLBatch'] to see the possible values for this operation
@@ -10281,9 +10178,9 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postGraphQLBatchAsync($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
+    public function postGraphQLBatchAsync($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
     {
-        return $this->postGraphQLBatchAsyncWithHttpInfo($app, $x_unpublished, $body, $contentType)
+        return $this->postGraphQLBatchAsyncWithHttpInfo($x_unpublished, $body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10296,7 +10193,6 @@ class ContentsApi
      *
      * GraphQL batch endpoint.
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQLBatch'] to see the possible values for this operation
@@ -10304,10 +10200,10 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postGraphQLBatchAsyncWithHttpInfo($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
+    public function postGraphQLBatchAsyncWithHttpInfo($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
     {
         $returnType = 'mixed';
-        $request = $this->postGraphQLBatchRequest($app, $x_unpublished, $body, $contentType);
+        $request = $this->postGraphQLBatchRequest($x_unpublished, $body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10348,7 +10244,6 @@ class ContentsApi
     /**
      * Create request for operation 'postGraphQLBatch'
      *
-     * @param  string $app The name of the app. (required)
      * @param  bool $x_unpublished Return unpublished content items. (optional)
      * @param  mixed $body The graphql request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postGraphQLBatch'] to see the possible values for this operation
@@ -10356,10 +10251,11 @@ class ContentsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postGraphQLBatchRequest($app, $x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
+    public function postGraphQLBatchRequest($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

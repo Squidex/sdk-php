@@ -124,7 +124,6 @@ class TranslationsApi
      *
      * Translate a text.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
@@ -132,9 +131,9 @@ class TranslationsApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\TranslationDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto
      */
-    public function postTranslation($app, $translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
+    public function postTranslation($translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
     {
-        list($response) = $this->postTranslationWithHttpInfo($app, $translate_dto, $contentType);
+        list($response) = $this->postTranslationWithHttpInfo($translate_dto, $contentType);
         return $response;
     }
 
@@ -143,7 +142,6 @@ class TranslationsApi
      *
      * Translate a text.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
@@ -151,9 +149,9 @@ class TranslationsApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\TranslationDto|\Squidex\Client\Model\ErrorDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postTranslationWithHttpInfo($app, $translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
+    public function postTranslationWithHttpInfo($translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
     {
-        $request = $this->postTranslationRequest($app, $translate_dto, $contentType);
+        $request = $this->postTranslationRequest($translate_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -290,16 +288,15 @@ class TranslationsApi
      *
      * Translate a text.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postTranslationAsync($app, $translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
+    public function postTranslationAsync($translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
     {
-        return $this->postTranslationAsyncWithHttpInfo($app, $translate_dto, $contentType)
+        return $this->postTranslationAsyncWithHttpInfo($translate_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -312,17 +309,16 @@ class TranslationsApi
      *
      * Translate a text.
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postTranslationAsyncWithHttpInfo($app, $translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
+    public function postTranslationAsyncWithHttpInfo($translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
     {
         $returnType = '\Squidex\Client\Model\TranslationDto';
-        $request = $this->postTranslationRequest($app, $translate_dto, $contentType);
+        $request = $this->postTranslationRequest($translate_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -363,17 +359,17 @@ class TranslationsApi
     /**
      * Create request for operation 'postTranslation'
      *
-     * @param  string $app The name of the app. (required)
      * @param  \Squidex\Client\Model\TranslateDto $translate_dto The translation request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postTranslationRequest($app, $translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
+    public function postTranslationRequest($translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

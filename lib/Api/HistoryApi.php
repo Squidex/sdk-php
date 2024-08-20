@@ -127,7 +127,6 @@ class HistoryApi
      *
      * Get the app history.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $channel The name of the channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppHistory'] to see the possible values for this operation
      *
@@ -135,9 +134,9 @@ class HistoryApi
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\HistoryEventDto[]|\Squidex\Client\Model\ErrorDto
      */
-    public function getAppHistory($app, $channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
+    public function getAppHistory($channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
     {
-        list($response) = $this->getAppHistoryWithHttpInfo($app, $channel, $contentType);
+        list($response) = $this->getAppHistoryWithHttpInfo($channel, $contentType);
         return $response;
     }
 
@@ -146,7 +145,6 @@ class HistoryApi
      *
      * Get the app history.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $channel The name of the channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppHistory'] to see the possible values for this operation
      *
@@ -154,9 +152,9 @@ class HistoryApi
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\HistoryEventDto[]|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAppHistoryWithHttpInfo($app, $channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
+    public function getAppHistoryWithHttpInfo($channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
     {
-        $request = $this->getAppHistoryRequest($app, $channel, $contentType);
+        $request = $this->getAppHistoryRequest($channel, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -270,16 +268,15 @@ class HistoryApi
      *
      * Get the app history.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $channel The name of the channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAppHistoryAsync($app, $channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
+    public function getAppHistoryAsync($channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
     {
-        return $this->getAppHistoryAsyncWithHttpInfo($app, $channel, $contentType)
+        return $this->getAppHistoryAsyncWithHttpInfo($channel, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -292,17 +289,16 @@ class HistoryApi
      *
      * Get the app history.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $channel The name of the channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAppHistoryAsyncWithHttpInfo($app, $channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
+    public function getAppHistoryAsyncWithHttpInfo($channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
     {
         $returnType = '\Squidex\Client\Model\HistoryEventDto[]';
-        $request = $this->getAppHistoryRequest($app, $channel, $contentType);
+        $request = $this->getAppHistoryRequest($channel, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -343,17 +339,17 @@ class HistoryApi
     /**
      * Create request for operation 'getAppHistory'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $channel The name of the channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAppHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAppHistoryRequest($app, $channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
+    public function getAppHistoryRequest($channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '

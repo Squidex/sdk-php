@@ -451,7 +451,6 @@ class JobsApi
      *
      * Delete a job.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the jobs to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteJob'] to see the possible values for this operation
      *
@@ -459,9 +458,9 @@ class JobsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteJob($app, $id, string $contentType = self::contentTypes['deleteJob'][0])
+    public function deleteJob($id, string $contentType = self::contentTypes['deleteJob'][0])
     {
-        $this->deleteJobWithHttpInfo($app, $id, $contentType);
+        $this->deleteJobWithHttpInfo($id, $contentType);
     }
 
     /**
@@ -469,7 +468,6 @@ class JobsApi
      *
      * Delete a job.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the jobs to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteJob'] to see the possible values for this operation
      *
@@ -477,9 +475,9 @@ class JobsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteJobWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteJob'][0])
+    public function deleteJobWithHttpInfo($id, string $contentType = self::contentTypes['deleteJob'][0])
     {
-        $request = $this->deleteJobRequest($app, $id, $contentType);
+        $request = $this->deleteJobRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -546,16 +544,15 @@ class JobsApi
      *
      * Delete a job.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the jobs to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteJob'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteJobAsync($app, $id, string $contentType = self::contentTypes['deleteJob'][0])
+    public function deleteJobAsync($id, string $contentType = self::contentTypes['deleteJob'][0])
     {
-        return $this->deleteJobAsyncWithHttpInfo($app, $id, $contentType)
+        return $this->deleteJobAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -568,17 +565,16 @@ class JobsApi
      *
      * Delete a job.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the jobs to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteJob'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteJobAsyncWithHttpInfo($app, $id, string $contentType = self::contentTypes['deleteJob'][0])
+    public function deleteJobAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteJob'][0])
     {
         $returnType = '';
-        $request = $this->deleteJobRequest($app, $id, $contentType);
+        $request = $this->deleteJobRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -606,17 +602,17 @@ class JobsApi
     /**
      * Create request for operation 'deleteJob'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $id The ID of the jobs to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteJob'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteJobRequest($app, $id, string $contentType = self::contentTypes['deleteJob'][0])
+    public function deleteJobRequest($id, string $contentType = self::contentTypes['deleteJob'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
@@ -716,16 +712,15 @@ class JobsApi
      *
      * Get all jobs.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getJobs'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Squidex\Client\Model\JobsDto|\Squidex\Client\Model\ErrorDto
      */
-    public function getJobs($app, string $contentType = self::contentTypes['getJobs'][0])
+    public function getJobs(string $contentType = self::contentTypes['getJobs'][0])
     {
-        list($response) = $this->getJobsWithHttpInfo($app, $contentType);
+        list($response) = $this->getJobsWithHttpInfo($contentType);
         return $response;
     }
 
@@ -734,16 +729,15 @@ class JobsApi
      *
      * Get all jobs.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getJobs'] to see the possible values for this operation
      *
      * @throws \Squidex\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Squidex\Client\Model\JobsDto|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getJobsWithHttpInfo($app, string $contentType = self::contentTypes['getJobs'][0])
+    public function getJobsWithHttpInfo(string $contentType = self::contentTypes['getJobs'][0])
     {
-        $request = $this->getJobsRequest($app, $contentType);
+        $request = $this->getJobsRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -857,15 +851,14 @@ class JobsApi
      *
      * Get all jobs.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getJobs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getJobsAsync($app, string $contentType = self::contentTypes['getJobs'][0])
+    public function getJobsAsync(string $contentType = self::contentTypes['getJobs'][0])
     {
-        return $this->getJobsAsyncWithHttpInfo($app, $contentType)
+        return $this->getJobsAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -878,16 +871,15 @@ class JobsApi
      *
      * Get all jobs.
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getJobs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getJobsAsyncWithHttpInfo($app, string $contentType = self::contentTypes['getJobs'][0])
+    public function getJobsAsyncWithHttpInfo(string $contentType = self::contentTypes['getJobs'][0])
     {
         $returnType = '\Squidex\Client\Model\JobsDto';
-        $request = $this->getJobsRequest($app, $contentType);
+        $request = $this->getJobsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -928,16 +920,16 @@ class JobsApi
     /**
      * Create request for operation 'getJobs'
      *
-     * @param  string $app The name of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getJobs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getJobsRequest($app, string $contentType = self::contentTypes['getJobs'][0])
+    public function getJobsRequest(string $contentType = self::contentTypes['getJobs'][0])
     {
 
         // verify the required parameter 'app' is set
+        $app = $this->config->getAppName();
         if ($app === null || (is_array($app) && count($app) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app when calling '
