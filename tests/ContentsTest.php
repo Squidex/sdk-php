@@ -69,7 +69,7 @@ class ContentsTest extends TestBase
                 ]
             ]);
 
-        $content = $this->client->contents()->getContent(static::$schema->getName(), $createdContent->getId(), -2, null, null, true);
+        $content = $this->client->contents()->getContent(static::$schema->getName(), $createdContent->getId(), -2, null, null, null, true);
         $this->assertEquals($value, $content->getData()->field1->iv);
         $this->assertTrue($content->getLastModified() != null);
         $this->assertTrue($content->getLastModifiedBy() != null);

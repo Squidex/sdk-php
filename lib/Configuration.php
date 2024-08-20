@@ -42,82 +42,96 @@ class Configuration
 {
     public const BOOLEAN_FORMAT_INT = 'int';
     public const BOOLEAN_FORMAT_STRING = 'string';
+
     /**
      * @var Configuration
      */
     private static $defaultConfiguration;
+
     /**
      * Client ID for OAuth/Bearer authentication
      *
      * @var string
      */
     protected $clientId = '';
+
     /**
      * Client Secret for OAuth/Bearer authentication
      *
      * @var string
      */
     protected $clientSecret = '';
+
     /**
      * App Name
      *
      * @var string
      */
     protected $appName = '';
+
     /**
      * Boolean format for query string
      *
      * @var string
      */
     protected $booleanFormatForQueryString = self::BOOLEAN_FORMAT_STRING;
+
     /**
      * The host
      *
      * @var string
      */
     protected $host = 'https://cloud.squidex.io';
+
     /**
      * The timeout in seconds
      *
      * @var float
      */
     protected $timeout = 30.0;
+
     /**
      * The token store.
      *
      * @var SquidexTokenStore
      */
     protected $tokenStore = null;
+
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
      *
      * @var string
      */
     protected $userAgent = 'OpenAPI-Generator/1.0.0/PHP';
+
     /**
      * Ignore the validation of certificates.
      *
      * @var boolean
      */
     protected $ignoreCertificates = false;
+
     /**
      * Debug switch (default set to false)
      *
      * @var bool
      */
     protected $debug = false;
+
     /**
      * Debug file location (log to STDOUT by default)
      *
      * @var string
      */
     protected $debugFile = 'php://output';
+
     /**
      * Debug file location (log to STDOUT by default)
      *
      * @var string
      */
     protected $tempFolderPath;
+
     /**
      * Constructor
      */
@@ -545,8 +559,10 @@ class Configuration
                 $url = str_replace("{".$name."}", $variable["default_value"], $url);
             }
         }
+
         return $url;
     }
+
     /**
      * Returns URL based on the index and variables
      *
