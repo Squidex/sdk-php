@@ -14,7 +14,7 @@ jobs:
         uses: php-actions/composer@v6
 
       - name: Test - Start Compose
-        run: docker-compose up -d
+        run: docker compose up -d
         working-directory: tests
 
       - name: Test - RUN
