@@ -57,6 +57,19 @@ try {
 }
 ```
 
+## Generation Config
+
+To generate the config you have to execute the following steps.
+
+1. Run a Squidex version locally.
+2. Run the `/api/docs` URL to get the OpenAPI spec.
+3. Copy the OpenAPI spec to this repository.
+4. Run the generator:
+
+```
+docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate -i /local/openapi.json -g php --template-dir  /local/templates -o /local/ -c /local/openapi-config.yml
+```
+
 ## Contributing
 
 While we value open-source contributions to this SDK, this library is generated programmatically. Additions made directly to this library would have to be moved over to our generation code, otherwise they would be overwritten upon the next generated release. Feel free to open a PR as a proof of concept, but know that we will not be able to merge it as-is. We suggest opening an issue first to discuss with us!

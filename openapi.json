@@ -1,5 +1,5 @@
 {
-  "x-generator": "NSwag v13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "x-generator": "NSwag v14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))",
   "openapi": "3.0.0",
   "info": {
     "title": "Squidex API",
@@ -821,85 +821,6 @@
         "x-fern-sdk-method-name": "postTranslation"
       }
     },
-    "/api/apps/{app}/ask": {
-      "post": {
-        "tags": [
-          "Translations"
-        ],
-        "summary": "Asks the chatbot a question a text.",
-        "operationId": "Translations_PostQuestion",
-        "parameters": [
-          {
-            "name": "app",
-            "in": "path",
-            "required": true,
-            "description": "The name of the app.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 1,
-            "x-fern-sdk-variable": "appName"
-          }
-        ],
-        "requestBody": {
-          "x-name": "request",
-          "description": "The question request.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AskDto"
-              }
-            }
-          },
-          "required": true,
-          "x-position": 2
-        },
-        "responses": {
-          "200": {
-            "description": "Question asked.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Operation failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "squidex-oauth-auth": [
-              "squidex.apps.{app}.translate"
-            ]
-          }
-        ],
-        "x-fern-sdk-group-name": "translations",
-        "x-fern-sdk-method-name": "postQuestion"
-      }
-    },
     "/api/templates": {
       "get": {
         "tags": [
@@ -1342,16 +1263,6 @@
               }
             }
           },
-          "409": {
-            "description": "Team name is already in use.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
           "500": {
             "description": "Operation failed.",
             "content": {
@@ -1377,14 +1288,14 @@
         "tags": [
           "Teams"
         ],
-        "summary": "Get an team by name.",
+        "summary": "Get an team by ID.",
         "operationId": "Teams_GetTeam",
         "parameters": [
           {
             "name": "team",
             "in": "path",
             "required": true,
-            "description": "The name of the team.",
+            "description": "The ID of the team.",
             "schema": {
               "type": "string"
             },
@@ -1435,7 +1346,7 @@
             "name": "team",
             "in": "path",
             "required": true,
-            "description": "The name of the team to update.",
+            "description": "The ID of the team to update.",
             "schema": {
               "type": "string"
             },
@@ -1499,6 +1410,193 @@
         ],
         "x-fern-sdk-group-name": "teams",
         "x-fern-sdk-method-name": "putTeam"
+      },
+      "delete": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "Delete the team.",
+        "operationId": "Teams_DeleteTeam",
+        "parameters": [
+          {
+            "name": "team",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the team to delete.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Team deleted."
+          },
+          "404": {
+            "description": "Team not found."
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "squidex-oauth-auth": [
+              "squidex.teams.{team}.delete"
+            ]
+          }
+        ],
+        "x-fern-sdk-group-name": "teams",
+        "x-fern-sdk-method-name": "deleteTeam"
+      }
+    },
+    "/api/teams/{team}/auth": {
+      "get": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "Get the team auth settings.",
+        "operationId": "Teams_GetTeamAuth",
+        "parameters": [
+          {
+            "name": "team",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the team.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Teams returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthSchemeResponseDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Team not found."
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "squidex-oauth-auth": [
+              "squidex.teams.{team}.auth.read"
+            ]
+          }
+        ],
+        "x-fern-sdk-group-name": "teams",
+        "x-fern-sdk-method-name": "getTeamAuth"
+      },
+      "put": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "Update the team auth.",
+        "operationId": "Teams_PutTeamAuth",
+        "parameters": [
+          {
+            "name": "team",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the team to update.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "request",
+          "description": "The values to update.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthSchemeValueDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "Team updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthSchemeResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Team request not valid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Team not found."
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "squidex-oauth-auth": [
+              "squidex.teams.{team}.auth.change"
+            ]
+          }
+        ],
+        "x-fern-sdk-group-name": "teams",
+        "x-fern-sdk-method-name": "putTeamAuth"
       }
     },
     "/api/apps/{app}/usages/log": {
@@ -1562,7 +1660,7 @@
         "tags": [
           "Statistics"
         ],
-        "summary": "Get api calls in date range.",
+        "summary": "Get api calls in date range for app.",
         "operationId": "Usages_GetUsages",
         "parameters": [
           {
@@ -1717,7 +1815,7 @@
         "tags": [
           "Statistics"
         ],
-        "summary": "Get total asset size.",
+        "summary": "Get total asset size for app.",
         "operationId": "Usages_GetCurrentStorageSize",
         "parameters": [
           {
@@ -1773,7 +1871,7 @@
         "tags": [
           "Statistics"
         ],
-        "summary": "Get total asset size by team.",
+        "summary": "Get total asset size for team.",
         "operationId": "Usages_GetTeamCurrentStorageSizeForTeam",
         "parameters": [
           {
@@ -1828,7 +1926,7 @@
         "tags": [
           "Statistics"
         ],
-        "summary": "Get asset usage by date.",
+        "summary": "Get asset usage by date for app.",
         "operationId": "Usages_GetStorageSizes",
         "parameters": [
           {
@@ -6546,12 +6644,195 @@
         "x-fern-sdk-method-name": "getLanguages"
       }
     },
+    "/api/apps/jobs/{id}": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "summary": "Get the job content.",
+        "operationId": "JobsContent_GetJobContent",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the job.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "appId",
+            "in": "query",
+            "description": "The ID of the app.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Job found and content returned.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Job or app not found."
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": "jobs",
+        "x-fern-sdk-method-name": "getJobContent"
+      }
+    },
+    "/api/apps/{app}/jobs": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "summary": "Get all jobs.",
+        "operationId": "Jobs_GetJobs",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "path",
+            "required": true,
+            "description": "The name of the app.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1,
+            "x-fern-sdk-variable": "appName"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Jobs returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobsDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "App not found."
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "squidex-oauth-auth": [
+              "squidex.apps.{app}.jobs.read"
+            ]
+          }
+        ],
+        "x-fern-sdk-group-name": "jobs",
+        "x-fern-sdk-method-name": "getJobs"
+      }
+    },
+    "/api/apps/{app}/jobs/{id}": {
+      "delete": {
+        "tags": [
+          "Jobs"
+        ],
+        "summary": "Delete a job.",
+        "operationId": "Jobs_DeleteJob",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "path",
+            "required": true,
+            "description": "The name of the app.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1,
+            "x-fern-sdk-variable": "appName"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the jobs to delete.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Job deleted."
+          },
+          "404": {
+            "description": "Job or app not found."
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "squidex-oauth-auth": [
+              "squidex.apps.{app}.jobs.delete"
+            ]
+          }
+        ],
+        "x-fern-sdk-group-name": "jobs",
+        "x-fern-sdk-method-name": "deleteJob"
+      }
+    },
     "/api/apps/{app}/history": {
       "get": {
         "tags": [
           "History"
         ],
-        "summary": "Get historical events.",
+        "summary": "Get the app history.",
         "operationId": "History_GetAppHistory",
         "parameters": [
           {
@@ -6619,7 +6900,7 @@
         "tags": [
           "History"
         ],
-        "summary": "Get historical events for a team.",
+        "summary": "Get the team history.",
         "operationId": "History_GetTeamHistory",
         "parameters": [
           {
@@ -7643,13 +7924,22 @@
             "x-position": 5
           },
           {
+            "name": "enrichDefaults",
+            "in": "query",
+            "description": "Enrich the content with defaults.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 6
+          },
+          {
             "name": "publish",
             "in": "query",
             "description": "True to automatically publish the content.",
             "schema": {
               "type": "boolean"
             },
-            "x-position": 6
+            "x-position": 7
           },
           {
             "name": "X-Unpublished",
@@ -7658,7 +7948,7 @@
             "schema": {
               "type": "boolean"
             },
-            "x-position": 7
+            "x-position": 8
           },
           {
             "name": "X-Languages",
@@ -7667,7 +7957,7 @@
             "schema": {
               "type": "string"
             },
-            "x-position": 8
+            "x-position": 9
           }
         ],
         "requestBody": {
@@ -7768,13 +8058,22 @@
             "x-position": 2
           },
           {
+            "name": "enrichDefaults",
+            "in": "query",
+            "description": "Enrich the content with defaults.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 4
+          },
+          {
             "name": "X-Unpublished",
             "in": "header",
             "description": "Return unpublished content items.",
             "schema": {
               "type": "boolean"
             },
-            "x-position": 4
+            "x-position": 5
           },
           {
             "name": "X-Languages",
@@ -7783,11 +8082,11 @@
             "schema": {
               "type": "string"
             },
-            "x-position": 5
+            "x-position": 6
           }
         ],
         "requestBody": {
-          "x-name": "request",
+          "x-name": "Data",
           "description": "The full data for the content item.",
           "content": {
             "application/json": {
@@ -8708,6 +9007,120 @@
         "x-fern-sdk-method-name": "bulkUpdateContents"
       }
     },
+    "/api/content/{app}/{schema}/{id}/defaults": {
+      "put": {
+        "tags": [
+          "Contents"
+        ],
+        "summary": "Enrich a content item with defaults.",
+        "description": "You can read the generated documentation for your app at /api/content/{appName}/docs.",
+        "operationId": "Contents_PutContentDefaults",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "path",
+            "required": true,
+            "description": "The name of the app.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 0,
+            "x-fern-sdk-variable": "appName"
+          },
+          {
+            "name": "schema",
+            "in": "path",
+            "required": true,
+            "description": "The name of the schema.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the content item to update.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "enrichRequiredFields",
+            "in": "query",
+            "description": "True, to also enrich required fields. Default: false.\n            ",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 3
+          },
+          {
+            "name": "X-Unpublished",
+            "in": "header",
+            "description": "Return unpublished content items.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 4
+          },
+          {
+            "name": "X-Languages",
+            "in": "header",
+            "description": "The list of languages to resolve (comma-separated).",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 5
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Content updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContentDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Content references, schema or app not found."
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "squidex-oauth-auth": [
+              "squidex.apps.{app}.contents.{schema}.update.own"
+            ]
+          }
+        ],
+        "x-fern-sdk-group-name": "contents",
+        "x-fern-sdk-method-name": "putContentDefaults"
+      }
+    },
     "/api/content/{app}/{schema}/{id}/status": {
       "put": {
         "tags": [
@@ -9158,24 +9571,50 @@
             "x-fern-sdk-variable": "appName"
           },
           {
+            "name": "The query string",
+            "in": "query",
+            "description": "The optional version of the asset.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "variables",
+            "in": "query",
+            "description": "The optional operation variables.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 2
+          },
+          {
+            "name": "operationName",
+            "in": "query",
+            "description": "The optional operation name.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 3
+          },
+          {
             "name": "X-Unpublished",
             "in": "header",
             "description": "Return unpublished content items.",
             "schema": {
               "type": "boolean"
             },
-            "x-position": 1
+            "x-position": 4
           }
         ],
         "responses": {
           "200": {
             "description": "Contents returned or mutated.",
             "content": {
-              "application/octet-stream": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
+              "application/json": {
+                "schema": {}
               }
             }
           },
@@ -9200,16 +9639,14 @@
         ],
         "x-fern-sdk-group-name": "contents",
         "x-fern-sdk-method-name": "getGraphQL"
-      }
-    },
-    "/api/content/{app}/graphql/batch": {
-      "get": {
+      },
+      "post": {
         "tags": [
           "Contents"
         ],
         "summary": "GraphQL endpoint.",
         "description": "You can read the generated documentation for your app at /api/content/{appName}/docs.",
-        "operationId": "ContentsShared_GetGraphQL2",
+        "operationId": "ContentsShared_PostGraphQL",
         "parameters": [
           {
             "name": "app",
@@ -9229,18 +9666,126 @@
             "schema": {
               "type": "boolean"
             },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "request",
+          "description": "The graphql request.",
+          "content": {
+            "application/json": {
+              "schema": {}
+            }
+          },
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Contents returned or mutated.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "App not found."
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "squidex-oauth-auth": []
+          }
+        ],
+        "x-fern-sdk-group-name": "contents",
+        "x-fern-sdk-method-name": "postGraphQL"
+      }
+    },
+    "/api/content/{app}/graphql/batch": {
+      "get": {
+        "tags": [
+          "Contents"
+        ],
+        "summary": "GraphQL batch endpoint.",
+        "description": "You can read the generated documentation for your app at /api/content/{appName}/docs.",
+        "operationId": "ContentsShared_GetGraphQLBatch",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "path",
+            "required": true,
+            "description": "The name of the app.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 0,
+            "x-fern-sdk-variable": "appName"
+          },
+          {
+            "name": "The query string",
+            "in": "query",
+            "description": "The optional version of the asset.",
+            "schema": {
+              "type": "string"
+            },
             "x-position": 1
+          },
+          {
+            "name": "variables",
+            "in": "query",
+            "description": "The optional operation variables.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 2
+          },
+          {
+            "name": "operationName",
+            "in": "query",
+            "description": "The optional operation name.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 3
+          },
+          {
+            "name": "X-Unpublished",
+            "in": "header",
+            "description": "Return unpublished content items.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 4
           }
         ],
         "responses": {
           "200": {
             "description": "Contents returned or mutated.",
             "content": {
-              "application/octet-stream": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
+              "application/json": {
+                "schema": {}
               }
             }
           },
@@ -9264,7 +9809,87 @@
           }
         ],
         "x-fern-sdk-group-name": "contents",
-        "x-fern-sdk-method-name": "getGraphQL2"
+        "x-fern-sdk-method-name": "getGraphQLBatch"
+      },
+      "post": {
+        "tags": [
+          "Contents"
+        ],
+        "summary": "GraphQL batch endpoint.",
+        "description": "You can read the generated documentation for your app at /api/content/{appName}/docs.",
+        "operationId": "ContentsShared_PostGraphQLBatch",
+        "parameters": [
+          {
+            "name": "app",
+            "in": "path",
+            "required": true,
+            "description": "The name of the app.",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 0,
+            "x-fern-sdk-variable": "appName"
+          },
+          {
+            "name": "X-Unpublished",
+            "in": "header",
+            "description": "Return unpublished content items.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "request",
+          "description": "The graphql request.",
+          "content": {
+            "application/json": {
+              "schema": {}
+            }
+          },
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Contents returned or mutated.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "404": {
+            "description": "App not found."
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "squidex-oauth-auth": []
+          }
+        ],
+        "x-fern-sdk-group-name": "contents",
+        "x-fern-sdk-method-name": "postGraphQLBatch"
       }
     },
     "/api/content/{app}": {
@@ -9575,7 +10200,7 @@
         ],
         "summary": "Bulk update content items.",
         "description": "You can read the generated documentation for your app at /api/content/{appName}/docs.",
-        "operationId": "ContentsShared_BulkUpdateContents",
+        "operationId": "ContentsShared_BulkUpdateAllContents",
         "parameters": [
           {
             "name": "app",
@@ -9657,536 +10282,7 @@
           }
         ],
         "x-fern-sdk-group-name": "contents",
-        "x-fern-sdk-method-name": "bulkUpdateContents"
-      }
-    },
-    "/api/apps/{app}/watching/{resource}": {
-      "get": {
-        "tags": [
-          "Comments"
-        ],
-        "summary": "Get all watching users..",
-        "operationId": "Comments_GetWatchingUsers",
-        "parameters": [
-          {
-            "name": "app",
-            "in": "path",
-            "required": true,
-            "description": "The name of the app.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 1,
-            "x-fern-sdk-variable": "appName"
-          },
-          {
-            "name": "resource",
-            "in": "path",
-            "required": true,
-            "description": "The path to the resource.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 2
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Watching users returned.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "App not found."
-          },
-          "500": {
-            "description": "Operation failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "squidex-oauth-auth": []
-          }
-        ],
-        "x-fern-sdk-group-name": "comments",
-        "x-fern-sdk-method-name": "getWatchingUsers"
-      }
-    },
-    "/api/apps/{app}/comments/{commentsId}": {
-      "get": {
-        "tags": [
-          "Comments"
-        ],
-        "summary": "Get all comments.",
-        "description": "When passing in a version you can retrieve all updates since then.",
-        "operationId": "Comments_GetComments",
-        "parameters": [
-          {
-            "name": "app",
-            "in": "path",
-            "required": true,
-            "description": "The name of the app.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 1,
-            "x-fern-sdk-variable": "appName"
-          },
-          {
-            "name": "commentsId",
-            "in": "path",
-            "required": true,
-            "description": "The ID of the comments.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 2
-          },
-          {
-            "name": "version",
-            "in": "query",
-            "description": "The current version.",
-            "schema": {
-              "type": "integer",
-              "format": "int64",
-              "default": -2
-            },
-            "x-position": 3
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Comments returned.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommentsDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "App not found."
-          },
-          "500": {
-            "description": "Operation failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "squidex-oauth-auth": [
-              "squidex.apps.{app}.comments.read"
-            ]
-          }
-        ],
-        "x-fern-sdk-group-name": "comments",
-        "x-fern-sdk-method-name": "getComments"
-      },
-      "post": {
-        "tags": [
-          "Comments"
-        ],
-        "summary": "Create a new comment.",
-        "operationId": "Comments_PostComment",
-        "parameters": [
-          {
-            "name": "app",
-            "in": "path",
-            "required": true,
-            "description": "The name of the app.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 1,
-            "x-fern-sdk-variable": "appName"
-          },
-          {
-            "name": "commentsId",
-            "in": "path",
-            "required": true,
-            "description": "The ID of the comments.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 2
-          }
-        ],
-        "requestBody": {
-          "x-name": "request",
-          "description": "The comment object that needs to created.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpsertCommentDto"
-              }
-            }
-          },
-          "required": true,
-          "x-position": 3
-        },
-        "responses": {
-          "201": {
-            "description": "Comment created.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommentDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Comment request not valid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "App not found."
-          },
-          "500": {
-            "description": "Operation failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "squidex-oauth-auth": [
-              "squidex.apps.{app}.comments.create"
-            ]
-          }
-        ],
-        "x-fern-sdk-group-name": "comments",
-        "x-fern-sdk-method-name": "postComment"
-      }
-    },
-    "/api/apps/{app}/comments/{commentsId}/{commentId}": {
-      "put": {
-        "tags": [
-          "Comments"
-        ],
-        "summary": "Update a comment.",
-        "operationId": "Comments_PutComment",
-        "parameters": [
-          {
-            "name": "app",
-            "in": "path",
-            "required": true,
-            "description": "The name of the app.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 1,
-            "x-fern-sdk-variable": "appName"
-          },
-          {
-            "name": "commentsId",
-            "in": "path",
-            "required": true,
-            "description": "The ID of the comments.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 2
-          },
-          {
-            "name": "commentId",
-            "in": "path",
-            "required": true,
-            "description": "The ID of the comment.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 3
-          }
-        ],
-        "requestBody": {
-          "x-name": "request",
-          "description": "The comment object that needs to updated.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpsertCommentDto"
-              }
-            }
-          },
-          "required": true,
-          "x-position": 4
-        },
-        "responses": {
-          "204": {
-            "description": "Comment updated."
-          },
-          "400": {
-            "description": "Comment request not valid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Comment or app not found."
-          },
-          "500": {
-            "description": "Operation failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "squidex-oauth-auth": [
-              "squidex.apps.{app}.comments.update"
-            ]
-          }
-        ],
-        "x-fern-sdk-group-name": "comments",
-        "x-fern-sdk-method-name": "putComment"
-      },
-      "delete": {
-        "tags": [
-          "Comments"
-        ],
-        "summary": "Delete a comment.",
-        "operationId": "Comments_DeleteComment",
-        "parameters": [
-          {
-            "name": "app",
-            "in": "path",
-            "required": true,
-            "description": "The name of the app.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 1,
-            "x-fern-sdk-variable": "appName"
-          },
-          {
-            "name": "commentsId",
-            "in": "path",
-            "required": true,
-            "description": "The ID of the comments.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 2
-          },
-          {
-            "name": "commentId",
-            "in": "path",
-            "required": true,
-            "description": "The ID of the comment.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 3
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Comment deleted."
-          },
-          "404": {
-            "description": "Comment or app not found."
-          },
-          "400": {
-            "description": "Validation error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Operation failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "squidex-oauth-auth": [
-              "squidex.apps.{app}.comments.delete"
-            ]
-          }
-        ],
-        "x-fern-sdk-group-name": "comments",
-        "x-fern-sdk-method-name": "deleteComment"
-      }
-    },
-    "/api/users/{userId}/notifications": {
-      "get": {
-        "tags": [
-          "Notifications"
-        ],
-        "summary": "Get all notifications.",
-        "description": "When passing in a version you can retrieve all updates since then.",
-        "operationId": "UserNotifications_GetNotifications",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "description": "The user id.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 1
-          },
-          {
-            "name": "version",
-            "in": "query",
-            "description": "The current version.",
-            "schema": {
-              "type": "integer",
-              "format": "int64",
-              "default": -2
-            },
-            "x-position": 2
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "All comments returned.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommentsDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Operation failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "squidex-oauth-auth": []
-          }
-        ],
-        "x-fern-sdk-group-name": "notifications",
-        "x-fern-sdk-method-name": "getNotifications"
-      }
-    },
-    "/api/users/{userId}/notifications/{commentId}": {
-      "delete": {
-        "tags": [
-          "Notifications"
-        ],
-        "summary": "Delete a notification.",
-        "operationId": "UserNotifications_DeleteComment",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "description": "The user id.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 1
-          },
-          {
-            "name": "commentId",
-            "in": "path",
-            "required": true,
-            "description": "The ID of the comment.",
-            "schema": {
-              "type": "string"
-            },
-            "x-position": 2
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Comment deleted."
-          },
-          "404": {
-            "description": "Comment not found."
-          },
-          "400": {
-            "description": "Validation error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Operation failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "squidex-oauth-auth": []
-          }
-        ],
-        "x-fern-sdk-group-name": "notifications",
-        "x-fern-sdk-method-name": "deleteComment"
+        "x-fern-sdk-method-name": "bulkUpdateAllContents"
       }
     },
     "/api/apps/{app}/backups/{id}": {
@@ -10245,6 +10341,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-fern-sdk-group-name": "backups",
         "x-fern-sdk-method-name": "getBackupContent"
       },
@@ -10305,10 +10402,11 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "squidex-oauth-auth": [
-              "squidex.apps.{app}.backups.delete"
+              "squidex.apps.{app}.jobs.delete"
             ]
           }
         ],
@@ -10380,6 +10478,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-fern-sdk-group-name": "backups",
         "x-fern-sdk-method-name": "getBackupContentV2"
       }
@@ -10429,10 +10528,11 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "squidex-oauth-auth": [
-              "squidex.apps.{app}.backups.read"
+              "squidex.apps.{app}.jobs.read"
             ]
           }
         ],
@@ -10489,7 +10589,7 @@
         "security": [
           {
             "squidex-oauth-auth": [
-              "squidex.apps.{app}.backups.create"
+              "squidex.apps.{app}.jobs.create"
             ]
           }
         ],
@@ -11736,7 +11836,7 @@
             "x-fern-sdk-variable": "appName"
           },
           {
-            "name": "parentId",
+            "name": "ParentId",
             "in": "query",
             "description": "The optional parent folder id.",
             "schema": {
@@ -11773,6 +11873,12 @@
                   "file": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "fileUrl": {
+                    "type": "string"
+                  },
+                  "fileName": {
+                    "type": "string"
                   }
                 }
               }
@@ -12055,6 +12161,12 @@
                   "file": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "fileUrl": {
+                    "type": "string"
+                  },
+                  "fileName": {
+                    "type": "string"
                   }
                 }
               }
@@ -12411,6 +12523,12 @@
                   "file": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "fileUrl": {
+                    "type": "string"
+                  },
+                  "fileName": {
+                    "type": "string"
                   }
                 }
               }
@@ -12621,7 +12739,7 @@
         "tags": [
           "Apps"
         ],
-        "summary": "Update the app asset scripts.",
+        "summary": "Update the asset scripts.",
         "operationId": "AppAssets_PutAssetScripts",
         "parameters": [
           {
@@ -13345,6 +13463,12 @@
                   "file": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "fileUrl": {
+                    "type": "string"
+                  },
+                  "fileName": {
+                    "type": "string"
                   }
                 }
               }
@@ -13520,7 +13644,7 @@
         "tags": [
           "Apps"
         ],
-        "summary": "Attaches an app language.",
+        "summary": "Add an app language.",
         "operationId": "AppLanguages_PostLanguage",
         "parameters": [
           {
@@ -14602,7 +14726,7 @@
         "tags": [
           "Apps"
         ],
-        "summary": "Update the app settings.",
+        "summary": "Update the settings.",
         "operationId": "AppSettings_PutSettings",
         "parameters": [
           {
@@ -15315,26 +15439,11 @@
           },
           "targetLanguage": {
             "type": "string",
-            "description": "The target language.",
-            "minLength": 1
+            "description": "The target language."
           },
           "sourceLanguage": {
             "type": "string",
             "description": "The optional source language."
-          }
-        }
-      },
-      "AskDto": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "prompt"
-        ],
-        "properties": {
-          "prompt": {
-            "type": "string",
-            "description": "The text to ask.",
-            "minLength": 1
           }
         }
       },
@@ -15597,6 +15706,78 @@
           }
         }
       },
+      "AuthSchemeResponseDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "scheme": {
+                "description": "The auth scheme if configured.",
+                "nullable": true,
+                "$ref": "#/components/schemas/AuthSchemeDto"
+              }
+            }
+          }
+        ]
+      },
+      "AuthSchemeDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "domain",
+          "displayName",
+          "clientId",
+          "clientSecret",
+          "authority"
+        ],
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "The domain name of your user accounts.",
+            "minLength": 1
+          },
+          "displayName": {
+            "type": "string",
+            "description": "The display name for buttons.",
+            "minLength": 1
+          },
+          "clientId": {
+            "type": "string",
+            "description": "The client ID.",
+            "minLength": 1
+          },
+          "clientSecret": {
+            "type": "string",
+            "description": "The client secret.",
+            "minLength": 1
+          },
+          "authority": {
+            "type": "string",
+            "description": "The authority URL.",
+            "minLength": 1
+          },
+          "signoutRedirectUrl": {
+            "type": "string",
+            "description": "The URL to redirect after a signout.",
+            "nullable": true
+          }
+        }
+      },
+      "AuthSchemeValueDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "scheme": {
+            "description": "The auth scheme if configured.",
+            "nullable": true,
+            "$ref": "#/components/schemas/AuthSchemeDto"
+          }
+        }
+      },
       "LogDownloadDto": {
         "type": "object",
         "additionalProperties": false,
@@ -15837,13 +16018,11 @@
               },
               "createdBy": {
                 "type": "string",
-                "description": "The user that has created the schema.",
-                "minLength": 1
+                "description": "The user that has created the schema."
               },
               "lastModifiedBy": {
                 "type": "string",
-                "description": "The user that has updated the schema.",
-                "minLength": 1
+                "description": "The user that has updated the schema."
               },
               "name": {
                 "type": "string",
@@ -15980,6 +16159,16 @@
           "contentEditorUrl": {
             "type": "string",
             "description": "The url to the editor plugin.",
+            "nullable": true
+          },
+          "contentsEditorUrl": {
+            "type": "string",
+            "description": "The url to the editor plugin.",
+            "nullable": true
+          },
+          "contentsListUrl": {
+            "type": "string",
+            "description": "The url to the content list plugin.",
             "nullable": true
           },
           "validateOnPublish": {
@@ -16147,6 +16336,7 @@
             "Json": "#/components/schemas/JsonFieldPropertiesDto",
             "Number": "#/components/schemas/NumberFieldPropertiesDto",
             "References": "#/components/schemas/ReferencesFieldPropertiesDto",
+            "RichText": "#/components/schemas/RichTextFieldPropertiesDto",
             "String": "#/components/schemas/StringFieldPropertiesDto",
             "Tags": "#/components/schemas/TagsFieldPropertiesDto",
             "UI": "#/components/schemas/UIFieldPropertiesDto"
@@ -16829,14 +17019,86 @@
           "Dropdown",
           "Tags",
           "Checkboxes",
-          "Input"
+          "Input",
+          "Radio"
         ],
         "enum": [
           "List",
           "Dropdown",
           "Tags",
           "Checkboxes",
-          "Input"
+          "Input",
+          "Radio"
+        ]
+      },
+      "RichTextFieldPropertiesDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FieldPropertiesDto"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "folderId": {
+                "type": "string",
+                "description": "The initial id to the folder when the control supports file uploads.",
+                "nullable": true
+              },
+              "minLength": {
+                "type": "integer",
+                "description": "The minimum allowed length for the field value.",
+                "format": "int32",
+                "nullable": true
+              },
+              "maxLength": {
+                "type": "integer",
+                "description": "The maximum allowed length for the field value.",
+                "format": "int32",
+                "nullable": true
+              },
+              "minCharacters": {
+                "type": "integer",
+                "description": "The minimum allowed of normal characters for the field value.",
+                "format": "int32",
+                "nullable": true
+              },
+              "maxCharacters": {
+                "type": "integer",
+                "description": "The maximum allowed of normal characters for the field value.",
+                "format": "int32",
+                "nullable": true
+              },
+              "minWords": {
+                "type": "integer",
+                "description": "The minimum allowed number of words for the field value.",
+                "format": "int32",
+                "nullable": true
+              },
+              "maxWords": {
+                "type": "integer",
+                "description": "The maximum allowed number of words for the field value.",
+                "format": "int32",
+                "nullable": true
+              },
+              "classNames": {
+                "type": "array",
+                "description": "The class names for the editor.",
+                "nullable": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "schemaIds": {
+                "type": "array",
+                "description": "The allowed schema ids that can be embedded.",
+                "nullable": true,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         ]
       },
       "StringFieldPropertiesDto": {
@@ -16908,6 +17170,14 @@
                 "description": "The maximum allowed number of words for the field value.",
                 "format": "int32",
                 "nullable": true
+              },
+              "classNames": {
+                "type": "array",
+                "description": "The class names for the editor.",
+                "nullable": true,
+                "items": {
+                  "type": "string"
+                }
               },
               "allowedValues": {
                 "type": "array",
@@ -17447,9 +17717,9 @@
             "description": "The url to a the sidebar plugin for content items.",
             "nullable": true
           },
-          "contentEditorUrl": {
+          "contentsListUrl": {
             "type": "string",
-            "description": "The url to the editor plugin.",
+            "description": "The url to the content list plugin.",
             "nullable": true
           },
           "validateOnPublish": {
@@ -17931,7 +18201,6 @@
             "AzureQueue": "#/components/schemas/AzureQueueRuleActionDto",
             "Comment": "#/components/schemas/CommentRuleActionDto",
             "CreateContent": "#/components/schemas/CreateContentRuleActionDto",
-            "DeepDetect": "#/components/schemas/DeepDetectRuleActionDto",
             "Discourse": "#/components/schemas/DiscourseRuleActionDto",
             "ElasticSearch": "#/components/schemas/ElasticSearchRuleActionDto",
             "Email": "#/components/schemas/EmailRuleActionDto",
@@ -18111,35 +18380,6 @@
           }
         ]
       },
-      "DeepDetectRuleActionDto": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/RuleActionDto"
-          },
-          {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-              "minimumProbability",
-              "maximumTags"
-            ],
-            "properties": {
-              "minimumProbability": {
-                "title": "Min Probability",
-                "type": "integer",
-                "description": "The minimum probability for objects to be recognized (0 - 100).",
-                "format": "int64"
-              },
-              "maximumTags": {
-                "title": "Max Tags",
-                "type": "integer",
-                "description": "The maximum number of tags to use.",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
       "DiscourseRuleActionDto": {
         "allOf": [
           {
@@ -18269,12 +18509,12 @@
             "required": [
               "serverHost",
               "serverPort",
-              "serverUsername",
-              "serverPassword",
               "messageFrom",
               "messageTo",
               "messageSubject",
-              "messageBody"
+              "messageBody",
+              "serverUsername",
+              "serverPassword"
             ],
             "properties": {
               "serverHost": {
@@ -18292,14 +18532,12 @@
               "serverUsername": {
                 "title": "Username",
                 "type": "string",
-                "description": "The username for the SMTP server.",
-                "minLength": 1
+                "description": "The username for the SMTP server."
               },
               "serverPassword": {
                 "title": "Password",
                 "type": "string",
-                "description": "The password for the SMTP server.",
-                "minLength": 1
+                "description": "The password for the SMTP server."
               },
               "messageFrom": {
                 "title": "From Address",
@@ -19344,6 +19582,134 @@
           }
         }
       },
+      "JobsDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "items"
+            ],
+            "properties": {
+              "items": {
+                "type": "array",
+                "description": "The jobs.",
+                "items": {
+                  "$ref": "#/components/schemas/JobDto"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "JobDto": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "started",
+              "status",
+              "taskName",
+              "description",
+              "taskArguments",
+              "log",
+              "canDownload"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "The ID of the job."
+              },
+              "started": {
+                "type": "string",
+                "description": "The time when the job has been started.",
+                "format": "date-time"
+              },
+              "stopped": {
+                "type": "string",
+                "description": "The time when the job has been stopped.",
+                "format": "date-time",
+                "nullable": true
+              },
+              "status": {
+                "description": "The status of the operation.",
+                "$ref": "#/components/schemas/JobStatus"
+              },
+              "taskName": {
+                "type": "string",
+                "description": "The name of the task."
+              },
+              "description": {
+                "type": "string",
+                "description": "The description of the job."
+              },
+              "taskArguments": {
+                "type": "object",
+                "description": "The arguments for the job.",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "log": {
+                "type": "array",
+                "description": "The list of log items.",
+                "items": {
+                  "$ref": "#/components/schemas/JobLogMessageDto"
+                }
+              },
+              "canDownload": {
+                "type": "boolean",
+                "description": "Indicates whether the job can be downloaded."
+              }
+            }
+          }
+        ]
+      },
+      "JobStatus": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Created",
+          "Started",
+          "Completed",
+          "Cancelled",
+          "Failed"
+        ],
+        "enum": [
+          "Created",
+          "Started",
+          "Completed",
+          "Cancelled",
+          "Failed"
+        ]
+      },
+      "JobLogMessageDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "timestamp",
+          "message"
+        ],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "description": "The timestamp.",
+            "format": "date-time"
+          },
+          "message": {
+            "type": "string",
+            "description": "The log message."
+          }
+        }
+      },
       "HistoryEventDto": {
         "type": "object",
         "additionalProperties": false,
@@ -19782,6 +20148,10 @@
             "type": "boolean",
             "description": "True to turn off scripting for faster inserts. Default: true."
           },
+          "enrichRequiredFields": {
+            "type": "boolean",
+            "description": "True, to also enrich required fields. Default: false.\n            "
+          },
           "doNotValidate": {
             "type": "boolean",
             "description": "True to turn off validation for faster inserts. Default: false."
@@ -19847,6 +20217,10 @@
             "type": "boolean",
             "description": "True to delete the content permanently."
           },
+          "enrichDefaults": {
+            "type": "boolean",
+            "description": "Enrich the data with the default values when updating a content item."
+          },
           "expectedCount": {
             "type": "integer",
             "description": "The number of expected items. Set it to a higher number to update multiple items when a query is defined.",
@@ -19910,17 +20284,11 @@
         ],
         "properties": {
           "path": {
-            "$ref": "#/components/schemas/PropertyPath"
+            "type": "string"
           },
           "order": {
             "$ref": "#/components/schemas/SortOrder"
           }
-        }
-      },
-      "PropertyPath": {
-        "type": "array",
-        "items": {
-          "type": "string"
         }
       },
       "SortOrder": {
@@ -19945,7 +20313,8 @@
           "Delete",
           "Patch",
           "Update",
-          "Validate"
+          "Validate",
+          "EnrichDefaults"
         ],
         "enum": [
           "Upsert",
@@ -19954,7 +20323,8 @@
           "Delete",
           "Patch",
           "Update",
-          "Validate"
+          "Validate",
+          "EnrichDefaults"
         ]
       },
       "ChangeStatusDto": {
@@ -19966,8 +20336,7 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "The new status.",
-            "minLength": 1
+            "description": "The new status."
           },
           "dueTime": {
             "type": "string",
@@ -20026,99 +20395,6 @@
           }
         }
       },
-      "CommentsDto": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "version"
-        ],
-        "properties": {
-          "createdComments": {
-            "type": "array",
-            "description": "The created comments including the updates.",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/CommentDto"
-            }
-          },
-          "updatedComments": {
-            "type": "array",
-            "description": "The updates comments since the last version.",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/CommentDto"
-            }
-          },
-          "deletedComments": {
-            "type": "array",
-            "description": "The deleted comments since the last version.",
-            "nullable": true,
-            "items": {
-              "type": "string"
-            }
-          },
-          "version": {
-            "type": "integer",
-            "description": "The current version.",
-            "format": "int64"
-          }
-        }
-      },
-      "CommentDto": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "time",
-          "user",
-          "text"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The ID of the comment."
-          },
-          "time": {
-            "type": "string",
-            "description": "The time when the comment was created or updated last.",
-            "format": "date-time"
-          },
-          "user": {
-            "type": "string",
-            "description": "The user who created or updated the comment."
-          },
-          "text": {
-            "type": "string",
-            "description": "The text of the comment."
-          },
-          "url": {
-            "type": "string",
-            "description": "The url where the comment is created.",
-            "format": "uri",
-            "nullable": true
-          }
-        }
-      },
-      "UpsertCommentDto": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "text"
-        ],
-        "properties": {
-          "text": {
-            "type": "string",
-            "description": "The comment text.",
-            "minLength": 1
-          },
-          "url": {
-            "type": "string",
-            "description": "The url where the comment is created.",
-            "format": "uri",
-            "nullable": true
-          }
-        }
-      },
       "BackupJobsDto": {
         "allOf": [
           {
@@ -20126,6 +20402,8 @@
           },
           {
             "type": "object",
+            "deprecated": true,
+            "x-deprecatedMessage": "Use Jobs endpoint.",
             "additionalProperties": false,
             "required": [
               "items"
@@ -20149,6 +20427,8 @@
           },
           {
             "type": "object",
+            "deprecated": true,
+            "x-deprecatedMessage": "Use Jobs endpoint.",
             "additionalProperties": false,
             "required": [
               "id",
@@ -20189,22 +20469,6 @@
               }
             }
           }
-        ]
-      },
-      "JobStatus": {
-        "type": "string",
-        "description": "",
-        "x-enumNames": [
-          "Created",
-          "Started",
-          "Completed",
-          "Failed"
-        ],
-        "enum": [
-          "Created",
-          "Started",
-          "Completed",
-          "Failed"
         ]
       },
       "RestoreJobDto": {
@@ -21094,8 +21358,7 @@
         "properties": {
           "language": {
             "type": "string",
-            "description": "The language to add.",
-            "minLength": 1
+            "description": "The language to add."
           }
         }
       },
@@ -21673,8 +21936,7 @@
           },
           "initial": {
             "type": "string",
-            "description": "The initial step.",
-            "minLength": 1
+            "description": "The initial step."
           }
         }
       }
