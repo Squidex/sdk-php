@@ -4,14 +4,13 @@ composer.json
 lib/Api/AppsApi.php
 lib/Api/AssetsApi.php
 lib/Api/BackupsApi.php
-lib/Api/CommentsApi.php
 lib/Api/ContentsApi.php
 lib/Api/DiagnosticsApi.php
 lib/Api/EventConsumersApi.php
 lib/Api/HistoryApi.php
+lib/Api/JobsApi.php
 lib/Api/LanguagesApi.php
 lib/Api/NewsApi.php
-lib/Api/NotificationsApi.php
 lib/Api/PingApi.php
 lib/Api/PlansApi.php
 lib/Api/RulesApi.php
@@ -40,7 +39,6 @@ lib/Model/AppLanguagesDto.php
 lib/Model/AppSettingsDto.php
 lib/Model/ArrayCalculatedDefaultValue.php
 lib/Model/ArrayFieldPropertiesDto.php
-lib/Model/AskDto.php
 lib/Model/AssetChangedRuleTriggerDto.php
 lib/Model/AssetDto.php
 lib/Model/AssetFolderDto.php
@@ -53,6 +51,9 @@ lib/Model/AssetType.php
 lib/Model/AssetsDto.php
 lib/Model/AssetsFieldPropertiesDto.php
 lib/Model/AssignContributorDto.php
+lib/Model/AuthSchemeDto.php
+lib/Model/AuthSchemeResponseDto.php
+lib/Model/AuthSchemeValueDto.php
 lib/Model/AzureQueueRuleActionDto.php
 lib/Model/BackupJobDto.php
 lib/Model/BackupJobsDto.php
@@ -72,10 +73,8 @@ lib/Model/ChangePlanDto.php
 lib/Model/ChangeStatusDto.php
 lib/Model/ClientDto.php
 lib/Model/ClientsDto.php
-lib/Model/CommentDto.php
 lib/Model/CommentRuleActionDto.php
 lib/Model/CommentRuleTriggerDto.php
-lib/Model/CommentsDto.php
 lib/Model/ComponentFieldPropertiesDto.php
 lib/Model/ComponentsFieldPropertiesDto.php
 lib/Model/ConfigureFieldRulesDto.php
@@ -98,7 +97,6 @@ lib/Model/CurrentStorageDto.php
 lib/Model/DateTimeCalculatedDefaultValue.php
 lib/Model/DateTimeFieldEditor.php
 lib/Model/DateTimeFieldPropertiesDto.php
-lib/Model/DeepDetectRuleActionDto.php
 lib/Model/DiscourseRuleActionDto.php
 lib/Model/EditorDto.php
 lib/Model/ElasticSearchRuleActionDto.php
@@ -118,7 +116,10 @@ lib/Model/GeolocationFieldPropertiesDto.php
 lib/Model/HistoryEventDto.php
 lib/Model/ImageFormat.php
 lib/Model/ImportContentsDto.php
+lib/Model/JobDto.php
+lib/Model/JobLogMessageDto.php
 lib/Model/JobStatus.php
+lib/Model/JobsDto.php
 lib/Model/JsonFieldPropertiesDto.php
 lib/Model/LanguageDto.php
 lib/Model/LogDownloadDto.php
@@ -152,6 +153,7 @@ lib/Model/ResourceLink.php
 lib/Model/ResourcesDto.php
 lib/Model/RestoreJobDto.php
 lib/Model/RestoreRequestDto.php
+lib/Model/RichTextFieldPropertiesDto.php
 lib/Model/RoleDto.php
 lib/Model/RolesDto.php
 lib/Model/RuleActionDto.php
@@ -217,7 +219,6 @@ lib/Model/UpdateSettingDto.php
 lib/Model/UpdateTeamDto.php
 lib/Model/UpdateUserDto.php
 lib/Model/UpdateWorkflowDto.php
-lib/Model/UpsertCommentDto.php
 lib/Model/UpsertSchemaDto.php
 lib/Model/UpsertSchemaFieldDto.php
 lib/Model/UpsertSchemaNestedFieldDto.php
