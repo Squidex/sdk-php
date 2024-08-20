@@ -1,5 +1,10 @@
 {
-    "name": "squidex/squidex",
+    {{#composerPackageName}}
+    "name": "{{.}}",
+    {{/composerPackageName}}
+    {{#artifactVersion}}
+    "version": "{{.}}",
+    {{/artifactVersion}}
     "description": "Client SDK for Squidex Headless CMS",
     "keywords": [
         "openapitools",
@@ -33,9 +38,9 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "Squidex\\Client\\" : "lib/" }
+        "psr-4": { "{{escapedInvokerPackage}}\\" : "{{srcBasePath}}/" }
     },
     "autoload-dev": {
-        "psr-4": { "Squidex\\Client\\Test\\" : "tests/" }
+        "psr-4": { "{{escapedInvokerPackage}}\\Test\\" : "tests/" }
     }
 }
