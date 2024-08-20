@@ -70,6 +70,10 @@ To generate the config you have to execute the following steps.
 docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate -i /local/openapi.json -g php --template-dir  /local/templates -o /local/ -c /local/openapi-config.yml
 ```
 
+### Releases
+
+To create a new release, just create a tag. Packagist will use this tag to calculate the version.
+
 ## Contributing
 
 While we value open-source contributions to this SDK, this library is generated programmatically. Additions made directly to this library would have to be moved over to our generation code, otherwise they would be overwritten upon the next generated release. Feel free to open a PR as a proof of concept, but know that we will not be able to merge it as-is. We suggest opening an issue first to discuss with us!
