@@ -358,16 +358,8 @@ class StatisticsApi
     public function getCurrentStorageSizeRequest(string $contentType = self::contentTypes['getCurrentStorageSize'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/usages/storage/today';
+        $resourcePath = '/api/apps/$app$/usages/storage/today';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -376,14 +368,12 @@ class StatisticsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -660,16 +650,8 @@ class StatisticsApi
     public function getLogRequest(string $contentType = self::contentTypes['getLog'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/usages/log';
+        $resourcePath = '/api/apps/$app$/usages/log';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -678,14 +660,12 @@ class StatisticsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -972,30 +952,22 @@ class StatisticsApi
     public function getStorageSizesRequest($from_date, $to_date, string $contentType = self::contentTypes['getStorageSizes'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'from_date' is set
         if ($from_date === null || (is_array($from_date) && count($from_date) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_date when calling '
+                'Missing the required parameter $from_date when calling usagesGetStorageSizes'
             );
         }
 
         // verify the required parameter 'to_date' is set
         if ($to_date === null || (is_array($to_date) && count($to_date) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_date when calling '
+                'Missing the required parameter $to_date when calling usagesGetStorageSizes'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/usages/storage/{fromDate}/{toDate}';
+        $resourcePath = '/api/apps/$app$/usages/storage/{fromDate}/{toDate}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1004,14 +976,6 @@ class StatisticsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($from_date !== null) {
             $resourcePath = str_replace(
@@ -1028,6 +992,12 @@ class StatisticsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1322,21 +1292,21 @@ class StatisticsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling usagesGetStorageSizesForTeam'
             );
         }
 
         // verify the required parameter 'from_date' is set
         if ($from_date === null || (is_array($from_date) && count($from_date) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_date when calling '
+                'Missing the required parameter $from_date when calling usagesGetStorageSizesForTeam'
             );
         }
 
         // verify the required parameter 'to_date' is set
         if ($to_date === null || (is_array($to_date) && count($to_date) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_date when calling '
+                'Missing the required parameter $to_date when calling usagesGetStorageSizesForTeam'
             );
         }
 
@@ -1374,6 +1344,12 @@ class StatisticsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1658,7 +1634,7 @@ class StatisticsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling usagesGetTeamCurrentStorageSizeForTeam'
             );
         }
 
@@ -1680,6 +1656,12 @@ class StatisticsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1966,30 +1948,22 @@ class StatisticsApi
     public function getUsagesRequest($from_date, $to_date, string $contentType = self::contentTypes['getUsages'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'from_date' is set
         if ($from_date === null || (is_array($from_date) && count($from_date) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_date when calling '
+                'Missing the required parameter $from_date when calling usagesGetUsages'
             );
         }
 
         // verify the required parameter 'to_date' is set
         if ($to_date === null || (is_array($to_date) && count($to_date) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_date when calling '
+                'Missing the required parameter $to_date when calling usagesGetUsages'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/usages/calls/{fromDate}/{toDate}';
+        $resourcePath = '/api/apps/$app$/usages/calls/{fromDate}/{toDate}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1998,14 +1972,6 @@ class StatisticsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($from_date !== null) {
             $resourcePath = str_replace(
@@ -2022,6 +1988,12 @@ class StatisticsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2316,21 +2288,21 @@ class StatisticsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling usagesGetUsagesForTeam'
             );
         }
 
         // verify the required parameter 'from_date' is set
         if ($from_date === null || (is_array($from_date) && count($from_date) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_date when calling '
+                'Missing the required parameter $from_date when calling usagesGetUsagesForTeam'
             );
         }
 
         // verify the required parameter 'to_date' is set
         if ($to_date === null || (is_array($to_date) && count($to_date) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_date when calling '
+                'Missing the required parameter $to_date when calling usagesGetUsagesForTeam'
             );
         }
 
@@ -2368,6 +2340,12 @@ class StatisticsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

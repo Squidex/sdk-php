@@ -345,17 +345,9 @@ class SearchApi
     public function getSearchResultsRequest($query = null, string $contentType = self::contentTypes['getSearchResults'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
-
-        $resourcePath = '/api/apps/{app}/search';
+        $resourcePath = '/api/apps/$app$/search';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -373,14 +365,12 @@ class SearchApi
         ) ?? []);
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(

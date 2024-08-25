@@ -406,14 +406,14 @@ class TeamsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamContributorsDeleteContributor'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling teamContributorsDeleteContributor'
             );
         }
 
@@ -443,6 +443,12 @@ class TeamsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -750,7 +756,7 @@ class TeamsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamContributorsDeleteMyself'
             );
         }
 
@@ -772,6 +778,12 @@ class TeamsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1056,7 +1068,7 @@ class TeamsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamContributorsGetContributors'
             );
         }
 
@@ -1078,6 +1090,12 @@ class TeamsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1390,14 +1408,14 @@ class TeamsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamContributorsPostContributor'
             );
         }
 
         // verify the required parameter 'assign_contributor_dto' is set
         if ($assign_contributor_dto === null || (is_array($assign_contributor_dto) && count($assign_contributor_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $assign_contributor_dto when calling '
+                'Missing the required parameter $assign_contributor_dto when calling teamContributorsPostContributor'
             );
         }
 
@@ -1419,6 +1437,12 @@ class TeamsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1649,7 +1673,7 @@ class TeamsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamsDeleteTeam'
             );
         }
 
@@ -1671,6 +1695,12 @@ class TeamsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1955,7 +1985,7 @@ class TeamsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamsGetTeam'
             );
         }
 
@@ -1977,6 +2007,12 @@ class TeamsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2261,7 +2297,7 @@ class TeamsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamsGetTeamAuth'
             );
         }
 
@@ -2283,6 +2319,12 @@ class TeamsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2569,6 +2611,12 @@ class TeamsApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2876,7 +2924,7 @@ class TeamsApi
         // verify the required parameter 'create_team_dto' is set
         if ($create_team_dto === null || (is_array($create_team_dto) && count($create_team_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_team_dto when calling '
+                'Missing the required parameter $create_team_dto when calling teamsPostTeam'
             );
         }
 
@@ -2890,6 +2938,12 @@ class TeamsApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3209,14 +3263,14 @@ class TeamsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamsPutTeam'
             );
         }
 
         // verify the required parameter 'update_team_dto' is set
         if ($update_team_dto === null || (is_array($update_team_dto) && count($update_team_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_team_dto when calling '
+                'Missing the required parameter $update_team_dto when calling teamsPutTeam'
             );
         }
 
@@ -3238,6 +3292,12 @@ class TeamsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3557,14 +3617,14 @@ class TeamsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamsPutTeamAuth'
             );
         }
 
         // verify the required parameter 'auth_scheme_value_dto' is set
         if ($auth_scheme_value_dto === null || (is_array($auth_scheme_value_dto) && count($auth_scheme_value_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $auth_scheme_value_dto when calling '
+                'Missing the required parameter $auth_scheme_value_dto when calling teamsPutTeamAuth'
             );
         }
 
@@ -3586,6 +3646,12 @@ class TeamsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

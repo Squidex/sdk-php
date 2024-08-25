@@ -360,7 +360,7 @@ class UsersApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling usersGetUser'
             );
         }
 
@@ -382,6 +382,12 @@ class UsersApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -666,7 +672,7 @@ class UsersApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling usersGetUserPicture'
             );
         }
 
@@ -688,6 +694,12 @@ class UsersApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -974,6 +986,12 @@ class UsersApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1275,6 +1293,12 @@ class UsersApi
         ) ?? []);
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1498,7 +1522,7 @@ class UsersApi
         // verify the required parameter 'update_profile_dto' is set
         if ($update_profile_dto === null || (is_array($update_profile_dto) && count($update_profile_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_profile_dto when calling '
+                'Missing the required parameter $update_profile_dto when calling usersPostUser'
             );
         }
 
@@ -1512,6 +1536,12 @@ class UsersApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

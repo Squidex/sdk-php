@@ -313,7 +313,7 @@ class UserManagementApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling userManagementDeleteUser'
             );
         }
 
@@ -335,6 +335,12 @@ class UserManagementApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -619,7 +625,7 @@ class UserManagementApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling userManagementGetUser'
             );
         }
 
@@ -641,6 +647,12 @@ class UserManagementApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -972,6 +984,12 @@ class UserManagementApi
         ) ?? []);
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1302,7 +1320,7 @@ class UserManagementApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling userManagementLockUser'
             );
         }
 
@@ -1324,6 +1342,12 @@ class UserManagementApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1631,7 +1655,7 @@ class UserManagementApi
         // verify the required parameter 'create_user_dto' is set
         if ($create_user_dto === null || (is_array($create_user_dto) && count($create_user_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_user_dto when calling '
+                'Missing the required parameter $create_user_dto when calling userManagementPostUser'
             );
         }
 
@@ -1645,6 +1669,12 @@ class UserManagementApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1964,14 +1994,14 @@ class UserManagementApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling userManagementPutUser'
             );
         }
 
         // verify the required parameter 'update_user_dto' is set
         if ($update_user_dto === null || (is_array($update_user_dto) && count($update_user_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_user_dto when calling '
+                'Missing the required parameter $update_user_dto when calling userManagementPutUser'
             );
         }
 
@@ -1993,6 +2023,12 @@ class UserManagementApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2330,7 +2366,7 @@ class UserManagementApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling userManagementUnlockUser'
             );
         }
 
@@ -2352,6 +2388,12 @@ class UserManagementApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

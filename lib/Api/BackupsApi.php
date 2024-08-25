@@ -368,23 +368,15 @@ class BackupsApi
     public function getBackupContentRequest($id, string $contentType = self::contentTypes['getBackupContent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling backupContentGetBackupContent'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/backups/{id}';
+        $resourcePath = '/api/apps/$app$/backups/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -394,14 +386,6 @@ class BackupsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -409,6 +393,12 @@ class BackupsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -708,7 +698,7 @@ class BackupsApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling backupContentGetBackupContentV2'
             );
         }
 
@@ -750,6 +740,12 @@ class BackupsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -975,23 +971,15 @@ class BackupsApi
     public function deleteBackupRequest($id, string $contentType = self::contentTypes['deleteBackup'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling backupsDeleteBackup'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/backups/{id}';
+        $resourcePath = '/api/apps/$app$/backups/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1001,14 +989,6 @@ class BackupsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -1016,6 +996,12 @@ class BackupsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1297,16 +1283,8 @@ class BackupsApi
     public function getBackupsRequest(string $contentType = self::contentTypes['getBackups'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/backups';
+        $resourcePath = '/api/apps/$app$/backups';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1315,14 +1293,12 @@ class BackupsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1538,16 +1514,8 @@ class BackupsApi
     public function postBackupRequest(string $contentType = self::contentTypes['postBackup'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/backups';
+        $resourcePath = '/api/apps/$app$/backups';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1556,14 +1524,12 @@ class BackupsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1850,6 +1816,12 @@ class BackupsApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2073,7 +2045,7 @@ class BackupsApi
         // verify the required parameter 'restore_request_dto' is set
         if ($restore_request_dto === null || (is_array($restore_request_dto) && count($restore_request_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $restore_request_dto when calling '
+                'Missing the required parameter $restore_request_dto when calling restorePostRestoreJob'
             );
         }
 
@@ -2087,6 +2059,12 @@ class BackupsApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

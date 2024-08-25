@@ -368,23 +368,15 @@ class TranslationsApi
     public function postTranslationRequest($translate_dto, string $contentType = self::contentTypes['postTranslation'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'translate_dto' is set
         if ($translate_dto === null || (is_array($translate_dto) && count($translate_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $translate_dto when calling '
+                'Missing the required parameter $translate_dto when calling translationsPostTranslation'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/translations';
+        $resourcePath = '/api/apps/$app$/translations';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -393,14 +385,12 @@ class TranslationsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(

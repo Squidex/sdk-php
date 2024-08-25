@@ -351,7 +351,7 @@ class TemplatesApi
         // verify the required parameter 'name' is set
         if ($name === null || (is_array($name) && count($name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $name when calling '
+                'Missing the required parameter $name when calling templatesGetTemplate'
             );
         }
 
@@ -373,6 +373,12 @@ class TemplatesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -659,6 +665,12 @@ class TemplatesApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

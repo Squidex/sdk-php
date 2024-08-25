@@ -348,17 +348,9 @@ class HistoryApi
     public function getAppHistoryRequest($channel = null, string $contentType = self::contentTypes['getAppHistory'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
-
-        $resourcePath = '/api/apps/{app}/history';
+        $resourcePath = '/api/apps/$app$/history';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -376,14 +368,12 @@ class HistoryApi
         ) ?? []);
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -673,7 +663,7 @@ class HistoryApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling historyGetTeamHistory'
             );
         }
 
@@ -705,6 +695,12 @@ class HistoryApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

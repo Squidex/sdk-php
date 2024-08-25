@@ -67,7 +67,7 @@ use {{invokerPackage}}\ObjectSerializer;
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [{{#operation}}
-        '{{{vendorExtensions.x-fern-sdk-method-name}}}' => [{{#consumes}}
+        '{{{vendorExtensions.x-method-name}}}' => [{{#consumes}}
             '{{{mediaType}}}',{{/consumes}}
         {{^consumes}}
             'application/json',
@@ -114,7 +114,7 @@ use {{invokerPackage}}\ObjectSerializer;
 
 {{#operation}}
     /**
-     * Operation {{{vendorExtensions.x-fern-sdk-method-name}}}
+     * Operation {{{vendorExtensions.x-method-name}}}
 {{#summary}}
      *
      * {{.}}
@@ -149,9 +149,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-    {{^vendorExtensions.x-hidden}}
      * @param  {{{dataType}}} ${{paramName}}{{#description}} {{.}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
-    {{/vendorExtensions.x-hidden}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -159,7 +157,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
 {{/-first}}
 {{/servers}}
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-method-name}}}'] to see the possible values for this operation
      *
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -168,14 +166,14 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{vendorExtensions.x-fern-sdk-method-name}}({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^vendorExtensions.x-hidden}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/vendorExtensions.x-hidden}}{{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
+    public function {{vendorExtensions.x-method-name}}({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
     {
-        {{#returnType}}list($response) = {{/returnType}}$this->{{vendorExtensions.x-fern-sdk-method-name}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^vendorExtensions.x-hidden}}${{paramName}}, {{/vendorExtensions.x-hidden}}{{/allParams}}{{#servers}}{{#-first}}$hostIndex, $variables, {{/-first}}{{/servers}}$contentType{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});{{#returnType}}
+        {{#returnType}}list($response) = {{/returnType}}$this->{{vendorExtensions.x-method-name}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}, {{/allParams}}{{#servers}}{{#-first}}$hostIndex, $variables, {{/-first}}{{/servers}}$contentType{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});{{#returnType}}
         return $response;{{/returnType}}
     }
 
     /**
-     * Operation {{{vendorExtensions.x-fern-sdk-method-name}}}WithHttpInfo
+     * Operation {{{vendorExtensions.x-method-name}}}WithHttpInfo
 {{#summary}}
      *
      * {{.}}
@@ -210,9 +208,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-    {{^vendorExtensions.x-hidden}}
      * @param  {{{dataType}}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
-    {{/vendorExtensions.x-hidden}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -220,7 +216,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
 {{/-first}}
 {{/servers}}
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-method-name}}}'] to see the possible values for this operation
      *
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -229,9 +225,9 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{vendorExtensions.x-fern-sdk-method-name}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^vendorExtensions.x-hidden}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/vendorExtensions.x-hidden}}{{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
+    public function {{vendorExtensions.x-method-name}}WithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
     {
-        $request = $this->{{vendorExtensions.x-fern-sdk-method-name}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^vendorExtensions.x-hidden}}${{paramName}}, {{/vendorExtensions.x-hidden}}{{/allParams}}{{#servers}}{{#-first}}$hostIndex, $variables, {{/-first}}{{/servers}}$contentType{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
+        $request = $this->{{vendorExtensions.x-method-name}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}, {{/allParams}}{{#servers}}{{#-first}}$hostIndex, $variables, {{/-first}}{{/servers}}$contentType{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
 
         try {
             $options = $this->createHttpClientOption();
@@ -336,7 +332,7 @@ use {{invokerPackage}}\ObjectSerializer;
     }
 
     /**
-     * Operation {{{vendorExtensions.x-fern-sdk-method-name}}}Async
+     * Operation {{{vendorExtensions.x-method-name}}}Async
      *
 {{#summary}}
      * {{.}}
@@ -371,9 +367,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-    {{^vendorExtensions.x-hidden}}
      * @param  {{{dataType}}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
-    {{/vendorExtensions.x-hidden}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -381,7 +375,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
 {{/-first}}
 {{/servers}}
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-method-name}}}'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -389,9 +383,9 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{vendorExtensions.x-fern-sdk-method-name}}Async({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^vendorExtensions.x-hidden}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/vendorExtensions.x-hidden}}{{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
+    public function {{vendorExtensions.x-method-name}}Async({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
     {
-        return $this->{{vendorExtensions.x-fern-sdk-method-name}}AsyncWithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^vendorExtensions.x-hidden}}${{paramName}}, {{/vendorExtensions.x-hidden}}{{/allParams}}{{#servers}}{{#-first}}$hostIndex, $variables, {{/-first}}{{/servers}}$contentType{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
+        return $this->{{vendorExtensions.x-method-name}}AsyncWithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}, {{/allParams}}{{#servers}}{{#-first}}$hostIndex, $variables, {{/-first}}{{/servers}}$contentType{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
             ->then(
                 function ($response) {
                     return $response[0];
@@ -400,7 +394,7 @@ use {{invokerPackage}}\ObjectSerializer;
     }
 
     /**
-     * Operation {{{vendorExtensions.x-fern-sdk-method-name}}}AsyncWithHttpInfo
+     * Operation {{{vendorExtensions.x-method-name}}}AsyncWithHttpInfo
      *
 {{#summary}}
      * {{.}}
@@ -435,9 +429,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-    {{^vendorExtensions.x-hidden}}
      * @param  {{{dataType}}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
-    {{/vendorExtensions.x-hidden}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -445,7 +437,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
 {{/-first}}
 {{/servers}}
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-method-name}}}'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -453,10 +445,10 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{vendorExtensions.x-fern-sdk-method-name}}AsyncWithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^vendorExtensions.x-hidden}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/vendorExtensions.x-hidden}}{{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
+    public function {{vendorExtensions.x-method-name}}AsyncWithHttpInfo({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
     {
         $returnType = '{{{returnType}}}';
-        $request = $this->{{vendorExtensions.x-fern-sdk-method-name}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^vendorExtensions.x-hidden}}${{paramName}}, {{/vendorExtensions.x-hidden}}{{/allParams}}{{#servers}}{{#-first}}$hostIndex, $variables, {{/-first}}{{/servers}}$contentType{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
+        $request = $this->{{vendorExtensions.x-method-name}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}, {{/allParams}}{{#servers}}{{#-first}}$hostIndex, $variables, {{/-first}}{{/servers}}$contentType{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}});
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -500,7 +492,7 @@ use {{invokerPackage}}\ObjectSerializer;
     }
 
     /**
-     * Create request for operation '{{{vendorExtensions.x-fern-sdk-method-name}}}'
+     * Create request for operation '{{{vendorExtensions.x-method-name}}}'
      *
 {{#vendorExtensions.x-group-parameters}}
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
@@ -527,9 +519,7 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/-last}}
 {{/servers}}
 {{#allParams}}
-    {{^vendorExtensions.x-hidden}}
      * @param  {{{dataType}}} ${{paramName}}{{#description}} {{.}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{#isDeprecated}} (deprecated){{/isDeprecated}}
-    {{/vendorExtensions.x-hidden}}
 {{/allParams}}
 {{#servers}}
 {{#-first}}
@@ -537,7 +527,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @param  array $variables Associative array of variables to pass to the host. Defaults to empty array.
 {{/-first}}
 {{/servers}}
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['{{{vendorExtensions.x-method-name}}}'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -545,65 +535,60 @@ use {{invokerPackage}}\ObjectSerializer;
      * @deprecated
     {{/isDeprecated}}
      */
-    public function {{vendorExtensions.x-fern-sdk-method-name}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{^vendorExtensions.x-hidden}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/vendorExtensions.x-hidden}}{{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
+    public function {{vendorExtensions.x-method-name}}Request({{^vendorExtensions.x-group-parameters}}{{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}{{{.}}}{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}, {{/allParams}}{{#servers}}{{#-first}}?int $hostIndex = null, array $variables = [], {{/-first}}{{/servers}}string $contentType = self::contentTypes['{{{vendorExtensions.x-method-name}}}'][0]{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}$associative_array{{/vendorExtensions.x-group-parameters}})
     {
         {{#vendorExtensions.x-group-parameters}}
         // unbox the parameters from the associative array
 {{#allParams}}
-    {{^vendorExtensions.x-hidden}}
         ${{paramName}} = array_key_exists('{{paramName}}', $associative_array) ? $associative_array['{{paramName}}'] : {{{defaultValue}}}{{^defaultValue}}null{{/defaultValue}};
-    {{/vendorExtensions.x-hidden}}
 {{/allParams}}{{#servers.0}}
         $hostIndex = $associative_array['hostIndex'];
         $variables = array_key_exists('variables', $associative_array) ? $associative_array['variables'] : [];
 {{/servers.0}}
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['{{{vendorExtensions.x-fern-sdk-method-name}}}'][0];
+        $contentType = $associative_array['contentType'] ?? self::contentTypes['{{{operationId}}}'][0];
         {{/vendorExtensions.x-group-parameters}}{{#allParams}}
         {{#required}}
         // verify the required parameter '{{paramName}}' is set
-        {{#vendorExtensions.x-hidden}}
-        $app = $this->config->getAppName();
-        {{/vendorExtensions.x-hidden}}
         if (${{paramName}} === null || (is_array(${{paramName}}) && count(${{paramName}}) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter ${{paramName}} when calling {{vendorExtensions.x-fern-sdk-method-name}}'
+                'Missing the required parameter ${{paramName}} when calling {{operationId}}'
             );
         }
         {{/required}}
         {{#hasValidation}}
         {{#maxLength}}
         if ({{^required}}${{paramName}} !== null && {{/required}}strlen(${{paramName}}) > {{maxLength}}) {
-            throw new \InvalidArgumentException('invalid length for "${{paramName}}" when calling {{classname}}.{{vendorExtensions.x-fern-sdk-method-name}}, must be smaller than or equal to {{maxLength}}.');
+            throw new \InvalidArgumentException('invalid length for "${{paramName}}" when calling {{classname}}.{{operationId}}, must be smaller than or equal to {{maxLength}}.');
         }
         {{/maxLength}}
         {{#minLength}}
         if ({{^required}}${{paramName}} !== null && {{/required}}strlen(${{paramName}}) < {{minLength}}) {
-            throw new \InvalidArgumentException('invalid length for "${{paramName}}" when calling {{classname}}.{{vendorExtensions.x-fern-sdk-method-name}}, must be bigger than or equal to {{minLength}}.');
+            throw new \InvalidArgumentException('invalid length for "${{paramName}}" when calling {{classname}}.{{operationId}}, must be bigger than or equal to {{minLength}}.');
         }
         {{/minLength}}
         {{#maximum}}
         if ({{^required}}${{paramName}} !== null && {{/required}}${{paramName}} >{{#exclusiveMaximum}}={{/exclusiveMaximum}} {{maximum}}) {
-            throw new \InvalidArgumentException('invalid value for "${{paramName}}" when calling {{classname}}.{{vendorExtensions.x-fern-sdk-method-name}}, must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{maximum}}.');
+            throw new \InvalidArgumentException('invalid value for "${{paramName}}" when calling {{classname}}.{{operationId}}, must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{maximum}}.');
         }
         {{/maximum}}
         {{#minimum}}
         if ({{^required}}${{paramName}} !== null && {{/required}}${{paramName}} <{{#exclusiveMinimum}}={{/exclusiveMinimum}} {{minimum}}) {
-            throw new \InvalidArgumentException('invalid value for "${{paramName}}" when calling {{classname}}.{{vendorExtensions.x-fern-sdk-method-name}}, must be bigger than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{minimum}}.');
+            throw new \InvalidArgumentException('invalid value for "${{paramName}}" when calling {{classname}}.{{operationId}}, must be bigger than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{minimum}}.');
         }
         {{/minimum}}
         {{#pattern}}
         if ({{^required}}${{paramName}} !== null && {{/required}}!preg_match("{{{pattern}}}", ${{paramName}})) {
-            throw new \InvalidArgumentException("invalid value for \"{{paramName}}\" when calling {{classname}}.{{vendorExtensions.x-fern-sdk-method-name}}, must conform to the pattern {{{pattern}}}.");
+            throw new \InvalidArgumentException("invalid value for \"{{paramName}}\" when calling {{classname}}.{{operationId}}, must conform to the pattern {{{pattern}}}.");
         }
         {{/pattern}}
         {{#maxItems}}
         if ({{^required}}${{paramName}} !== null && {{/required}}count(${{paramName}}) > {{maxItems}}) {
-            throw new \InvalidArgumentException('invalid value for "${{paramName}}" when calling {{classname}}.{{vendorExtensions.x-fern-sdk-method-name}}, number of items must be less than or equal to {{maxItems}}.');
+            throw new \InvalidArgumentException('invalid value for "${{paramName}}" when calling {{classname}}.{{operationId}}, number of items must be less than or equal to {{maxItems}}.');
         }
         {{/maxItems}}
         {{#minItems}}
         if ({{^required}}${{paramName}} !== null && {{/required}}count(${{paramName}}) < {{minItems}}) {
-            throw new \InvalidArgumentException('invalid value for "${{paramName}}" when calling {{classname}}.{{vendorExtensions.x-fern-sdk-method-name}}, number of items must be greater than or equal to {{minItems}}.');
+            throw new \InvalidArgumentException('invalid value for "${{paramName}}" when calling {{classname}}.{{operationId}}, number of items must be greater than or equal to {{minItems}}.');
         }
         {{/minItems}}
         {{/hasValidation}}{{/allParams}}
@@ -654,6 +639,12 @@ use {{invokerPackage}}\ObjectSerializer;
             );
         }
         {{/pathParams}}
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
         {{#formParams}}
         // form params
@@ -765,7 +756,7 @@ use {{invokerPackage}}\ObjectSerializer;
             $hostIndex = $this->hostIndex;
         }
 
-        $hostSettings = $this->getHostSettingsFor{{vendorExtensions.x-fern-sdk-method-name}}();
+        $hostSettings = $this->getHostSettingsFor{{vendorExtensions.x-method-name}}();
 
         if ($hostIndex < 0 || $hostIndex >= count($hostSettings)) {
             throw new \InvalidArgumentException("Invalid index {$hostIndex} when selecting the host. Must be less than ".count($hostSettings));
@@ -786,11 +777,11 @@ use {{invokerPackage}}\ObjectSerializer;
 
     {{#servers.0}}
     /**
-     * Returns an array of host settings for Operation {{vendorExtensions.x-fern-sdk-method-name}}
+     * Returns an array of host settings for Operation {{vendorExtensions.x-method-name}}
      *
      * @return array an array of host settings
      */
-    protected function getHostSettingsFor{{vendorExtensions.x-fern-sdk-method-name}}(): array
+    protected function getHostSettingsFor{{vendorExtensions.x-method-name}}(): array
     {
         return [
         {{#servers}}

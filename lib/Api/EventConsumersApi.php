@@ -359,6 +359,12 @@ class EventConsumersApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -666,7 +672,7 @@ class EventConsumersApi
         // verify the required parameter 'consumer_name' is set
         if ($consumer_name === null || (is_array($consumer_name) && count($consumer_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $consumer_name when calling '
+                'Missing the required parameter $consumer_name when calling eventConsumersResetEventConsumer'
             );
         }
 
@@ -688,6 +694,12 @@ class EventConsumersApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -995,7 +1007,7 @@ class EventConsumersApi
         // verify the required parameter 'consumer_name' is set
         if ($consumer_name === null || (is_array($consumer_name) && count($consumer_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $consumer_name when calling '
+                'Missing the required parameter $consumer_name when calling eventConsumersStartEventConsumer'
             );
         }
 
@@ -1017,6 +1029,12 @@ class EventConsumersApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1324,7 +1342,7 @@ class EventConsumersApi
         // verify the required parameter 'consumer_name' is set
         if ($consumer_name === null || (is_array($consumer_name) && count($consumer_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $consumer_name when calling '
+                'Missing the required parameter $consumer_name when calling eventConsumersStopEventConsumer'
             );
         }
 
@@ -1346,6 +1364,12 @@ class EventConsumersApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

@@ -463,30 +463,22 @@ class SchemasApi
     public function deleteFieldRequest($schema, $id, string $contentType = self::contentTypes['deleteField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsDeleteField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsDeleteField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{id}';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -495,14 +487,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -519,6 +503,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -833,37 +823,29 @@ class SchemasApi
     public function deleteNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['deleteNestedField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsDeleteNestedField'
             );
         }
 
         // verify the required parameter 'parent_id' is set
         if ($parent_id === null || (is_array($parent_id) && count($parent_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $parent_id when calling '
+                'Missing the required parameter $parent_id when calling schemaFieldsDeleteNestedField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsDeleteNestedField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{parentId}/nested/{id}';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{parentId}/nested/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -872,14 +854,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -904,6 +878,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1213,30 +1193,22 @@ class SchemasApi
     public function disableFieldRequest($schema, $id, string $contentType = self::contentTypes['disableField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsDisableField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsDisableField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{id}/disable';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{id}/disable';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1245,14 +1217,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -1269,6 +1233,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1583,37 +1553,29 @@ class SchemasApi
     public function disableNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['disableNestedField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsDisableNestedField'
             );
         }
 
         // verify the required parameter 'parent_id' is set
         if ($parent_id === null || (is_array($parent_id) && count($parent_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $parent_id when calling '
+                'Missing the required parameter $parent_id when calling schemaFieldsDisableNestedField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsDisableNestedField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{parentId}/nested/{id}/disable';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{parentId}/nested/{id}/disable';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1622,14 +1584,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -1654,6 +1608,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1963,30 +1923,22 @@ class SchemasApi
     public function enableFieldRequest($schema, $id, string $contentType = self::contentTypes['enableField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsEnableField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsEnableField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{id}/enable';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{id}/enable';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1995,14 +1947,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -2019,6 +1963,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2333,37 +2283,29 @@ class SchemasApi
     public function enableNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['enableNestedField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsEnableNestedField'
             );
         }
 
         // verify the required parameter 'parent_id' is set
         if ($parent_id === null || (is_array($parent_id) && count($parent_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $parent_id when calling '
+                'Missing the required parameter $parent_id when calling schemaFieldsEnableNestedField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsEnableNestedField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{parentId}/nested/{id}/enable';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{parentId}/nested/{id}/enable';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2372,14 +2314,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -2404,6 +2338,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2713,30 +2653,22 @@ class SchemasApi
     public function hideFieldRequest($schema, $id, string $contentType = self::contentTypes['hideField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsHideField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsHideField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{id}/hide';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{id}/hide';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2745,14 +2677,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -2769,6 +2693,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3083,37 +3013,29 @@ class SchemasApi
     public function hideNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['hideNestedField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsHideNestedField'
             );
         }
 
         // verify the required parameter 'parent_id' is set
         if ($parent_id === null || (is_array($parent_id) && count($parent_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $parent_id when calling '
+                'Missing the required parameter $parent_id when calling schemaFieldsHideNestedField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsHideNestedField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{parentId}/nested/{id}/hide';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{parentId}/nested/{id}/hide';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3122,14 +3044,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -3154,6 +3068,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3463,30 +3383,22 @@ class SchemasApi
     public function lockFieldRequest($schema, $id, string $contentType = self::contentTypes['lockField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsLockField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsLockField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{id}/lock';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{id}/lock';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3495,14 +3407,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -3519,6 +3423,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3833,37 +3743,29 @@ class SchemasApi
     public function lockNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['lockNestedField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsLockNestedField'
             );
         }
 
         // verify the required parameter 'parent_id' is set
         if ($parent_id === null || (is_array($parent_id) && count($parent_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $parent_id when calling '
+                'Missing the required parameter $parent_id when calling schemaFieldsLockNestedField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsLockNestedField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{parentId}/nested/{id}/lock';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{parentId}/nested/{id}/lock';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3872,14 +3774,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -3904,6 +3798,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4236,30 +4136,22 @@ class SchemasApi
     public function postFieldRequest($schema, $add_field_dto, string $contentType = self::contentTypes['postField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsPostField'
             );
         }
 
         // verify the required parameter 'add_field_dto' is set
         if ($add_field_dto === null || (is_array($add_field_dto) && count($add_field_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $add_field_dto when calling '
+                'Missing the required parameter $add_field_dto when calling schemaFieldsPostField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4269,14 +4161,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -4284,6 +4168,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4628,37 +4518,29 @@ class SchemasApi
     public function postNestedFieldRequest($schema, $parent_id, $add_field_dto, string $contentType = self::contentTypes['postNestedField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsPostNestedField'
             );
         }
 
         // verify the required parameter 'parent_id' is set
         if ($parent_id === null || (is_array($parent_id) && count($parent_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $parent_id when calling '
+                'Missing the required parameter $parent_id when calling schemaFieldsPostNestedField'
             );
         }
 
         // verify the required parameter 'add_field_dto' is set
         if ($add_field_dto === null || (is_array($add_field_dto) && count($add_field_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $add_field_dto when calling '
+                'Missing the required parameter $add_field_dto when calling schemaFieldsPostNestedField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{parentId}/nested';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{parentId}/nested';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4667,14 +4549,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -4691,6 +4565,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5012,37 +4892,29 @@ class SchemasApi
     public function putFieldRequest($schema, $id, $update_field_dto, string $contentType = self::contentTypes['putField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsPutField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsPutField'
             );
         }
 
         // verify the required parameter 'update_field_dto' is set
         if ($update_field_dto === null || (is_array($update_field_dto) && count($update_field_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_field_dto when calling '
+                'Missing the required parameter $update_field_dto when calling schemaFieldsPutField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{id}';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5051,14 +4923,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -5075,6 +4939,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5401,44 +5271,36 @@ class SchemasApi
     public function putNestedFieldRequest($schema, $parent_id, $id, $update_field_dto, string $contentType = self::contentTypes['putNestedField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsPutNestedField'
             );
         }
 
         // verify the required parameter 'parent_id' is set
         if ($parent_id === null || (is_array($parent_id) && count($parent_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $parent_id when calling '
+                'Missing the required parameter $parent_id when calling schemaFieldsPutNestedField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsPutNestedField'
             );
         }
 
         // verify the required parameter 'update_field_dto' is set
         if ($update_field_dto === null || (is_array($update_field_dto) && count($update_field_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_field_dto when calling '
+                'Missing the required parameter $update_field_dto when calling schemaFieldsPutNestedField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{parentId}/nested/{id}';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{parentId}/nested/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5447,14 +5309,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -5479,6 +5333,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5800,37 +5660,29 @@ class SchemasApi
     public function putNestedFieldOrderingRequest($schema, $parent_id, $reorder_fields_dto, string $contentType = self::contentTypes['putNestedFieldOrdering'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsPutNestedFieldOrdering'
             );
         }
 
         // verify the required parameter 'parent_id' is set
         if ($parent_id === null || (is_array($parent_id) && count($parent_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $parent_id when calling '
+                'Missing the required parameter $parent_id when calling schemaFieldsPutNestedFieldOrdering'
             );
         }
 
         // verify the required parameter 'reorder_fields_dto' is set
         if ($reorder_fields_dto === null || (is_array($reorder_fields_dto) && count($reorder_fields_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $reorder_fields_dto when calling '
+                'Missing the required parameter $reorder_fields_dto when calling schemaFieldsPutNestedFieldOrdering'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{parentId}/nested/ordering';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{parentId}/nested/ordering';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5839,14 +5691,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -5863,6 +5707,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6179,30 +6029,22 @@ class SchemasApi
     public function putSchemaFieldOrderingRequest($schema, $reorder_fields_dto, string $contentType = self::contentTypes['putSchemaFieldOrdering'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsPutSchemaFieldOrdering'
             );
         }
 
         // verify the required parameter 'reorder_fields_dto' is set
         if ($reorder_fields_dto === null || (is_array($reorder_fields_dto) && count($reorder_fields_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $reorder_fields_dto when calling '
+                'Missing the required parameter $reorder_fields_dto when calling schemaFieldsPutSchemaFieldOrdering'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/ordering';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/ordering';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6212,14 +6054,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -6227,6 +6061,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6543,30 +6383,22 @@ class SchemasApi
     public function putSchemaUIFieldsRequest($schema, $configure_ui_fields_dto, string $contentType = self::contentTypes['putSchemaUIFields'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsPutSchemaUIFields'
             );
         }
 
         // verify the required parameter 'configure_ui_fields_dto' is set
         if ($configure_ui_fields_dto === null || (is_array($configure_ui_fields_dto) && count($configure_ui_fields_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $configure_ui_fields_dto when calling '
+                'Missing the required parameter $configure_ui_fields_dto when calling schemaFieldsPutSchemaUIFields'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/ui';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/ui';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6576,14 +6408,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -6591,6 +6415,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6907,30 +6737,22 @@ class SchemasApi
     public function showFieldRequest($schema, $id, string $contentType = self::contentTypes['showField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsShowField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsShowField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{id}/show';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{id}/show';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6939,14 +6761,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -6963,6 +6777,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7277,37 +7097,29 @@ class SchemasApi
     public function showNestedFieldRequest($schema, $parent_id, $id, string $contentType = self::contentTypes['showNestedField'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemaFieldsShowNestedField'
             );
         }
 
         // verify the required parameter 'parent_id' is set
         if ($parent_id === null || (is_array($parent_id) && count($parent_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $parent_id when calling '
+                'Missing the required parameter $parent_id when calling schemaFieldsShowNestedField'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling schemaFieldsShowNestedField'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/fields/{parentId}/nested/{id}/show';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/fields/{parentId}/nested/{id}/show';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7316,14 +7128,6 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -7348,6 +7152,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7568,23 +7378,15 @@ class SchemasApi
     public function deleteSchemaRequest($schema, string $contentType = self::contentTypes['deleteSchema'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasDeleteSchema'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7594,14 +7396,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -7609,6 +7403,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7890,23 +7690,15 @@ class SchemasApi
     public function getSchemaRequest($schema, string $contentType = self::contentTypes['getSchema'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasGetSchema'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7916,14 +7708,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -7931,6 +7715,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8207,16 +7997,8 @@ class SchemasApi
     public function getSchemasRequest(string $contentType = self::contentTypes['getSchemas'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/schemas';
+        $resourcePath = '/api/apps/$app$/schemas';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8225,14 +8007,12 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8560,23 +8340,15 @@ class SchemasApi
     public function postSchemaRequest($create_schema_dto, string $contentType = self::contentTypes['postSchema'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'create_schema_dto' is set
         if ($create_schema_dto === null || (is_array($create_schema_dto) && count($create_schema_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_schema_dto when calling '
+                'Missing the required parameter $create_schema_dto when calling schemasPostSchema'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas';
+        $resourcePath = '/api/apps/$app$/schemas';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8585,14 +8357,12 @@ class SchemasApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8904,23 +8674,15 @@ class SchemasApi
     public function publishSchemaRequest($schema, string $contentType = self::contentTypes['publishSchema'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasPublishSchema'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/publish';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/publish';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8930,14 +8692,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -8945,6 +8699,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9254,30 +9014,22 @@ class SchemasApi
     public function putCategoryRequest($schema, $change_category_dto, string $contentType = self::contentTypes['putCategory'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasPutCategory'
             );
         }
 
         // verify the required parameter 'change_category_dto' is set
         if ($change_category_dto === null || (is_array($change_category_dto) && count($change_category_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $change_category_dto when calling '
+                'Missing the required parameter $change_category_dto when calling schemasPutCategory'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/category';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/category';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9287,14 +9039,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -9302,6 +9046,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9618,30 +9368,22 @@ class SchemasApi
     public function putPreviewUrlsRequest($schema, $request_body, string $contentType = self::contentTypes['putPreviewUrls'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasPutPreviewUrls'
             );
         }
 
         // verify the required parameter 'request_body' is set
         if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling '
+                'Missing the required parameter $request_body when calling schemasPutPreviewUrls'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/preview-urls';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/preview-urls';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9651,14 +9393,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -9666,6 +9400,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9982,30 +9722,22 @@ class SchemasApi
     public function putRulesRequest($schema, $configure_field_rules_dto, string $contentType = self::contentTypes['putRules'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasPutRules'
             );
         }
 
         // verify the required parameter 'configure_field_rules_dto' is set
         if ($configure_field_rules_dto === null || (is_array($configure_field_rules_dto) && count($configure_field_rules_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $configure_field_rules_dto when calling '
+                'Missing the required parameter $configure_field_rules_dto when calling schemasPutRules'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/rules';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/rules';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10015,14 +9747,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -10030,6 +9754,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -10346,30 +10076,22 @@ class SchemasApi
     public function putSchemaRequest($schema, $update_schema_dto, string $contentType = self::contentTypes['putSchema'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasPutSchema'
             );
         }
 
         // verify the required parameter 'update_schema_dto' is set
         if ($update_schema_dto === null || (is_array($update_schema_dto) && count($update_schema_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_schema_dto when calling '
+                'Missing the required parameter $update_schema_dto when calling schemasPutSchema'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10379,14 +10101,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -10394,6 +10108,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -10710,30 +10430,22 @@ class SchemasApi
     public function putSchemaSyncRequest($schema, $synchronize_schema_dto, string $contentType = self::contentTypes['putSchemaSync'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasPutSchemaSync'
             );
         }
 
         // verify the required parameter 'synchronize_schema_dto' is set
         if ($synchronize_schema_dto === null || (is_array($synchronize_schema_dto) && count($synchronize_schema_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $synchronize_schema_dto when calling '
+                'Missing the required parameter $synchronize_schema_dto when calling schemasPutSchemaSync'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/sync';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/sync';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10743,14 +10455,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -10758,6 +10462,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -11074,30 +10784,22 @@ class SchemasApi
     public function putScriptsRequest($schema, $schema_scripts_dto, string $contentType = self::contentTypes['putScripts'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasPutScripts'
             );
         }
 
         // verify the required parameter 'schema_scripts_dto' is set
         if ($schema_scripts_dto === null || (is_array($schema_scripts_dto) && count($schema_scripts_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema_scripts_dto when calling '
+                'Missing the required parameter $schema_scripts_dto when calling schemasPutScripts'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/scripts';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/scripts';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -11107,14 +10809,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -11122,6 +10816,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -11433,23 +11133,15 @@ class SchemasApi
     public function unpublishSchemaRequest($schema, string $contentType = self::contentTypes['unpublishSchema'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling schemasUnpublishSchema'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/schemas/{schema}/unpublish';
+        $resourcePath = '/api/apps/$app$/schemas/{schema}/unpublish';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -11459,14 +11151,6 @@ class SchemasApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -11474,6 +11158,12 @@ class SchemasApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

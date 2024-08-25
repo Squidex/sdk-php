@@ -482,7 +482,7 @@ class AssetsApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetContentGetAssetContent'
             );
         }
 
@@ -654,6 +654,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -715,7 +721,6 @@ class AssetsApi
      * Get the asset content.
      *
      * @param  string $id_or_slug The id or slug of the asset. (required)
-     * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
      * @param  int $cache The cache duration in seconds. (optional)
      * @param  int $download Set it to 0 to prevent download. (optional)
@@ -737,9 +742,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \SplFileObject|\Squidex\Client\Model\ErrorDto
      */
-    public function getAssetContentBySlug($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlug($id_or_slug, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
-        list($response) = $this->getAssetContentBySlugWithHttpInfo($id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
+        list($response) = $this->getAssetContentBySlugWithHttpInfo($id_or_slug, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
         return $response;
     }
 
@@ -749,7 +754,6 @@ class AssetsApi
      * Get the asset content.
      *
      * @param  string $id_or_slug The id or slug of the asset. (required)
-     * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
      * @param  int $cache The cache duration in seconds. (optional)
      * @param  int $download Set it to 0 to prevent download. (optional)
@@ -771,9 +775,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject|\Squidex\Client\Model\ErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssetContentBySlugWithHttpInfo($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlugWithHttpInfo($id_or_slug, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
-        $request = $this->getAssetContentBySlugRequest($id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
+        $request = $this->getAssetContentBySlugRequest($id_or_slug, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -888,7 +892,6 @@ class AssetsApi
      * Get the asset content.
      *
      * @param  string $id_or_slug The id or slug of the asset. (required)
-     * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
      * @param  int $cache The cache duration in seconds. (optional)
      * @param  int $download Set it to 0 to prevent download. (optional)
@@ -909,9 +912,9 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetContentBySlugAsync($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlugAsync($id_or_slug, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
-        return $this->getAssetContentBySlugAsyncWithHttpInfo($id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType)
+        return $this->getAssetContentBySlugAsyncWithHttpInfo($id_or_slug, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -925,7 +928,6 @@ class AssetsApi
      * Get the asset content.
      *
      * @param  string $id_or_slug The id or slug of the asset. (required)
-     * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
      * @param  int $cache The cache duration in seconds. (optional)
      * @param  int $download Set it to 0 to prevent download. (optional)
@@ -946,10 +948,10 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssetContentBySlugAsyncWithHttpInfo($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlugAsyncWithHttpInfo($id_or_slug, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->getAssetContentBySlugRequest($id_or_slug, $more, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
+        $request = $this->getAssetContentBySlugRequest($id_or_slug, $version, $cache, $download, $width, $height, $quality, $mode, $bg, $focus_x, $focus_y, $nofocus, $auto, $force, $deleted, $format, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -991,7 +993,6 @@ class AssetsApi
      * Create request for operation 'getAssetContentBySlug'
      *
      * @param  string $id_or_slug The id or slug of the asset. (required)
-     * @param  string $more Optional suffix that can be used to seo-optimize the link to the image Has not effect. (required)
      * @param  int $version The optional version of the asset. (optional)
      * @param  int $cache The cache duration in seconds. (optional)
      * @param  int $download Set it to 0 to prevent download. (optional)
@@ -1012,28 +1013,13 @@ class AssetsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAssetContentBySlugRequest($id_or_slug, $more, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
+    public function getAssetContentBySlugRequest($id_or_slug, $version = null, $cache = null, $download = null, $width = null, $height = null, $quality = null, $mode = null, $bg = null, $focus_x = null, $focus_y = null, $nofocus = null, $auto = null, $force = null, $deleted = null, $format = null, string $contentType = self::contentTypes['getAssetContentBySlug'][0])
     {
-
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
         // verify the required parameter 'id_or_slug' is set
         if ($id_or_slug === null || (is_array($id_or_slug) && count($id_or_slug) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_slug when calling '
-            );
-        }
-
-        // verify the required parameter 'more' is set
-        if ($more === null || (is_array($more) && count($more) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $more when calling '
+                'Missing the required parameter $id_or_slug when calling assetContentGetAssetContentBySlug'
             );
         }
 
@@ -1053,7 +1039,7 @@ class AssetsApi
 
 
 
-        $resourcePath = '/api/assets/{app}/{idOrSlug}/{more}';
+        $resourcePath = '/api/assets/$app$/{idOrSlug}/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1198,14 +1184,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id_or_slug !== null) {
             $resourcePath = str_replace(
                 '{' . 'idOrSlug' . '}',
@@ -1213,14 +1191,12 @@ class AssetsApi
                 $resourcePath
             );
         }
-        // path params
-        if ($more !== null) {
-            $resourcePath = str_replace(
-                '{' . 'more' . '}',
-                ObjectSerializer::toPathValue($more),
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1441,23 +1417,15 @@ class AssetsApi
     public function deleteAssetFolderRequest($id, string $contentType = self::contentTypes['deleteAssetFolder'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetFoldersDeleteAssetFolder'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/folders/{id}';
+        $resourcePath = '/api/apps/$app$/assets/folders/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1467,14 +1435,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -1482,6 +1442,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1768,18 +1734,10 @@ class AssetsApi
     public function getAssetFoldersRequest($parent_id = null, $scope = null, string $contentType = self::contentTypes['getAssetFolders'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
-
-        $resourcePath = '/api/apps/{app}/assets/folders';
+        $resourcePath = '/api/apps/$app$/assets/folders';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1806,14 +1764,12 @@ class AssetsApi
         ) ?? []);
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2118,23 +2074,15 @@ class AssetsApi
     public function postAssetFolderRequest($create_asset_folder_dto, string $contentType = self::contentTypes['postAssetFolder'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'create_asset_folder_dto' is set
         if ($create_asset_folder_dto === null || (is_array($create_asset_folder_dto) && count($create_asset_folder_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_asset_folder_dto when calling '
+                'Missing the required parameter $create_asset_folder_dto when calling assetFoldersPostAssetFolder'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/folders';
+        $resourcePath = '/api/apps/$app$/assets/folders';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2143,14 +2091,12 @@ class AssetsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2467,30 +2413,22 @@ class AssetsApi
     public function putAssetFolderRequest($id, $rename_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolder'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetFoldersPutAssetFolder'
             );
         }
 
         // verify the required parameter 'rename_asset_folder_dto' is set
         if ($rename_asset_folder_dto === null || (is_array($rename_asset_folder_dto) && count($rename_asset_folder_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $rename_asset_folder_dto when calling '
+                'Missing the required parameter $rename_asset_folder_dto when calling assetFoldersPutAssetFolder'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/folders/{id}';
+        $resourcePath = '/api/apps/$app$/assets/folders/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2500,14 +2438,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -2515,6 +2445,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2831,30 +2767,22 @@ class AssetsApi
     public function putAssetFolderParentRequest($id, $move_asset_folder_dto, string $contentType = self::contentTypes['putAssetFolderParent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetFoldersPutAssetFolderParent'
             );
         }
 
         // verify the required parameter 'move_asset_folder_dto' is set
         if ($move_asset_folder_dto === null || (is_array($move_asset_folder_dto) && count($move_asset_folder_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $move_asset_folder_dto when calling '
+                'Missing the required parameter $move_asset_folder_dto when calling assetFoldersPutAssetFolderParent'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/folders/{id}/parent';
+        $resourcePath = '/api/apps/$app$/assets/folders/{id}/parent';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2864,14 +2792,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -2879,6 +2799,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3190,23 +3116,15 @@ class AssetsApi
     public function bulkUpdateAssetsRequest($bulk_update_assets_dto, string $contentType = self::contentTypes['bulkUpdateAssets'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'bulk_update_assets_dto' is set
         if ($bulk_update_assets_dto === null || (is_array($bulk_update_assets_dto) && count($bulk_update_assets_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $bulk_update_assets_dto when calling '
+                'Missing the required parameter $bulk_update_assets_dto when calling assetsBulkUpdateAssets'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/bulk';
+        $resourcePath = '/api/apps/$app$/assets/bulk';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3215,14 +3133,12 @@ class AssetsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3460,25 +3376,17 @@ class AssetsApi
     public function deleteAssetRequest($id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteAsset'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetsDeleteAsset'
             );
         }
 
 
 
 
-        $resourcePath = '/api/apps/{app}/assets/{id}';
+        $resourcePath = '/api/apps/$app$/assets/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3506,14 +3414,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -3521,6 +3421,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3802,23 +3708,15 @@ class AssetsApi
     public function getAssetRequest($id, string $contentType = self::contentTypes['getAsset'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetsGetAsset'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/{id}';
+        $resourcePath = '/api/apps/$app$/assets/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3828,14 +3726,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -3843,6 +3733,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4164,13 +4060,6 @@ class AssetsApi
     public function getAssetsRequest($parent_id = null, $ids = null, $q = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssets'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
@@ -4181,8 +4070,7 @@ class AssetsApi
 
 
 
-
-        $resourcePath = '/api/apps/{app}/assets';
+        $resourcePath = '/api/apps/$app$/assets';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4262,14 +4150,12 @@ class AssetsApi
             $headerParams['X-NoSlowTotal'] = ObjectSerializer::toHeaderValue($x_no_slow_total);
         }
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4584,25 +4470,17 @@ class AssetsApi
     public function getAssetsPostRequest($query_dto, $x_no_total = null, $x_no_slow_total = null, string $contentType = self::contentTypes['getAssetsPost'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'query_dto' is set
         if ($query_dto === null || (is_array($query_dto) && count($query_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $query_dto when calling '
+                'Missing the required parameter $query_dto when calling assetsGetAssetsPost'
             );
         }
 
 
 
 
-        $resourcePath = '/api/apps/{app}/assets/query';
+        $resourcePath = '/api/apps/$app$/assets/query';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4619,14 +4497,12 @@ class AssetsApi
             $headerParams['X-NoSlowTotal'] = ObjectSerializer::toHeaderValue($x_no_slow_total);
         }
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4910,16 +4786,8 @@ class AssetsApi
     public function getTagsRequest(string $contentType = self::contentTypes['getTags'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/assets/tags';
+        $resourcePath = '/api/apps/$app$/assets/tags';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4928,14 +4796,12 @@ class AssetsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5288,13 +5154,6 @@ class AssetsApi
     public function postAssetRequest($parent_id = null, $id = null, $duplicate = null, $file = null, $file_url = null, $file_name = null, string $contentType = self::contentTypes['postAsset'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
@@ -5302,8 +5161,7 @@ class AssetsApi
 
 
 
-
-        $resourcePath = '/api/apps/{app}/assets';
+        $resourcePath = '/api/apps/$app$/assets';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5339,14 +5197,12 @@ class AssetsApi
         ) ?? []);
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
         // form params
         if ($file !== null) {
@@ -5719,18 +5575,10 @@ class AssetsApi
     public function postUpsertAssetRequest($id, $parent_id = null, $duplicate = null, $file = null, $file_url = null, $file_name = null, string $contentType = self::contentTypes['postUpsertAsset'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetsPostUpsertAsset'
             );
         }
 
@@ -5740,7 +5588,7 @@ class AssetsApi
 
 
 
-        $resourcePath = '/api/apps/{app}/assets/{id}';
+        $resourcePath = '/api/apps/$app$/assets/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5768,14 +5616,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -5783,6 +5623,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
         // form params
         if ($file !== null) {
@@ -6112,30 +5958,22 @@ class AssetsApi
     public function putAssetRequest($id, $annotate_asset_dto, string $contentType = self::contentTypes['putAsset'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetsPutAsset'
             );
         }
 
         // verify the required parameter 'annotate_asset_dto' is set
         if ($annotate_asset_dto === null || (is_array($annotate_asset_dto) && count($annotate_asset_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $annotate_asset_dto when calling '
+                'Missing the required parameter $annotate_asset_dto when calling assetsPutAsset'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/{id}';
+        $resourcePath = '/api/apps/$app$/assets/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6145,14 +5983,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -6160,6 +5990,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6509,18 +6345,10 @@ class AssetsApi
     public function putAssetContentRequest($id, $file = null, $file_url = null, $file_name = null, string $contentType = self::contentTypes['putAssetContent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetsPutAssetContent'
             );
         }
 
@@ -6528,7 +6356,7 @@ class AssetsApi
 
 
 
-        $resourcePath = '/api/apps/{app}/assets/{id}/content';
+        $resourcePath = '/api/apps/$app$/assets/{id}/content';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6538,14 +6366,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -6553,6 +6373,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
         // form params
         if ($file !== null) {
@@ -6882,30 +6708,22 @@ class AssetsApi
     public function putAssetParentRequest($id, $move_asset_dto, string $contentType = self::contentTypes['putAssetParent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling assetsPutAssetParent'
             );
         }
 
         // verify the required parameter 'move_asset_dto' is set
         if ($move_asset_dto === null || (is_array($move_asset_dto) && count($move_asset_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $move_asset_dto when calling '
+                'Missing the required parameter $move_asset_dto when calling assetsPutAssetParent'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/{id}/parent';
+        $resourcePath = '/api/apps/$app$/assets/{id}/parent';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6915,14 +6733,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -6930,6 +6740,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7246,30 +7062,22 @@ class AssetsApi
     public function putTagRequest($name, $rename_tag_dto, string $contentType = self::contentTypes['putTag'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'name' is set
         if ($name === null || (is_array($name) && count($name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $name when calling '
+                'Missing the required parameter $name when calling assetsPutTag'
             );
         }
 
         // verify the required parameter 'rename_tag_dto' is set
         if ($rename_tag_dto === null || (is_array($rename_tag_dto) && count($rename_tag_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $rename_tag_dto when calling '
+                'Missing the required parameter $rename_tag_dto when calling assetsPutTag'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/tags/{name}';
+        $resourcePath = '/api/apps/$app$/assets/tags/{name}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7279,14 +7087,6 @@ class AssetsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($name !== null) {
             $resourcePath = str_replace(
                 '{' . 'name' . '}',
@@ -7294,6 +7094,12 @@ class AssetsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

@@ -359,7 +359,7 @@ class JobsApi
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling jobsContentGetJobContent'
             );
         }
 
@@ -391,6 +391,12 @@ class JobsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -611,23 +617,15 @@ class JobsApi
     public function deleteJobRequest($id, string $contentType = self::contentTypes['deleteJob'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling jobsDeleteJob'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/jobs/{id}';
+        $resourcePath = '/api/apps/$app$/jobs/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -637,14 +635,6 @@ class JobsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -652,6 +642,12 @@ class JobsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -928,16 +924,8 @@ class JobsApi
     public function getJobsRequest(string $contentType = self::contentTypes['getJobs'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/jobs';
+        $resourcePath = '/api/apps/$app$/jobs';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -946,14 +934,12 @@ class JobsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(

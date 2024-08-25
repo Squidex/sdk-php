@@ -338,23 +338,15 @@ class RulesApi
     public function deleteEventRequest($id, string $contentType = self::contentTypes['deleteEvent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesDeleteEvent'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/events/{id}';
+        $resourcePath = '/api/apps/$app$/rules/events/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -364,14 +356,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -379,6 +363,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -594,16 +584,8 @@ class RulesApi
     public function deleteEventsRequest(string $contentType = self::contentTypes['deleteEvents'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/rules/events';
+        $resourcePath = '/api/apps/$app$/rules/events';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -612,14 +594,12 @@ class RulesApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -840,23 +820,15 @@ class RulesApi
     public function deleteRuleRequest($id, string $contentType = self::contentTypes['deleteRule'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesDeleteRule'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/{id}';
+        $resourcePath = '/api/apps/$app$/rules/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -866,14 +838,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -881,6 +845,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1101,23 +1071,15 @@ class RulesApi
     public function deleteRuleEventsRequest($id, string $contentType = self::contentTypes['deleteRuleEvents'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesDeleteRuleEvents'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/{id}/events';
+        $resourcePath = '/api/apps/$app$/rules/{id}/events';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1127,14 +1089,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -1142,6 +1096,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1357,16 +1317,8 @@ class RulesApi
     public function deleteRuleRunRequest(string $contentType = self::contentTypes['deleteRuleRun'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/rules/run';
+        $resourcePath = '/api/apps/$app$/rules/run';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1375,14 +1327,12 @@ class RulesApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1687,23 +1637,15 @@ class RulesApi
     public function disableRuleRequest($id, string $contentType = self::contentTypes['disableRule'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesDisableRule'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/{id}/disable';
+        $resourcePath = '/api/apps/$app$/rules/{id}/disable';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1713,14 +1655,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -1728,6 +1662,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2032,23 +1972,15 @@ class RulesApi
     public function enableRuleRequest($id, string $contentType = self::contentTypes['enableRule'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesEnableRule'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/{id}/enable';
+        $resourcePath = '/api/apps/$app$/rules/{id}/enable';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2058,14 +1990,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -2073,6 +1997,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2359,6 +2289,12 @@ class RulesApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2643,7 +2579,7 @@ class RulesApi
         // verify the required parameter 'type' is set
         if ($type === null || (is_array($type) && count($type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $type when calling '
+                'Missing the required parameter $type when calling rulesGetEventSchema'
             );
         }
 
@@ -2665,6 +2601,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2951,6 +2893,12 @@ class RulesApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3242,19 +3190,11 @@ class RulesApi
     public function getEventsRequest($rule_id = null, $skip = 0, $take = 20, string $contentType = self::contentTypes['getEvents'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
 
-
-        $resourcePath = '/api/apps/{app}/rules/events';
+        $resourcePath = '/api/apps/$app$/rules/events';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3290,14 +3230,12 @@ class RulesApi
         ) ?? []);
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3574,16 +3512,8 @@ class RulesApi
     public function getRulesRequest(string $contentType = self::contentTypes['getRules'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/rules';
+        $resourcePath = '/api/apps/$app$/rules';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3592,14 +3522,12 @@ class RulesApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3904,23 +3832,15 @@ class RulesApi
     public function postRuleRequest($create_rule_dto, string $contentType = self::contentTypes['postRule'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'create_rule_dto' is set
         if ($create_rule_dto === null || (is_array($create_rule_dto) && count($create_rule_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_rule_dto when calling '
+                'Missing the required parameter $create_rule_dto when calling rulesPostRule'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules';
+        $resourcePath = '/api/apps/$app$/rules';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3929,14 +3849,12 @@ class RulesApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4164,23 +4082,15 @@ class RulesApi
     public function putEventRequest($id, string $contentType = self::contentTypes['putEvent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesPutEvent'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/events/{id}';
+        $resourcePath = '/api/apps/$app$/rules/events/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4190,14 +4100,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -4205,6 +4107,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4514,30 +4422,22 @@ class RulesApi
     public function putRuleRequest($id, $update_rule_dto, string $contentType = self::contentTypes['putRule'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesPutRule'
             );
         }
 
         // verify the required parameter 'update_rule_dto' is set
         if ($update_rule_dto === null || (is_array($update_rule_dto) && count($update_rule_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_rule_dto when calling '
+                'Missing the required parameter $update_rule_dto when calling rulesPutRule'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/{id}';
+        $resourcePath = '/api/apps/$app$/rules/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4547,14 +4447,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -4562,6 +4454,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4794,24 +4692,16 @@ class RulesApi
     public function putRuleRunRequest($id, $from_snapshots = false, string $contentType = self::contentTypes['putRuleRun'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesPutRuleRun'
             );
         }
 
 
 
-        $resourcePath = '/api/apps/{app}/rules/{id}/run';
+        $resourcePath = '/api/apps/$app$/rules/{id}/run';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4830,14 +4720,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -4845,6 +4727,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5126,23 +5014,15 @@ class RulesApi
     public function simulateGETRequest($id, string $contentType = self::contentTypes['simulateGET'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesSimulateGET'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/{id}/simulate';
+        $resourcePath = '/api/apps/$app$/rules/{id}/simulate';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5152,14 +5032,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -5167,6 +5039,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5471,23 +5349,15 @@ class RulesApi
     public function simulatePOSTRequest($create_rule_dto, string $contentType = self::contentTypes['simulatePOST'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'create_rule_dto' is set
         if ($create_rule_dto === null || (is_array($create_rule_dto) && count($create_rule_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_rule_dto when calling '
+                'Missing the required parameter $create_rule_dto when calling rulesSimulatePOST'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/simulate';
+        $resourcePath = '/api/apps/$app$/rules/simulate';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5496,14 +5366,12 @@ class RulesApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5731,23 +5599,15 @@ class RulesApi
     public function triggerRuleRequest($id, string $contentType = self::contentTypes['triggerRule'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling rulesTriggerRule'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/rules/{id}/trigger';
+        $resourcePath = '/api/apps/$app$/rules/{id}/trigger';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5757,14 +5617,6 @@ class RulesApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -5772,6 +5624,12 @@ class RulesApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

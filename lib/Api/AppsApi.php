@@ -442,16 +442,8 @@ class AppsApi
     public function getAssetScriptsRequest(string $contentType = self::contentTypes['getAssetScripts'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/assets/scripts';
+        $resourcePath = '/api/apps/$app$/assets/scripts';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -460,14 +452,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -772,23 +762,15 @@ class AppsApi
     public function putAssetScriptsRequest($update_asset_scripts_dto, string $contentType = self::contentTypes['putAssetScripts'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'update_asset_scripts_dto' is set
         if ($update_asset_scripts_dto === null || (is_array($update_asset_scripts_dto) && count($update_asset_scripts_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_asset_scripts_dto when calling '
+                'Missing the required parameter $update_asset_scripts_dto when calling appAssetsPutAssetScripts'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/assets/scripts';
+        $resourcePath = '/api/apps/$app$/assets/scripts';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -797,14 +779,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1116,23 +1096,15 @@ class AppsApi
     public function deleteClientRequest($id, string $contentType = self::contentTypes['deleteClient'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling appClientsDeleteClient'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/clients/{id}';
+        $resourcePath = '/api/apps/$app$/clients/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1142,14 +1114,6 @@ class AppsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -1157,6 +1121,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1433,16 +1403,8 @@ class AppsApi
     public function getClientsRequest(string $contentType = self::contentTypes['getClients'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/clients';
+        $resourcePath = '/api/apps/$app$/clients';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1451,14 +1413,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1763,23 +1723,15 @@ class AppsApi
     public function postClientRequest($create_client_dto, string $contentType = self::contentTypes['postClient'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'create_client_dto' is set
         if ($create_client_dto === null || (is_array($create_client_dto) && count($create_client_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_client_dto when calling '
+                'Missing the required parameter $create_client_dto when calling appClientsPostClient'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/clients';
+        $resourcePath = '/api/apps/$app$/clients';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1788,14 +1740,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2112,30 +2062,22 @@ class AppsApi
     public function putClientRequest($id, $update_client_dto, string $contentType = self::contentTypes['putClient'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling appClientsPutClient'
             );
         }
 
         // verify the required parameter 'update_client_dto' is set
         if ($update_client_dto === null || (is_array($update_client_dto) && count($update_client_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_client_dto when calling '
+                'Missing the required parameter $update_client_dto when calling appClientsPutClient'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/clients/{id}';
+        $resourcePath = '/api/apps/$app$/clients/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2145,14 +2087,6 @@ class AppsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -2160,6 +2094,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2471,23 +2411,15 @@ class AppsApi
     public function deleteContributorRequest($id, string $contentType = self::contentTypes['deleteContributor'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling appContributorsDeleteContributor'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/contributors/{id}';
+        $resourcePath = '/api/apps/$app$/contributors/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2497,14 +2429,6 @@ class AppsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -2512,6 +2436,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2811,16 +2741,8 @@ class AppsApi
     public function deleteMyselfRequest(string $contentType = self::contentTypes['deleteMyself'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/contributors/me';
+        $resourcePath = '/api/apps/$app$/contributors/me';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2829,14 +2751,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3113,16 +3033,8 @@ class AppsApi
     public function getContributorsRequest(string $contentType = self::contentTypes['getContributors'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/contributors';
+        $resourcePath = '/api/apps/$app$/contributors';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3131,14 +3043,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3443,23 +3353,15 @@ class AppsApi
     public function postContributorRequest($assign_contributor_dto, string $contentType = self::contentTypes['postContributor'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'assign_contributor_dto' is set
         if ($assign_contributor_dto === null || (is_array($assign_contributor_dto) && count($assign_contributor_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $assign_contributor_dto when calling '
+                'Missing the required parameter $assign_contributor_dto when calling appContributorsPostContributor'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/contributors';
+        $resourcePath = '/api/apps/$app$/contributors';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3468,14 +3370,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3759,16 +3659,8 @@ class AppsApi
     public function getImageRequest(string $contentType = self::contentTypes['getImage'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/image';
+        $resourcePath = '/api/apps/$app$/image';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3777,14 +3669,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4089,23 +3979,15 @@ class AppsApi
     public function deleteLanguageRequest($language, string $contentType = self::contentTypes['deleteLanguage'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'language' is set
         if ($language === null || (is_array($language) && count($language) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $language when calling '
+                'Missing the required parameter $language when calling appLanguagesDeleteLanguage'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/languages/{language}';
+        $resourcePath = '/api/apps/$app$/languages/{language}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4115,14 +3997,6 @@ class AppsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($language !== null) {
             $resourcePath = str_replace(
                 '{' . 'language' . '}',
@@ -4130,6 +4004,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4406,16 +4286,8 @@ class AppsApi
     public function getLanguagesRequest(string $contentType = self::contentTypes['getLanguages'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/languages';
+        $resourcePath = '/api/apps/$app$/languages';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4424,14 +4296,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4736,23 +4606,15 @@ class AppsApi
     public function postLanguageRequest($add_language_dto, string $contentType = self::contentTypes['postLanguage'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'add_language_dto' is set
         if ($add_language_dto === null || (is_array($add_language_dto) && count($add_language_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $add_language_dto when calling '
+                'Missing the required parameter $add_language_dto when calling appLanguagesPostLanguage'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/languages';
+        $resourcePath = '/api/apps/$app$/languages';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4761,14 +4623,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5085,30 +4945,22 @@ class AppsApi
     public function putLanguageRequest($language, $update_language_dto, string $contentType = self::contentTypes['putLanguage'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'language' is set
         if ($language === null || (is_array($language) && count($language) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $language when calling '
+                'Missing the required parameter $language when calling appLanguagesPutLanguage'
             );
         }
 
         // verify the required parameter 'update_language_dto' is set
         if ($update_language_dto === null || (is_array($update_language_dto) && count($update_language_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_language_dto when calling '
+                'Missing the required parameter $update_language_dto when calling appLanguagesPutLanguage'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/languages/{language}';
+        $resourcePath = '/api/apps/$app$/languages/{language}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5118,14 +4970,6 @@ class AppsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($language !== null) {
             $resourcePath = str_replace(
                 '{' . 'language' . '}',
@@ -5133,6 +4977,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5444,23 +5294,15 @@ class AppsApi
     public function deleteRoleRequest($role_name, string $contentType = self::contentTypes['deleteRole'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'role_name' is set
         if ($role_name === null || (is_array($role_name) && count($role_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $role_name when calling '
+                'Missing the required parameter $role_name when calling appRolesDeleteRole'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/roles/{roleName}';
+        $resourcePath = '/api/apps/$app$/roles/{roleName}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5470,14 +5312,6 @@ class AppsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($role_name !== null) {
             $resourcePath = str_replace(
                 '{' . 'roleName' . '}',
@@ -5485,6 +5319,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5761,16 +5601,8 @@ class AppsApi
     public function getPermissionsRequest(string $contentType = self::contentTypes['getPermissions'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/roles/permissions';
+        $resourcePath = '/api/apps/$app$/roles/permissions';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5779,14 +5611,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6063,16 +5893,8 @@ class AppsApi
     public function getRolesRequest(string $contentType = self::contentTypes['getRoles'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/roles';
+        $resourcePath = '/api/apps/$app$/roles';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6081,14 +5903,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6393,23 +6213,15 @@ class AppsApi
     public function postRoleRequest($add_role_dto, string $contentType = self::contentTypes['postRole'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'add_role_dto' is set
         if ($add_role_dto === null || (is_array($add_role_dto) && count($add_role_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $add_role_dto when calling '
+                'Missing the required parameter $add_role_dto when calling appRolesPostRole'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/roles';
+        $resourcePath = '/api/apps/$app$/roles';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6418,14 +6230,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6742,30 +6552,22 @@ class AppsApi
     public function putRoleRequest($role_name, $update_role_dto, string $contentType = self::contentTypes['putRole'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'role_name' is set
         if ($role_name === null || (is_array($role_name) && count($role_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $role_name when calling '
+                'Missing the required parameter $role_name when calling appRolesPutRole'
             );
         }
 
         // verify the required parameter 'update_role_dto' is set
         if ($update_role_dto === null || (is_array($update_role_dto) && count($update_role_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_role_dto when calling '
+                'Missing the required parameter $update_role_dto when calling appRolesPutRole'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/roles/{roleName}';
+        $resourcePath = '/api/apps/$app$/roles/{roleName}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6775,14 +6577,6 @@ class AppsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($role_name !== null) {
             $resourcePath = str_replace(
                 '{' . 'roleName' . '}',
@@ -6790,6 +6584,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7073,16 +6873,8 @@ class AppsApi
     public function getSettingsRequest(string $contentType = self::contentTypes['getSettings'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/settings';
+        $resourcePath = '/api/apps/$app$/settings';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7091,14 +6883,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7403,23 +7193,15 @@ class AppsApi
     public function putSettingsRequest($update_app_settings_dto, string $contentType = self::contentTypes['putSettings'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'update_app_settings_dto' is set
         if ($update_app_settings_dto === null || (is_array($update_app_settings_dto) && count($update_app_settings_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_app_settings_dto when calling '
+                'Missing the required parameter $update_app_settings_dto when calling appSettingsPutSettings'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/settings';
+        $resourcePath = '/api/apps/$app$/settings';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7428,14 +7210,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7747,23 +7527,15 @@ class AppsApi
     public function deleteWorkflowRequest($id, string $contentType = self::contentTypes['deleteWorkflow'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling appWorkflowsDeleteWorkflow'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/workflows/{id}';
+        $resourcePath = '/api/apps/$app$/workflows/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7773,14 +7545,6 @@ class AppsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -7788,6 +7552,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8064,16 +7834,8 @@ class AppsApi
     public function getWorkflowsRequest(string $contentType = self::contentTypes['getWorkflows'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/workflows';
+        $resourcePath = '/api/apps/$app$/workflows';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8082,14 +7844,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8394,23 +8154,15 @@ class AppsApi
     public function postWorkflowRequest($add_workflow_dto, string $contentType = self::contentTypes['postWorkflow'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'add_workflow_dto' is set
         if ($add_workflow_dto === null || (is_array($add_workflow_dto) && count($add_workflow_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $add_workflow_dto when calling '
+                'Missing the required parameter $add_workflow_dto when calling appWorkflowsPostWorkflow'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/workflows';
+        $resourcePath = '/api/apps/$app$/workflows';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8419,14 +8171,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8743,30 +8493,22 @@ class AppsApi
     public function putWorkflowRequest($id, $update_workflow_dto, string $contentType = self::contentTypes['putWorkflow'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling appWorkflowsPutWorkflow'
             );
         }
 
         // verify the required parameter 'update_workflow_dto' is set
         if ($update_workflow_dto === null || (is_array($update_workflow_dto) && count($update_workflow_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_workflow_dto when calling '
+                'Missing the required parameter $update_workflow_dto when calling appWorkflowsPutWorkflow'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/workflows/{id}';
+        $resourcePath = '/api/apps/$app$/workflows/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8776,14 +8518,6 @@ class AppsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -8791,6 +8525,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9013,16 +8753,8 @@ class AppsApi
     public function deleteAppRequest(string $contentType = self::contentTypes['deleteApp'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}';
+        $resourcePath = '/api/apps/$app$';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9031,14 +8763,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9338,16 +9068,8 @@ class AppsApi
     public function deleteImageRequest(string $contentType = self::contentTypes['deleteImage'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/image';
+        $resourcePath = '/api/apps/$app$/image';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9356,14 +9078,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9640,16 +9360,8 @@ class AppsApi
     public function getAppRequest(string $contentType = self::contentTypes['getApp'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}';
+        $resourcePath = '/api/apps/$app$';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9658,14 +9370,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9952,6 +9662,12 @@ class AppsApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -10236,7 +9952,7 @@ class AppsApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling appsGetTeamApps'
             );
         }
 
@@ -10258,6 +9974,12 @@ class AppsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -10588,7 +10310,7 @@ class AppsApi
         // verify the required parameter 'create_app_dto' is set
         if ($create_app_dto === null || (is_array($create_app_dto) && count($create_app_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_app_dto when calling '
+                'Missing the required parameter $create_app_dto when calling appsPostApp'
             );
         }
 
@@ -10602,6 +10324,12 @@ class AppsApi
 
 
 
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -10913,23 +10641,15 @@ class AppsApi
     public function putAppRequest($update_app_dto, string $contentType = self::contentTypes['putApp'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'update_app_dto' is set
         if ($update_app_dto === null || (is_array($update_app_dto) && count($update_app_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_app_dto when calling '
+                'Missing the required parameter $update_app_dto when calling appsPutApp'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}';
+        $resourcePath = '/api/apps/$app$';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10938,14 +10658,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -11257,23 +10975,15 @@ class AppsApi
     public function putAppTeamRequest($transfer_to_team_dto, string $contentType = self::contentTypes['putAppTeam'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'transfer_to_team_dto' is set
         if ($transfer_to_team_dto === null || (is_array($transfer_to_team_dto) && count($transfer_to_team_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $transfer_to_team_dto when calling '
+                'Missing the required parameter $transfer_to_team_dto when calling appsPutAppTeam'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/team';
+        $resourcePath = '/api/apps/$app$/team';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -11282,14 +10992,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -11611,19 +11319,11 @@ class AppsApi
     public function uploadImageRequest($file = null, $file_url = null, $file_name = null, string $contentType = self::contentTypes['uploadImage'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
 
-
-        $resourcePath = '/api/apps/{app}/image';
+        $resourcePath = '/api/apps/$app$/image';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -11632,14 +11332,12 @@ class AppsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
         // form params
         if ($file !== null) {

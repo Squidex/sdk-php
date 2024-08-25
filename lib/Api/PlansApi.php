@@ -349,16 +349,8 @@ class PlansApi
     public function getPlansRequest(string $contentType = self::contentTypes['getPlans'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
-
-        $resourcePath = '/api/apps/{app}/plans';
+        $resourcePath = '/api/apps/$app$/plans';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -367,14 +359,12 @@ class PlansApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -679,23 +669,15 @@ class PlansApi
     public function putPlanRequest($change_plan_dto, string $contentType = self::contentTypes['putPlan'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'change_plan_dto' is set
         if ($change_plan_dto === null || (is_array($change_plan_dto) && count($change_plan_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $change_plan_dto when calling '
+                'Missing the required parameter $change_plan_dto when calling appPlansPutPlan'
             );
         }
 
 
-        $resourcePath = '/api/apps/{app}/plan';
+        $resourcePath = '/api/apps/$app$/plan';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -704,14 +686,12 @@ class PlansApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1003,7 +983,7 @@ class PlansApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamPlansGetTeamPlans'
             );
         }
 
@@ -1025,6 +1005,12 @@ class PlansApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1337,14 +1323,14 @@ class PlansApi
         // verify the required parameter 'team' is set
         if ($team === null || (is_array($team) && count($team) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $team when calling '
+                'Missing the required parameter $team when calling teamPlansPutTeamPlan'
             );
         }
 
         // verify the required parameter 'change_plan_dto' is set
         if ($change_plan_dto === null || (is_array($change_plan_dto) && count($change_plan_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $change_plan_dto when calling '
+                'Missing the required parameter $change_plan_dto when calling teamPlansPutTeamPlan'
             );
         }
 
@@ -1366,6 +1352,12 @@ class PlansApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(

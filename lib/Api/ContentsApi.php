@@ -448,30 +448,22 @@ class ContentsApi
     public function bulkUpdateContentsRequest($schema, $bulk_update_contents_dto, string $contentType = self::contentTypes['bulkUpdateContents'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsBulkUpdateContents'
             );
         }
 
         // verify the required parameter 'bulk_update_contents_dto' is set
         if ($bulk_update_contents_dto === null || (is_array($bulk_update_contents_dto) && count($bulk_update_contents_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $bulk_update_contents_dto when calling '
+                'Missing the required parameter $bulk_update_contents_dto when calling contentsBulkUpdateContents'
             );
         }
 
 
-        $resourcePath = '/api/content/{app}/{schema}/bulk';
+        $resourcePath = '/api/content/$app$/{schema}/bulk';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -481,14 +473,6 @@ class ContentsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -496,6 +480,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -822,32 +812,24 @@ class ContentsApi
     public function createDraftRequest($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['createDraft'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsCreateDraft'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsCreateDraft'
             );
         }
 
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}/draft';
+        $resourcePath = '/api/content/$app$/{schema}/{id}/draft';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -865,14 +847,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -888,6 +862,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1123,32 +1103,24 @@ class ContentsApi
     public function deleteContentRequest($schema, $id, $check_referrers = null, $permanent = null, string $contentType = self::contentTypes['deleteContent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsDeleteContent'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsDeleteContent'
             );
         }
 
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}';
+        $resourcePath = '/api/content/$app$/{schema}/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1176,14 +1148,6 @@ class ContentsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -1199,6 +1163,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1518,32 +1488,24 @@ class ContentsApi
     public function deleteContentStatusRequest($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteContentStatus'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsDeleteContentStatus'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsDeleteContentStatus'
             );
         }
 
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}/status';
+        $resourcePath = '/api/content/$app$/{schema}/{id}/status';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1561,14 +1523,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -1584,6 +1538,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1903,32 +1863,24 @@ class ContentsApi
     public function deleteVersionRequest($schema, $id, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['deleteVersion'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsDeleteVersion'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsDeleteVersion'
             );
         }
 
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}/draft';
+        $resourcePath = '/api/content/$app$/{schema}/{id}/draft';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1946,14 +1898,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -1969,6 +1913,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2280,25 +2230,17 @@ class ContentsApi
     public function getContentRequest($schema, $id, $version = -2, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, string $contentType = self::contentTypes['getContent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsGetContent'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsGetContent'
             );
         }
 
@@ -2308,7 +2250,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}';
+        $resourcePath = '/api/content/$app$/{schema}/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2343,14 +2285,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -2366,6 +2300,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2591,30 +2531,22 @@ class ContentsApi
     public function getContentValidityRequest($schema, $id, string $contentType = self::contentTypes['getContentValidity'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsGetContentValidity'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsGetContentValidity'
             );
         }
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}/validity';
+        $resourcePath = '/api/content/$app$/{schema}/{id}/validity';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2623,14 +2555,6 @@ class ContentsApi
 
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -2647,6 +2571,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2953,39 +2883,31 @@ class ContentsApi
     public function getContentVersionRequest($schema, $id, $version, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['getContentVersion'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsGetContentVersion'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsGetContentVersion'
             );
         }
 
         // verify the required parameter 'version' is set
         if ($version === null || (is_array($version) && count($version) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling '
+                'Missing the required parameter $version when calling contentsGetContentVersion'
             );
         }
 
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}/{version}';
+        $resourcePath = '/api/content/$app$/{schema}/{id}/{version}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3002,14 +2924,6 @@ class ContentsApi
             $headerParams['X-Languages'] = ObjectSerializer::toHeaderValue($x_languages);
         }
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
         // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
@@ -3034,6 +2948,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3380,18 +3300,10 @@ class ContentsApi
     public function getContentsRequest($schema, $ids = null, $q = null, $search = null, $top = null, $skip = null, $orderby = null, $filter = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContents'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsGetContents'
             );
         }
 
@@ -3409,7 +3321,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}';
+        $resourcePath = '/api/content/$app$/{schema}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3506,14 +3418,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -3521,6 +3425,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3860,25 +3770,17 @@ class ContentsApi
     public function getContentsPostRequest($schema, $query_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getContentsPost'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsGetContentsPost'
             );
         }
 
         // verify the required parameter 'query_dto' is set
         if ($query_dto === null || (is_array($query_dto) && count($query_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $query_dto when calling '
+                'Missing the required parameter $query_dto when calling contentsGetContentsPost'
             );
         }
 
@@ -3889,7 +3791,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/query';
+        $resourcePath = '/api/content/$app$/{schema}/query';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3923,14 +3825,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -3938,6 +3832,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4266,25 +4166,17 @@ class ContentsApi
     public function getReferencesRequest($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferences'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsGetReferences'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsGetReferences'
             );
         }
 
@@ -4296,7 +4188,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}/references';
+        $resourcePath = '/api/content/$app$/{schema}/{id}/references';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4339,14 +4231,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -4362,6 +4246,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -4683,25 +4573,17 @@ class ContentsApi
     public function getReferencingRequest($schema, $id, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_unpublished = null, $x_no_slow_total = null, $x_no_total = null, string $contentType = self::contentTypes['getReferencing'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsGetReferencing'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsGetReferencing'
             );
         }
 
@@ -4713,7 +4595,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}/referencing';
+        $resourcePath = '/api/content/$app$/{schema}/{id}/referencing';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4756,14 +4638,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -4779,6 +4653,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5103,39 +4983,31 @@ class ContentsApi
     public function patchContentRequest($schema, $id, $request_body, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['patchContent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsPatchContent'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsPatchContent'
             );
         }
 
         // verify the required parameter 'request_body' is set
         if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling '
+                'Missing the required parameter $request_body when calling contentsPatchContent'
             );
         }
 
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}';
+        $resourcePath = '/api/content/$app$/{schema}/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5153,14 +5025,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -5176,6 +5040,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5517,25 +5387,17 @@ class ContentsApi
     public function postContentRequest($schema, $request_body, $status = null, $id = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postContent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsPostContent'
             );
         }
 
         // verify the required parameter 'request_body' is set
         if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling '
+                'Missing the required parameter $request_body when calling contentsPostContent'
             );
         }
 
@@ -5545,7 +5407,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}';
+        $resourcePath = '/api/content/$app$/{schema}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5590,14 +5452,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -5605,6 +5459,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5926,30 +5786,22 @@ class ContentsApi
     public function postContentsRequest($schema, $import_contents_dto, string $contentType = self::contentTypes['postContents'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsPostContents'
             );
         }
 
         // verify the required parameter 'import_contents_dto' is set
         if ($import_contents_dto === null || (is_array($import_contents_dto) && count($import_contents_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $import_contents_dto when calling '
+                'Missing the required parameter $import_contents_dto when calling contentsPostContents'
             );
         }
 
 
-        $resourcePath = '/api/content/{app}/{schema}/import';
+        $resourcePath = '/api/content/$app$/{schema}/import';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5959,14 +5811,6 @@ class ContentsApi
 
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -5974,6 +5818,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6325,32 +6175,24 @@ class ContentsApi
     public function postUpsertContentRequest($schema, $id, $request_body, $status = null, $patch = null, $enrich_defaults = null, $publish = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['postUpsertContent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsPostUpsertContent'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsPostUpsertContent'
             );
         }
 
         // verify the required parameter 'request_body' is set
         if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling '
+                'Missing the required parameter $request_body when calling contentsPostUpsertContent'
             );
         }
 
@@ -6361,7 +6203,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}';
+        $resourcePath = '/api/content/$app$/{schema}/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6415,14 +6257,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -6438,6 +6272,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -6774,32 +6614,24 @@ class ContentsApi
     public function putContentRequest($schema, $id, $request_body, $enrich_defaults = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContent'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsPutContent'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsPutContent'
             );
         }
 
         // verify the required parameter 'request_body' is set
         if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling '
+                'Missing the required parameter $request_body when calling contentsPutContent'
             );
         }
 
@@ -6807,7 +6639,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}';
+        $resourcePath = '/api/content/$app$/{schema}/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6834,14 +6666,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -6857,6 +6681,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7188,25 +7018,17 @@ class ContentsApi
     public function putContentDefaultsRequest($schema, $id, $enrich_required_fields = null, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentDefaults'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsPutContentDefaults'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsPutContentDefaults'
             );
         }
 
@@ -7214,7 +7036,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}/defaults';
+        $resourcePath = '/api/content/$app$/{schema}/{id}/defaults';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7241,14 +7063,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -7264,6 +7078,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7588,39 +7408,31 @@ class ContentsApi
     public function putContentStatusRequest($schema, $id, $change_status_dto, $x_unpublished = null, $x_languages = null, string $contentType = self::contentTypes['putContentStatus'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'schema' is set
         if ($schema === null || (is_array($schema) && count($schema) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $schema when calling '
+                'Missing the required parameter $schema when calling contentsPutContentStatus'
             );
         }
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling '
+                'Missing the required parameter $id when calling contentsPutContentStatus'
             );
         }
 
         // verify the required parameter 'change_status_dto' is set
         if ($change_status_dto === null || (is_array($change_status_dto) && count($change_status_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $change_status_dto when calling '
+                'Missing the required parameter $change_status_dto when calling contentsPutContentStatus'
             );
         }
 
 
 
 
-        $resourcePath = '/api/content/{app}/{schema}/{id}/status';
+        $resourcePath = '/api/content/$app$/{schema}/{id}/status';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7638,14 +7450,6 @@ class ContentsApi
         }
 
         // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
-                ObjectSerializer::toPathValue($app),
-                $resourcePath
-            );
-        }
-        // path params
         if ($schema !== null) {
             $resourcePath = str_replace(
                 '{' . 'schema' . '}',
@@ -7661,6 +7465,12 @@ class ContentsApi
                 $resourcePath
             );
         }
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
+                ObjectSerializer::toPathValue($app),
+                $resourcePath
+            );
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -7977,24 +7787,16 @@ class ContentsApi
     public function bulkUpdateAllContentsRequest($bulk_update_contents_dto, $schema = null, string $contentType = self::contentTypes['bulkUpdateAllContents'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'bulk_update_contents_dto' is set
         if ($bulk_update_contents_dto === null || (is_array($bulk_update_contents_dto) && count($bulk_update_contents_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $bulk_update_contents_dto when calling '
+                'Missing the required parameter $bulk_update_contents_dto when calling contentsSharedBulkUpdateAllContents'
             );
         }
 
 
 
-        $resourcePath = '/api/content/{app}/bulk';
+        $resourcePath = '/api/content/$app$/bulk';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8012,14 +7814,12 @@ class ContentsApi
         ) ?? []);
 
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8363,13 +8163,6 @@ class ContentsApi
     public function getAllContentsRequest($ids = null, $schedule_from = null, $schedule_to = null, $referencing = null, $references = null, $q = null, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContents'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
@@ -8383,8 +8176,7 @@ class ContentsApi
 
 
 
-
-        $resourcePath = '/api/content/{app}';
+        $resourcePath = '/api/content/$app$';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8471,14 +8263,12 @@ class ContentsApi
             $headerParams['X-Unpublished'] = ObjectSerializer::toHeaderValue($x_unpublished);
         }
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8813,18 +8603,10 @@ class ContentsApi
     public function getAllContentsPostRequest($all_contents_by_post_dto, $x_fields = null, $x_flatten = null, $x_languages = null, $x_no_slow_total = null, $x_no_total = null, $x_unpublished = null, string $contentType = self::contentTypes['getAllContentsPost'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
-
         // verify the required parameter 'all_contents_by_post_dto' is set
         if ($all_contents_by_post_dto === null || (is_array($all_contents_by_post_dto) && count($all_contents_by_post_dto) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $all_contents_by_post_dto when calling '
+                'Missing the required parameter $all_contents_by_post_dto when calling contentsSharedGetAllContentsPost'
             );
         }
 
@@ -8835,7 +8617,7 @@ class ContentsApi
 
 
 
-        $resourcePath = '/api/content/{app}';
+        $resourcePath = '/api/content/$app$';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8868,14 +8650,12 @@ class ContentsApi
             $headerParams['X-Unpublished'] = ObjectSerializer::toHeaderValue($x_unpublished);
         }
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9179,20 +8959,12 @@ class ContentsApi
     public function getGraphQLRequest($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQL'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
 
 
-
-        $resourcePath = '/api/content/{app}/graphql';
+        $resourcePath = '/api/content/$app$/graphql';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9232,14 +9004,12 @@ class ContentsApi
             $headerParams['X-Unpublished'] = ObjectSerializer::toHeaderValue($x_unpublished);
         }
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9536,20 +9306,12 @@ class ContentsApi
     public function getGraphQLBatchRequest($the_query_string = null, $variables = null, $operation_name = null, $x_unpublished = null, string $contentType = self::contentTypes['getGraphQLBatch'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
 
 
-
-        $resourcePath = '/api/content/{app}/graphql/batch';
+        $resourcePath = '/api/content/$app$/graphql/batch';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9589,14 +9351,12 @@ class ContentsApi
             $headerParams['X-Unpublished'] = ObjectSerializer::toHeaderValue($x_unpublished);
         }
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -9906,18 +9666,10 @@ class ContentsApi
     public function postGraphQLRequest($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQL'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
-
-        $resourcePath = '/api/content/{app}/graphql';
+        $resourcePath = '/api/content/$app$/graphql';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9930,14 +9682,12 @@ class ContentsApi
             $headerParams['X-Unpublished'] = ObjectSerializer::toHeaderValue($x_unpublished);
         }
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -10254,18 +10004,10 @@ class ContentsApi
     public function postGraphQLBatchRequest($x_unpublished = null, $body = null, string $contentType = self::contentTypes['postGraphQLBatch'][0])
     {
 
-        // verify the required parameter 'app' is set
-        $app = $this->config->getAppName();
-        if ($app === null || (is_array($app) && count($app) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app when calling '
-            );
-        }
 
 
 
-
-        $resourcePath = '/api/content/{app}/graphql/batch';
+        $resourcePath = '/api/content/$app$/graphql/batch';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10278,14 +10020,12 @@ class ContentsApi
             $headerParams['X-Unpublished'] = ObjectSerializer::toHeaderValue($x_unpublished);
         }
 
-        // path params
-        if ($app !== null) {
-            $resourcePath = str_replace(
-                '{' . 'app' . '}',
+        $app = $this->config->getAppName();
+        $resourcePath = str_replace(
+                '$app$',
                 ObjectSerializer::toPathValue($app),
                 $resourcePath
             );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
