@@ -410,7 +410,7 @@ class PlansApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -744,7 +744,7 @@ class PlansApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
@@ -1056,7 +1056,7 @@ class PlansApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -1410,7 +1410,7 @@ class PlansApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',

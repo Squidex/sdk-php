@@ -764,7 +764,7 @@ use {{invokerPackage}}\ObjectSerializer;
         $operationHost = Configuration::getHostString($hostSettings, $hostIndex, $variables);
         {{/servers.0}}
         {{^servers.0}}
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         {{/servers.0}}
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(

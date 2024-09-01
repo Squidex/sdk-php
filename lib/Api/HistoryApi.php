@@ -419,7 +419,7 @@ class HistoryApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -746,7 +746,7 @@ class HistoryApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
