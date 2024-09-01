@@ -16,7 +16,7 @@ class TestUtils
         $appName = getenv('CONFIG__APP__NAME');
         $clientId = getenv('CONFIG__CLIENT__ID');
         $clientSecret = getenv('CONFIG__CLIENT__SECRET');
-        $host = getenv('CONFIG__SERVER__URL');
+        $url = getenv('CONFIG__SERVER__URL');
 
         if (!isset($appName) || $appName == '') {
             $appName = 'integration-tests';
@@ -30,15 +30,15 @@ class TestUtils
             $clientSecret = 'xeLd6jFxqbXJrfmNLlO2j1apagGGGSyZJhFnIuHp4I0=';
         }
 
-        if (!isset($host) || $host == '') {
-            $host = 'https://localhost:5001';
+        if (!isset($url) || $url == '') {
+            $url = 'https://localhost:5001';
         }
 
         $config = new Configuration();
-        $config->setHost($host);
+        $config->setAppName($appName);
         $config->setClientId($clientId);
         $config->setClientSecret($clientSecret);
-        $config->setAppName($appName);
+        $config->setUrl($url);
         $config->setIgnoreCertificates(true);
 
         self::$singleClient = new ClientProvider(new SquidexClient($config), $config);

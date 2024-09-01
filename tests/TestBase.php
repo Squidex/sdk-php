@@ -20,13 +20,13 @@ class TestBase extends TestCase
         $appName = $client->getConfig()->getAppName();
         $clientId = $client->getConfig()->getClientId();
         $clientSecret = $client->getConfig()->getClientSecret();
-        $host = $client->getConfig()->getHost();
+        $url = $client->getConfig()->getUrl();
 
         echo "SETUP\n";
         echo "Using <appName>=$appName\n";
         echo "Using <clientId>=$clientId\n";
         echo "Using <clientSecret>=$clientSecret\n";
-        echo "Using <host>=$host\n";
+        echo "Using <url>=$host\n";
 
         self::waitForServer();
 
