@@ -15,7 +15,7 @@ jobs:
 
       - name: Test - Start Compose
         run: docker compose up -d
-        working-directory: tests
+        working-directory: tests/docker
 
       - name: Test - RUN
         uses: php-actions/phpunit@master
@@ -35,4 +35,4 @@ jobs:
       - name: Test - Cleanup
         if: always()
         run: docker compose down
-        working-directory: tests
+        working-directory: tests/docker
