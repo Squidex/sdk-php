@@ -620,7 +620,7 @@ use {{invokerPackage}}\ObjectSerializer;
         }
         {{/collectionFormat}}
         if (${{paramName}} !== null) {
-            $headerParams['{{baseName}}'] = ObjectSerializer::toHeaderValue(${{paramName}});
+            $headerParams['{{vendorExtensions.x-header-name}}'] = ObjectSerializer::toHeaderValue(${{paramName}});
         }
         {{/headerParams}}
 

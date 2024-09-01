@@ -31,7 +31,7 @@ class TestUtils
         }
 
         if (!isset($host) || $host == '') {
-            $host = 'http://localhost:8080';
+            $host = 'https://localhost:5001';
         }
 
         $config = new Configuration();
