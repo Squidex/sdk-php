@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Prepare - Checkout
-        uses: actions/checkout@v3.4.0
+        uses: actions/checkout@v4.1.7
 
       - name: Prepare - Compose
         uses: php-actions/composer@v6
@@ -18,7 +18,7 @@ jobs:
         working-directory: tests/docker
 
       - name: Test - RUN
-        uses: php-actions/phpunit@master
+        uses: php-actions/phpunit@v4
         env: 
           CONFIG__WAIT: 60
           CONFIG__SERVER__URL: http://localhost:8080
