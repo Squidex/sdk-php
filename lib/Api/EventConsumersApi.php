@@ -410,7 +410,7 @@ class EventConsumersApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -745,7 +745,7 @@ class EventConsumersApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
@@ -1080,7 +1080,7 @@ class EventConsumersApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
@@ -1415,7 +1415,7 @@ class EventConsumersApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',

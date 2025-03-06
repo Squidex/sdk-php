@@ -32,7 +32,7 @@ $config = new Configuration();
 $config->setClientId('client-id');
 $config->setClientSecret('client-secret');
 $config->setAppName('my-app');
-// $config->setHost('https://your.squidex-deployment');
+// $config->setUrl('https://your.squidex-deployment');
 
 $client = new SquidexClient($config);
 

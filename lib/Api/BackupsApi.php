@@ -444,7 +444,7 @@ class BackupsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -791,7 +791,7 @@ class BackupsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -1047,7 +1047,7 @@ class BackupsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
@@ -1344,7 +1344,7 @@ class BackupsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -1575,7 +1575,7 @@ class BackupsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
@@ -1867,7 +1867,7 @@ class BackupsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -2117,7 +2117,7 @@ class BackupsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',

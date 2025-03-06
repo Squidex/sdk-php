@@ -705,7 +705,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -1242,7 +1242,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -1493,7 +1493,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
@@ -1815,7 +1815,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -2149,7 +2149,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
@@ -2503,7 +2503,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
@@ -2857,7 +2857,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
@@ -3191,7 +3191,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
@@ -3472,7 +3472,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
@@ -3784,7 +3784,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -4201,7 +4201,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -4555,7 +4555,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
@@ -4847,7 +4847,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
@@ -5268,7 +5268,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
@@ -5694,7 +5694,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
@@ -6048,7 +6048,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
@@ -6444,7 +6444,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
@@ -6798,7 +6798,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
@@ -7152,7 +7152,7 @@ class AssetsApi
             $headers
         );
 
-        $operationHost = $this->config->getHost();
+        $operationHost = $this->config->getUrl();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',

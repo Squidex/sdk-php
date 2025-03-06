@@ -77,11 +77,11 @@ class Configuration
     protected $booleanFormatForQueryString = self::BOOLEAN_FORMAT_STRING;
 
     /**
-     * The host
+     * The URL
      *
      * @var string
      */
-    protected $host = 'https://cloud.squidex.io';
+    protected $url = 'https://cloud.squidex.io';
 
     /**
      * The timeout in seconds
@@ -268,30 +268,30 @@ class Configuration
     }
 
     /**
-     * Sets the host
+     * Sets the url
      *
-     * @param string $host Host
+     * @param string $url URL
      *
      * @return $this
      */
-    public function setHost($host)
+    public function setUrl($url)
     {
-        if (!is_string($host)) {
-            throw new \InvalidArgumentException('Host must be a string.');
+        if (!is_string($url)) {
+            throw new \InvalidArgumentException('Url must be a string.');
         }
 
-        $this->host = $host;
+        $this->url = $url;
         return $this;
     }
 
     /**
-     * Gets the host
+     * Gets the url
      *
-     * @return string Host
+     * @return string URL
      */
-    public function getHost()
+    public function getUrl()
     {
-        return $this->host;
+        return $this->url;
     }
 
     /**

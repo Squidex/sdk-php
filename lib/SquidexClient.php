@@ -258,7 +258,7 @@ function requestToken($config)
 
     $acquireToken = function () use ($clientId, $clientSecret, $config, $requestClient) 
     {
-        $request = $requestClient->request('POST', $config->getHost() . '/identity-server/connect/token', [
+        $request = $requestClient->request('POST', $config->getUrl() . '/identity-server/connect/token', [
             'form_params' => [
                 'grant_type' => 'client_credentials',
                 'client_id' => $clientId,
