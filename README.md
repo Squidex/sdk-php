@@ -1,6 +1,6 @@
 # Squidex PHP Library
 
-The Squidex PHP library provides access to the Squidex API from JavaScript and TypeScript. Can be used in node and in the browser.
+The Squidex PHP library provides access to the Squidex API from PHP.
 
 Requires **PHP 7** or higher.
 
